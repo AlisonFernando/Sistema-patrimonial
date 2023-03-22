@@ -31,6 +31,9 @@ namespace UI
         private void timer1_Tick(object sender, EventArgs e)
         {
             toolStripStatusLabel2.Text = "Horário: " + DateTime.Now.ToLongTimeString();
+            toolStripStatusLabel3.Text = "Dia: " + DateTime.Now.ToLongDateString();
         }
+
+      
     }
 }
