@@ -34,6 +34,19 @@ namespace UI
             toolStripStatusLabel3.Text = "Dia: " + DateTime.Now.ToLongDateString();
         }
 
-      
+        private void investEquipamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Equipamentos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Colaboradores_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

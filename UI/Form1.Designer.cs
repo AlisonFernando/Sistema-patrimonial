@@ -40,10 +40,17 @@
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qtdEquipamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.investEquipamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colaboradoresAtivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.Colaboradores = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.Equipamentos = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.Relatorios = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.Sair = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -114,7 +121,8 @@
             // 
             this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.qtdEquipamentosToolStripMenuItem,
-            this.investEquipamentosToolStripMenuItem});
+            this.investEquipamentosToolStripMenuItem,
+            this.colaboradoresAtivosToolStripMenuItem});
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
             this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
@@ -122,14 +130,21 @@
             // qtdEquipamentosToolStripMenuItem
             // 
             this.qtdEquipamentosToolStripMenuItem.Name = "qtdEquipamentosToolStripMenuItem";
-            this.qtdEquipamentosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.qtdEquipamentosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.qtdEquipamentosToolStripMenuItem.Text = "Qtd equipamentos";
             // 
             // investEquipamentosToolStripMenuItem
             // 
             this.investEquipamentosToolStripMenuItem.Name = "investEquipamentosToolStripMenuItem";
-            this.investEquipamentosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.investEquipamentosToolStripMenuItem.Text = "Invest equipamentos";
+            this.investEquipamentosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.investEquipamentosToolStripMenuItem.Text = "Preço equipamentos";
+            this.investEquipamentosToolStripMenuItem.Click += new System.EventHandler(this.investEquipamentosToolStripMenuItem_Click);
+            // 
+            // colaboradoresAtivosToolStripMenuItem
+            // 
+            this.colaboradoresAtivosToolStripMenuItem.Name = "colaboradoresAtivosToolStripMenuItem";
+            this.colaboradoresAtivosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.colaboradoresAtivosToolStripMenuItem.Text = "Colaboradores ativos";
             // 
             // sairToolStripMenuItem
             // 
@@ -150,21 +165,76 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.Colaboradores,
+            this.toolStripSeparator1,
+            this.Equipamentos,
+            this.toolStripSeparator2,
+            this.Relatorios,
+            this.toolStripSeparator3,
+            this.Sair});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 71);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // Colaboradores
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.Colaboradores.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Colaboradores.Image = ((System.Drawing.Image)(resources.GetObject("Colaboradores.Image")));
+            this.Colaboradores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Colaboradores.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Colaboradores.Name = "Colaboradores";
+            this.Colaboradores.Size = new System.Drawing.Size(68, 68);
+            this.Colaboradores.Text = "toolStripButton1";
+            this.Colaboradores.Click += new System.EventHandler(this.Colaboradores_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 71);
+            // 
+            // Equipamentos
+            // 
+            this.Equipamentos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Equipamentos.Image = ((System.Drawing.Image)(resources.GetObject("Equipamentos.Image")));
+            this.Equipamentos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Equipamentos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Equipamentos.Name = "Equipamentos";
+            this.Equipamentos.Size = new System.Drawing.Size(68, 68);
+            this.Equipamentos.Text = "toolStripButton1";
+            this.Equipamentos.Click += new System.EventHandler(this.Equipamentos_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 71);
+            // 
+            // Relatorios
+            // 
+            this.Relatorios.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Relatorios.Image = ((System.Drawing.Image)(resources.GetObject("Relatorios.Image")));
+            this.Relatorios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Relatorios.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Relatorios.Name = "Relatorios";
+            this.Relatorios.Size = new System.Drawing.Size(68, 68);
+            this.Relatorios.Text = "toolStripButton1";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 71);
+            // 
+            // Sair
+            // 
+            this.Sair.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Sair.Image = ((System.Drawing.Image)(resources.GetObject("Sair.Image")));
+            this.Sair.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Sair.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Sair.Name = "Sair";
+            this.Sair.Size = new System.Drawing.Size(68, 68);
+            this.Sair.Text = "toolStripButton1";
+            this.Sair.Click += new System.EventHandler(this.sairToolStripMenuItem1_Click);
             // 
             // statusStrip1
             // 
@@ -242,11 +312,18 @@
         private ToolStripMenuItem qtdEquipamentosToolStripMenuItem;
         private ToolStripMenuItem investEquipamentosToolStripMenuItem;
         private ToolStripMenuItem sairToolStripMenuItem1;
-        private ToolStripButton toolStripButton1;
+        private ToolStripButton Equipamentos;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.Timer timer1;
+        private ToolStripMenuItem colaboradoresAtivosToolStripMenuItem;
+        private ToolStripButton Colaboradores;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripButton Relatorios;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripButton Sair;
     }
 }
