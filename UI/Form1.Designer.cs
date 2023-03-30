@@ -174,66 +174,66 @@
             this.Sair});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 71);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 86);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // Colaboradores
             // 
-            this.Colaboradores.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.Colaboradores.Image = ((System.Drawing.Image)(resources.GetObject("Colaboradores.Image")));
             this.Colaboradores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Colaboradores.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Colaboradores.Name = "Colaboradores";
-            this.Colaboradores.Size = new System.Drawing.Size(68, 68);
-            this.Colaboradores.Text = "toolStripButton1";
+            this.Colaboradores.Size = new System.Drawing.Size(88, 83);
+            this.Colaboradores.Text = "Colaboradores";
+            this.Colaboradores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Colaboradores.Click += new System.EventHandler(this.Colaboradores_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 71);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 86);
             // 
             // Equipamentos
             // 
-            this.Equipamentos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.Equipamentos.Image = ((System.Drawing.Image)(resources.GetObject("Equipamentos.Image")));
             this.Equipamentos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Equipamentos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Equipamentos.Name = "Equipamentos";
-            this.Equipamentos.Size = new System.Drawing.Size(68, 68);
-            this.Equipamentos.Text = "toolStripButton1";
+            this.Equipamentos.Size = new System.Drawing.Size(87, 83);
+            this.Equipamentos.Text = "Equipamentos";
+            this.Equipamentos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Equipamentos.Click += new System.EventHandler(this.Equipamentos_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 71);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 86);
             // 
             // Relatorios
             // 
-            this.Relatorios.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.Relatorios.Image = ((System.Drawing.Image)(resources.GetObject("Relatorios.Image")));
             this.Relatorios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Relatorios.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Relatorios.Name = "Relatorios";
-            this.Relatorios.Size = new System.Drawing.Size(68, 68);
-            this.Relatorios.Text = "toolStripButton1";
+            this.Relatorios.Size = new System.Drawing.Size(68, 83);
+            this.Relatorios.Text = "Relatórios";
+            this.Relatorios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 71);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 86);
             // 
             // Sair
             // 
-            this.Sair.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.Sair.Image = ((System.Drawing.Image)(resources.GetObject("Sair.Image")));
             this.Sair.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Sair.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Sair.Name = "Sair";
-            this.Sair.Size = new System.Drawing.Size(68, 68);
-            this.Sair.Text = "toolStripButton1";
+            this.Sair.Size = new System.Drawing.Size(68, 83);
+            this.Sair.Text = "Deslogar";
+            this.Sair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Sair.Click += new System.EventHandler(this.sairToolStripMenuItem1_Click);
             // 
             // statusStrip1
