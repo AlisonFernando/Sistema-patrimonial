@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colaboradoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,18 +43,12 @@
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.Colaboradores = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.Equipamentos = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.Relatorios = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.Sair = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label = new System.Windows.Forms.ToolStripLabel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -164,77 +157,16 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.Green;
+            this.toolStrip1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Colaboradores,
-            this.toolStripSeparator1,
-            this.Equipamentos,
-            this.toolStripSeparator2,
-            this.Relatorios,
-            this.toolStripSeparator3,
-            this.Sair});
+            this.label});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 86);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // Colaboradores
-            // 
-            this.Colaboradores.Image = ((System.Drawing.Image)(resources.GetObject("Colaboradores.Image")));
-            this.Colaboradores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.Colaboradores.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Colaboradores.Name = "Colaboradores";
-            this.Colaboradores.Size = new System.Drawing.Size(88, 83);
-            this.Colaboradores.Text = "Colaboradores";
-            this.Colaboradores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.Colaboradores.Click += new System.EventHandler(this.Colaboradores_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 86);
-            // 
-            // Equipamentos
-            // 
-            this.Equipamentos.Image = ((System.Drawing.Image)(resources.GetObject("Equipamentos.Image")));
-            this.Equipamentos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.Equipamentos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Equipamentos.Name = "Equipamentos";
-            this.Equipamentos.Size = new System.Drawing.Size(87, 83);
-            this.Equipamentos.Text = "Equipamentos";
-            this.Equipamentos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.Equipamentos.Click += new System.EventHandler(this.Equipamentos_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 86);
-            // 
-            // Relatorios
-            // 
-            this.Relatorios.Image = ((System.Drawing.Image)(resources.GetObject("Relatorios.Image")));
-            this.Relatorios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.Relatorios.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Relatorios.Name = "Relatorios";
-            this.Relatorios.Size = new System.Drawing.Size(68, 83);
-            this.Relatorios.Text = "Relatórios";
-            this.Relatorios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 86);
-            // 
-            // Sair
-            // 
-            this.Sair.Image = ((System.Drawing.Image)(resources.GetObject("Sair.Image")));
-            this.Sair.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.Sair.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Sair.Name = "Sair";
-            this.Sair.Size = new System.Drawing.Size(68, 83);
-            this.Sair.Text = "Deslogar";
-            this.Sair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.Sair.Click += new System.EventHandler(this.sairToolStripMenuItem1_Click);
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // statusStrip1
             // 
@@ -271,6 +203,15 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label
+            // 
+            this.label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(459, 22);
+            this.label.Text = "Sistema de controle patrimonial e de colaboradores da Scot Consultoria";
             // 
             // Form1
             // 
@@ -312,18 +253,12 @@
         private ToolStripMenuItem qtdEquipamentosToolStripMenuItem;
         private ToolStripMenuItem investEquipamentosToolStripMenuItem;
         private ToolStripMenuItem sairToolStripMenuItem1;
-        private ToolStripButton Equipamentos;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.Timer timer1;
         private ToolStripMenuItem colaboradoresAtivosToolStripMenuItem;
-        private ToolStripButton Colaboradores;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripSeparator toolStripSeparator2;
-        private ToolStripButton Relatorios;
-        private ToolStripSeparator toolStripSeparator3;
-        private ToolStripButton Sair;
+        private ToolStripLabel label;
     }
 }
