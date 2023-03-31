@@ -10,7 +10,7 @@ namespace BLL
     public class LoginBLL
     {
         
-        public bool verificar_login(Login login)
+        public bool verificarLogin(Login login)
         {
             if (login.Email = true )
             {
