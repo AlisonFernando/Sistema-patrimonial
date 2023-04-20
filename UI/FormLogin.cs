@@ -28,9 +28,21 @@ namespace UI
         {
             Login modelLogin = new Login();
             modelLogin.Email = input_email.Text;
-            modelLogin.Password = input_email.Text;
+            modelLogin.Password = input_senha.Text;
 
-            LoginBLL loginBLL = new LoginBLL();
+            if("teste@teste.com" == modelLogin.Email & "teste" == modelLogin.Password)
+            {
+                TelaPrincipal telaPrincipal = new TelaPrincipal();
+                MessageBox.Show("Você esta logado!");
+                telaPrincipal.Show();
+                this.Dispose(false);
+            }
+            else
+            {
+                MessageBox.Show("E-mail ou senha incorretos, tente novamente");
+            }
+
+            //LoginBLL loginBLL = new LoginBLL();
         }
     }
 }

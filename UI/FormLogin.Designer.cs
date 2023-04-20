@@ -56,6 +56,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.input_email.Location = new System.Drawing.Point(78, 88);
             this.input_email.Name = "input_email";
+            this.input_email.PlaceholderText = "Digite seu e-mail";
             this.input_email.Size = new System.Drawing.Size(199, 23);
             this.input_email.TabIndex = 4;
             // 
@@ -75,9 +76,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.input_senha.Location = new System.Drawing.Point(78, 141);
+            this.input_senha.MaxLength = 10;
             this.input_senha.Name = "input_senha";
+            this.input_senha.PlaceholderText = "Digite sua senha";
             this.input_senha.Size = new System.Drawing.Size(199, 23);
             this.input_senha.TabIndex = 6;
+            this.input_senha.UseSystemPasswordChar = true;
             // 
             // label2
             // 
