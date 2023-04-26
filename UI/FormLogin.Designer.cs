@@ -48,6 +48,7 @@
             this.label1.Size = new System.Drawing.Size(143, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tela de Login";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // input_email
             // 
@@ -108,6 +109,7 @@
             this.btn_login.Text = "Entrar";
             this.btn_login.UseVisualStyleBackColor = false;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
+            this.btn_login.Enter += new System.EventHandler(this.btn_login_Click);
             // 
             // FormLogin
             // 
@@ -120,6 +122,7 @@
             this.Controls.Add(this.input_email);
             this.Controls.Add(this.label_email);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLogin";

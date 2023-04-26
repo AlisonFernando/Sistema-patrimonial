@@ -26,6 +26,7 @@ namespace UI
 
         private void btn_login_Click(object sender, EventArgs e)
         {
+            
             Login modelLogin = new Login();
             modelLogin.Email = input_email.Text;
             modelLogin.Password = input_senha.Text;
@@ -43,6 +44,11 @@ namespace UI
             }
 
             //LoginBLL loginBLL = new LoginBLL();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
