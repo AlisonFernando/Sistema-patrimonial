@@ -15,6 +15,6 @@ namespace DAL
         static private string usuario = "at";
         static private string senha = "cadorna6667";
 
-        static public string strConn = $"server={servidor}; User Id={usuario}; database= {bancoDados}; password={senha}";
+        static public string strConn = $"server={servidor}; User Id={usuario}; database={bancoDados}; password={senha}";
     }
 }

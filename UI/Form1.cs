@@ -63,5 +63,11 @@ namespace UI
         {
 
         }
+
+        private void MenuCadColaborador_Click(object sender, EventArgs e)
+        {
+            UI.CadColaborador cadColaborador = new UI.CadColaborador();
+            cadColaborador.ShowDialog();
+        }
     }
 }

@@ -31,17 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colaboradoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.equipamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuCadColaborador = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuCadEquip = new System.Windows.Forms.ToolStripMenuItem();
             this.visualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.infoColaboradoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.infoEquipamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuInfoColaborador = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuInfoEquip = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.qtdEquipamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.investEquipamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colaboradoresAtivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuRelatorioEquip = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuRelatorioPrecoEquip = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuRelatorioColabAtivo = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSair = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.label = new System.Windows.Forms.ToolStripLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -71,90 +71,91 @@
             // cadastrarToolStripMenuItem
             // 
             this.cadastrarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colaboradoresToolStripMenuItem,
-            this.equipamentosToolStripMenuItem});
+            this.MenuCadColaborador,
+            this.MenuCadEquip});
             this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
             this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.cadastrarToolStripMenuItem.Text = "Cadastrar";
             // 
-            // colaboradoresToolStripMenuItem
+            // MenuCadColaborador
             // 
-            this.colaboradoresToolStripMenuItem.Name = "colaboradoresToolStripMenuItem";
-            this.colaboradoresToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.colaboradoresToolStripMenuItem.Text = "Colaboradores";
+            this.MenuCadColaborador.Name = "MenuCadColaborador";
+            this.MenuCadColaborador.Size = new System.Drawing.Size(180, 22);
+            this.MenuCadColaborador.Text = "Colaboradores";
+            this.MenuCadColaborador.Click += new System.EventHandler(this.MenuCadColaborador_Click);
             // 
-            // equipamentosToolStripMenuItem
+            // MenuCadEquip
             // 
-            this.equipamentosToolStripMenuItem.Name = "equipamentosToolStripMenuItem";
-            this.equipamentosToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.equipamentosToolStripMenuItem.Text = "Equipamentos";
+            this.MenuCadEquip.Name = "MenuCadEquip";
+            this.MenuCadEquip.Size = new System.Drawing.Size(180, 22);
+            this.MenuCadEquip.Text = "Equipamentos";
             // 
             // visualizarToolStripMenuItem
             // 
             this.visualizarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.infoColaboradoresToolStripMenuItem,
-            this.infoEquipamentosToolStripMenuItem});
+            this.MenuInfoColaborador,
+            this.MenuInfoEquip});
             this.visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
             this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.visualizarToolStripMenuItem.Text = "Visualizar";
             // 
-            // infoColaboradoresToolStripMenuItem
+            // MenuInfoColaborador
             // 
-            this.infoColaboradoresToolStripMenuItem.Name = "infoColaboradoresToolStripMenuItem";
-            this.infoColaboradoresToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.infoColaboradoresToolStripMenuItem.Text = "Info Colaboradores";
+            this.MenuInfoColaborador.Name = "MenuInfoColaborador";
+            this.MenuInfoColaborador.Size = new System.Drawing.Size(175, 22);
+            this.MenuInfoColaborador.Text = "Info Colaboradores";
             // 
-            // infoEquipamentosToolStripMenuItem
+            // MenuInfoEquip
             // 
-            this.infoEquipamentosToolStripMenuItem.Name = "infoEquipamentosToolStripMenuItem";
-            this.infoEquipamentosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.infoEquipamentosToolStripMenuItem.Text = "Info Equipamentos";
+            this.MenuInfoEquip.Name = "MenuInfoEquip";
+            this.MenuInfoEquip.Size = new System.Drawing.Size(175, 22);
+            this.MenuInfoEquip.Text = "Info Equipamentos";
             // 
             // relatóriosToolStripMenuItem
             // 
             this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.qtdEquipamentosToolStripMenuItem,
-            this.investEquipamentosToolStripMenuItem,
-            this.colaboradoresAtivosToolStripMenuItem});
+            this.MenuRelatorioEquip,
+            this.MenuRelatorioPrecoEquip,
+            this.MenuRelatorioColabAtivo});
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
             this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
             // 
-            // qtdEquipamentosToolStripMenuItem
+            // MenuRelatorioEquip
             // 
-            this.qtdEquipamentosToolStripMenuItem.Name = "qtdEquipamentosToolStripMenuItem";
-            this.qtdEquipamentosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.qtdEquipamentosToolStripMenuItem.Text = "Qtd equipamentos";
+            this.MenuRelatorioEquip.Name = "MenuRelatorioEquip";
+            this.MenuRelatorioEquip.Size = new System.Drawing.Size(185, 22);
+            this.MenuRelatorioEquip.Text = "Qtd equipamentos";
             // 
-            // investEquipamentosToolStripMenuItem
+            // MenuRelatorioPrecoEquip
             // 
-            this.investEquipamentosToolStripMenuItem.Name = "investEquipamentosToolStripMenuItem";
-            this.investEquipamentosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.investEquipamentosToolStripMenuItem.Text = "Preço equipamentos";
-            this.investEquipamentosToolStripMenuItem.Click += new System.EventHandler(this.investEquipamentosToolStripMenuItem_Click);
+            this.MenuRelatorioPrecoEquip.Name = "MenuRelatorioPrecoEquip";
+            this.MenuRelatorioPrecoEquip.Size = new System.Drawing.Size(185, 22);
+            this.MenuRelatorioPrecoEquip.Text = "Preço equipamentos";
+            this.MenuRelatorioPrecoEquip.Click += new System.EventHandler(this.investEquipamentosToolStripMenuItem_Click);
             // 
-            // colaboradoresAtivosToolStripMenuItem
+            // MenuRelatorioColabAtivo
             // 
-            this.colaboradoresAtivosToolStripMenuItem.Name = "colaboradoresAtivosToolStripMenuItem";
-            this.colaboradoresAtivosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.colaboradoresAtivosToolStripMenuItem.Text = "Colaboradores ativos";
+            this.MenuRelatorioColabAtivo.Name = "MenuRelatorioColabAtivo";
+            this.MenuRelatorioColabAtivo.Size = new System.Drawing.Size(185, 22);
+            this.MenuRelatorioColabAtivo.Text = "Colaboradores ativos";
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sairToolStripMenuItem1});
+            this.MenuSair});
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
-            // sairToolStripMenuItem1
+            // MenuSair
             // 
-            this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
-            this.sairToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(118, 22);
-            this.sairToolStripMenuItem1.Text = "&Sair";
-            this.sairToolStripMenuItem1.Click += new System.EventHandler(this.sairToolStripMenuItem1_Click);
+            this.MenuSair.Name = "MenuSair";
+            this.MenuSair.ShortcutKeys = System.Windows.Forms.Keys.F12;
+            this.MenuSair.Size = new System.Drawing.Size(118, 22);
+            this.MenuSair.Text = "&Sair";
+            this.MenuSair.Click += new System.EventHandler(this.sairToolStripMenuItem1_Click);
             // 
             // toolStrip1
             // 
@@ -248,23 +249,23 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem cadastrarToolStripMenuItem;
-        private ToolStripMenuItem colaboradoresToolStripMenuItem;
-        private ToolStripMenuItem equipamentosToolStripMenuItem;
+        private ToolStripMenuItem MenuCadColaborador;
+        private ToolStripMenuItem MenuCadEquip;
         private ToolStripMenuItem visualizarToolStripMenuItem;
-        private ToolStripMenuItem infoColaboradoresToolStripMenuItem;
-        private ToolStripMenuItem infoEquipamentosToolStripMenuItem;
+        private ToolStripMenuItem MenuInfoColaborador;
+        private ToolStripMenuItem MenuInfoEquip;
         private ToolStripMenuItem relatóriosToolStripMenuItem;
         private ToolStripMenuItem sairToolStripMenuItem;
         private ToolStrip toolStrip1;
-        private ToolStripMenuItem qtdEquipamentosToolStripMenuItem;
-        private ToolStripMenuItem investEquipamentosToolStripMenuItem;
-        private ToolStripMenuItem sairToolStripMenuItem1;
+        private ToolStripMenuItem MenuRelatorioEquip;
+        private ToolStripMenuItem MenuRelatorioPrecoEquip;
+        private ToolStripMenuItem MenuSair;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel alison;
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.Timer timer1;
-        private ToolStripMenuItem colaboradoresAtivosToolStripMenuItem;
+        private ToolStripMenuItem MenuRelatorioColabAtivo;
         private ToolStripLabel label;
     }
 }
