@@ -45,8 +45,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.label = new System.Windows.Forms.ToolStripLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Data = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Horario = new System.Windows.Forms.ToolStripStatusLabel();
             this.alison = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
@@ -66,7 +66,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // cadastrarToolStripMenuItem
             // 
@@ -89,6 +88,7 @@
             this.MenuCadEquip.Name = "MenuCadEquip";
             this.MenuCadEquip.Size = new System.Drawing.Size(180, 22);
             this.MenuCadEquip.Text = "Equipamentos";
+            this.MenuCadEquip.Click += new System.EventHandler(this.MenuCadEquip_Click);
             // 
             // visualizarToolStripMenuItem
             // 
@@ -132,7 +132,6 @@
             this.MenuRelatorioPrecoEquip.Name = "MenuRelatorioPrecoEquip";
             this.MenuRelatorioPrecoEquip.Size = new System.Drawing.Size(185, 22);
             this.MenuRelatorioPrecoEquip.Text = "Preço equipamentos";
-            this.MenuRelatorioPrecoEquip.Click += new System.EventHandler(this.investEquipamentosToolStripMenuItem_Click);
             // 
             // MenuRelatorioColabAtivo
             // 
@@ -147,7 +146,6 @@
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.sairToolStripMenuItem.Text = "Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // MenuSair
             // 
@@ -169,7 +167,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // label
             // 
@@ -183,8 +180,8 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel3,
-            this.toolStripStatusLabel2,
+            this.Data,
+            this.Horario,
             this.alison});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
@@ -192,20 +189,19 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel3
+            // Data
             // 
-            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(143, 17);
-            this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
+            this.Data.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Data.Name = "Data";
+            this.Data.Size = new System.Drawing.Size(73, 17);
+            this.Data.Text = "Data atual";
             // 
-            // toolStripStatusLabel2
+            // Horario
             // 
-            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(143, 17);
-            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Click += new System.EventHandler(this.toolStripStatusLabel2_Click);
+            this.Horario.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Horario.Name = "Horario";
+            this.Horario.Size = new System.Drawing.Size(52, 17);
+            this.Horario.Text = "horario";
             // 
             // alison
             // 
@@ -213,7 +209,6 @@
             this.alison.Name = "alison";
             this.alison.Size = new System.Drawing.Size(226, 17);
             this.alison.Text = "Desenvolvido por: Alison Fernando";
-            this.alison.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
             // timer1
             // 
@@ -233,7 +228,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -262,8 +256,8 @@
         private ToolStripMenuItem MenuSair;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel alison;
-        private ToolStripStatusLabel toolStripStatusLabel2;
-        private ToolStripStatusLabel toolStripStatusLabel3;
+        private ToolStripStatusLabel Horario;
+        private ToolStripStatusLabel Data;
         private System.Windows.Forms.Timer timer1;
         private ToolStripMenuItem MenuRelatorioColabAtivo;
         private ToolStripLabel label;
