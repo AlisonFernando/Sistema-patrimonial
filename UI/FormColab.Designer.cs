@@ -34,19 +34,19 @@
             this.Senha = new System.Windows.Forms.Label();
             this.Agenda = new System.Windows.Forms.Label();
             this.Telefone = new System.Windows.Forms.Label();
-            this.input_name_colab = new System.Windows.Forms.TextBox();
-            this.input_agenda_colab = new System.Windows.Forms.TextBox();
-            this.input_email_colab = new System.Windows.Forms.TextBox();
-            this.input_senha_colab = new System.Windows.Forms.TextBox();
-            this.input_tel_colab = new System.Windows.Forms.TextBox();
+            this.InputColabNome = new System.Windows.Forms.TextBox();
+            this.inputColabAgenda = new System.Windows.Forms.TextBox();
+            this.inputColabEmail = new System.Windows.Forms.TextBox();
+            this.inputColabSenha = new System.Windows.Forms.TextBox();
+            this.inputColabTel = new System.Windows.Forms.TextBox();
             this.Setor = new System.Windows.Forms.Label();
-            this.select_colab_setor = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.selectSetorColab = new System.Windows.Forms.ComboBox();
+            this.infoCadColab = new System.Windows.Forms.DataGridView();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infoCadColab)).BeginInit();
             this.SuspendLayout();
             // 
             // Nome
@@ -94,48 +94,48 @@
             this.Telefone.TabIndex = 4;
             this.Telefone.Text = "Telefone";
             // 
-            // input_name_colab
+            // InputColabNome
             // 
-            this.input_name_colab.Location = new System.Drawing.Point(12, 46);
-            this.input_name_colab.Name = "input_name_colab";
-            this.input_name_colab.PlaceholderText = "Digite o nome do colaborador";
-            this.input_name_colab.Size = new System.Drawing.Size(268, 23);
-            this.input_name_colab.TabIndex = 6;
+            this.InputColabNome.Location = new System.Drawing.Point(12, 46);
+            this.InputColabNome.Name = "InputColabNome";
+            this.InputColabNome.PlaceholderText = "Digite o nome do colaborador";
+            this.InputColabNome.Size = new System.Drawing.Size(268, 23);
+            this.InputColabNome.TabIndex = 6;
             // 
-            // input_agenda_colab
+            // inputColabAgenda
             // 
-            this.input_agenda_colab.Location = new System.Drawing.Point(12, 160);
-            this.input_agenda_colab.Name = "input_agenda_colab";
-            this.input_agenda_colab.PlaceholderText = "Agenda google do colaborador";
-            this.input_agenda_colab.Size = new System.Drawing.Size(381, 23);
-            this.input_agenda_colab.TabIndex = 7;
+            this.inputColabAgenda.Location = new System.Drawing.Point(12, 160);
+            this.inputColabAgenda.Name = "inputColabAgenda";
+            this.inputColabAgenda.PlaceholderText = "Agenda google do colaborador";
+            this.inputColabAgenda.Size = new System.Drawing.Size(381, 23);
+            this.inputColabAgenda.TabIndex = 7;
             // 
-            // input_email_colab
+            // inputColabEmail
             // 
-            this.input_email_colab.Location = new System.Drawing.Point(12, 106);
-            this.input_email_colab.Name = "input_email_colab";
-            this.input_email_colab.PlaceholderText = "E-mail do colaborador";
-            this.input_email_colab.Size = new System.Drawing.Size(268, 23);
-            this.input_email_colab.TabIndex = 8;
+            this.inputColabEmail.Location = new System.Drawing.Point(12, 106);
+            this.inputColabEmail.Name = "inputColabEmail";
+            this.inputColabEmail.PlaceholderText = "E-mail do colaborador";
+            this.inputColabEmail.Size = new System.Drawing.Size(268, 23);
+            this.inputColabEmail.TabIndex = 8;
             // 
-            // input_senha_colab
+            // inputColabSenha
             // 
-            this.input_senha_colab.Location = new System.Drawing.Point(286, 46);
-            this.input_senha_colab.MaxLength = 10;
-            this.input_senha_colab.Name = "input_senha_colab";
-            this.input_senha_colab.PlaceholderText = "Digite uma senha";
-            this.input_senha_colab.Size = new System.Drawing.Size(129, 23);
-            this.input_senha_colab.TabIndex = 9;
-            this.input_senha_colab.UseSystemPasswordChar = true;
+            this.inputColabSenha.Location = new System.Drawing.Point(286, 46);
+            this.inputColabSenha.MaxLength = 10;
+            this.inputColabSenha.Name = "inputColabSenha";
+            this.inputColabSenha.PlaceholderText = "Digite uma senha";
+            this.inputColabSenha.Size = new System.Drawing.Size(129, 23);
+            this.inputColabSenha.TabIndex = 9;
+            this.inputColabSenha.UseSystemPasswordChar = true;
             // 
-            // input_tel_colab
+            // inputColabTel
             // 
-            this.input_tel_colab.Location = new System.Drawing.Point(286, 106);
-            this.input_tel_colab.MaxLength = 11;
-            this.input_tel_colab.Name = "input_tel_colab";
-            this.input_tel_colab.PlaceholderText = "Telefone empresarial";
-            this.input_tel_colab.Size = new System.Drawing.Size(129, 23);
-            this.input_tel_colab.TabIndex = 10;
+            this.inputColabTel.Location = new System.Drawing.Point(286, 106);
+            this.inputColabTel.MaxLength = 11;
+            this.inputColabTel.Name = "inputColabTel";
+            this.inputColabTel.PlaceholderText = "Telefone empresarial";
+            this.inputColabTel.Size = new System.Drawing.Size(129, 23);
+            this.inputColabTel.TabIndex = 10;
             // 
             // Setor
             // 
@@ -146,32 +146,32 @@
             this.Setor.TabIndex = 11;
             this.Setor.Text = "Setor";
             // 
-            // select_colab_setor
+            // selectSetorColab
             // 
-            this.select_colab_setor.FormattingEnabled = true;
-            this.select_colab_setor.Items.AddRange(new object[] {
+            this.selectSetorColab.FormattingEnabled = true;
+            this.selectSetorColab.Items.AddRange(new object[] {
             "Engenharia",
             "Criação",
             "Administração",
             "Marketing",
             "Ligação",
             "TI"});
-            this.select_colab_setor.Location = new System.Drawing.Point(52, 192);
-            this.select_colab_setor.Name = "select_colab_setor";
-            this.select_colab_setor.Size = new System.Drawing.Size(125, 23);
-            this.select_colab_setor.TabIndex = 13;
+            this.selectSetorColab.Location = new System.Drawing.Point(52, 192);
+            this.selectSetorColab.Name = "selectSetorColab";
+            this.selectSetorColab.Size = new System.Drawing.Size(125, 23);
+            this.selectSetorColab.TabIndex = 13;
             // 
-            // dataGridView1
+            // infoCadColab
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 232);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(480, 163);
-            this.dataGridView1.TabIndex = 14;
+            this.infoCadColab.AllowUserToAddRows = false;
+            this.infoCadColab.AllowUserToDeleteRows = false;
+            this.infoCadColab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.infoCadColab.Location = new System.Drawing.Point(12, 232);
+            this.infoCadColab.Name = "infoCadColab";
+            this.infoCadColab.ReadOnly = true;
+            this.infoCadColab.RowTemplate.Height = 25;
+            this.infoCadColab.Size = new System.Drawing.Size(480, 163);
+            this.infoCadColab.TabIndex = 14;
             // 
             // btnNovo
             // 
@@ -226,14 +226,14 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnNovo);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.select_colab_setor);
+            this.Controls.Add(this.infoCadColab);
+            this.Controls.Add(this.selectSetorColab);
             this.Controls.Add(this.Setor);
-            this.Controls.Add(this.input_tel_colab);
-            this.Controls.Add(this.input_senha_colab);
-            this.Controls.Add(this.input_email_colab);
-            this.Controls.Add(this.input_agenda_colab);
-            this.Controls.Add(this.input_name_colab);
+            this.Controls.Add(this.inputColabTel);
+            this.Controls.Add(this.inputColabSenha);
+            this.Controls.Add(this.inputColabEmail);
+            this.Controls.Add(this.inputColabAgenda);
+            this.Controls.Add(this.InputColabNome);
             this.Controls.Add(this.Telefone);
             this.Controls.Add(this.Agenda);
             this.Controls.Add(this.Senha);
@@ -243,7 +243,7 @@
             this.Name = "CadColaborador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Colaborador";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infoCadColab)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,14 +256,14 @@
         private Label Senha;
         private Label Agenda;
         private Label Telefone;
-        private TextBox input_name_colab;
-        private TextBox input_agenda_colab;
-        private TextBox input_email_colab;
-        private TextBox input_senha_colab;
-        private TextBox input_tel_colab;
+        private TextBox InputColabNome;
+        private TextBox inputColabAgenda;
+        private TextBox inputColabEmail;
+        private TextBox inputColabSenha;
+        private TextBox inputColabTel;
         private Label Setor;
-        private ComboBox select_colab_setor;
-        private DataGridView dataGridView1;
+        private ComboBox selectSetorColab;
+        private DataGridView infoCadColab;
         private Button btnNovo;
         private Button btnSalvar;
         private Button btnEditar;

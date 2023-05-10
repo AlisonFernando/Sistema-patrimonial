@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCadColaborador = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,14 +80,14 @@
             // MenuCadColaborador
             // 
             this.MenuCadColaborador.Name = "MenuCadColaborador";
-            this.MenuCadColaborador.Size = new System.Drawing.Size(180, 22);
+            this.MenuCadColaborador.Size = new System.Drawing.Size(151, 22);
             this.MenuCadColaborador.Text = "Colaboradores";
             this.MenuCadColaborador.Click += new System.EventHandler(this.MenuCadColaborador_Click);
             // 
             // MenuCadEquip
             // 
             this.MenuCadEquip.Name = "MenuCadEquip";
-            this.MenuCadEquip.Size = new System.Drawing.Size(180, 22);
+            this.MenuCadEquip.Size = new System.Drawing.Size(151, 22);
             this.MenuCadEquip.Text = "Equipamentos";
             this.MenuCadEquip.Click += new System.EventHandler(this.MenuCadEquip_Click);
             // 
@@ -223,6 +224,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "TelaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
