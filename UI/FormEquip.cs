@@ -16,5 +16,10 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void CadEquip_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

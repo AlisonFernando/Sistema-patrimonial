@@ -38,19 +38,21 @@
             this.inputDesEquip = new System.Windows.Forms.TextBox();
             this.inputEtiquetaEquip = new System.Windows.Forms.TextBox();
             this.inputPrecoEquip = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.selectMarcaEquip = new System.Windows.Forms.ComboBox();
-            this.btnNovoEquip = new System.Windows.Forms.Button();
-            this.btnSalvarEquip = new System.Windows.Forms.Button();
-            this.btnEditarEquip = new System.Windows.Forms.Button();
-            this.btnLimparCampos = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.inputCodEquip = new System.Windows.Forms.TextBox();
+            this.codigoEquip = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // NomeEquip
             // 
             this.NomeEquip.AutoSize = true;
-            this.NomeEquip.Location = new System.Drawing.Point(12, 31);
+            this.NomeEquip.Location = new System.Drawing.Point(12, 70);
             this.NomeEquip.Name = "NomeEquip";
             this.NomeEquip.Size = new System.Drawing.Size(131, 15);
             this.NomeEquip.TabIndex = 0;
@@ -59,7 +61,7 @@
             // MarcaEquip
             // 
             this.MarcaEquip.AutoSize = true;
-            this.MarcaEquip.Location = new System.Drawing.Point(241, 31);
+            this.MarcaEquip.Location = new System.Drawing.Point(246, 70);
             this.MarcaEquip.Name = "MarcaEquip";
             this.MarcaEquip.Size = new System.Drawing.Size(40, 15);
             this.MarcaEquip.TabIndex = 1;
@@ -68,7 +70,7 @@
             // DescricaoEquip
             // 
             this.DescricaoEquip.AutoSize = true;
-            this.DescricaoEquip.Location = new System.Drawing.Point(12, 85);
+            this.DescricaoEquip.Location = new System.Drawing.Point(12, 114);
             this.DescricaoEquip.Name = "DescricaoEquip";
             this.DescricaoEquip.Size = new System.Drawing.Size(58, 15);
             this.DescricaoEquip.TabIndex = 2;
@@ -77,7 +79,7 @@
             // PrecoEquip
             // 
             this.PrecoEquip.AutoSize = true;
-            this.PrecoEquip.Location = new System.Drawing.Point(246, 85);
+            this.PrecoEquip.Location = new System.Drawing.Point(246, 114);
             this.PrecoEquip.Name = "PrecoEquip";
             this.PrecoEquip.Size = new System.Drawing.Size(37, 15);
             this.PrecoEquip.TabIndex = 3;
@@ -86,7 +88,7 @@
             // EtiquetaEquip
             // 
             this.EtiquetaEquip.AutoSize = true;
-            this.EtiquetaEquip.Location = new System.Drawing.Point(12, 141);
+            this.EtiquetaEquip.Location = new System.Drawing.Point(12, 158);
             this.EtiquetaEquip.Name = "EtiquetaEquip";
             this.EtiquetaEquip.Size = new System.Drawing.Size(50, 15);
             this.EtiquetaEquip.TabIndex = 4;
@@ -94,48 +96,35 @@
             // 
             // inputEquipNome
             // 
-            this.inputEquipNome.Location = new System.Drawing.Point(12, 49);
+            this.inputEquipNome.Location = new System.Drawing.Point(12, 88);
             this.inputEquipNome.MaxLength = 100;
             this.inputEquipNome.Name = "inputEquipNome";
-            this.inputEquipNome.PlaceholderText = "Digite o nome do equipamento";
             this.inputEquipNome.Size = new System.Drawing.Size(223, 23);
             this.inputEquipNome.TabIndex = 5;
             // 
             // inputDesEquip
             // 
-            this.inputDesEquip.Location = new System.Drawing.Point(12, 103);
+            this.inputDesEquip.Location = new System.Drawing.Point(12, 132);
             this.inputDesEquip.MaxLength = 100;
             this.inputDesEquip.Name = "inputDesEquip";
-            this.inputDesEquip.PlaceholderText = "Digite a descrição do equipamento";
             this.inputDesEquip.Size = new System.Drawing.Size(223, 23);
             this.inputDesEquip.TabIndex = 7;
             // 
             // inputEtiquetaEquip
             // 
-            this.inputEtiquetaEquip.Location = new System.Drawing.Point(12, 159);
+            this.inputEtiquetaEquip.Location = new System.Drawing.Point(12, 176);
             this.inputEtiquetaEquip.MaxLength = 10;
             this.inputEtiquetaEquip.Name = "inputEtiquetaEquip";
-            this.inputEtiquetaEquip.PlaceholderText = "Digite uma etiqueta para identificação";
             this.inputEtiquetaEquip.Size = new System.Drawing.Size(223, 23);
             this.inputEtiquetaEquip.TabIndex = 8;
             // 
             // inputPrecoEquip
             // 
-            this.inputPrecoEquip.Location = new System.Drawing.Point(246, 103);
+            this.inputPrecoEquip.Location = new System.Drawing.Point(246, 132);
             this.inputPrecoEquip.MaxLength = 10;
             this.inputPrecoEquip.Name = "inputPrecoEquip";
-            this.inputPrecoEquip.PlaceholderText = "Valor pago";
             this.inputPrecoEquip.Size = new System.Drawing.Size(116, 23);
             this.inputPrecoEquip.TabIndex = 9;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 205);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(480, 150);
-            this.dataGridView1.TabIndex = 10;
             // 
             // selectMarcaEquip
             // 
@@ -147,66 +136,84 @@
             "Samsung",
             "Iphone",
             "Kaidi"});
-            this.selectMarcaEquip.Location = new System.Drawing.Point(241, 49);
+            this.selectMarcaEquip.Location = new System.Drawing.Point(246, 88);
             this.selectMarcaEquip.Name = "selectMarcaEquip";
             this.selectMarcaEquip.Size = new System.Drawing.Size(121, 23);
             this.selectMarcaEquip.TabIndex = 11;
             // 
-            // btnNovoEquip
+            // panel1
             // 
-            this.btnNovoEquip.BackColor = System.Drawing.Color.DarkGreen;
-            this.btnNovoEquip.ForeColor = System.Drawing.Color.Transparent;
-            this.btnNovoEquip.Location = new System.Drawing.Point(40, 379);
-            this.btnNovoEquip.Name = "btnNovoEquip";
-            this.btnNovoEquip.Size = new System.Drawing.Size(118, 33);
-            this.btnNovoEquip.TabIndex = 12;
-            this.btnNovoEquip.Text = "Novo equipamento";
-            this.btnNovoEquip.UseVisualStyleBackColor = false;
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 233);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(6);
+            this.panel1.Size = new System.Drawing.Size(427, 50);
+            this.panel1.TabIndex = 12;
             // 
-            // btnSalvarEquip
+            // button2
             // 
-            this.btnSalvarEquip.BackColor = System.Drawing.Color.DarkGreen;
-            this.btnSalvarEquip.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSalvarEquip.Location = new System.Drawing.Point(164, 379);
-            this.btnSalvarEquip.Name = "btnSalvarEquip";
-            this.btnSalvarEquip.Size = new System.Drawing.Size(88, 33);
-            this.btnSalvarEquip.TabIndex = 13;
-            this.btnSalvarEquip.Text = "Salvar";
-            this.btnSalvarEquip.UseVisualStyleBackColor = false;
+            this.button2.BackColor = System.Drawing.Color.DarkGreen;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button2.ForeColor = System.Drawing.SystemColors.Control;
+            this.button2.Location = new System.Drawing.Point(6, 6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(150, 38);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Cancelar";
+            this.button2.UseVisualStyleBackColor = false;
             // 
-            // btnEditarEquip
+            // button1
             // 
-            this.btnEditarEquip.BackColor = System.Drawing.Color.DarkGreen;
-            this.btnEditarEquip.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEditarEquip.Location = new System.Drawing.Point(258, 379);
-            this.btnEditarEquip.Name = "btnEditarEquip";
-            this.btnEditarEquip.Size = new System.Drawing.Size(88, 33);
-            this.btnEditarEquip.TabIndex = 14;
-            this.btnEditarEquip.Text = "Editar";
-            this.btnEditarEquip.UseVisualStyleBackColor = false;
+            this.button1.BackColor = System.Drawing.Color.DarkGreen;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(271, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 38);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Cadastrar";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // btnLimparCampos
+            // panel2
             // 
-            this.btnLimparCampos.BackColor = System.Drawing.Color.Red;
-            this.btnLimparCampos.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLimparCampos.Location = new System.Drawing.Point(352, 379);
-            this.btnLimparCampos.Name = "btnLimparCampos";
-            this.btnLimparCampos.Size = new System.Drawing.Size(104, 33);
-            this.btnLimparCampos.TabIndex = 15;
-            this.btnLimparCampos.Text = "Limpar campos";
-            this.btnLimparCampos.UseVisualStyleBackColor = false;
+            this.panel2.BackColor = System.Drawing.Color.DarkGreen;
+            this.panel2.Controls.Add(this.inputCodEquip);
+            this.panel2.Controls.Add(this.codigoEquip);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(6);
+            this.panel2.Size = new System.Drawing.Size(427, 50);
+            this.panel2.TabIndex = 13;
+            // 
+            // inputCodEquip
+            // 
+            this.inputCodEquip.Location = new System.Drawing.Point(56, 17);
+            this.inputCodEquip.Name = "inputCodEquip";
+            this.inputCodEquip.Size = new System.Drawing.Size(100, 23);
+            this.inputCodEquip.TabIndex = 11;
+            // 
+            // codigoEquip
+            // 
+            this.codigoEquip.AutoSize = true;
+            this.codigoEquip.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.codigoEquip.ForeColor = System.Drawing.SystemColors.Control;
+            this.codigoEquip.Location = new System.Drawing.Point(12, 20);
+            this.codigoEquip.Name = "codigoEquip";
+            this.codigoEquip.Size = new System.Drawing.Size(45, 15);
+            this.codigoEquip.TabIndex = 10;
+            this.codigoEquip.Text = "Código";
             // 
             // CadEquip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 451);
-            this.Controls.Add(this.btnLimparCampos);
-            this.Controls.Add(this.btnEditarEquip);
-            this.Controls.Add(this.btnSalvarEquip);
-            this.Controls.Add(this.btnNovoEquip);
+            this.ClientSize = new System.Drawing.Size(427, 283);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.selectMarcaEquip);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.inputPrecoEquip);
             this.Controls.Add(this.inputEtiquetaEquip);
             this.Controls.Add(this.inputDesEquip);
@@ -220,7 +227,10 @@
             this.Name = "CadEquip";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar equipamentos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.CadEquip_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,11 +247,12 @@
         private TextBox inputDesEquip;
         private TextBox inputEtiquetaEquip;
         private TextBox inputPrecoEquip;
-        private DataGridView dataGridView1;
         private ComboBox selectMarcaEquip;
-        private Button btnNovoEquip;
-        private Button btnSalvarEquip;
-        private Button btnEditarEquip;
-        private Button btnLimparCampos;
+        private Panel panel1;
+        private Button button1;
+        private Button button2;
+        private Panel panel2;
+        private TextBox inputCodEquip;
+        private Label codigoEquip;
     }
 }
