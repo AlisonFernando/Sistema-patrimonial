@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.MenuPrincipal = new System.Windows.Forms.MenuStrip();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCadColaborador = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCadEquip = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,30 +43,32 @@
             this.MenuRelatorioColabAtivo = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSair = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.HeaderDescricao = new System.Windows.Forms.ToolStrip();
             this.label = new System.Windows.Forms.ToolStripLabel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.FooterPrincipal = new System.Windows.Forms.StatusStrip();
             this.Data = new System.Windows.Forms.ToolStripStatusLabel();
             this.Horario = new System.Windows.Forms.ToolStripStatusLabel();
             this.alison = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.menuStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.relogio = new System.Windows.Forms.Timer(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.MenuPrincipal.SuspendLayout();
+            this.HeaderDescricao.SuspendLayout();
+            this.FooterPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // MenuPrincipal
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrarToolStripMenuItem,
             this.visualizarToolStripMenuItem,
             this.relatóriosToolStripMenuItem,
             this.sairToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.MenuPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.MenuPrincipal.Name = "MenuPrincipal";
+            this.MenuPrincipal.Size = new System.Drawing.Size(800, 24);
+            this.MenuPrincipal.TabIndex = 0;
+            this.MenuPrincipal.Text = "menuStrip1";
             // 
             // cadastrarToolStripMenuItem
             // 
@@ -156,18 +158,18 @@
             this.MenuSair.Text = "&Sair";
             this.MenuSair.Click += new System.EventHandler(this.sairToolStripMenuItem1_Click);
             // 
-            // toolStrip1
+            // HeaderDescricao
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.Green;
-            this.toolStrip1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HeaderDescricao.BackColor = System.Drawing.Color.Green;
+            this.HeaderDescricao.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HeaderDescricao.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.label});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            this.HeaderDescricao.Location = new System.Drawing.Point(0, 24);
+            this.HeaderDescricao.Name = "HeaderDescricao";
+            this.HeaderDescricao.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.HeaderDescricao.Size = new System.Drawing.Size(800, 25);
+            this.HeaderDescricao.TabIndex = 1;
+            this.HeaderDescricao.Text = "toolStrip1";
             // 
             // label
             // 
@@ -178,17 +180,17 @@
             this.label.Size = new System.Drawing.Size(459, 22);
             this.label.Text = "Sistema de controle patrimonial e de colaboradores da Scot Consultoria";
             // 
-            // statusStrip1
+            // FooterPrincipal
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FooterPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Data,
             this.Horario,
             this.alison});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
+            this.FooterPrincipal.Location = new System.Drawing.Point(0, 428);
+            this.FooterPrincipal.Name = "FooterPrincipal";
+            this.FooterPrincipal.Size = new System.Drawing.Size(800, 22);
+            this.FooterPrincipal.TabIndex = 2;
+            this.FooterPrincipal.Text = "statusStrip1";
             // 
             // Data
             // 
@@ -211,31 +213,42 @@
             this.alison.Size = new System.Drawing.Size(226, 17);
             this.alison.Text = "Desenvolvido por: Alison Fernando";
             // 
-            // timer1
+            // relogio
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.relogio.Enabled = true;
+            this.relogio.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 65);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(776, 220);
+            this.dataGridView1.TabIndex = 3;
             // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.FooterPrincipal);
+            this.Controls.Add(this.HeaderDescricao);
+            this.Controls.Add(this.MenuPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.MenuPrincipal;
             this.Name = "TelaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.MenuPrincipal.ResumeLayout(false);
+            this.MenuPrincipal.PerformLayout();
+            this.HeaderDescricao.ResumeLayout(false);
+            this.HeaderDescricao.PerformLayout();
+            this.FooterPrincipal.ResumeLayout(false);
+            this.FooterPrincipal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,7 +256,7 @@
 
         #endregion
 
-        private MenuStrip menuStrip1;
+        private MenuStrip MenuPrincipal;
         private ToolStripMenuItem cadastrarToolStripMenuItem;
         private ToolStripMenuItem MenuCadColaborador;
         private ToolStripMenuItem MenuCadEquip;
@@ -252,16 +265,17 @@
         private ToolStripMenuItem MenuInfoEquip;
         private ToolStripMenuItem relatóriosToolStripMenuItem;
         private ToolStripMenuItem sairToolStripMenuItem;
-        private ToolStrip toolStrip1;
+        private ToolStrip HeaderDescricao;
         private ToolStripMenuItem MenuRelatorioEquip;
         private ToolStripMenuItem MenuRelatorioPrecoEquip;
         private ToolStripMenuItem MenuSair;
-        private StatusStrip statusStrip1;
+        private StatusStrip FooterPrincipal;
         private ToolStripStatusLabel alison;
         private ToolStripStatusLabel Horario;
         private ToolStripStatusLabel Data;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer relogio;
         private ToolStripMenuItem MenuRelatorioColabAtivo;
         private ToolStripLabel label;
+        private DataGridView dataGridView1;
     }
 }

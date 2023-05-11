@@ -50,5 +50,17 @@ namespace UI
         {
 
         }
+
+        private void btnCadUser_Click(object sender, EventArgs e)
+        {
+            UI.TelaCadUser telaCadUser = new UI.TelaCadUser();
+            telaCadUser.ShowDialog();
+        }
+
+        private void btnEsqueciSenha_Click(object sender, EventArgs e)
+        {
+            UI.TelaEsqueciSenha telaEsqueciSenha = new UI.TelaEsqueciSenha();
+            telaEsqueciSenha.ShowDialog();
+        }
     }
 }

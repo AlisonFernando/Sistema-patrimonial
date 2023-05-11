@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadColaborador));
             this.Nome = new System.Windows.Forms.Label();
             this.Email = new System.Windows.Forms.Label();
             this.Senha = new System.Windows.Forms.Label();
@@ -49,6 +48,8 @@
             this.codigoColab = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.Email2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Senha2 = new System.Windows.Forms.Label();
             this.FotterCadColab.SuspendLayout();
             this.HeaderCadColab.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +102,7 @@
             // InputColabNome
             // 
             this.InputColabNome.Location = new System.Drawing.Point(6, 93);
+            this.InputColabNome.MaxLength = 30;
             this.InputColabNome.Name = "InputColabNome";
             this.InputColabNome.Size = new System.Drawing.Size(253, 23);
             this.InputColabNome.TabIndex = 6;
@@ -108,6 +110,7 @@
             // inputColabAgenda
             // 
             this.inputColabAgenda.Location = new System.Drawing.Point(6, 269);
+            this.inputColabAgenda.MaxLength = 90;
             this.inputColabAgenda.Name = "inputColabAgenda";
             this.inputColabAgenda.Size = new System.Drawing.Size(403, 23);
             this.inputColabAgenda.TabIndex = 7;
@@ -115,6 +118,7 @@
             // inputColabEmail
             // 
             this.inputColabEmail.Location = new System.Drawing.Point(6, 137);
+            this.inputColabEmail.MaxLength = 40;
             this.inputColabEmail.Name = "inputColabEmail";
             this.inputColabEmail.Size = new System.Drawing.Size(254, 23);
             this.inputColabEmail.TabIndex = 8;
@@ -228,6 +232,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(6, 181);
+            this.textBox2.MaxLength = 40;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(254, 23);
             this.textBox2.TabIndex = 18;
@@ -237,15 +242,35 @@
             this.Email2.AutoSize = true;
             this.Email2.Location = new System.Drawing.Point(6, 163);
             this.Email2.Name = "Email2";
-            this.Email2.Size = new System.Drawing.Size(101, 15);
+            this.Email2.Size = new System.Drawing.Size(50, 15);
             this.Email2.TabIndex = 17;
-            this.Email2.Text = "E-mail 2*opcional";
+            this.Email2.Text = "E-mail 2";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(280, 181);
+            this.textBox1.MaxLength = 10;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(129, 23);
+            this.textBox1.TabIndex = 20;
+            this.textBox1.UseSystemPasswordChar = true;
+            // 
+            // Senha2
+            // 
+            this.Senha2.AutoSize = true;
+            this.Senha2.Location = new System.Drawing.Point(280, 163);
+            this.Senha2.Name = "Senha2";
+            this.Senha2.Size = new System.Drawing.Size(48, 15);
+            this.Senha2.TabIndex = 19;
+            this.Senha2.Text = "Senha 2";
             // 
             // CadColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 362);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Senha2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.Email2);
             this.Controls.Add(this.HeaderCadColab);
@@ -262,11 +287,10 @@
             this.Controls.Add(this.Senha);
             this.Controls.Add(this.Email);
             this.Controls.Add(this.Nome);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "CadColaborador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Colaborador";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FotterCadColab.ResumeLayout(false);
             this.HeaderCadColab.ResumeLayout(false);
             this.HeaderCadColab.PerformLayout();
@@ -297,5 +321,7 @@
         private Label codigoColab;
         private TextBox textBox2;
         private Label Email2;
+        private TextBox textBox1;
+        private Label Senha2;
     }
 }

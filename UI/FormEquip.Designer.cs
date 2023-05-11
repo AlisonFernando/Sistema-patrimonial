@@ -38,13 +38,15 @@
             this.inputDesEquip = new System.Windows.Forms.TextBox();
             this.inputEtiquetaEquip = new System.Windows.Forms.TextBox();
             this.inputPrecoEquip = new System.Windows.Forms.TextBox();
-            this.selectMarcaEquip = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.inputCodEquip = new System.Windows.Forms.TextBox();
             this.codigoEquip = new System.Windows.Forms.Label();
+            this.marcaCadEquip = new System.Windows.Forms.TextBox();
+            this.inputCodWhatsap = new System.Windows.Forms.TextBox();
+            this.CadVeriEtapa = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -126,21 +128,6 @@
             this.inputPrecoEquip.Size = new System.Drawing.Size(116, 23);
             this.inputPrecoEquip.TabIndex = 9;
             // 
-            // selectMarcaEquip
-            // 
-            this.selectMarcaEquip.FormattingEnabled = true;
-            this.selectMarcaEquip.Items.AddRange(new object[] {
-            "Dell",
-            "Xiaomi",
-            "Motorola",
-            "Samsung",
-            "Iphone",
-            "Kaidi"});
-            this.selectMarcaEquip.Location = new System.Drawing.Point(246, 88);
-            this.selectMarcaEquip.Name = "selectMarcaEquip";
-            this.selectMarcaEquip.Size = new System.Drawing.Size(121, 23);
-            this.selectMarcaEquip.TabIndex = 11;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.button2);
@@ -206,14 +193,41 @@
             this.codigoEquip.TabIndex = 10;
             this.codigoEquip.Text = "Código";
             // 
+            // marcaCadEquip
+            // 
+            this.marcaCadEquip.Location = new System.Drawing.Point(246, 88);
+            this.marcaCadEquip.MaxLength = 10;
+            this.marcaCadEquip.Name = "marcaCadEquip";
+            this.marcaCadEquip.Size = new System.Drawing.Size(116, 23);
+            this.marcaCadEquip.TabIndex = 14;
+            // 
+            // inputCodWhatsap
+            // 
+            this.inputCodWhatsap.Location = new System.Drawing.Point(246, 176);
+            this.inputCodWhatsap.MaxLength = 6;
+            this.inputCodWhatsap.Name = "inputCodWhatsap";
+            this.inputCodWhatsap.Size = new System.Drawing.Size(116, 23);
+            this.inputCodWhatsap.TabIndex = 16;
+            // 
+            // CadVeriEtapa
+            // 
+            this.CadVeriEtapa.AutoSize = true;
+            this.CadVeriEtapa.Location = new System.Drawing.Point(246, 158);
+            this.CadVeriEtapa.Name = "CadVeriEtapa";
+            this.CadVeriEtapa.Size = new System.Drawing.Size(95, 15);
+            this.CadVeriEtapa.TabIndex = 15;
+            this.CadVeriEtapa.Text = "Codigo Whatsap";
+            // 
             // CadEquip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 283);
+            this.Controls.Add(this.inputCodWhatsap);
+            this.Controls.Add(this.CadVeriEtapa);
+            this.Controls.Add(this.marcaCadEquip);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.selectMarcaEquip);
             this.Controls.Add(this.inputPrecoEquip);
             this.Controls.Add(this.inputEtiquetaEquip);
             this.Controls.Add(this.inputDesEquip);
@@ -224,6 +238,7 @@
             this.Controls.Add(this.MarcaEquip);
             this.Controls.Add(this.NomeEquip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "CadEquip";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar equipamentos";
@@ -247,12 +262,14 @@
         private TextBox inputDesEquip;
         private TextBox inputEtiquetaEquip;
         private TextBox inputPrecoEquip;
-        private ComboBox selectMarcaEquip;
         private Panel panel1;
         private Button button1;
         private Button button2;
         private Panel panel2;
         private TextBox inputCodEquip;
         private Label codigoEquip;
+        private TextBox marcaCadEquip;
+        private TextBox inputCodWhatsap;
+        private Label CadVeriEtapa;
     }
 }
