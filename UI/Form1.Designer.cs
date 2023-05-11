@@ -224,7 +224,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 65);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 220);
+            this.dataGridView1.Size = new System.Drawing.Size(759, 220);
             this.dataGridView1.TabIndex = 3;
             // 
             // TelaPrincipal
