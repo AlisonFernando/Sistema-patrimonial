@@ -9,5 +9,6 @@ namespace DAL
 {
     public class LoginDAL
     {
+
     }
 }

@@ -10,19 +10,20 @@ namespace DAL
 {
     public class ConexaoDB
     {
-        private MySqlConnection mConn;
-        private MySqlDataAdapter mAdapter;
-        private DataSet mDataSet;
+        public MySqlConnection mConn;
+        public string conec = "server=192.168.1.166;database=sys_patrimonial;uid=at;pwd=cadorna6667";
 
-        static public string servidor = "192.168.1.166";
-        static public string bancoDados = "sys_patrimonial";
-        static public string usuario = "at";
-        static public string senha = "cadorna6667";        
-
-        public void conexao() {
-            mDataSet = new DataSet();
-            mConn = new MySqlConnection("Persist Security Info=False;server=192.168.1.166;database=sys_patrimonial;uid=at;server= 192.168.1.166; database=sys_patrimonial;uid=at;pwd=cadorna6667");
+        public void AbrirConexao()
+        {
+            mConn = new MySqlConnection(conec);
+            mConn.Open();
+        }
+        public void FecharConexao()
+        {
+            mConn = new MySqlConnection(conec);
+            mConn.Clone();
+            mConn.Dispose();
+            mConn.ClearAllPoolsAsync();
         }
     }
 }
-    

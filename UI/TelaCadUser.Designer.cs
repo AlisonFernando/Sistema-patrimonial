@@ -38,8 +38,6 @@
             this.inputUserNome = new System.Windows.Forms.TextBox();
             this.inputUserEmail = new System.Windows.Forms.TextBox();
             this.inputUserSenha = new System.Windows.Forms.TextBox();
-            this.inputConfirmSenha = new System.Windows.Forms.TextBox();
-            this.txtConfirmSenha = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -78,7 +76,7 @@
             this.panel1.Controls.Add(this.btnCancelarCadUser);
             this.panel1.Controls.Add(this.btnCadUserSucesso);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 312);
+            this.panel1.Location = new System.Drawing.Point(0, 217);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(6);
             this.panel1.Size = new System.Drawing.Size(427, 50);
@@ -107,6 +105,7 @@
             this.btnCadUserSucesso.TabIndex = 0;
             this.btnCadUserSucesso.Text = "Cadastrar";
             this.btnCadUserSucesso.UseVisualStyleBackColor = false;
+            this.btnCadUserSucesso.Click += new System.EventHandler(this.btnCadUserSucesso_Click);
             // 
             // inputUserNome
             // 
@@ -129,23 +128,6 @@
             this.inputUserSenha.Name = "inputUserSenha";
             this.inputUserSenha.Size = new System.Drawing.Size(167, 23);
             this.inputUserSenha.TabIndex = 6;
-            // 
-            // inputConfirmSenha
-            // 
-            this.inputConfirmSenha.Location = new System.Drawing.Point(128, 217);
-            this.inputConfirmSenha.MaxLength = 10;
-            this.inputConfirmSenha.Name = "inputConfirmSenha";
-            this.inputConfirmSenha.Size = new System.Drawing.Size(167, 23);
-            this.inputConfirmSenha.TabIndex = 8;
-            // 
-            // txtConfirmSenha
-            // 
-            this.txtConfirmSenha.AutoSize = true;
-            this.txtConfirmSenha.Location = new System.Drawing.Point(128, 199);
-            this.txtConfirmSenha.Name = "txtConfirmSenha";
-            this.txtConfirmSenha.Size = new System.Drawing.Size(95, 15);
-            this.txtConfirmSenha.TabIndex = 7;
-            this.txtConfirmSenha.Text = "Confirmar senha";
             // 
             // panel2
             // 
@@ -172,10 +154,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 362);
+            this.ClientSize = new System.Drawing.Size(427, 267);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.inputConfirmSenha);
-            this.Controls.Add(this.txtConfirmSenha);
             this.Controls.Add(this.inputUserSenha);
             this.Controls.Add(this.inputUserEmail);
             this.Controls.Add(this.inputUserNome);
@@ -205,8 +185,6 @@
         private TextBox inputUserNome;
         private TextBox inputUserEmail;
         private TextBox inputUserSenha;
-        private TextBox inputConfirmSenha;
-        private Label txtConfirmSenha;
         private Button btnCancelarCadUser;
         private Button btnCadUserSucesso;
         private Panel panel2;

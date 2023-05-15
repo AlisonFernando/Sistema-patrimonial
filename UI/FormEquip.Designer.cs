@@ -47,6 +47,8 @@
             this.marcaCadEquip = new System.Windows.Forms.TextBox();
             this.inputCodWhatsap = new System.Windows.Forms.TextBox();
             this.CadVeriEtapa = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.qtd_equips = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -133,7 +135,7 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 233);
+            this.panel1.Location = new System.Drawing.Point(0, 262);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(6);
             this.panel1.Size = new System.Drawing.Size(427, 50);
@@ -218,11 +220,30 @@
             this.CadVeriEtapa.TabIndex = 15;
             this.CadVeriEtapa.Text = "Codigo Whatsap";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(246, 220);
+            this.textBox1.MaxLength = 6;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(116, 23);
+            this.textBox1.TabIndex = 18;
+            // 
+            // qtd_equips
+            // 
+            this.qtd_equips.AutoSize = true;
+            this.qtd_equips.Location = new System.Drawing.Point(246, 202);
+            this.qtd_equips.Name = "qtd_equips";
+            this.qtd_equips.Size = new System.Drawing.Size(69, 15);
+            this.qtd_equips.TabIndex = 17;
+            this.qtd_equips.Text = "Quantidade";
+            // 
             // CadEquip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 283);
+            this.ClientSize = new System.Drawing.Size(427, 312);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.qtd_equips);
             this.Controls.Add(this.inputCodWhatsap);
             this.Controls.Add(this.CadVeriEtapa);
             this.Controls.Add(this.marcaCadEquip);
@@ -271,5 +292,7 @@
         private TextBox marcaCadEquip;
         private TextBox inputCodWhatsap;
         private Label CadVeriEtapa;
+        private TextBox textBox1;
+        private Label qtd_equips;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using model;
 
 namespace UI
 {
@@ -14,7 +16,23 @@ namespace UI
     {
         public TelaCadUser()
         {
+
             InitializeComponent();
+            
+        }
+
+        private void btnCadUserSucesso_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario();
+
+            usuario.Nome = inputUserNome.Text;
+            usuario.Email = inputUserEmail.Text;
+            usuario.Senha = inputUserSenha.Text;
+            //Executa a verificação de cadastro de usuario
+            if (usuario.Nome == string.Empty)
+            {
+                cmd.Parameters.AddWithValue("@Nome", usuario.Nome);
+            }
         }
     }
 }
