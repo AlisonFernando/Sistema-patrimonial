@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using model;
 
+
 namespace UI
 {
     public partial class TelaCadUser : Form
@@ -21,20 +22,32 @@ namespace UI
 
         private void btnCadUserSucesso_Click(object sender, EventArgs e)
         {
+           
             Usuario usuario = new Usuario();
 
             usuario.Nome = inputUserNome.Text;
             usuario.Email = inputUserEmail.Text;
             usuario.Senha = inputUserSenha.Text;
 
-            //Executa a verificação de cadastro de usuario
-            if (usuario.Nome == "alison")
+            //Executa a verificação se caso o usuario nao digitar nenhum valor nos campos
+            if (usuario.Nome.Trim().Length <= 0 )
             {
-                MessageBox.Show("ou");
+                MessageBox.Show("Verifique seu nome");
+                return;
+            }
+            else if(usuario.Email.Trim().Length <= 0)
+            {
+                MessageBox.Show("Verifique o e-mail e tente novamente");
+                return;
+            }
+            else if(usuario.Senha.Trim().Length <= 0)
+            {
+                MessageBox.Show("Verifique a senha e tente novamente");
+                return;
             }
             else
             {
-                MessageBox.Show("Dados incorretos, tente novamente!");
+                MessageBox.Show("Dados cadastrais ok");
             }
         }
 

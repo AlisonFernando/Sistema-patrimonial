@@ -17,9 +17,9 @@ namespace DAL
 
         public void InserirUsuario(Usuario usuario)
         {
-            mConn.AbrirConexao();
+            ;
             sql = "INSERT INTO tb_usuario(Nome, Email, Senha) VALUES (@Nome, @Email, @Senha) ";
-            cmd = new MySqlCommand(sql, mConn.mConn);
+            cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@nome", usuario.Nome);
             cmd.Parameters.AddWithValue("@email", usuario.Email);
@@ -28,10 +28,6 @@ namespace DAL
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
         }
-
-
-
-
 
 
         /*public void VerificarEmail(Usuario verificarEmail)

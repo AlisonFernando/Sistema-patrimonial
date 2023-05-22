@@ -11,12 +11,15 @@ namespace DAL
     public class ConexaoDB
     {
         public MySqlConnection mConn;
-        public string conec = "server=192.168.1.166;database=sys_patrimonial;uid=at;pwd=cadorna6667";
 
-        public void AbrirConexao()
+        public string conec = "Persist Security Info = False; server=192.168.1.166;database=sys_patrimonial;uid=at";
+
+        public MySqlConnection AbrirConexao()
         {
             mConn = new MySqlConnection(conec);
             mConn.Open();
+
+            return mConn;
         }
         public void FecharConexao()
         {
