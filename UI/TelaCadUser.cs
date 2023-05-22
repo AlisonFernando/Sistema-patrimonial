@@ -16,9 +16,7 @@ namespace UI
     {
         public TelaCadUser()
         {
-
             InitializeComponent();
-            
         }
 
         private void btnCadUserSucesso_Click(object sender, EventArgs e)
@@ -28,11 +26,21 @@ namespace UI
             usuario.Nome = inputUserNome.Text;
             usuario.Email = inputUserEmail.Text;
             usuario.Senha = inputUserSenha.Text;
+
             //Executa a verificação de cadastro de usuario
-            if (usuario.Nome == string.Empty)
+            if (usuario.Nome == "alison")
             {
-                cmd.Parameters.AddWithValue("@Nome", usuario.Nome);
+                MessageBox.Show("ou");
             }
+            else
+            {
+                MessageBox.Show("Dados incorretos, tente novamente!");
+            }
+        }
+
+        private void TelaCadUser_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

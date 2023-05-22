@@ -8,10 +8,11 @@ using model;
 
 namespace DAL
 {
-    public class CadUserDAL
+    public class UserDAL
     {
         ConexaoDB mConn = new ConexaoDB();
         string sql;
+        string sql_email;
         MySqlCommand cmd;
 
         public void InserirUsuario(Usuario usuario)
@@ -25,6 +26,19 @@ namespace DAL
             cmd.Parameters.AddWithValue("@senha", usuario.Senha);
 
             cmd.ExecuteNonQuery();
+            mConn.FecharConexao();
         }
+
+
+
+
+
+
+        /*public void VerificarEmail(Usuario verificarEmail)
+        {
+            mConn.AbrirConexao();
+            sql_email = "SELECT Email FROM tb_usuario";
+            cmd = new MySqlCommand(sql_email, mConn.mConn);
+        }*/
     }
 }
