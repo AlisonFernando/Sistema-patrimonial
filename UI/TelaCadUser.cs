@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using model;
+using BLL;
 
 
 namespace UI
@@ -32,7 +33,7 @@ namespace UI
             //Executa a verificação se caso o usuario nao digitar nenhum valor nos campos
             if (usuario.Nome.Trim().Length <= 0 )
             {
-                MessageBox.Show("Verifique seu nome");
+                MessageBox.Show("Verifique seu nome e tente novamente");
                 return;
             }
             else if(usuario.Email.Trim().Length <= 0)
@@ -47,7 +48,14 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Dados cadastrais ok");
+                CadUserBLL cadUserBLL = new CadUserBLL();
+
+                string retorno = cadUserBLL.CadUser(usuario);
+
+                if (retorno == "Sucesso")
+                {
+                    MessageBox.Show("Cadastro OK");
+                }
             }
         }
 

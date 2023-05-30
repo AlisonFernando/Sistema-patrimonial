@@ -17,7 +17,7 @@ namespace DAL
 
         public void InserirUsuario(Usuario usuario)
         {
-            ;
+            
             sql = "INSERT INTO tb_usuario(Nome, Email, Senha) VALUES (@Nome, @Email, @Senha) ";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
@@ -30,11 +30,10 @@ namespace DAL
         }
 
 
-        /*public void VerificarEmail(Usuario verificarEmail)
+        public bool VerificarEmail(String email)
         {
-            mConn.AbrirConexao();
-            sql_email = "SELECT Email FROM tb_usuario";
-            cmd = new MySqlCommand(sql_email, mConn.mConn);
-        }*/
+            sql = "select Email from tb_usuario WHERE Email = '"+email+"'";
+            return true;
+        }
     }
 }
