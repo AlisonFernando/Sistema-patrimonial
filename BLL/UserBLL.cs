@@ -8,7 +8,7 @@ using DAL;
 
 namespace BLL
 {
-    public class CadUserBLL
+    public class UserBLL
     {
         public string CadUser(Usuario usuario)
         {
@@ -17,6 +17,15 @@ namespace BLL
             userDAL.InserirUsuario(usuario);
 
             return "Sucesso";
+        }
+
+        public string VerificarEmail(String verifemail)
+        {
+            UserDAL userDAL = new UserDAL();
+
+            userDAL.VerificarEmail(verifemail);
+
+            return "Este e-mail já existe, verifique e tente novamente";
         }
         
     }

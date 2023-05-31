@@ -12,7 +12,6 @@ namespace DAL
     {
         ConexaoDB mConn = new ConexaoDB();
         string sql;
-        string sql_email;
         MySqlCommand cmd;
 
         public void InserirUsuario(Usuario usuario)
@@ -29,11 +28,27 @@ namespace DAL
             mConn.FecharConexao();
         }
 
-
         public bool VerificarEmail(String email)
         {
+
             sql = "select Email from tb_usuario WHERE Email = '"+email+"'";
-            return true;
+            cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+
+
+            cmd.Parameters.AddWithValue("@email", email);
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if(count > 0)
+            {
+                return true;
+              
+            }
+            else
+            {
+                return false;
+            }
+
+
         }
     }
 }

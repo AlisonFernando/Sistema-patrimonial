@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using model;
 using BLL;
-
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using DAL;
 
 namespace UI
 {
@@ -35,6 +36,7 @@ namespace UI
             {
                 MessageBox.Show("Verifique seu nome e tente novamente");
                 return;
+
             }
             else if(usuario.Email.Trim().Length <= 0)
             {
@@ -48,7 +50,7 @@ namespace UI
             }
             else
             {
-                CadUserBLL cadUserBLL = new CadUserBLL();
+                UserBLL cadUserBLL = new UserBLL();
 
                 string retorno = cadUserBLL.CadUser(usuario);
 
@@ -57,6 +59,10 @@ namespace UI
                     MessageBox.Show("Cadastro OK");
                 }
             }
+
+            //Verifica se o e-mail digitado já existe no banco de dados
+            
+            
         }
 
         private void TelaCadUser_Load(object sender, EventArgs e)
