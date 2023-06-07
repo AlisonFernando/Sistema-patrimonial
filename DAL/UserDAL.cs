@@ -5,6 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using model;
+using Org.BouncyCastle.Utilities;
+using sis_patrimonial;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Intrinsics.X86;
 
 namespace DAL
 {
@@ -16,7 +20,7 @@ namespace DAL
 
         public void InserirUsuario(Usuario usuario)
         {
-            
+
             sql = "INSERT INTO tb_usuario(Nome, Email, Senha) VALUES (@Nome, @Email, @Senha) ";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
@@ -30,25 +34,24 @@ namespace DAL
 
         public bool VerificarEmail(String email)
         {
+            bool emailExists = false;
+            string sql = "SELECT COUNT(*) FROM tb_usuario WHERE Email = @email";
 
-            sql = "select Email from tb_usuario WHERE Email = '"+email+"'";
-            cmd = new MySqlCommand(sql, mConn.AbrirConexao());
-
-
-            cmd.Parameters.AddWithValue("@email", email);
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-            if(count > 0)
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                return true;
-              
-            }
-            else
-            {
-                return false;
-            }
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@email", email);
+                    int count = Convert.ToInt32(command.ExecuteScalar());
 
-
+                    if (count > 0)
+                    {
+                        emailExists = true;
+                    }
+                }
+            }
+            return emailExists;
         }
+
     }
 }

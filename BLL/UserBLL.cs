@@ -19,14 +19,20 @@ namespace BLL
             return "Sucesso";
         }
 
-        public string VerificarEmail(String verifemail)
+        public string VerificarEmail(string verifemail)
         {
             UserDAL userDAL = new UserDAL();
+            bool emailExists = userDAL.VerificarEmail(verifemail);
 
-            userDAL.VerificarEmail(verifemail);
-
-            return "Sucesso";
+            if (emailExists)
+            {
+                return "Email existente";
+            }
+            else
+            {
+                return "Email não existe";
+            }
         }
-        
+
     }
 }

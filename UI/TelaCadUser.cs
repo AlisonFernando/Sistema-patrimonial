@@ -16,6 +16,7 @@ namespace UI
 {
     public partial class TelaCadUser : Form
     {
+
         public TelaCadUser()
         {
             InitializeComponent();
@@ -23,59 +24,52 @@ namespace UI
 
         private void btnCadUserSucesso_Click(object sender, EventArgs e)
         {
-            
             Usuario usuario = new Usuario();
 
             usuario.Nome = inputUserNome.Text;
             usuario.Email = inputUserEmail.Text;
             usuario.Senha = inputUserSenha.Text;
 
-            //Executa a verificação se caso o usuario nao digitar nenhum valor nos campos
-            if (usuario.Nome.Trim().Length <= 0 )
+            // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
+            if (usuario.Nome.Trim().Length <= 0)
             {
                 MessageBox.Show("Verifique seu nome e tente novamente");
                 return;
-
             }
-            else if(usuario.Email.Trim().Length <= 0)
+            else if (usuario.Email.Trim().Length <= 0)
             {
                 MessageBox.Show("Verifique o e-mail e tente novamente");
                 return;
             }
-            else if(usuario.Senha.Trim().Length <= 0)
+            else if (usuario.Senha.Trim().Length <= 0)
             {
                 MessageBox.Show("Verifique a senha e tente novamente");
                 return;
             }
-            else
-            {
-                UserBLL cadUserBLL = new UserBLL();
 
+            // Verifica se o e-mail digitado já existe no banco de dados
+            UserBLL verificarEmailBLL = new UserBLL();
+            string verificar = verificarEmailBLL.VerificarEmail(usuario.Email);
+
+            if (verificar == "Email existente")
+            {
+                MessageBox.Show("O email já existe no banco de dados");
+                return;
+            }
+            else if(verificar == "Email não existe"){
+
+                // Realiza o cadastro do usuário
+                UserBLL cadUserBLL = new UserBLL();
                 string retorno = cadUserBLL.CadUser(usuario);
 
                 if (retorno == "Sucesso")
                 {
-                    MessageBox.Show("Cadastro OK");
-                }
-            }
+                    MessageBox.Show("Cadastro efetuado");
 
-            //Verifica se o e-mail digitado já existe no banco de dados
-            if (usuario.Email == usuario.Email)
-            {
-                MessageBox.Show("Tente novamente");
-                    return;
-            }
-            else
-            {
-                UserBLL VerificarEmailBLL = new UserBLL();
-                string verificar = VerificarEmailBLL.VerificarEmail(email);
-                if (verificar == "Sucesso")
-                {
-                    MessageBox.Show("Cadastro OK");
                 }
             }
-            
         }
 
+            
     }
 }
