@@ -25,7 +25,7 @@ namespace BLL
 
             userDAL.VerificarEmail(verifemail);
 
-            return "Este e-mail já existe, verifique e tente novamente";
+            return "Sucesso";
         }
         
     }

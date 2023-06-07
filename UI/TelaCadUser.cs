@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using model;
 using BLL;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using DAL;
 
 namespace UI
@@ -24,7 +23,7 @@ namespace UI
 
         private void btnCadUserSucesso_Click(object sender, EventArgs e)
         {
-           
+            
             Usuario usuario = new Usuario();
 
             usuario.Nome = inputUserNome.Text;
@@ -61,7 +60,20 @@ namespace UI
             }
 
             //Verifica se o e-mail digitado já existe no banco de dados
-            
+            if (usuario.Email == usuario.Email)
+            {
+                MessageBox.Show("Tente novamente");
+                    return;
+            }
+            else
+            {
+                UserBLL VerificarEmailBLL = new UserBLL();
+                string verificar = VerificarEmailBLL.VerificarEmail(email);
+                if (verificar == "Sucesso")
+                {
+                    MessageBox.Show("Cadastro OK");
+                }
+            }
             
         }
 
