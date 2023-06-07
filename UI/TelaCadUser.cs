@@ -77,9 +77,5 @@ namespace UI
             
         }
 
-        private void TelaCadUser_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
