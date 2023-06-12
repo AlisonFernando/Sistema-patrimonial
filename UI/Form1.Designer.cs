@@ -28,230 +28,228 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
-            this.MenuPrincipal = new System.Windows.Forms.MenuStrip();
-            this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuCadColaborador = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuCadEquip = new System.Windows.Forms.ToolStripMenuItem();
-            this.visualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuInfoColaborador = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuInfoEquip = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuRelatorioEquip = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuRelatorioPrecoEquip = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuRelatorioColabAtivo = new System.Windows.Forms.ToolStripMenuItem();
-            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuSair = new System.Windows.Forms.ToolStripMenuItem();
-            this.HeaderDescricao = new System.Windows.Forms.ToolStrip();
-            this.label = new System.Windows.Forms.ToolStripLabel();
-            this.FooterPrincipal = new System.Windows.Forms.StatusStrip();
-            this.Data = new System.Windows.Forms.ToolStripStatusLabel();
-            this.Horario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.alison = new System.Windows.Forms.ToolStripStatusLabel();
-            this.relogio = new System.Windows.Forms.Timer(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.MenuPrincipal.SuspendLayout();
-            this.HeaderDescricao.SuspendLayout();
-            this.FooterPrincipal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
+            MenuPrincipal = new MenuStrip();
+            cadastrarToolStripMenuItem = new ToolStripMenuItem();
+            MenuCadColaborador = new ToolStripMenuItem();
+            MenuCadEquip = new ToolStripMenuItem();
+            MenuCadChamado = new ToolStripMenuItem();
+            visualizarToolStripMenuItem = new ToolStripMenuItem();
+            MenuInfoColaborador = new ToolStripMenuItem();
+            MenuInfoEquip = new ToolStripMenuItem();
+            MenuUserCad = new ToolStripMenuItem();
+            relatóriosToolStripMenuItem = new ToolStripMenuItem();
+            MenuRelatorioEquip = new ToolStripMenuItem();
+            MenuRelatorioPrecoEquip = new ToolStripMenuItem();
+            MenuRelatorioColabAtivo = new ToolStripMenuItem();
+            sairToolStripMenuItem = new ToolStripMenuItem();
+            MenuSair = new ToolStripMenuItem();
+            HeaderDescricao = new ToolStrip();
+            label = new ToolStripLabel();
+            FooterPrincipal = new StatusStrip();
+            Data = new ToolStripStatusLabel();
+            Horario = new ToolStripStatusLabel();
+            alison = new ToolStripStatusLabel();
+            relogio = new System.Windows.Forms.Timer(components);
+            dataGridView1 = new DataGridView();
+            MenuPrincipal.SuspendLayout();
+            HeaderDescricao.SuspendLayout();
+            FooterPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
             // 
             // MenuPrincipal
             // 
-            this.MenuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrarToolStripMenuItem,
-            this.visualizarToolStripMenuItem,
-            this.relatóriosToolStripMenuItem,
-            this.sairToolStripMenuItem});
-            this.MenuPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.MenuPrincipal.Name = "MenuPrincipal";
-            this.MenuPrincipal.Size = new System.Drawing.Size(800, 24);
-            this.MenuPrincipal.TabIndex = 0;
-            this.MenuPrincipal.Text = "menuStrip1";
+            MenuPrincipal.Items.AddRange(new ToolStripItem[] { cadastrarToolStripMenuItem, visualizarToolStripMenuItem, relatóriosToolStripMenuItem, sairToolStripMenuItem });
+            MenuPrincipal.Location = new Point(0, 0);
+            MenuPrincipal.Name = "MenuPrincipal";
+            MenuPrincipal.Size = new Size(800, 24);
+            MenuPrincipal.TabIndex = 0;
+            MenuPrincipal.Text = "menuStrip1";
             // 
             // cadastrarToolStripMenuItem
             // 
-            this.cadastrarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuCadColaborador,
-            this.MenuCadEquip});
-            this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
-            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.cadastrarToolStripMenuItem.Text = "Cadastrar";
+            cadastrarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuCadColaborador, MenuCadEquip, MenuCadChamado });
+            cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
+            cadastrarToolStripMenuItem.Size = new Size(69, 20);
+            cadastrarToolStripMenuItem.Text = "Cadastrar";
             // 
             // MenuCadColaborador
             // 
-            this.MenuCadColaborador.Name = "MenuCadColaborador";
-            this.MenuCadColaborador.Size = new System.Drawing.Size(151, 22);
-            this.MenuCadColaborador.Text = "Colaboradores";
-            this.MenuCadColaborador.Click += new System.EventHandler(this.MenuCadColaborador_Click);
+            MenuCadColaborador.Name = "MenuCadColaborador";
+            MenuCadColaborador.Size = new Size(180, 22);
+            MenuCadColaborador.Text = "Colaboradores";
+            MenuCadColaborador.Click += MenuCadColaborador_Click;
             // 
             // MenuCadEquip
             // 
-            this.MenuCadEquip.Name = "MenuCadEquip";
-            this.MenuCadEquip.Size = new System.Drawing.Size(151, 22);
-            this.MenuCadEquip.Text = "Equipamentos";
-            this.MenuCadEquip.Click += new System.EventHandler(this.MenuCadEquip_Click);
+            MenuCadEquip.Name = "MenuCadEquip";
+            MenuCadEquip.Size = new Size(180, 22);
+            MenuCadEquip.Text = "Equipamentos";
+            MenuCadEquip.Click += MenuCadEquip_Click;
+            // 
+            // MenuCadChamado
+            // 
+            MenuCadChamado.Name = "MenuCadChamado";
+            MenuCadChamado.Size = new Size(180, 22);
+            MenuCadChamado.Text = "Chamado";
             // 
             // visualizarToolStripMenuItem
             // 
-            this.visualizarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuInfoColaborador,
-            this.MenuInfoEquip});
-            this.visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
-            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.visualizarToolStripMenuItem.Text = "Visualizar";
+            visualizarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuInfoColaborador, MenuInfoEquip, MenuUserCad });
+            visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
+            visualizarToolStripMenuItem.Size = new Size(68, 20);
+            visualizarToolStripMenuItem.Text = "Visualizar";
             // 
             // MenuInfoColaborador
             // 
-            this.MenuInfoColaborador.Name = "MenuInfoColaborador";
-            this.MenuInfoColaborador.Size = new System.Drawing.Size(175, 22);
-            this.MenuInfoColaborador.Text = "Info Colaboradores";
+            MenuInfoColaborador.Name = "MenuInfoColaborador";
+            MenuInfoColaborador.Size = new Size(185, 22);
+            MenuInfoColaborador.Text = "Info Colaboradores";
             // 
             // MenuInfoEquip
             // 
-            this.MenuInfoEquip.Name = "MenuInfoEquip";
-            this.MenuInfoEquip.Size = new System.Drawing.Size(175, 22);
-            this.MenuInfoEquip.Text = "Info Equipamentos";
+            MenuInfoEquip.Name = "MenuInfoEquip";
+            MenuInfoEquip.Size = new Size(185, 22);
+            MenuInfoEquip.Text = "Info Equipamentos";
+            // 
+            // MenuUserCad
+            // 
+            MenuUserCad.Name = "MenuUserCad";
+            MenuUserCad.Size = new Size(185, 22);
+            MenuUserCad.Text = "Usuarios cadastrados";
+            MenuUserCad.Click += MenuUserCad_Click;
             // 
             // relatóriosToolStripMenuItem
             // 
-            this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuRelatorioEquip,
-            this.MenuRelatorioPrecoEquip,
-            this.MenuRelatorioColabAtivo});
-            this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
-            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.relatóriosToolStripMenuItem.Text = "Relatórios";
+            relatóriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuRelatorioEquip, MenuRelatorioPrecoEquip, MenuRelatorioColabAtivo });
+            relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
+            relatóriosToolStripMenuItem.Size = new Size(71, 20);
+            relatóriosToolStripMenuItem.Text = "Relatórios";
             // 
             // MenuRelatorioEquip
             // 
-            this.MenuRelatorioEquip.Name = "MenuRelatorioEquip";
-            this.MenuRelatorioEquip.Size = new System.Drawing.Size(185, 22);
-            this.MenuRelatorioEquip.Text = "Qtd equipamentos";
+            MenuRelatorioEquip.Name = "MenuRelatorioEquip";
+            MenuRelatorioEquip.Size = new Size(185, 22);
+            MenuRelatorioEquip.Text = "Qtd equipamentos";
             // 
             // MenuRelatorioPrecoEquip
             // 
-            this.MenuRelatorioPrecoEquip.Name = "MenuRelatorioPrecoEquip";
-            this.MenuRelatorioPrecoEquip.Size = new System.Drawing.Size(185, 22);
-            this.MenuRelatorioPrecoEquip.Text = "Preço equipamentos";
+            MenuRelatorioPrecoEquip.Name = "MenuRelatorioPrecoEquip";
+            MenuRelatorioPrecoEquip.Size = new Size(185, 22);
+            MenuRelatorioPrecoEquip.Text = "Preço equipamentos";
             // 
             // MenuRelatorioColabAtivo
             // 
-            this.MenuRelatorioColabAtivo.Name = "MenuRelatorioColabAtivo";
-            this.MenuRelatorioColabAtivo.Size = new System.Drawing.Size(185, 22);
-            this.MenuRelatorioColabAtivo.Text = "Colaboradores ativos";
+            MenuRelatorioColabAtivo.Name = "MenuRelatorioColabAtivo";
+            MenuRelatorioColabAtivo.Size = new Size(185, 22);
+            MenuRelatorioColabAtivo.Text = "Colaboradores ativos";
             // 
             // sairToolStripMenuItem
             // 
-            this.sairToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuSair});
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.sairToolStripMenuItem.Text = "Sair";
+            sairToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuSair });
+            sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            sairToolStripMenuItem.Size = new Size(38, 20);
+            sairToolStripMenuItem.Text = "Sair";
             // 
             // MenuSair
             // 
-            this.MenuSair.Name = "MenuSair";
-            this.MenuSair.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.MenuSair.Size = new System.Drawing.Size(118, 22);
-            this.MenuSair.Text = "&Sair";
-            this.MenuSair.Click += new System.EventHandler(this.sairToolStripMenuItem1_Click);
+            MenuSair.Name = "MenuSair";
+            MenuSair.ShortcutKeys = Keys.F12;
+            MenuSair.Size = new Size(118, 22);
+            MenuSair.Text = "&Sair";
+            MenuSair.Click += sairToolStripMenuItem1_Click;
             // 
             // HeaderDescricao
             // 
-            this.HeaderDescricao.BackColor = System.Drawing.Color.Green;
-            this.HeaderDescricao.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.HeaderDescricao.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.label});
-            this.HeaderDescricao.Location = new System.Drawing.Point(0, 24);
-            this.HeaderDescricao.Name = "HeaderDescricao";
-            this.HeaderDescricao.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.HeaderDescricao.Size = new System.Drawing.Size(800, 25);
-            this.HeaderDescricao.TabIndex = 1;
-            this.HeaderDescricao.Text = "toolStrip1";
+            HeaderDescricao.BackColor = Color.Green;
+            HeaderDescricao.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            HeaderDescricao.Items.AddRange(new ToolStripItem[] { label });
+            HeaderDescricao.Location = new Point(0, 24);
+            HeaderDescricao.Name = "HeaderDescricao";
+            HeaderDescricao.RightToLeft = RightToLeft.No;
+            HeaderDescricao.Size = new Size(800, 25);
+            HeaderDescricao.TabIndex = 1;
+            HeaderDescricao.Text = "toolStrip1";
             // 
             // label
             // 
-            this.label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.label.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(459, 22);
-            this.label.Text = "Sistema de controle patrimonial e de colaboradores da Scot Consultoria";
+            label.BackColor = Color.FromArgb(128, 255, 128);
+            label.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label.ForeColor = SystemColors.ButtonHighlight;
+            label.Name = "label";
+            label.Size = new Size(459, 22);
+            label.Text = "Sistema de controle patrimonial e de colaboradores da Scot Consultoria";
             // 
             // FooterPrincipal
             // 
-            this.FooterPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Data,
-            this.Horario,
-            this.alison});
-            this.FooterPrincipal.Location = new System.Drawing.Point(0, 428);
-            this.FooterPrincipal.Name = "FooterPrincipal";
-            this.FooterPrincipal.Size = new System.Drawing.Size(800, 22);
-            this.FooterPrincipal.TabIndex = 2;
-            this.FooterPrincipal.Text = "statusStrip1";
+            FooterPrincipal.Items.AddRange(new ToolStripItem[] { Data, Horario, alison });
+            FooterPrincipal.Location = new Point(0, 428);
+            FooterPrincipal.Name = "FooterPrincipal";
+            FooterPrincipal.Size = new Size(800, 22);
+            FooterPrincipal.TabIndex = 2;
+            FooterPrincipal.Text = "statusStrip1";
             // 
             // Data
             // 
-            this.Data.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Data.Name = "Data";
-            this.Data.Size = new System.Drawing.Size(73, 17);
-            this.Data.Text = "Data atual";
+            Data.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Data.Name = "Data";
+            Data.Size = new Size(73, 17);
+            Data.Text = "Data atual";
             // 
             // Horario
             // 
-            this.Horario.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Horario.Name = "Horario";
-            this.Horario.Size = new System.Drawing.Size(52, 17);
-            this.Horario.Text = "horario";
+            Horario.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Horario.Name = "Horario";
+            Horario.Size = new Size(52, 17);
+            Horario.Text = "horario";
             // 
             // alison
             // 
-            this.alison.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.alison.Name = "alison";
-            this.alison.Size = new System.Drawing.Size(226, 17);
-            this.alison.Text = "Desenvolvido por: Alison Fernando";
+            alison.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            alison.Name = "alison";
+            alison.Size = new Size(226, 17);
+            alison.Text = "Desenvolvido por: Alison Fernando";
             // 
             // relogio
             // 
-            this.relogio.Enabled = true;
-            this.relogio.Tick += new System.EventHandler(this.timer1_Tick);
+            relogio.Enabled = true;
+            relogio.Tick += timer1_Tick;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 65);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(759, 220);
-            this.dataGridView1.TabIndex = 3;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(12, 65);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(759, 220);
+            dataGridView1.TabIndex = 3;
             // 
             // TelaPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.FooterPrincipal);
-            this.Controls.Add(this.HeaderDescricao);
-            this.Controls.Add(this.MenuPrincipal);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.MenuPrincipal;
-            this.Name = "TelaPrincipal";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Principal";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.MenuPrincipal.ResumeLayout(false);
-            this.MenuPrincipal.PerformLayout();
-            this.HeaderDescricao.ResumeLayout(false);
-            this.HeaderDescricao.PerformLayout();
-            this.FooterPrincipal.ResumeLayout(false);
-            this.FooterPrincipal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
+            Controls.Add(FooterPrincipal);
+            Controls.Add(HeaderDescricao);
+            Controls.Add(MenuPrincipal);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = MenuPrincipal;
+            Name = "TelaPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Principal";
+            WindowState = FormWindowState.Maximized;
+            MenuPrincipal.ResumeLayout(false);
+            MenuPrincipal.PerformLayout();
+            HeaderDescricao.ResumeLayout(false);
+            HeaderDescricao.PerformLayout();
+            FooterPrincipal.ResumeLayout(false);
+            FooterPrincipal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -277,5 +275,7 @@
         private ToolStripMenuItem MenuRelatorioColabAtivo;
         private ToolStripLabel label;
         private DataGridView dataGridView1;
+        private ToolStripMenuItem MenuUserCad;
+        private ToolStripMenuItem MenuCadChamado;
     }
 }

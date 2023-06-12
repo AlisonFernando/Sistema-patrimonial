@@ -10,7 +10,7 @@ namespace UI
         private void sairToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja sair do sistema?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            Application.Exit();
+                Application.Exit();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -30,6 +30,12 @@ namespace UI
             UI.CadEquip cadEquip = new UI.CadEquip();
             cadEquip.ShowDialog();
 
+        }
+
+        private void MenuUserCad_Click(object sender, EventArgs e)
+        {
+            UI.VerUser verUser = new UI.VerUser();
+            verUser.ShowDialog();
         }
     }
 }

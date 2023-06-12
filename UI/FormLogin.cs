@@ -26,24 +26,44 @@ namespace UI
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            
-            Login modelLogin = new Login();
-            modelLogin.Email = input_email.Text;
-            modelLogin.Password = input_senha.Text;
+            Login login = new Login();
 
-            if("teste@teste.com" == modelLogin.Email & "teste" == modelLogin.Password)
+            login.Email = input_email.Text;
+            login.Senha = input_senha.Text;
+
+            //Valida se tem espaço em branco nos inputs
+
+            if (login.Email.Trim().Length <= 0)
+            {
+                MessageBox.Show("Verifique o e-mail e tente novamente");
+                return;
+            }
+            else if (login.Senha.Trim().Length <= 0)
+            {
+                MessageBox.Show("Verifique a senha e tente novamente");
+                return;
+            }
+
+            //Validação se os dados estão corretos
+            LoginBLL validarCampos = new LoginBLL();
+            
+            string ValidarEmail = validarCampos.ValidarEmail(login.Email);
+            string ValidarSenha = validarCampos.ValidarSenha(login.Senha);
+           
+            //Valida se o e-mail digitado está correto
+            if (ValidarEmail == "Email correto" && ValidarSenha == "Senha correta")
             {
                 TelaPrincipal telaPrincipal = new TelaPrincipal();
                 MessageBox.Show("Você esta logado!");
                 telaPrincipal.Show();
                 this.Dispose(false);
             }
-            else
+            else if (ValidarEmail == "Email incorreto" || ValidarSenha == "Senha incorreta")
             {
-                MessageBox.Show("E-mail ou senha incorretos, tente novamente");
-            }
+                MessageBox.Show("E-mail ou senha incorretos!");
+                return;
 
-            //LoginBLL loginBLL = new LoginBLL();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)

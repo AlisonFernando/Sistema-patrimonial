@@ -9,16 +9,16 @@ namespace model
     public class Login
     {
         private string email;
-        private string password;
+        private string senha;
         
        public string Email
         {
             get { return email; }
             set { email = value; }
         }
-        public string Password { 
-            get { return password; }
-            set { password = value; }
+        public string Senha { 
+            get { return senha; }
+            set { senha = value; }
         }
     }
 }
