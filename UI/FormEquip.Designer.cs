@@ -29,247 +29,226 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadEquip));
-            this.NomeEquip = new System.Windows.Forms.Label();
-            this.MarcaEquip = new System.Windows.Forms.Label();
-            this.DescricaoEquip = new System.Windows.Forms.Label();
-            this.PrecoEquip = new System.Windows.Forms.Label();
-            this.EtiquetaEquip = new System.Windows.Forms.Label();
-            this.inputEquipNome = new System.Windows.Forms.TextBox();
-            this.inputDesEquip = new System.Windows.Forms.TextBox();
-            this.inputEtiquetaEquip = new System.Windows.Forms.TextBox();
-            this.inputPrecoEquip = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.inputCodEquip = new System.Windows.Forms.TextBox();
-            this.codigoEquip = new System.Windows.Forms.Label();
-            this.marcaCadEquip = new System.Windows.Forms.TextBox();
-            this.inputCodWhatsap = new System.Windows.Forms.TextBox();
-            this.CadVeriEtapa = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.qtd_equips = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.SuspendLayout();
+            NomeEquip = new Label();
+            MarcaEquip = new Label();
+            DescricaoEquip = new Label();
+            PrecoEquip = new Label();
+            EtiquetaEquip = new Label();
+            inputEquipNome = new TextBox();
+            inputDesEquip = new TextBox();
+            inputEtiquetaEquip = new TextBox();
+            inputPrecoEquip = new TextBox();
+            panel1 = new Panel();
+            button2 = new Button();
+            button1 = new Button();
+            panel2 = new Panel();
+            inputCodEquip = new TextBox();
+            codigoEquip = new Label();
+            escolherMarca = new ComboBox();
+            comboBox1 = new ComboBox();
+            label1 = new Label();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            SuspendLayout();
             // 
             // NomeEquip
             // 
-            this.NomeEquip.AutoSize = true;
-            this.NomeEquip.Location = new System.Drawing.Point(12, 70);
-            this.NomeEquip.Name = "NomeEquip";
-            this.NomeEquip.Size = new System.Drawing.Size(131, 15);
-            this.NomeEquip.TabIndex = 0;
-            this.NomeEquip.Text = "Nome do Equipamento";
+            NomeEquip.AutoSize = true;
+            NomeEquip.Location = new Point(12, 70);
+            NomeEquip.Name = "NomeEquip";
+            NomeEquip.Size = new Size(131, 15);
+            NomeEquip.TabIndex = 0;
+            NomeEquip.Text = "Nome do Equipamento";
             // 
             // MarcaEquip
             // 
-            this.MarcaEquip.AutoSize = true;
-            this.MarcaEquip.Location = new System.Drawing.Point(246, 70);
-            this.MarcaEquip.Name = "MarcaEquip";
-            this.MarcaEquip.Size = new System.Drawing.Size(40, 15);
-            this.MarcaEquip.TabIndex = 1;
-            this.MarcaEquip.Text = "Marca";
+            MarcaEquip.AutoSize = true;
+            MarcaEquip.Location = new Point(246, 70);
+            MarcaEquip.Name = "MarcaEquip";
+            MarcaEquip.Size = new Size(40, 15);
+            MarcaEquip.TabIndex = 1;
+            MarcaEquip.Text = "Marca";
             // 
             // DescricaoEquip
             // 
-            this.DescricaoEquip.AutoSize = true;
-            this.DescricaoEquip.Location = new System.Drawing.Point(12, 114);
-            this.DescricaoEquip.Name = "DescricaoEquip";
-            this.DescricaoEquip.Size = new System.Drawing.Size(58, 15);
-            this.DescricaoEquip.TabIndex = 2;
-            this.DescricaoEquip.Text = "Descrição";
+            DescricaoEquip.AutoSize = true;
+            DescricaoEquip.Location = new Point(12, 114);
+            DescricaoEquip.Name = "DescricaoEquip";
+            DescricaoEquip.Size = new Size(58, 15);
+            DescricaoEquip.TabIndex = 2;
+            DescricaoEquip.Text = "Descrição";
             // 
             // PrecoEquip
             // 
-            this.PrecoEquip.AutoSize = true;
-            this.PrecoEquip.Location = new System.Drawing.Point(246, 114);
-            this.PrecoEquip.Name = "PrecoEquip";
-            this.PrecoEquip.Size = new System.Drawing.Size(37, 15);
-            this.PrecoEquip.TabIndex = 3;
-            this.PrecoEquip.Text = "Preço";
+            PrecoEquip.AutoSize = true;
+            PrecoEquip.Location = new Point(246, 114);
+            PrecoEquip.Name = "PrecoEquip";
+            PrecoEquip.Size = new Size(37, 15);
+            PrecoEquip.TabIndex = 3;
+            PrecoEquip.Text = "Preço";
             // 
             // EtiquetaEquip
             // 
-            this.EtiquetaEquip.AutoSize = true;
-            this.EtiquetaEquip.Location = new System.Drawing.Point(12, 158);
-            this.EtiquetaEquip.Name = "EtiquetaEquip";
-            this.EtiquetaEquip.Size = new System.Drawing.Size(50, 15);
-            this.EtiquetaEquip.TabIndex = 4;
-            this.EtiquetaEquip.Text = "Etiqueta";
+            EtiquetaEquip.AutoSize = true;
+            EtiquetaEquip.Location = new Point(12, 158);
+            EtiquetaEquip.Name = "EtiquetaEquip";
+            EtiquetaEquip.Size = new Size(50, 15);
+            EtiquetaEquip.TabIndex = 4;
+            EtiquetaEquip.Text = "Etiqueta";
             // 
             // inputEquipNome
             // 
-            this.inputEquipNome.Location = new System.Drawing.Point(12, 88);
-            this.inputEquipNome.MaxLength = 100;
-            this.inputEquipNome.Name = "inputEquipNome";
-            this.inputEquipNome.Size = new System.Drawing.Size(223, 23);
-            this.inputEquipNome.TabIndex = 5;
+            inputEquipNome.Location = new Point(12, 88);
+            inputEquipNome.MaxLength = 100;
+            inputEquipNome.Name = "inputEquipNome";
+            inputEquipNome.Size = new Size(223, 23);
+            inputEquipNome.TabIndex = 5;
             // 
             // inputDesEquip
             // 
-            this.inputDesEquip.Location = new System.Drawing.Point(12, 132);
-            this.inputDesEquip.MaxLength = 100;
-            this.inputDesEquip.Name = "inputDesEquip";
-            this.inputDesEquip.Size = new System.Drawing.Size(223, 23);
-            this.inputDesEquip.TabIndex = 7;
+            inputDesEquip.Location = new Point(12, 132);
+            inputDesEquip.MaxLength = 100;
+            inputDesEquip.Name = "inputDesEquip";
+            inputDesEquip.Size = new Size(223, 23);
+            inputDesEquip.TabIndex = 7;
             // 
             // inputEtiquetaEquip
             // 
-            this.inputEtiquetaEquip.Location = new System.Drawing.Point(12, 176);
-            this.inputEtiquetaEquip.MaxLength = 10;
-            this.inputEtiquetaEquip.Name = "inputEtiquetaEquip";
-            this.inputEtiquetaEquip.Size = new System.Drawing.Size(223, 23);
-            this.inputEtiquetaEquip.TabIndex = 8;
+            inputEtiquetaEquip.Location = new Point(12, 176);
+            inputEtiquetaEquip.MaxLength = 10;
+            inputEtiquetaEquip.Name = "inputEtiquetaEquip";
+            inputEtiquetaEquip.Size = new Size(223, 23);
+            inputEtiquetaEquip.TabIndex = 8;
             // 
             // inputPrecoEquip
             // 
-            this.inputPrecoEquip.Location = new System.Drawing.Point(246, 132);
-            this.inputPrecoEquip.MaxLength = 10;
-            this.inputPrecoEquip.Name = "inputPrecoEquip";
-            this.inputPrecoEquip.Size = new System.Drawing.Size(116, 23);
-            this.inputPrecoEquip.TabIndex = 9;
+            inputPrecoEquip.Location = new Point(246, 132);
+            inputPrecoEquip.MaxLength = 10;
+            inputPrecoEquip.Name = "inputPrecoEquip";
+            inputPrecoEquip.Size = new Size(116, 23);
+            inputPrecoEquip.TabIndex = 9;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 262);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(6);
-            this.panel1.Size = new System.Drawing.Size(427, 50);
-            this.panel1.TabIndex = 12;
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(button1);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 221);
+            panel1.Name = "panel1";
+            panel1.Padding = new Padding(6);
+            panel1.Size = new Size(427, 50);
+            panel1.TabIndex = 12;
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkGreen;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(6, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 38);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = false;
+            button2.BackColor = Color.DarkGreen;
+            button2.Dock = DockStyle.Left;
+            button2.ForeColor = SystemColors.Control;
+            button2.Location = new Point(6, 6);
+            button2.Name = "button2";
+            button2.Size = new Size(150, 38);
+            button2.TabIndex = 1;
+            button2.Text = "Cancelar";
+            button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.DarkGreen;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(271, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 38);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Cadastrar";
-            this.button1.UseVisualStyleBackColor = false;
+            button1.BackColor = Color.DarkGreen;
+            button1.Dock = DockStyle.Right;
+            button1.ForeColor = SystemColors.Control;
+            button1.Location = new Point(271, 6);
+            button1.Name = "button1";
+            button1.Size = new Size(150, 38);
+            button1.TabIndex = 0;
+            button1.Text = "Cadastrar";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel2.Controls.Add(this.inputCodEquip);
-            this.panel2.Controls.Add(this.codigoEquip);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(6);
-            this.panel2.Size = new System.Drawing.Size(427, 50);
-            this.panel2.TabIndex = 13;
+            panel2.BackColor = Color.DarkGreen;
+            panel2.Controls.Add(inputCodEquip);
+            panel2.Controls.Add(codigoEquip);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(6);
+            panel2.Size = new Size(427, 50);
+            panel2.TabIndex = 13;
             // 
             // inputCodEquip
             // 
-            this.inputCodEquip.Location = new System.Drawing.Point(56, 17);
-            this.inputCodEquip.Name = "inputCodEquip";
-            this.inputCodEquip.Size = new System.Drawing.Size(100, 23);
-            this.inputCodEquip.TabIndex = 11;
+            inputCodEquip.Location = new Point(56, 17);
+            inputCodEquip.Name = "inputCodEquip";
+            inputCodEquip.Size = new Size(100, 23);
+            inputCodEquip.TabIndex = 11;
             // 
             // codigoEquip
             // 
-            this.codigoEquip.AutoSize = true;
-            this.codigoEquip.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.codigoEquip.ForeColor = System.Drawing.SystemColors.Control;
-            this.codigoEquip.Location = new System.Drawing.Point(12, 20);
-            this.codigoEquip.Name = "codigoEquip";
-            this.codigoEquip.Size = new System.Drawing.Size(45, 15);
-            this.codigoEquip.TabIndex = 10;
-            this.codigoEquip.Text = "Código";
+            codigoEquip.AutoSize = true;
+            codigoEquip.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            codigoEquip.ForeColor = SystemColors.Control;
+            codigoEquip.Location = new Point(12, 20);
+            codigoEquip.Name = "codigoEquip";
+            codigoEquip.Size = new Size(45, 15);
+            codigoEquip.TabIndex = 10;
+            codigoEquip.Text = "Código";
             // 
-            // marcaCadEquip
+            // escolherMarca
             // 
-            this.marcaCadEquip.Location = new System.Drawing.Point(246, 88);
-            this.marcaCadEquip.MaxLength = 10;
-            this.marcaCadEquip.Name = "marcaCadEquip";
-            this.marcaCadEquip.Size = new System.Drawing.Size(116, 23);
-            this.marcaCadEquip.TabIndex = 14;
+            escolherMarca.FormattingEnabled = true;
+            escolherMarca.Location = new Point(246, 88);
+            escolherMarca.Name = "escolherMarca";
+            escolherMarca.Size = new Size(116, 23);
+            escolherMarca.TabIndex = 19;
             // 
-            // inputCodWhatsap
+            // comboBox1
             // 
-            this.inputCodWhatsap.Location = new System.Drawing.Point(246, 176);
-            this.inputCodWhatsap.MaxLength = 6;
-            this.inputCodWhatsap.Name = "inputCodWhatsap";
-            this.inputCodWhatsap.Size = new System.Drawing.Size(116, 23);
-            this.inputCodWhatsap.TabIndex = 16;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Sim", "Não" });
+            comboBox1.Location = new Point(246, 176);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(116, 23);
+            comboBox1.TabIndex = 21;
             // 
-            // CadVeriEtapa
+            // label1
             // 
-            this.CadVeriEtapa.AutoSize = true;
-            this.CadVeriEtapa.Location = new System.Drawing.Point(246, 158);
-            this.CadVeriEtapa.Name = "CadVeriEtapa";
-            this.CadVeriEtapa.Size = new System.Drawing.Size(95, 15);
-            this.CadVeriEtapa.TabIndex = 15;
-            this.CadVeriEtapa.Text = "Codigo Whatsap";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(246, 220);
-            this.textBox1.MaxLength = 6;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(116, 23);
-            this.textBox1.TabIndex = 18;
-            // 
-            // qtd_equips
-            // 
-            this.qtd_equips.AutoSize = true;
-            this.qtd_equips.Location = new System.Drawing.Point(246, 202);
-            this.qtd_equips.Name = "qtd_equips";
-            this.qtd_equips.Size = new System.Drawing.Size(69, 15);
-            this.qtd_equips.TabIndex = 17;
-            this.qtd_equips.Text = "Quantidade";
+            label1.AutoSize = true;
+            label1.Location = new Point(246, 158);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 15);
+            label1.TabIndex = 20;
+            label1.Text = "Ativo/Inativo";
             // 
             // CadEquip
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 312);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.qtd_equips);
-            this.Controls.Add(this.inputCodWhatsap);
-            this.Controls.Add(this.CadVeriEtapa);
-            this.Controls.Add(this.marcaCadEquip);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.inputPrecoEquip);
-            this.Controls.Add(this.inputEtiquetaEquip);
-            this.Controls.Add(this.inputDesEquip);
-            this.Controls.Add(this.inputEquipNome);
-            this.Controls.Add(this.EtiquetaEquip);
-            this.Controls.Add(this.PrecoEquip);
-            this.Controls.Add(this.DescricaoEquip);
-            this.Controls.Add(this.MarcaEquip);
-            this.Controls.Add(this.NomeEquip);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "CadEquip";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastrar equipamentos";
-            this.Load += new System.EventHandler(this.CadEquip_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(427, 271);
+            Controls.Add(comboBox1);
+            Controls.Add(label1);
+            Controls.Add(escolherMarca);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
+            Controls.Add(inputPrecoEquip);
+            Controls.Add(inputEtiquetaEquip);
+            Controls.Add(inputDesEquip);
+            Controls.Add(inputEquipNome);
+            Controls.Add(EtiquetaEquip);
+            Controls.Add(PrecoEquip);
+            Controls.Add(DescricaoEquip);
+            Controls.Add(MarcaEquip);
+            Controls.Add(NomeEquip);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            Name = "CadEquip";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Cadastrar equipamento";
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -289,10 +268,8 @@
         private Panel panel2;
         private TextBox inputCodEquip;
         private Label codigoEquip;
-        private TextBox marcaCadEquip;
-        private TextBox inputCodWhatsap;
-        private Label CadVeriEtapa;
-        private TextBox textBox1;
-        private Label qtd_equips;
+        private ComboBox escolherMarca;
+        private ComboBox comboBox1;
+        private Label label1;
     }
 }

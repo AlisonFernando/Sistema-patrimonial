@@ -53,6 +53,7 @@
             alison = new ToolStripStatusLabel();
             relogio = new System.Windows.Forms.Timer(components);
             dataGridView1 = new DataGridView();
+            marcaDeEquipamentoToolStripMenuItem = new ToolStripMenuItem();
             MenuPrincipal.SuspendLayout();
             HeaderDescricao.SuspendLayout();
             FooterPrincipal.SuspendLayout();
@@ -70,7 +71,7 @@
             // 
             // cadastrarToolStripMenuItem
             // 
-            cadastrarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuCadColaborador, MenuCadEquip, MenuCadChamado });
+            cadastrarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuCadColaborador, MenuCadEquip, MenuCadChamado, marcaDeEquipamentoToolStripMenuItem });
             cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
             cadastrarToolStripMenuItem.Size = new Size(69, 20);
             cadastrarToolStripMenuItem.Text = "Cadastrar";
@@ -78,21 +79,21 @@
             // MenuCadColaborador
             // 
             MenuCadColaborador.Name = "MenuCadColaborador";
-            MenuCadColaborador.Size = new Size(180, 22);
+            MenuCadColaborador.Size = new Size(197, 22);
             MenuCadColaborador.Text = "Colaboradores";
             MenuCadColaborador.Click += MenuCadColaborador_Click;
             // 
             // MenuCadEquip
             // 
             MenuCadEquip.Name = "MenuCadEquip";
-            MenuCadEquip.Size = new Size(180, 22);
+            MenuCadEquip.Size = new Size(197, 22);
             MenuCadEquip.Text = "Equipamentos";
             MenuCadEquip.Click += MenuCadEquip_Click;
             // 
             // MenuCadChamado
             // 
             MenuCadChamado.Name = "MenuCadChamado";
-            MenuCadChamado.Size = new Size(180, 22);
+            MenuCadChamado.Size = new Size(197, 22);
             MenuCadChamado.Text = "Chamado";
             MenuCadChamado.Click += MenuCadChamado_Click;
             // 
@@ -227,6 +228,13 @@
             dataGridView1.Size = new Size(272, 51);
             dataGridView1.TabIndex = 3;
             // 
+            // marcaDeEquipamentoToolStripMenuItem
+            // 
+            marcaDeEquipamentoToolStripMenuItem.Name = "marcaDeEquipamentoToolStripMenuItem";
+            marcaDeEquipamentoToolStripMenuItem.Size = new Size(197, 22);
+            marcaDeEquipamentoToolStripMenuItem.Text = "Marca de equipamento";
+            marcaDeEquipamentoToolStripMenuItem.Click += marcaDeEquipamentoToolStripMenuItem_Click;
+            // 
             // TelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -278,5 +286,6 @@
         private DataGridView dataGridView1;
         private ToolStripMenuItem MenuUserCad;
         private ToolStripMenuItem MenuCadChamado;
+        private ToolStripMenuItem marcaDeEquipamentoToolStripMenuItem;
     }
 }

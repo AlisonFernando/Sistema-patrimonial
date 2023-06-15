@@ -43,5 +43,11 @@ namespace UI
             UI.TelaAbrirChamado abrirChamado = new UI.TelaAbrirChamado();
             abrirChamado.ShowDialog();
         }
+
+        private void marcaDeEquipamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.TelaCadastrarMarca telaCadastrarMarca = new UI.TelaCadastrarMarca();
+            telaCadastrarMarca.ShowDialog();
+        }
     }
 }

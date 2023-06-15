@@ -12,7 +12,7 @@ namespace DAL
     {
         public MySqlConnection mConn;
 
-        public string conec = "Persist Security Info = False; server=localhost;database=sys_patrimonial;uid=root";
+        public string conec = "Persist Security Info = False; server=192.168.1.166;database=sys_patrimonial;uid=at";
 
         public MySqlConnection AbrirConexao()
         {

@@ -56,7 +56,8 @@ namespace UI
                 MessageBox.Show("O email já existe no banco de dados");
                 return;
             }
-            else if(verificar == "Email não existe"){
+            else if (verificar == "Email não existe")
+            {
 
                 // Realiza o cadastro do usuário
                 UserBLL cadUserBLL = new UserBLL();
@@ -69,7 +70,5 @@ namespace UI
                 }
             }
         }
-
-            
     }
 }
