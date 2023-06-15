@@ -94,6 +94,7 @@
             MenuCadChamado.Name = "MenuCadChamado";
             MenuCadChamado.Size = new Size(180, 22);
             MenuCadChamado.Text = "Chamado";
+            MenuCadChamado.Click += MenuCadChamado_Click;
             // 
             // visualizarToolStripMenuItem
             // 
@@ -223,7 +224,7 @@
             dataGridView1.Location = new Point(12, 65);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(759, 220);
+            dataGridView1.Size = new Size(272, 51);
             dataGridView1.TabIndex = 3;
             // 
             // TelaPrincipal

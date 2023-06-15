@@ -37,5 +37,11 @@ namespace UI
             UI.VerUser verUser = new UI.VerUser();
             verUser.ShowDialog();
         }
+
+        private void MenuCadChamado_Click(object sender, EventArgs e)
+        {
+            UI.TelaAbrirChamado abrirChamado = new UI.TelaAbrirChamado();
+            abrirChamado.ShowDialog();
+        }
     }
 }
