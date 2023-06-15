@@ -18,12 +18,6 @@ namespace UI
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-        }
-
         private void VerUser_Load(object sender, EventArgs e)
         {
             // Crie um DataTable com algumas colunas de exemplo
@@ -40,6 +34,7 @@ namespace UI
 
             // Preencha a DataGridView com o DataTable
             dataGridView1.DataSource = dataTable;
+            
         }
     }
 }
