@@ -44,14 +44,14 @@ namespace UI
                 MessageBox.Show("Verifique o valor digitado e tente novamente");
                 return;
             }
-            else if(equipamento.Etiqueta.Trim().Length <= 0)
+            else if (equipamento.Etiqueta.Trim().Length <= 0)
             {
                 MessageBox.Show("Verifique a etiqueta e tente novamente");
                 return;
             }
 
             // Verifica se a etiqueta digitada já existe no banco de dados
-            EquipamentoBLL vequipamentoBLL= new EquipamentoBLL();
+            EquipamentoBLL vequipamentoBLL = new EquipamentoBLL();
             string verificar = vequipamentoBLL.VerificarEtiqueta(equipamento.Etiqueta);
 
             if (verificar == "Etiqueta existente")

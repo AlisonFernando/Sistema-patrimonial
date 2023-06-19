@@ -45,8 +45,8 @@
             inputCodEquip = new TextBox();
             codigoEquip = new Label();
             escolherMarca = new ComboBox();
-            comboBox1 = new ComboBox();
             label1 = new Label();
+            checkBox1 = new CheckBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -202,30 +202,31 @@
             escolherMarca.Size = new Size(116, 23);
             escolherMarca.TabIndex = 19;
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Sim", "Não" });
-            comboBox1.Location = new Point(246, 176);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(116, 23);
-            comboBox1.TabIndex = 21;
-            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(246, 158);
+            label1.Location = new Point(246, 160);
             label1.Name = "label1";
             label1.Size = new Size(76, 15);
             label1.TabIndex = 20;
             label1.Text = "Ativo/Inativo";
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(246, 178);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(54, 19);
+            checkBox1.TabIndex = 21;
+            checkBox1.Text = "Ativo";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // CadEquip
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(427, 271);
-            Controls.Add(comboBox1);
+            Controls.Add(checkBox1);
             Controls.Add(label1);
             Controls.Add(escolherMarca);
             Controls.Add(panel2);
@@ -269,7 +270,7 @@
         private TextBox inputCodEquip;
         private Label codigoEquip;
         private ComboBox escolherMarca;
-        private ComboBox comboBox1;
         private Label label1;
+        private CheckBox checkBox1;
     }
 }
