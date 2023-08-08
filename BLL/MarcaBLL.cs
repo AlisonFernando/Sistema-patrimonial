@@ -35,11 +35,12 @@ namespace BLL
             }
         }
 
-        public DataTable CarregarMarcas(string carregarMarcas)
+        public DataTable CarregarMarcas()
         {
             MarcaDAL marcaDAL = new MarcaDAL();
-            DataTable resultado = marcaDAL.ConsultarMarca(carregarMarcas);
-
+            DataTable resultado = marcaDAL.ConsultarMarca();
+            return resultado;
         }
+
     }
 }
