@@ -2,6 +2,7 @@
 using model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,12 @@ namespace BLL
             {
                 return "Marca não existe";
             }
+        }
+
+        public DataTable CarregarMarcas(string carregarMarcas)
+        {
+            DataTable result = new DataTable();
+
         }
     }
 }

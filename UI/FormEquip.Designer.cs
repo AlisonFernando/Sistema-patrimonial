@@ -46,7 +46,7 @@
             codigoEquip = new Label();
             escolherMarca = new ComboBox();
             label1 = new Label();
-            checkBox1 = new CheckBox();
+            check_ativo = new CheckBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -211,22 +211,22 @@
             label1.TabIndex = 20;
             label1.Text = "Ativo/Inativo";
             // 
-            // checkBox1
+            // check_ativo
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(246, 178);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(54, 19);
-            checkBox1.TabIndex = 21;
-            checkBox1.Text = "Ativo";
-            checkBox1.UseVisualStyleBackColor = true;
+            check_ativo.AutoSize = true;
+            check_ativo.Location = new Point(246, 178);
+            check_ativo.Name = "check_ativo";
+            check_ativo.Size = new Size(54, 19);
+            check_ativo.TabIndex = 21;
+            check_ativo.Text = "Ativo";
+            check_ativo.UseVisualStyleBackColor = true;
             // 
             // CadEquip
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(427, 271);
-            Controls.Add(checkBox1);
+            Controls.Add(check_ativo);
             Controls.Add(label1);
             Controls.Add(escolherMarca);
             Controls.Add(panel2);
@@ -271,6 +271,6 @@
         private Label codigoEquip;
         private ComboBox escolherMarca;
         private Label label1;
-        private CheckBox checkBox1;
+        private CheckBox check_ativo;
     }
 }

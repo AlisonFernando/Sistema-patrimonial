@@ -16,12 +16,18 @@ namespace DAL
 
         public void InserirEquipamento(Equipamento equipamento)
         {
-
-            sql = "INSERT INTO tb_equipamentos(Nome_equipamento, Descricao, Valor, Etiqueta_identificacao) VALUES (@Nome, @Descricao, @Valor, @Etiqueta) ";
+            string ativo = "0";
+            if (equipamento.Ativo_inativo)
+            {
+                ativo = "1";
+            }
+            
+            sql = "INSERT INTO tb_equipamentos(Nome_equipamento, Descricao, Ativo_inativo, Valor, Etiqueta_identificacao) VALUES (@Nome, @Descricao, @Ativo_inativo, @Valor, @Etiqueta) ";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@nome", equipamento.Nome);
             cmd.Parameters.AddWithValue("@descricao", equipamento.Descricao);
+            cmd.Parameters.AddWithValue("@ativo_inativo", ativo);
             cmd.Parameters.AddWithValue("@valor", equipamento.Valor);
             cmd.Parameters.AddWithValue("@etiqueta", equipamento.Etiqueta);
 

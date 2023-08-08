@@ -12,6 +12,7 @@ namespace model
         public string descricao;
         public string valor;
         public string etiqueta;
+        public bool ativo;
         
         public string Nome
         {
@@ -22,6 +23,11 @@ namespace model
         {
             get { return descricao; }
             set { descricao = value; }
+        }
+        public bool Ativo_inativo
+        {
+            get { return ativo; }
+            set { ativo = value; }
         }
         public string Valor
         {

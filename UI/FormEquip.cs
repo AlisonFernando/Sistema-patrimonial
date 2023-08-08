@@ -22,11 +22,13 @@ namespace UI
         private void button1_Click(object sender, EventArgs e)
         {
             Equipamento equipamento = new Equipamento();
+            Marca marca = new Marca();
 
             equipamento.Nome = inputEquipNome.Text;
             equipamento.Descricao = inputDesEquip.Text;
             equipamento.Valor = inputPrecoEquip.Text;
             equipamento.Etiqueta = inputEtiquetaEquip.Text;
+            equipamento.Ativo_inativo = check_ativo.Checked;
 
             // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
             if (equipamento.Nome.Trim().Length <= 0)
@@ -59,6 +61,7 @@ namespace UI
                 MessageBox.Show("A etiqueta já existe no banco de dados");
                 return;
             }
+
             else if (verificar == "Etiqueta não existe")
             {
 

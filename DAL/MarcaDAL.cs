@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,5 +48,24 @@ namespace DAL
             }
             return marcaExists;
         }
+
+        public DataTable ConsultarMarca(Marca marca)
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT * FROM tb_marca";
+
+            using (MySqlConnection connection = mConn.AbrirConexao())
+            {
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
+                }
+            }
+            return dt;
+        }
+        
     }
 }
