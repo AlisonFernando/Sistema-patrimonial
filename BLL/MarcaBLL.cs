@@ -37,7 +37,8 @@ namespace BLL
 
         public DataTable CarregarMarcas(string carregarMarcas)
         {
-            DataTable result = new DataTable();
+            MarcaDAL marcaDAL = new MarcaDAL();
+            DataTable resultado = marcaDAL.ConsultarMarca(carregarMarcas);
 
         }
     }

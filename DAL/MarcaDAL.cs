@@ -49,7 +49,7 @@ namespace DAL
             return marcaExists;
         }
 
-        public DataTable ConsultarMarca(Marca marca)
+        public DataTable ConsultarMarca()
         {
             DataTable dt = new DataTable();
             string sql = "SELECT * FROM tb_marca";
