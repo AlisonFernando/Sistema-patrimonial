@@ -52,7 +52,6 @@ namespace UI
                 return;
             }
 
-            // Verifica se a etiqueta digitada já existe no banco de dados
             EquipamentoBLL vequipamentoBLL = new EquipamentoBLL();
             string verificar = vequipamentoBLL.VerificarEtiqueta(equipamento.Etiqueta);
 
@@ -74,6 +73,29 @@ namespace UI
                     MessageBox.Show("Cadastro efetuado");
 
                 }
+            }
+        }
+
+        private void CadEquip_Load(object sender, EventArgs e)
+        {
+            CarregarMarcasComboBox();
+        }
+        
+        private void CarregarMarcasComboBox()
+        {
+            DataTable dt = new DataTable();
+            MarcaBLL marcaBLL = new MarcaBLL();
+
+            dt = marcaBLL.CarregarMarcas();
+
+            escolherMarca.DataSource = dt;
+
+            int idMarcaSelecionada = Convert.ToInt32(escolherMarca.SelectedValue);
+            foreach (DataRow row in dt.Rows)
+            {
+                string nomeMarca = row["Nome_marca"].ToString();
+
+                escolherMarca.Items.Add(nomeMarca);
             }
         }
     }

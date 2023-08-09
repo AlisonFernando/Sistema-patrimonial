@@ -245,6 +245,7 @@
             Name = "CadEquip";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar equipamento";
+            Load += CadEquip_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
