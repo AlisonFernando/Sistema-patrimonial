@@ -125,7 +125,7 @@
             inputColabSenha.MaxLength = 10;
             inputColabSenha.Name = "inputColabSenha";
             inputColabSenha.Size = new Size(129, 23);
-            inputColabSenha.TabIndex = 9;
+            inputColabSenha.TabIndex = 5;
             inputColabSenha.UseSystemPasswordChar = true;
             // 
             // inputColabTel
@@ -162,7 +162,7 @@
             btnCadColab.Location = new Point(271, 6);
             btnCadColab.Name = "btnCadColab";
             btnCadColab.Size = new Size(150, 38);
-            btnCadColab.TabIndex = 14;
+            btnCadColab.TabIndex = 8;
             btnCadColab.Text = "Cadastrar";
             btnCadColab.UseVisualStyleBackColor = false;
             // 
@@ -203,6 +203,7 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
+            label1.ForeColor = SystemColors.Window;
             label1.Location = new Point(143, 19);
             label1.Name = "label1";
             label1.Size = new Size(126, 15);
@@ -215,7 +216,7 @@
             Ativo_inativo.Location = new Point(280, 166);
             Ativo_inativo.Name = "Ativo_inativo";
             Ativo_inativo.Size = new Size(54, 19);
-            Ativo_inativo.TabIndex = 21;
+            Ativo_inativo.TabIndex = 6;
             Ativo_inativo.Text = "Ativo";
             Ativo_inativo.UseVisualStyleBackColor = true;
             // 
