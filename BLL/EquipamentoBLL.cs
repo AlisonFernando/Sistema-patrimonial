@@ -19,6 +19,7 @@ namespace BLL
 
             return "Sucesso";
         }
+
         public string VerificarEtiqueta(string verifetiqueta)
         {
             EquipamentoDAL equipamentoDAL = new EquipamentoDAL();
