@@ -42,13 +42,10 @@
             button2 = new Button();
             button1 = new Button();
             panel2 = new Panel();
-            inputCodEquip = new TextBox();
-            codigoEquip = new Label();
             escolherMarca = new ComboBox();
             label1 = new Label();
             check_ativo = new CheckBox();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // NomeEquip
@@ -102,7 +99,7 @@
             inputEquipNome.MaxLength = 100;
             inputEquipNome.Name = "inputEquipNome";
             inputEquipNome.Size = new Size(223, 23);
-            inputEquipNome.TabIndex = 5;
+            inputEquipNome.TabIndex = 1;
             // 
             // inputDesEquip
             // 
@@ -110,7 +107,7 @@
             inputDesEquip.MaxLength = 100;
             inputDesEquip.Name = "inputDesEquip";
             inputDesEquip.Size = new Size(223, 23);
-            inputDesEquip.TabIndex = 7;
+            inputDesEquip.TabIndex = 2;
             // 
             // inputEtiquetaEquip
             // 
@@ -118,7 +115,7 @@
             inputEtiquetaEquip.MaxLength = 10;
             inputEtiquetaEquip.Name = "inputEtiquetaEquip";
             inputEtiquetaEquip.Size = new Size(223, 23);
-            inputEtiquetaEquip.TabIndex = 8;
+            inputEtiquetaEquip.TabIndex = 3;
             // 
             // inputPrecoEquip
             // 
@@ -126,7 +123,7 @@
             inputPrecoEquip.MaxLength = 10;
             inputPrecoEquip.Name = "inputPrecoEquip";
             inputPrecoEquip.Size = new Size(116, 23);
-            inputPrecoEquip.TabIndex = 9;
+            inputPrecoEquip.TabIndex = 5;
             // 
             // panel1
             // 
@@ -154,12 +151,13 @@
             // button1
             // 
             button1.BackColor = Color.DarkGreen;
+            button1.Cursor = Cursors.Hand;
             button1.Dock = DockStyle.Right;
             button1.ForeColor = SystemColors.Control;
             button1.Location = new Point(271, 6);
             button1.Name = "button1";
             button1.Size = new Size(150, 38);
-            button1.TabIndex = 0;
+            button1.TabIndex = 7;
             button1.Text = "Cadastrar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -167,8 +165,6 @@
             // panel2
             // 
             panel2.BackColor = Color.DarkGreen;
-            panel2.Controls.Add(inputCodEquip);
-            panel2.Controls.Add(codigoEquip);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
@@ -176,31 +172,13 @@
             panel2.Size = new Size(427, 50);
             panel2.TabIndex = 13;
             // 
-            // inputCodEquip
-            // 
-            inputCodEquip.Location = new Point(56, 17);
-            inputCodEquip.Name = "inputCodEquip";
-            inputCodEquip.Size = new Size(100, 23);
-            inputCodEquip.TabIndex = 11;
-            // 
-            // codigoEquip
-            // 
-            codigoEquip.AutoSize = true;
-            codigoEquip.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            codigoEquip.ForeColor = SystemColors.Control;
-            codigoEquip.Location = new Point(12, 20);
-            codigoEquip.Name = "codigoEquip";
-            codigoEquip.Size = new Size(45, 15);
-            codigoEquip.TabIndex = 10;
-            codigoEquip.Text = "Código";
-            // 
             // escolherMarca
             // 
             escolherMarca.FormattingEnabled = true;
             escolherMarca.Location = new Point(246, 88);
             escolherMarca.Name = "escolherMarca";
             escolherMarca.Size = new Size(116, 23);
-            escolherMarca.TabIndex = 19;
+            escolherMarca.TabIndex = 4;
             // 
             // label1
             // 
@@ -217,7 +195,7 @@
             check_ativo.Location = new Point(246, 178);
             check_ativo.Name = "check_ativo";
             check_ativo.Size = new Size(54, 19);
-            check_ativo.TabIndex = 21;
+            check_ativo.TabIndex = 6;
             check_ativo.Text = "Ativo";
             check_ativo.UseVisualStyleBackColor = true;
             // 
@@ -247,8 +225,6 @@
             Text = "Cadastrar equipamento";
             Load += CadEquip_Load;
             panel1.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -268,8 +244,6 @@
         private Button button1;
         private Button button2;
         private Panel panel2;
-        private TextBox inputCodEquip;
-        private Label codigoEquip;
         private ComboBox escolherMarca;
         private Label label1;
         private CheckBox check_ativo;

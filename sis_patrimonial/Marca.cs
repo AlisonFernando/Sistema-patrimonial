@@ -11,7 +11,6 @@ namespace model
         public string nome;
         public int id_marca;
 
-
         public string Nome
         {
             get { return nome; }

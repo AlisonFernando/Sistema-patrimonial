@@ -44,8 +44,8 @@
             FotterCadColab = new Panel();
             btnCancelarCad = new Button();
             HeaderCadColab = new Panel();
-            Ativo_inativo = new CheckBox();
             label1 = new Label();
+            Ativo_inativo = new CheckBox();
             FotterCadColab.SuspendLayout();
             HeaderCadColab.SuspendLayout();
             SuspendLayout();
@@ -101,7 +101,7 @@
             InputColabNome.MaxLength = 30;
             InputColabNome.Name = "InputColabNome";
             InputColabNome.Size = new Size(253, 23);
-            InputColabNome.TabIndex = 6;
+            InputColabNome.TabIndex = 1;
             // 
             // inputColabAgenda
             // 
@@ -117,7 +117,7 @@
             inputColabEmail.MaxLength = 40;
             inputColabEmail.Name = "inputColabEmail";
             inputColabEmail.Size = new Size(254, 23);
-            inputColabEmail.TabIndex = 8;
+            inputColabEmail.TabIndex = 2;
             // 
             // inputColabSenha
             // 
@@ -134,7 +134,7 @@
             inputColabTel.MaxLength = 11;
             inputColabTel.Name = "inputColabTel";
             inputColabTel.Size = new Size(129, 23);
-            inputColabTel.TabIndex = 10;
+            inputColabTel.TabIndex = 4;
             // 
             // Setor
             // 
@@ -152,7 +152,7 @@
             selectSetorColab.Location = new Point(6, 181);
             selectSetorColab.Name = "selectSetorColab";
             selectSetorColab.Size = new Size(125, 23);
-            selectSetorColab.TabIndex = 13;
+            selectSetorColab.TabIndex = 3;
             // 
             // btnCadColab
             // 
@@ -199,16 +199,6 @@
             HeaderCadColab.Size = new Size(427, 50);
             HeaderCadColab.TabIndex = 16;
             // 
-            // Ativo_inativo
-            // 
-            Ativo_inativo.AutoSize = true;
-            Ativo_inativo.Location = new Point(280, 166);
-            Ativo_inativo.Name = "Ativo_inativo";
-            Ativo_inativo.Size = new Size(54, 19);
-            Ativo_inativo.TabIndex = 21;
-            Ativo_inativo.Text = "Ativo";
-            Ativo_inativo.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -218,6 +208,16 @@
             label1.Size = new Size(126, 15);
             label1.TabIndex = 0;
             label1.Text = "Cadastrar Colaborador";
+            // 
+            // Ativo_inativo
+            // 
+            Ativo_inativo.AutoSize = true;
+            Ativo_inativo.Location = new Point(280, 166);
+            Ativo_inativo.Name = "Ativo_inativo";
+            Ativo_inativo.Size = new Size(54, 19);
+            Ativo_inativo.TabIndex = 21;
+            Ativo_inativo.Text = "Ativo";
+            Ativo_inativo.UseVisualStyleBackColor = true;
             // 
             // CadColaborador
             // 

@@ -29,6 +29,7 @@ namespace UI
             equipamento.Valor = inputPrecoEquip.Text;
             equipamento.Etiqueta = inputEtiquetaEquip.Text;
             equipamento.Ativo_inativo = check_ativo.Checked;
+            equipamento.marca_id = escolherMarca.SelectedValue.ToString();
 
             // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
             if (equipamento.Nome.Trim().Length <= 0)
@@ -80,23 +81,15 @@ namespace UI
         {
             CarregarMarcasComboBox();
         }
-        
+
         private void CarregarMarcasComboBox()
         {
-            DataTable dt = new DataTable();
             MarcaBLL marcaBLL = new MarcaBLL();
+            DataTable dt = marcaBLL.CarregarMarcas();
 
-            dt = marcaBLL.CarregarMarcas();
-
+            escolherMarca.DisplayMember = "Nome_marca"; // Define a coluna a ser exibida
+            escolherMarca.ValueMember = "ID_marca";    // Define a coluna a ser usada como valor selecionado
             escolherMarca.DataSource = dt;
-
-            int idMarcaSelecionada = Convert.ToInt32(escolherMarca.SelectedValue);
-            foreach (DataRow row in dt.Rows)
-            {
-                string nomeMarca = row["Nome_marca"].ToString();
-
-                escolherMarca.Items.Add(nomeMarca);
-            }
         }
     }
 }
