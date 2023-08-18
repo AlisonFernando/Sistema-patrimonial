@@ -1,7 +1,9 @@
 ﻿using model;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +57,35 @@ namespace DAL
                 }
             }
             return etiquetaExists;
+        }
+
+
+        //Escolher os equipamentos ativos no banco de dados para cadastrar no colaborador
+        public DataTable EscolherEquipamentos()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                string sql = "SELECT * FROM tb_equipamentos WHERE Ativo_inativo = 1";
+                using (MySqlConnection connection = mConn.AbrirConexao())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Ativo_inativo", 1);
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

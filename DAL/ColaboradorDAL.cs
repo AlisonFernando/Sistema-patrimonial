@@ -22,8 +22,8 @@ namespace DAL
                 ativo = "1";
             }
 
-            sql = "INSERT INTO tb_colaborador(Nome, Senha, Link_agenda, Telefone, Ativo_inativo, Email) VALUES " +
-                    "(@NomeColaborador, @SenhaColaborador, @AgendaColaborador, @TelefoneColaborador, @Ativo_inativo, @EmailColaborador) ";
+            sql = "INSERT INTO tb_colaborador(Nome, Senha, Link_agenda, Telefone, Ativo_inativo, Email, setor_id) VALUES " +
+                    "(@NomeColaborador, @SenhaColaborador, @AgendaColaborador, @TelefoneColaborador, @Ativo_inativo, @EmailColaborador, @setor_id) ";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
@@ -32,6 +32,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@telefoneColaborador", colaborador.TelefoneColaborador);
             cmd.Parameters.AddWithValue("@ativo_inativo", ativo);
             cmd.Parameters.AddWithValue("@emailColaborador", colaborador.EmailColaborador);
+            cmd.Parameters.AddWithValue("@setor_id", colaborador.setor_id);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
@@ -40,7 +41,7 @@ namespace DAL
         public bool VerificarNome(String nomeColab)
         {
             bool nomeExists = false;
-            string sql = "SELECT COUNT(*) FROM tb_colaborador WHERE Nome = @NomeColaborador";
+            string sql = "SELECT COUNT(*) FROM tb_colaborador WHERE Nome = @nomeColaborador";
 
             using (MySqlConnection connection = mConn.AbrirConexao())
             {

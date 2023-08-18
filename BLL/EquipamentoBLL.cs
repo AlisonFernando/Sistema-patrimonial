@@ -2,6 +2,7 @@
 using model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,13 @@ namespace BLL
                 return "Etiqueta não existe";
             }
 
+        }
+
+        public DataTable ChamarEquipamentos()
+        {
+            EquipamentoDAL equipamentoDAL = new EquipamentoDAL();
+
+            return equipamentoDAL.EscolherEquipamentos();
         }
     }
 }

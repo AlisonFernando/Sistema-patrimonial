@@ -39,13 +39,15 @@
             inputColabSenha = new TextBox();
             inputColabTel = new TextBox();
             Setor = new Label();
-            selectSetorColab = new ComboBox();
-            btnCadColab = new Button();
+            escolherSetor = new ComboBox();
+            btnCadastrar = new Button();
             FotterCadColab = new Panel();
             btnCancelarCad = new Button();
             HeaderCadColab = new Panel();
             label1 = new Label();
-            Ativo_inativo = new CheckBox();
+            check_ativo = new CheckBox();
+            escolherEquip = new ComboBox();
+            label2 = new Label();
             FotterCadColab.SuspendLayout();
             HeaderCadColab.SuspendLayout();
             SuspendLayout();
@@ -71,7 +73,7 @@
             // Senha
             // 
             Senha.AutoSize = true;
-            Senha.Location = new Point(280, 119);
+            Senha.Location = new Point(137, 163);
             Senha.Name = "Senha";
             Senha.Size = new Size(39, 15);
             Senha.TabIndex = 2;
@@ -89,7 +91,7 @@
             // Telefone
             // 
             Telefone.AutoSize = true;
-            Telefone.Location = new Point(280, 75);
+            Telefone.Location = new Point(266, 75);
             Telefone.Name = "Telefone";
             Telefone.Size = new Size(51, 15);
             Telefone.TabIndex = 4;
@@ -121,16 +123,16 @@
             // 
             // inputColabSenha
             // 
-            inputColabSenha.Location = new Point(280, 137);
+            inputColabSenha.Location = new Point(137, 181);
             inputColabSenha.MaxLength = 10;
             inputColabSenha.Name = "inputColabSenha";
-            inputColabSenha.Size = new Size(129, 23);
+            inputColabSenha.Size = new Size(122, 23);
             inputColabSenha.TabIndex = 5;
             inputColabSenha.UseSystemPasswordChar = true;
             // 
             // inputColabTel
             // 
-            inputColabTel.Location = new Point(280, 93);
+            inputColabTel.Location = new Point(266, 93);
             inputColabTel.MaxLength = 11;
             inputColabTel.Name = "inputColabTel";
             inputColabTel.Size = new Size(129, 23);
@@ -145,33 +147,34 @@
             Setor.TabIndex = 11;
             Setor.Text = "Setor";
             // 
-            // selectSetorColab
+            // escolherSetor
             // 
-            selectSetorColab.FormattingEnabled = true;
-            selectSetorColab.Items.AddRange(new object[] { "Engenharia", "Criação", "Administração", "Marketing", "Ligação", "TI" });
-            selectSetorColab.Location = new Point(6, 181);
-            selectSetorColab.Name = "selectSetorColab";
-            selectSetorColab.Size = new Size(125, 23);
-            selectSetorColab.TabIndex = 3;
+            escolherSetor.FormattingEnabled = true;
+            escolherSetor.Items.AddRange(new object[] { "Engenharia", "Criação", "Administração", "Marketing", "Ligação", "TI" });
+            escolherSetor.Location = new Point(6, 181);
+            escolherSetor.Name = "escolherSetor";
+            escolherSetor.Size = new Size(125, 23);
+            escolherSetor.TabIndex = 3;
             // 
-            // btnCadColab
+            // btnCadastrar
             // 
-            btnCadColab.BackColor = Color.DarkGreen;
-            btnCadColab.Dock = DockStyle.Right;
-            btnCadColab.ForeColor = SystemColors.Control;
-            btnCadColab.Location = new Point(271, 6);
-            btnCadColab.Name = "btnCadColab";
-            btnCadColab.Size = new Size(150, 38);
-            btnCadColab.TabIndex = 8;
-            btnCadColab.Text = "Cadastrar";
-            btnCadColab.UseVisualStyleBackColor = false;
+            btnCadastrar.BackColor = Color.DarkGreen;
+            btnCadastrar.Dock = DockStyle.Right;
+            btnCadastrar.ForeColor = SystemColors.Control;
+            btnCadastrar.Location = new Point(271, 6);
+            btnCadastrar.Name = "btnCadastrar";
+            btnCadastrar.Size = new Size(150, 38);
+            btnCadastrar.TabIndex = 8;
+            btnCadastrar.Text = "Cadastrar";
+            btnCadastrar.UseVisualStyleBackColor = false;
+            btnCadastrar.Click += btnCadastrar_Click;
             // 
             // FotterCadColab
             // 
             FotterCadColab.Controls.Add(btnCancelarCad);
-            FotterCadColab.Controls.Add(btnCadColab);
+            FotterCadColab.Controls.Add(btnCadastrar);
             FotterCadColab.Dock = DockStyle.Bottom;
-            FotterCadColab.Location = new Point(0, 435);
+            FotterCadColab.Location = new Point(0, 304);
             FotterCadColab.Name = "FotterCadColab";
             FotterCadColab.Padding = new Padding(6);
             FotterCadColab.Size = new Size(427, 50);
@@ -210,25 +213,44 @@
             label1.TabIndex = 0;
             label1.Text = "Cadastrar Colaborador";
             // 
-            // Ativo_inativo
+            // check_ativo
             // 
-            Ativo_inativo.AutoSize = true;
-            Ativo_inativo.Location = new Point(280, 166);
-            Ativo_inativo.Name = "Ativo_inativo";
-            Ativo_inativo.Size = new Size(54, 19);
-            Ativo_inativo.TabIndex = 6;
-            Ativo_inativo.Text = "Ativo";
-            Ativo_inativo.UseVisualStyleBackColor = true;
+            check_ativo.AutoSize = true;
+            check_ativo.Location = new Point(266, 137);
+            check_ativo.Name = "check_ativo";
+            check_ativo.Size = new Size(54, 19);
+            check_ativo.TabIndex = 6;
+            check_ativo.Text = "Ativo";
+            check_ativo.UseVisualStyleBackColor = true;
+            // 
+            // escolherEquip
+            // 
+            escolherEquip.FormattingEnabled = true;
+            escolherEquip.Location = new Point(6, 269);
+            escolherEquip.Name = "escolherEquip";
+            escolherEquip.Size = new Size(403, 23);
+            escolherEquip.TabIndex = 17;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(6, 251);
+            label2.Name = "label2";
+            label2.Size = new Size(83, 15);
+            label2.TabIndex = 18;
+            label2.Text = "Equipamentos";
             // 
             // CadColaborador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(427, 485);
-            Controls.Add(Ativo_inativo);
+            ClientSize = new Size(427, 354);
+            Controls.Add(label2);
+            Controls.Add(escolherEquip);
+            Controls.Add(check_ativo);
             Controls.Add(HeaderCadColab);
             Controls.Add(FotterCadColab);
-            Controls.Add(selectSetorColab);
+            Controls.Add(escolherSetor);
             Controls.Add(Setor);
             Controls.Add(inputColabTel);
             Controls.Add(inputColabSenha);
@@ -244,6 +266,7 @@
             Name = "CadColaborador";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro Colaborador";
+            Load += CadColaborador_Load;
             FotterCadColab.ResumeLayout(false);
             HeaderCadColab.ResumeLayout(false);
             HeaderCadColab.PerformLayout();
@@ -264,12 +287,14 @@
         private TextBox inputColabSenha;
         private TextBox inputColabTel;
         private Label Setor;
-        private ComboBox selectSetorColab;
-        private Button btnCadColab;
+        private ComboBox escolherSetor;
+        private Button btnCadastrar;
         private Panel FotterCadColab;
         private Button btnCancelarCad;
         private Panel HeaderCadColab;
-        private CheckBox Ativo_inativo;
+        private CheckBox check_ativo;
         private Label label1;
+        private ComboBox escolherEquip;
+        private Label label2;
     }
 }
