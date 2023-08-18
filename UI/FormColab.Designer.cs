@@ -49,6 +49,7 @@
             check_ativo = new CheckBox();
             escolherEquip = new ComboBox();
             label2 = new Label();
+            selectEquips = new CheckedListBox();
             FotterCadColab.SuspendLayout();
             HeaderCadColab.SuspendLayout();
             SuspendLayout();
@@ -175,7 +176,7 @@
             FotterCadColab.Controls.Add(btnCancelarCad);
             FotterCadColab.Controls.Add(btnCadastrar);
             FotterCadColab.Dock = DockStyle.Bottom;
-            FotterCadColab.Location = new Point(0, 304);
+            FotterCadColab.Location = new Point(0, 487);
             FotterCadColab.Name = "FotterCadColab";
             FotterCadColab.Padding = new Padding(6);
             FotterCadColab.Size = new Size(427, 50);
@@ -241,11 +242,20 @@
             label2.TabIndex = 18;
             label2.Text = "Equipamentos";
             // 
+            // selectEquips
+            // 
+            selectEquips.FormattingEnabled = true;
+            selectEquips.Location = new Point(6, 308);
+            selectEquips.Name = "selectEquips";
+            selectEquips.Size = new Size(403, 166);
+            selectEquips.TabIndex = 19;
+            // 
             // CadColaborador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(427, 354);
+            ClientSize = new Size(427, 537);
+            Controls.Add(selectEquips);
             Controls.Add(label2);
             Controls.Add(escolherEquip);
             Controls.Add(check_ativo);
@@ -298,5 +308,6 @@
         private Label label1;
         private ComboBox escolherEquip;
         private Label label2;
+        private CheckedListBox selectEquips;
     }
 }

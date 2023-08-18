@@ -101,11 +101,11 @@ namespace UI
         private void CarregarEquipamentos()
         {
             EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
-
             DataTable dt = equipamentoBLL.ChamarEquipamentos();
-            escolherEquip.DisplayMember = "Nome_equipamento";
-            escolherEquip.ValueMember = "ID_equipamento";
-            escolherEquip.DataSource = dt;
+
+            selectEquips.DisplayMember = "Nome_equipamento";
+            selectEquips.ValueMember = "ID_equipamento";
+            selectEquips.DataSource = dt.Rows ;
         }
     }
 }
