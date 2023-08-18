@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadColaborador));
             Nome = new Label();
             Email = new Label();
             Senha = new Label();
@@ -262,10 +263,11 @@
             Controls.Add(Senha);
             Controls.Add(Email);
             Controls.Add(Nome);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "CadColaborador";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Cadastro Colaborador";
+            Text = "Cadastrar Colaborador";
             Load += CadColaborador_Load;
             FotterCadColab.ResumeLayout(false);
             HeaderCadColab.ResumeLayout(false);
