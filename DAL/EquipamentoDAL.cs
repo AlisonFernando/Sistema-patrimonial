@@ -23,8 +23,8 @@ namespace DAL
             {
                 ativo = "1";
             }
-            
-            sql = "INSERT INTO tb_equipamentos(Nome_equipamento, Descricao, Ativo_inativo, Valor, Etiqueta_identificacao, marca_id) VALUES "+
+
+            sql = "INSERT INTO tb_equipamentos(Nome_equipamento, Descricao, Ativo_inativo, Valor, Etiqueta_identificacao, marca_id) VALUES " +
                     "(@Nome, @Descricao, @Ativo_inativo, @Valor, @Etiqueta, @marca_id) ";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
@@ -67,7 +67,7 @@ namespace DAL
 
             try
             {
-                string sql = "SELECT * FROM tb_equipamentos WHERE Ativo_inativo = 1";
+                string sql = "SELECT * FROM tb_equipamentos WHERE Ativo_inativo = @Ativo_inativo";
                 using (MySqlConnection connection = mConn.AbrirConexao())
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
@@ -86,6 +86,22 @@ namespace DAL
             {
                 throw;
             }
+        }
+        public string ObterNomeEquipamentoPorEtiqueta(string idEtiqueta)
+        {
+            string nomeEquipamento = string.Empty;
+
+            using (MySqlConnection connection = mConn.AbrirConexao())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    string sql = "SELECT Nome_equipamento FROM tb_equipamentos WHERE Etiqueta_identificacao = @etiqueta";
+
+                    cmd.Parameters.AddWithValue("@etiqueta", idEtiqueta);
+                    nomeEquipamento = cmd.ExecuteScalar() as string;
+                }
+            }
+            return nomeEquipamento;
         }
     }
 }

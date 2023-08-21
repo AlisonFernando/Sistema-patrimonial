@@ -49,9 +49,12 @@
             check_ativo = new CheckBox();
             escolherEquip = new ComboBox();
             label2 = new Label();
-            selectEquips = new CheckedListBox();
+            dataGridViewEquipamentos = new DataGridView();
+            checkedListBox1 = new CheckedListBox();
+            Selecionar = new DataGridViewCheckBoxColumn();
             FotterCadColab.SuspendLayout();
             HeaderCadColab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEquipamentos).BeginInit();
             SuspendLayout();
             // 
             // Nome
@@ -163,7 +166,7 @@
             btnCadastrar.BackColor = Color.DarkGreen;
             btnCadastrar.Dock = DockStyle.Right;
             btnCadastrar.ForeColor = SystemColors.Control;
-            btnCadastrar.Location = new Point(271, 6);
+            btnCadastrar.Location = new Point(275, 6);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(150, 38);
             btnCadastrar.TabIndex = 8;
@@ -176,10 +179,10 @@
             FotterCadColab.Controls.Add(btnCancelarCad);
             FotterCadColab.Controls.Add(btnCadastrar);
             FotterCadColab.Dock = DockStyle.Bottom;
-            FotterCadColab.Location = new Point(0, 487);
+            FotterCadColab.Location = new Point(0, 628);
             FotterCadColab.Name = "FotterCadColab";
             FotterCadColab.Padding = new Padding(6);
-            FotterCadColab.Size = new Size(427, 50);
+            FotterCadColab.Size = new Size(431, 50);
             FotterCadColab.TabIndex = 15;
             // 
             // btnCancelarCad
@@ -201,7 +204,7 @@
             HeaderCadColab.Dock = DockStyle.Top;
             HeaderCadColab.Location = new Point(0, 0);
             HeaderCadColab.Name = "HeaderCadColab";
-            HeaderCadColab.Size = new Size(427, 50);
+            HeaderCadColab.Size = new Size(431, 50);
             HeaderCadColab.TabIndex = 16;
             // 
             // label1
@@ -242,20 +245,36 @@
             label2.TabIndex = 18;
             label2.Text = "Equipamentos";
             // 
-            // selectEquips
+            // dataGridViewEquipamentos
             // 
-            selectEquips.FormattingEnabled = true;
-            selectEquips.Location = new Point(6, 308);
-            selectEquips.Name = "selectEquips";
-            selectEquips.Size = new Size(403, 166);
-            selectEquips.TabIndex = 19;
+            dataGridViewEquipamentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewEquipamentos.Columns.AddRange(new DataGridViewColumn[] { Selecionar });
+            dataGridViewEquipamentos.Location = new Point(6, 307);
+            dataGridViewEquipamentos.Name = "dataGridViewEquipamentos";
+            dataGridViewEquipamentos.RowTemplate.Height = 25;
+            dataGridViewEquipamentos.Size = new Size(403, 269);
+            dataGridViewEquipamentos.TabIndex = 21;
+            // 
+            // checkedListBox1
+            // 
+            checkedListBox1.FormattingEnabled = true;
+            checkedListBox1.Location = new Point(6, 582);
+            checkedListBox1.Name = "checkedListBox1";
+            checkedListBox1.Size = new Size(403, 40);
+            checkedListBox1.TabIndex = 22;
+            // 
+            // Selecionar
+            // 
+            Selecionar.HeaderText = "Selecionar";
+            Selecionar.Name = "Selecionar";
             // 
             // CadColaborador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(427, 537);
-            Controls.Add(selectEquips);
+            ClientSize = new Size(431, 678);
+            Controls.Add(checkedListBox1);
+            Controls.Add(dataGridViewEquipamentos);
             Controls.Add(label2);
             Controls.Add(escolherEquip);
             Controls.Add(check_ativo);
@@ -282,6 +301,7 @@
             FotterCadColab.ResumeLayout(false);
             HeaderCadColab.ResumeLayout(false);
             HeaderCadColab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEquipamentos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -308,6 +328,8 @@
         private Label label1;
         private ComboBox escolherEquip;
         private Label label2;
-        private CheckedListBox selectEquips;
+        private DataGridView dataGridViewEquipamentos;
+        private DataGridViewCheckBoxColumn Selecionar;
+        private CheckedListBox checkedListBox1;
     }
 }

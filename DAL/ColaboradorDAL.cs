@@ -33,6 +33,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@ativo_inativo", ativo);
             cmd.Parameters.AddWithValue("@emailColaborador", colaborador.EmailColaborador);
             cmd.Parameters.AddWithValue("@setor_id", colaborador.setor_id);
+            //cmd.Parameters.AddWithValue("equipamento_id", colaborador.equipamento_id);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
@@ -57,6 +58,26 @@ namespace DAL
                 }
             }
             return nomeExists;
+        }
+        public void SalvarEquipamentosSelecionados(List<string> idsSelecionados)
+        {
+            string sql = "INSERT INTO tb_colaborador (equipamento_id) VALUES (@ID_equipamento)";
+            using (MySqlConnection connection = mConn.AbrirConexao()) {
+
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+
+                    foreach (string id in idsSelecionados)
+                    {
+                        
+                        using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@ID_equipamento", id);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
         }
     }
 }
