@@ -41,9 +41,32 @@ namespace UI
                 MessageBox.Show("Verifique o e-mail e tente novamente");
                 return;
             }
+            else if (txtConfirEmail.Text.Trim().Length <= 0)
+            {
+                MessageBox.Show("Digite um email e tente novamente!");
+                return;
+            }
             else if (usuario.Senha.Trim().Length <= 0)
             {
                 MessageBox.Show("Verifique a senha e tente novamente");
+                return;
+            }
+            else if (txtConfirSenha.Text.Trim().Length <= 0)
+            {
+                MessageBox.Show("Digite uma senha e tente novamente");
+                return;
+            }
+
+            
+            //Verifica se os campos de confirmação batem com o digitado
+            if(txtConfirEmail != inputUserEmail)
+            {
+                MessageBox.Show("E-mail errado, verifique e tente novamente");
+                return;
+            }
+            else if(txtConfirSenha != inputUserSenha)
+            {
+                MessageBox.Show("Senha digitada está incorreta, tente novamente");
                 return;
             }
 
@@ -69,11 +92,6 @@ namespace UI
 
                 }
             }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -40,9 +40,9 @@
             inputUserSenha = new TextBox();
             panel2 = new Panel();
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtConfirEmail = new TextBox();
             label2 = new Label();
-            textBox2 = new TextBox();
+            txtConfirSenha = new TextBox();
             label3 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -168,15 +168,14 @@
             label1.TabIndex = 11;
             label1.Text = "Cadastrar usuário";
             // 
-            // textBox1
+            // txtConfirEmail
             // 
-            textBox1.Location = new Point(183, 284);
-            textBox1.Margin = new Padding(4, 5, 4, 5);
-            textBox1.MaxLength = 100;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(237, 31);
-            textBox1.TabIndex = 11;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtConfirEmail.Location = new Point(183, 284);
+            txtConfirEmail.Margin = new Padding(4, 5, 4, 5);
+            txtConfirEmail.MaxLength = 100;
+            txtConfirEmail.Name = "txtConfirEmail";
+            txtConfirEmail.Size = new Size(237, 31);
+            txtConfirEmail.TabIndex = 11;
             // 
             // label2
             // 
@@ -188,15 +187,15 @@
             label2.TabIndex = 12;
             label2.Text = "Confirmar e-mail";
             // 
-            // textBox2
+            // txtConfirSenha
             // 
-            textBox2.Location = new Point(183, 433);
-            textBox2.Margin = new Padding(4, 5, 4, 5);
-            textBox2.MaxLength = 100;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(237, 31);
-            textBox2.TabIndex = 14;
-            textBox2.UseSystemPasswordChar = true;
+            txtConfirSenha.Location = new Point(183, 433);
+            txtConfirSenha.Margin = new Padding(4, 5, 4, 5);
+            txtConfirSenha.MaxLength = 100;
+            txtConfirSenha.Name = "txtConfirSenha";
+            txtConfirSenha.Size = new Size(237, 31);
+            txtConfirSenha.TabIndex = 14;
+            txtConfirSenha.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -213,10 +212,10 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(610, 589);
-            Controls.Add(textBox2);
+            Controls.Add(txtConfirSenha);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(txtConfirEmail);
             Controls.Add(panel2);
             Controls.Add(inputUserSenha);
             Controls.Add(inputUserEmail);
@@ -251,9 +250,9 @@
         private Button btnCadUserSucesso;
         private Panel panel2;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtConfirEmail;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox txtConfirSenha;
         private Label label3;
     }
 }

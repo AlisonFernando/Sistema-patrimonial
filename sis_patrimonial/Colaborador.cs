@@ -13,6 +13,7 @@ namespace model
         string telefoneColaborador;
         string agendaColaborador;
         public bool ativo;
+        string senhaColaborador;
         public string setor_id { get; set; }
         public string equipamento_id { get; set; }
 
@@ -43,6 +44,11 @@ namespace model
         {
             get { return emailColaborador; }
             set { emailColaborador = value; }
+        }
+        public string SenhaColaborador
+        {
+            get { return senhaColaborador; }
+            set {  senhaColaborador = value;}
         }
     }
 }
