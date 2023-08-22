@@ -22,12 +22,11 @@ namespace DAL
                 ativo = "1";
             }
 
-            sql = "INSERT INTO tb_colaborador(Nome, Senha, Link_agenda, Telefone, Ativo_inativo, Email, setor_id) VALUES " +
-                    "(@NomeColaborador, @SenhaColaborador, @AgendaColaborador, @TelefoneColaborador, @Ativo_inativo, @EmailColaborador, @setor_id) ";
+            sql = "INSERT INTO tb_colaborador(Nome, Link_agenda, Telefone, Ativo_inativo, Email, setor_id) VALUES " +
+                    "(@NomeColaborador, @AgendaColaborador, @TelefoneColaborador, @Ativo_inativo, @EmailColaborador, @setor_id) ";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
-            cmd.Parameters.AddWithValue("@senhaColaborador", colaborador.SenhaColaborador);
             cmd.Parameters.AddWithValue("@agendaColaborador", colaborador.AgendaColaborador);
             cmd.Parameters.AddWithValue("@telefoneColaborador", colaborador.TelefoneColaborador);
             cmd.Parameters.AddWithValue("@ativo_inativo", ativo);

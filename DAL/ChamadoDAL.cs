@@ -18,7 +18,7 @@ namespace DAL
         public void CadastrarChamado(Chamado chamado)
         {
             sql = "INSERT INTO tb_chamado(Data_hora_chamado, Descricao, equipamento_id, colaborador_id) VALUES " +
-                    "(@DataHora, @Descricao, @equipamento_id, @colaborador_id) ";
+                    "(@DataHora, @Descricao, @equipamento_id, @colaborador_id)";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("DataHora", chamado.DataHora);

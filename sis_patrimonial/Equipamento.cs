@@ -14,16 +14,13 @@ namespace model
         public string etiqueta;
         public bool ativo;
         public string marca_id { get; set; }
+        public string colaborador_id { get; set; }
+
 
         public string Nome
         {
             get { return nome; }
             set { nome = value; }
-        }
-        public string Descricao
-        {
-            get { return descricao; }
-            set { descricao = value; }
         }
         public bool Ativo_inativo
         {
@@ -35,6 +32,11 @@ namespace model
             get { return valor; }
             set { valor = value; }
         }
+        public string Descricao
+        {
+            get { return descricao; }
+            set { descricao = value; }
+        }               
         public string Etiqueta
         {
             get { return etiqueta; }

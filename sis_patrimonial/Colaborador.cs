@@ -11,7 +11,6 @@ namespace model
         string nomeColaborador;
         string emailColaborador;
         string telefoneColaborador;
-        string senhaColaborador;
         string agendaColaborador;
         public bool ativo;
         public string setor_id { get; set; }
@@ -22,11 +21,6 @@ namespace model
         {
             get { return nomeColaborador; }
             set { nomeColaborador = value; }
-        }
-        public string SenhaColaborador
-        {
-            get { return senhaColaborador; }
-            set { senhaColaborador = value; }
         }
         public string AgendaColaborador
         {

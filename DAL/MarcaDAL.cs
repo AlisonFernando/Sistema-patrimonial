@@ -18,7 +18,7 @@ namespace DAL
         public void InserirMarca(Marca marca)
         {
 
-            sql = "INSERT INTO tb_marca(Nome_marca) VALUES (@Nome) ";
+            sql = "INSERT INTO tb_marca(Nome) VALUES (@Nome) ";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@nome", marca.Nome);
@@ -31,7 +31,7 @@ namespace DAL
         public bool VerificarMarca(String nomeMarca)
         {
             bool marcaExists = false;
-            string sql = "SELECT COUNT(*) FROM tb_marca WHERE Nome_marca = @nome";
+            string sql = "SELECT COUNT(*) FROM tb_marca WHERE Nome = @nome";
 
             using (MySqlConnection connection = mConn.AbrirConexao())
             {
