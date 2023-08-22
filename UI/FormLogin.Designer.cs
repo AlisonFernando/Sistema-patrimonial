@@ -29,151 +29,156 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
-            this.label1 = new System.Windows.Forms.Label();
-            this.input_email = new System.Windows.Forms.TextBox();
-            this.label_email = new System.Windows.Forms.Label();
-            this.input_senha = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btn_login = new System.Windows.Forms.Button();
-            this.btnCadUser = new System.Windows.Forms.Button();
-            this.btnEsqueciSenha = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new Label();
+            input_email = new TextBox();
+            label_email = new Label();
+            input_senha = new TextBox();
+            label2 = new Label();
+            btn_login = new Button();
+            btnCadUser = new Button();
+            btnEsqueciSenha = new Button();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(140, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Login";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.Control;
+            label1.Location = new Point(200, 15);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(97, 41);
+            label1.TabIndex = 0;
+            label1.Text = "Login";
+            label1.Click += label1_Click;
             // 
             // input_email
             // 
-            this.input_email.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.input_email.Location = new System.Drawing.Point(76, 97);
-            this.input_email.MaxLength = 40;
-            this.input_email.Name = "input_email";
-            this.input_email.Size = new System.Drawing.Size(197, 23);
-            this.input_email.TabIndex = 4;
+            input_email.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            input_email.Location = new Point(109, 162);
+            input_email.Margin = new Padding(4, 5, 4, 5);
+            input_email.MaxLength = 100;
+            input_email.Name = "input_email";
+            input_email.Size = new Size(280, 31);
+            input_email.TabIndex = 4;
             // 
             // label_email
             // 
-            this.label_email.AutoSize = true;
-            this.label_email.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label_email.Location = new System.Drawing.Point(76, 79);
-            this.label_email.Name = "label_email";
-            this.label_email.Size = new System.Drawing.Size(42, 15);
-            this.label_email.TabIndex = 3;
-            this.label_email.Text = "E-mail";
+            label_email.AutoSize = true;
+            label_email.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label_email.Location = new Point(109, 132);
+            label_email.Margin = new Padding(4, 0, 4, 0);
+            label_email.Name = "label_email";
+            label_email.Size = new Size(64, 25);
+            label_email.TabIndex = 3;
+            label_email.Text = "E-mail";
             // 
             // input_senha
             // 
-            this.input_senha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.input_senha.Location = new System.Drawing.Point(76, 141);
-            this.input_senha.MaxLength = 10;
-            this.input_senha.Name = "input_senha";
-            this.input_senha.Size = new System.Drawing.Size(197, 23);
-            this.input_senha.TabIndex = 6;
-            this.input_senha.UseSystemPasswordChar = true;
+            input_senha.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            input_senha.Location = new Point(109, 235);
+            input_senha.Margin = new Padding(4, 5, 4, 5);
+            input_senha.MaxLength = 100;
+            input_senha.Name = "input_senha";
+            input_senha.Size = new Size(280, 31);
+            input_senha.TabIndex = 6;
+            input_senha.UseSystemPasswordChar = true;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(78, 123);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 15);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Senha";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label2.Location = new Point(111, 205);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(60, 25);
+            label2.TabIndex = 5;
+            label2.Text = "Senha";
             // 
             // btn_login
             // 
-            this.btn_login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_login.BackColor = System.Drawing.Color.DarkGreen;
-            this.btn_login.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_login.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_login.Location = new System.Drawing.Point(74, 170);
-            this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(199, 41);
-            this.btn_login.TabIndex = 7;
-            this.btn_login.Text = "Entrar";
-            this.btn_login.UseVisualStyleBackColor = false;
-            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
-            this.btn_login.Enter += new System.EventHandler(this.btn_login_Click);
+            btn_login.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_login.BackColor = Color.DarkGreen;
+            btn_login.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_login.ForeColor = SystemColors.ButtonHighlight;
+            btn_login.Location = new Point(106, 283);
+            btn_login.Margin = new Padding(4, 5, 4, 5);
+            btn_login.Name = "btn_login";
+            btn_login.Size = new Size(284, 68);
+            btn_login.TabIndex = 7;
+            btn_login.Text = "Entrar";
+            btn_login.UseVisualStyleBackColor = false;
+            btn_login.Click += btn_login_Click;
+            btn_login.Enter += btn_login_Click;
             // 
             // btnCadUser
             // 
-            this.btnCadUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCadUser.BackColor = System.Drawing.Color.DarkGreen;
-            this.btnCadUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCadUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCadUser.Location = new System.Drawing.Point(74, 217);
-            this.btnCadUser.Name = "btnCadUser";
-            this.btnCadUser.Size = new System.Drawing.Size(199, 41);
-            this.btnCadUser.TabIndex = 8;
-            this.btnCadUser.Text = "Cadastrar";
-            this.btnCadUser.UseVisualStyleBackColor = false;
-            this.btnCadUser.Click += new System.EventHandler(this.btnCadUser_Click);
+            btnCadUser.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCadUser.BackColor = Color.DarkGreen;
+            btnCadUser.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCadUser.ForeColor = SystemColors.ButtonHighlight;
+            btnCadUser.Location = new Point(106, 362);
+            btnCadUser.Margin = new Padding(4, 5, 4, 5);
+            btnCadUser.Name = "btnCadUser";
+            btnCadUser.Size = new Size(284, 68);
+            btnCadUser.TabIndex = 8;
+            btnCadUser.Text = "Cadastrar";
+            btnCadUser.UseVisualStyleBackColor = false;
+            btnCadUser.Click += btnCadUser_Click;
             // 
             // btnEsqueciSenha
             // 
-            this.btnEsqueciSenha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEsqueciSenha.BackColor = System.Drawing.Color.DarkGreen;
-            this.btnEsqueciSenha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnEsqueciSenha.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnEsqueciSenha.Location = new System.Drawing.Point(74, 264);
-            this.btnEsqueciSenha.Name = "btnEsqueciSenha";
-            this.btnEsqueciSenha.Size = new System.Drawing.Size(199, 41);
-            this.btnEsqueciSenha.TabIndex = 9;
-            this.btnEsqueciSenha.Text = "Esqueci meus dados";
-            this.btnEsqueciSenha.UseVisualStyleBackColor = false;
-            this.btnEsqueciSenha.Click += new System.EventHandler(this.btnEsqueciSenha_Click);
+            btnEsqueciSenha.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnEsqueciSenha.BackColor = Color.DarkGreen;
+            btnEsqueciSenha.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEsqueciSenha.ForeColor = SystemColors.ButtonHighlight;
+            btnEsqueciSenha.Location = new Point(106, 440);
+            btnEsqueciSenha.Margin = new Padding(4, 5, 4, 5);
+            btnEsqueciSenha.Name = "btnEsqueciSenha";
+            btnEsqueciSenha.Size = new Size(284, 68);
+            btnEsqueciSenha.TabIndex = 9;
+            btnEsqueciSenha.Text = "Esqueci meus dados";
+            btnEsqueciSenha.UseVisualStyleBackColor = false;
+            btnEsqueciSenha.Click += btnEsqueciSenha_Click;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(363, 50);
-            this.panel1.TabIndex = 10;
+            panel1.BackColor = Color.DarkGreen;
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4, 5, 4, 5);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(519, 83);
+            panel1.TabIndex = 10;
             // 
             // FormLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 342);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnEsqueciSenha);
-            this.Controls.Add(this.btnCadUser);
-            this.Controls.Add(this.btn_login);
-            this.Controls.Add(this.input_senha);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.input_email);
-            this.Controls.Add(this.label_email);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "FormLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormLogin";
-            this.Load += new System.EventHandler(this.FormLogin_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(519, 570);
+            Controls.Add(panel1);
+            Controls.Add(btnEsqueciSenha);
+            Controls.Add(btnCadUser);
+            Controls.Add(btn_login);
+            Controls.Add(input_senha);
+            Controls.Add(label2);
+            Controls.Add(input_email);
+            Controls.Add(label_email);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 5, 4, 5);
+            MaximizeBox = false;
+            Name = "FormLogin";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormLogin";
+            Load += FormLogin_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

@@ -46,10 +46,10 @@ namespace UI
 
             //Validação se os dados estão corretos
             LoginBLL validarCampos = new LoginBLL();
-            
+
             string ValidarEmail = validarCampos.ValidarEmail(login.Email);
             string ValidarSenha = validarCampos.ValidarSenha(login.Senha);
-           
+
             //Valida se o e-mail digitado está correto
             if (ValidarEmail == "Email correto" && ValidarSenha == "Senha correta")
             {
