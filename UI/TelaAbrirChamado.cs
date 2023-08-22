@@ -24,6 +24,26 @@ namespace UI
         private void btn_pesquisar_Click(object sender, EventArgs e)
         {
 
+            if (selectEtiqueta.SelectedIndex != -1)
+            {
+                EquipamentoDAL equipamentoDAL = new EquipamentoDAL();
+                
+
+                // Obtenha o ID do equipamento selecionado na etiqueta
+                //string nomeColaborador = colaboradorDAL.ObterNomeColaboradorPorId.SelectedValue.ToString();
+                
+                // Use o ID do equipamento para buscar o nome do equipamento correspondente
+                //string nomeEquipamento = equipamentoDAL.ObterNomeEquipamentoPorId(idEquipamento);
+
+                // Exiba o nome do equipamento no TextBox
+                //txtEquip.Text = nomeEquipamento;
+                //txtColab.Text = nomeColaborador;
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma etiqueta antes de pesquisar.");
+            }
+
         }
 
         private void TelaAbrirChamado_Load(object sender, EventArgs e)
@@ -32,21 +52,13 @@ namespace UI
         }
         private void CarregarEtiquetasComboBox()
         {
-            //Carregando as etiquetas de equipamentos disponiveis
-            if (selectEtiqueta.SelectedIndex != -1)
-            {
-                // Supondo que você tenha um método para obter informações do equipamento e do colaborador
-                string idEtiqueta = selectEtiqueta.SelectedValue.ToString();
+            ChamadoBLL chamadoBLL = new ChamadoBLL();
+            DataTable dt = chamadoBLL.ChamarEtiquetas();
 
-                EquipamentoDAL equipamentoDAL = new EquipamentoDAL();
-                string nomeEquipamento = equipamentoDAL.ObterNomeEquipamentoPorEtiqueta(idEtiqueta);
-                txtEquip.Text = nomeEquipamento;
-            }
-            else
-            {
-                MessageBox.Show("Selecione uma etiqueta antes de pesquisar");
-                return;
-            }
-        }   
+            selectEtiqueta.DisplayMember = "Etiqueta_identificacao";
+            selectEtiqueta.ValueMember = "ID_equipamento";
+            selectEtiqueta.DataSource = dt;
+        }
+
     }
 }

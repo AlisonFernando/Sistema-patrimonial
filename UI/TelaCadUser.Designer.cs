@@ -40,6 +40,10 @@
             inputUserSenha = new TextBox();
             panel2 = new Panel();
             label1 = new Label();
+            textBox1 = new TextBox();
+            label2 = new Label();
+            textBox2 = new TextBox();
+            label3 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -47,27 +51,30 @@
             // txtUserNome
             // 
             txtUserNome.AutoSize = true;
-            txtUserNome.Location = new Point(128, 67);
+            txtUserNome.Location = new Point(183, 112);
+            txtUserNome.Margin = new Padding(4, 0, 4, 0);
             txtUserNome.Name = "txtUserNome";
-            txtUserNome.Size = new Size(40, 15);
+            txtUserNome.Size = new Size(61, 25);
             txtUserNome.TabIndex = 0;
             txtUserNome.Text = "Nome";
             // 
             // txtEmailUser
             // 
             txtEmailUser.AutoSize = true;
-            txtEmailUser.Location = new Point(128, 111);
+            txtEmailUser.Location = new Point(183, 185);
+            txtEmailUser.Margin = new Padding(4, 0, 4, 0);
             txtEmailUser.Name = "txtEmailUser";
-            txtEmailUser.Size = new Size(41, 15);
+            txtEmailUser.Size = new Size(61, 25);
             txtEmailUser.TabIndex = 1;
             txtEmailUser.Text = "E-mail";
             // 
             // txtUserSenha
             // 
             txtUserSenha.AutoSize = true;
-            txtUserSenha.Location = new Point(128, 155);
+            txtUserSenha.Location = new Point(183, 329);
+            txtUserSenha.Margin = new Padding(4, 0, 4, 0);
             txtUserSenha.Name = "txtUserSenha";
-            txtUserSenha.Size = new Size(39, 15);
+            txtUserSenha.Size = new Size(60, 25);
             txtUserSenha.TabIndex = 2;
             txtUserSenha.Text = "Senha";
             // 
@@ -76,10 +83,11 @@
             panel1.Controls.Add(btnCancelarCadUser);
             panel1.Controls.Add(btnCadUserSucesso);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 217);
+            panel1.Location = new Point(0, 506);
+            panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Padding = new Padding(6);
-            panel1.Size = new Size(427, 50);
+            panel1.Padding = new Padding(9, 10, 9, 10);
+            panel1.Size = new Size(610, 83);
             panel1.TabIndex = 3;
             // 
             // btnCancelarCadUser
@@ -87,9 +95,10 @@
             btnCancelarCadUser.BackColor = Color.DarkGreen;
             btnCancelarCadUser.Dock = DockStyle.Left;
             btnCancelarCadUser.ForeColor = SystemColors.Control;
-            btnCancelarCadUser.Location = new Point(6, 6);
+            btnCancelarCadUser.Location = new Point(9, 10);
+            btnCancelarCadUser.Margin = new Padding(4, 5, 4, 5);
             btnCancelarCadUser.Name = "btnCancelarCadUser";
-            btnCancelarCadUser.Size = new Size(150, 38);
+            btnCancelarCadUser.Size = new Size(214, 63);
             btnCancelarCadUser.TabIndex = 1;
             btnCancelarCadUser.Text = "Cancelar";
             btnCancelarCadUser.UseVisualStyleBackColor = false;
@@ -99,9 +108,10 @@
             btnCadUserSucesso.BackColor = Color.DarkGreen;
             btnCadUserSucesso.Dock = DockStyle.Right;
             btnCadUserSucesso.ForeColor = SystemColors.Control;
-            btnCadUserSucesso.Location = new Point(271, 6);
+            btnCadUserSucesso.Location = new Point(387, 10);
+            btnCadUserSucesso.Margin = new Padding(4, 5, 4, 5);
             btnCadUserSucesso.Name = "btnCadUserSucesso";
-            btnCadUserSucesso.Size = new Size(150, 38);
+            btnCadUserSucesso.Size = new Size(214, 63);
             btnCadUserSucesso.TabIndex = 0;
             btnCadUserSucesso.Text = "Cadastrar";
             btnCadUserSucesso.UseVisualStyleBackColor = false;
@@ -109,24 +119,29 @@
             // 
             // inputUserNome
             // 
-            inputUserNome.Location = new Point(128, 85);
+            inputUserNome.Location = new Point(183, 142);
+            inputUserNome.Margin = new Padding(4, 5, 4, 5);
+            inputUserNome.MaxLength = 100;
             inputUserNome.Name = "inputUserNome";
-            inputUserNome.Size = new Size(167, 23);
+            inputUserNome.Size = new Size(237, 31);
             inputUserNome.TabIndex = 4;
             // 
             // inputUserEmail
             // 
-            inputUserEmail.Location = new Point(128, 129);
+            inputUserEmail.Location = new Point(183, 215);
+            inputUserEmail.Margin = new Padding(4, 5, 4, 5);
+            inputUserEmail.MaxLength = 100;
             inputUserEmail.Name = "inputUserEmail";
-            inputUserEmail.Size = new Size(167, 23);
+            inputUserEmail.Size = new Size(237, 31);
             inputUserEmail.TabIndex = 5;
             // 
             // inputUserSenha
             // 
-            inputUserSenha.Location = new Point(128, 173);
-            inputUserSenha.MaxLength = 10;
+            inputUserSenha.Location = new Point(183, 359);
+            inputUserSenha.Margin = new Padding(4, 5, 4, 5);
+            inputUserSenha.MaxLength = 100;
             inputUserSenha.Name = "inputUserSenha";
-            inputUserSenha.Size = new Size(167, 23);
+            inputUserSenha.Size = new Size(237, 31);
             inputUserSenha.TabIndex = 6;
             inputUserSenha.UseSystemPasswordChar = true;
             // 
@@ -136,8 +151,9 @@
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(427, 50);
+            panel2.Size = new Size(610, 83);
             panel2.TabIndex = 10;
             // 
             // label1
@@ -145,17 +161,62 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.Control;
-            label1.Location = new Point(128, 9);
+            label1.Location = new Point(183, 15);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(178, 28);
+            label1.Size = new Size(265, 41);
             label1.TabIndex = 11;
             label1.Text = "Cadastrar usuário";
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(183, 284);
+            textBox1.Margin = new Padding(4, 5, 4, 5);
+            textBox1.MaxLength = 100;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(237, 31);
+            textBox1.TabIndex = 11;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(183, 254);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(145, 25);
+            label2.TabIndex = 12;
+            label2.Text = "Confirmar e-mail";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(183, 433);
+            textBox2.Margin = new Padding(4, 5, 4, 5);
+            textBox2.MaxLength = 100;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(237, 31);
+            textBox2.TabIndex = 14;
+            textBox2.UseSystemPasswordChar = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(183, 403);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(142, 25);
+            label3.TabIndex = 13;
+            label3.Text = "Confirmar senha";
+            // 
             // TelaCadUser
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(427, 267);
+            ClientSize = new Size(610, 589);
+            Controls.Add(textBox2);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(textBox1);
             Controls.Add(panel2);
             Controls.Add(inputUserSenha);
             Controls.Add(inputUserEmail);
@@ -165,6 +226,7 @@
             Controls.Add(txtEmailUser);
             Controls.Add(txtUserNome);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             Name = "TelaCadUser";
             StartPosition = FormStartPosition.CenterScreen;
@@ -189,5 +251,9 @@
         private Button btnCadUserSucesso;
         private Panel panel2;
         private Label label1;
+        private TextBox textBox1;
+        private Label label2;
+        private TextBox textBox2;
+        private Label label3;
     }
 }

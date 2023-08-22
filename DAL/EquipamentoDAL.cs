@@ -87,19 +87,16 @@ namespace DAL
                 throw;
             }
         }
-        public string ObterNomeEquipamentoPorEtiqueta(string idEtiqueta)
+        public string ObterNomeEquipamentoPorId(string idEquipamento)
         {
             string nomeEquipamento = string.Empty;
 
+            string sql = "SELECT Nome_equipamento FROM tb_equipamentos WHERE ID_equipamento = @id";
             using (MySqlConnection connection = mConn.AbrirConexao())
+            using (MySqlCommand cmd = new MySqlCommand(sql, connection))
             {
-                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-                {
-                    string sql = "SELECT Nome_equipamento FROM tb_equipamentos WHERE Etiqueta_identificacao = @etiqueta";
-
-                    cmd.Parameters.AddWithValue("@etiqueta", idEtiqueta);
-                    nomeEquipamento = cmd.ExecuteScalar() as string;
-                }
+                cmd.Parameters.AddWithValue("@id", idEquipamento);
+                nomeEquipamento = cmd.ExecuteScalar() as string;
             }
             return nomeEquipamento;
         }

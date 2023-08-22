@@ -79,5 +79,18 @@ namespace DAL
                 }
             }
         }
+        public string ObterNomeColaboradorPorId(string idcolaborador)
+        {
+            string nomeColaborador = string.Empty;
+
+            string sql = "SELECT Nome_colaborador FROM tb_colaborador WHERE ID_colaborador = @id";
+            using (MySqlConnection connection = mConn.AbrirConexao())
+            using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@id", idcolaborador);
+                nomeColaborador = cmd.ExecuteScalar() as string;
+            }
+            return nomeColaborador;
+        }
     }
 }
