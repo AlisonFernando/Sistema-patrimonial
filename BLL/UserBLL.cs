@@ -10,6 +10,8 @@ namespace BLL
 {
     public class UserBLL
     {
+        private UserDAL userDAL = new UserDAL();
+
         public string CadUser(Usuario usuario)
         {
             UserDAL userDAL = new UserDAL();
@@ -32,6 +34,20 @@ namespace BLL
             {
                 return "Email não existe";
             }
+        }
+        public List<Usuario> GetUsuarios()
+        {
+            return userDAL.GetUsuarios();
+        }
+
+        public void UpdateUsuario(Usuario usuario)
+        {
+            userDAL.UpdateUsuario(usuario);
+        }
+
+        public void DeleteUsuario(int id_usuario)
+        {
+            userDAL.DeleteUsuario(id_usuario);
         }
 
     }

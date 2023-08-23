@@ -29,6 +29,8 @@ namespace UI
             usuario.Nome = inputUserNome.Text;
             usuario.Email = inputUserEmail.Text;
             usuario.Senha = inputUserSenha.Text;
+            usuario.ConfirmarEmail = txtConfirEmail.Text;
+            usuario.ConfirmarSenha = txtConfirSenha.Text;
 
             // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
             if (usuario.Nome.Trim().Length <= 0)
@@ -57,14 +59,14 @@ namespace UI
                 return;
             }
 
-            
+
             //Verifica se os campos de confirmação batem com o digitado
-            if(txtConfirEmail != inputUserEmail)
+            if (usuario.ConfirmarEmail != usuario.Email)
             {
                 MessageBox.Show("E-mail errado, verifique e tente novamente");
                 return;
             }
-            else if(txtConfirSenha != inputUserSenha)
+            else if (usuario.ConfirmarSenha != usuario.Senha)
             {
                 MessageBox.Show("Senha digitada está incorreta, tente novamente");
                 return;
@@ -92,6 +94,20 @@ namespace UI
 
                 }
             }
+        }
+
+        private void btn_limpar_Click(object sender, EventArgs e)
+        {
+            inputUserNome.Text = string.Empty;
+            inputUserEmail.Text = string.Empty;
+            inputUserSenha.Text = string.Empty;
+            txtConfirEmail.Text = string.Empty;
+            txtConfirSenha.Text = string.Empty;
+        }
+
+        private void btnCancelarCadUser_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

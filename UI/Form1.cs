@@ -49,5 +49,11 @@ namespace UI
             UI.TelaCadastrarMarca telaCadastrarMarca = new UI.TelaCadastrarMarca();
             telaCadastrarMarca.ShowDialog();
         }
+
+        private void CadUserMenu_Click(object sender, EventArgs e)
+        {
+            UI.TelaCadUser telaCadUser = new UI.TelaCadUser();
+            telaCadUser.ShowDialog();
+        }
     }
 }

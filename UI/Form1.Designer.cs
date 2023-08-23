@@ -35,6 +35,7 @@
             MenuCadColaborador = new ToolStripMenuItem();
             MenuCadEquip = new ToolStripMenuItem();
             MenuCadChamado = new ToolStripMenuItem();
+            marcaDeEquipamentoToolStripMenuItem = new ToolStripMenuItem();
             visualizarToolStripMenuItem = new ToolStripMenuItem();
             MenuInfoColaborador = new ToolStripMenuItem();
             MenuInfoEquip = new ToolStripMenuItem();
@@ -53,7 +54,7 @@
             alison = new ToolStripStatusLabel();
             relogio = new System.Windows.Forms.Timer(components);
             dataGridView1 = new DataGridView();
-            marcaDeEquipamentoToolStripMenuItem = new ToolStripMenuItem();
+            CadUserMenu = new ToolStripMenuItem();
             MenuPrincipal.SuspendLayout();
             HeaderDescricao.SuspendLayout();
             FooterPrincipal.SuspendLayout();
@@ -62,64 +63,73 @@
             // 
             // MenuPrincipal
             // 
+            MenuPrincipal.ImageScalingSize = new Size(24, 24);
             MenuPrincipal.Items.AddRange(new ToolStripItem[] { cadastrarToolStripMenuItem, visualizarToolStripMenuItem, relatóriosToolStripMenuItem, sairToolStripMenuItem });
             MenuPrincipal.Location = new Point(0, 0);
             MenuPrincipal.Name = "MenuPrincipal";
-            MenuPrincipal.Size = new Size(800, 24);
+            MenuPrincipal.Padding = new Padding(9, 3, 0, 3);
+            MenuPrincipal.Size = new Size(1143, 35);
             MenuPrincipal.TabIndex = 0;
             MenuPrincipal.Text = "menuStrip1";
             // 
             // cadastrarToolStripMenuItem
             // 
-            cadastrarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuCadColaborador, MenuCadEquip, MenuCadChamado, marcaDeEquipamentoToolStripMenuItem });
+            cadastrarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuCadColaborador, MenuCadEquip, MenuCadChamado, marcaDeEquipamentoToolStripMenuItem, CadUserMenu });
             cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
-            cadastrarToolStripMenuItem.Size = new Size(69, 20);
+            cadastrarToolStripMenuItem.Size = new Size(103, 29);
             cadastrarToolStripMenuItem.Text = "Cadastrar";
             // 
             // MenuCadColaborador
             // 
             MenuCadColaborador.Name = "MenuCadColaborador";
-            MenuCadColaborador.Size = new Size(197, 22);
+            MenuCadColaborador.Size = new Size(298, 34);
             MenuCadColaborador.Text = "Colaboradores";
             MenuCadColaborador.Click += MenuCadColaborador_Click;
             // 
             // MenuCadEquip
             // 
             MenuCadEquip.Name = "MenuCadEquip";
-            MenuCadEquip.Size = new Size(197, 22);
+            MenuCadEquip.Size = new Size(298, 34);
             MenuCadEquip.Text = "Equipamentos";
             MenuCadEquip.Click += MenuCadEquip_Click;
             // 
             // MenuCadChamado
             // 
             MenuCadChamado.Name = "MenuCadChamado";
-            MenuCadChamado.Size = new Size(197, 22);
+            MenuCadChamado.Size = new Size(298, 34);
             MenuCadChamado.Text = "Chamado";
             MenuCadChamado.Click += MenuCadChamado_Click;
+            // 
+            // marcaDeEquipamentoToolStripMenuItem
+            // 
+            marcaDeEquipamentoToolStripMenuItem.Name = "marcaDeEquipamentoToolStripMenuItem";
+            marcaDeEquipamentoToolStripMenuItem.Size = new Size(298, 34);
+            marcaDeEquipamentoToolStripMenuItem.Text = "Marca de equipamento";
+            marcaDeEquipamentoToolStripMenuItem.Click += marcaDeEquipamentoToolStripMenuItem_Click;
             // 
             // visualizarToolStripMenuItem
             // 
             visualizarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuInfoColaborador, MenuInfoEquip, MenuUserCad });
             visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
-            visualizarToolStripMenuItem.Size = new Size(68, 20);
+            visualizarToolStripMenuItem.Size = new Size(101, 29);
             visualizarToolStripMenuItem.Text = "Visualizar";
             // 
             // MenuInfoColaborador
             // 
             MenuInfoColaborador.Name = "MenuInfoColaborador";
-            MenuInfoColaborador.Size = new Size(185, 22);
+            MenuInfoColaborador.Size = new Size(283, 34);
             MenuInfoColaborador.Text = "Info Colaboradores";
             // 
             // MenuInfoEquip
             // 
             MenuInfoEquip.Name = "MenuInfoEquip";
-            MenuInfoEquip.Size = new Size(185, 22);
+            MenuInfoEquip.Size = new Size(283, 34);
             MenuInfoEquip.Text = "Info Equipamentos";
             // 
             // MenuUserCad
             // 
             MenuUserCad.Name = "MenuUserCad";
-            MenuUserCad.Size = new Size(185, 22);
+            MenuUserCad.Size = new Size(283, 34);
             MenuUserCad.Text = "Usuarios cadastrados";
             MenuUserCad.Click += MenuUserCad_Click;
             // 
@@ -127,39 +137,39 @@
             // 
             relatóriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuRelatorioEquip, MenuRelatorioPrecoEquip, MenuRelatorioColabAtivo });
             relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
-            relatóriosToolStripMenuItem.Size = new Size(71, 20);
+            relatóriosToolStripMenuItem.Size = new Size(106, 29);
             relatóriosToolStripMenuItem.Text = "Relatórios";
             // 
             // MenuRelatorioEquip
             // 
             MenuRelatorioEquip.Name = "MenuRelatorioEquip";
-            MenuRelatorioEquip.Size = new Size(185, 22);
+            MenuRelatorioEquip.Size = new Size(283, 34);
             MenuRelatorioEquip.Text = "Qtd equipamentos";
             // 
             // MenuRelatorioPrecoEquip
             // 
             MenuRelatorioPrecoEquip.Name = "MenuRelatorioPrecoEquip";
-            MenuRelatorioPrecoEquip.Size = new Size(185, 22);
+            MenuRelatorioPrecoEquip.Size = new Size(283, 34);
             MenuRelatorioPrecoEquip.Text = "Preço equipamentos";
             // 
             // MenuRelatorioColabAtivo
             // 
             MenuRelatorioColabAtivo.Name = "MenuRelatorioColabAtivo";
-            MenuRelatorioColabAtivo.Size = new Size(185, 22);
+            MenuRelatorioColabAtivo.Size = new Size(283, 34);
             MenuRelatorioColabAtivo.Text = "Colaboradores ativos";
             // 
             // sairToolStripMenuItem
             // 
             sairToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuSair });
             sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            sairToolStripMenuItem.Size = new Size(38, 20);
+            sairToolStripMenuItem.Size = new Size(57, 29);
             sairToolStripMenuItem.Text = "Sair";
             // 
             // MenuSair
             // 
             MenuSair.Name = "MenuSair";
             MenuSair.ShortcutKeys = Keys.F12;
-            MenuSair.Size = new Size(118, 22);
+            MenuSair.Size = new Size(184, 34);
             MenuSair.Text = "&Sair";
             MenuSair.Click += sairToolStripMenuItem1_Click;
             // 
@@ -167,11 +177,13 @@
             // 
             HeaderDescricao.BackColor = Color.Green;
             HeaderDescricao.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            HeaderDescricao.ImageScalingSize = new Size(24, 24);
             HeaderDescricao.Items.AddRange(new ToolStripItem[] { label });
-            HeaderDescricao.Location = new Point(0, 24);
+            HeaderDescricao.Location = new Point(0, 35);
             HeaderDescricao.Name = "HeaderDescricao";
+            HeaderDescricao.Padding = new Padding(0, 0, 3, 0);
             HeaderDescricao.RightToLeft = RightToLeft.No;
-            HeaderDescricao.Size = new Size(800, 25);
+            HeaderDescricao.Size = new Size(1143, 27);
             HeaderDescricao.TabIndex = 1;
             HeaderDescricao.Text = "toolStrip1";
             // 
@@ -181,15 +193,17 @@
             label.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label.ForeColor = SystemColors.ButtonHighlight;
             label.Name = "label";
-            label.Size = new Size(459, 22);
+            label.Size = new Size(658, 22);
             label.Text = "Sistema de controle patrimonial e de colaboradores da Scot Consultoria";
             // 
             // FooterPrincipal
             // 
+            FooterPrincipal.ImageScalingSize = new Size(24, 24);
             FooterPrincipal.Items.AddRange(new ToolStripItem[] { Data, Horario, alison });
-            FooterPrincipal.Location = new Point(0, 428);
+            FooterPrincipal.Location = new Point(0, 721);
             FooterPrincipal.Name = "FooterPrincipal";
-            FooterPrincipal.Size = new Size(800, 22);
+            FooterPrincipal.Padding = new Padding(1, 0, 20, 0);
+            FooterPrincipal.Size = new Size(1143, 29);
             FooterPrincipal.TabIndex = 2;
             FooterPrincipal.Text = "statusStrip1";
             // 
@@ -197,21 +211,21 @@
             // 
             Data.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Data.Name = "Data";
-            Data.Size = new Size(73, 17);
+            Data.Size = new Size(104, 22);
             Data.Text = "Data atual";
             // 
             // Horario
             // 
             Horario.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Horario.Name = "Horario";
-            Horario.Size = new Size(52, 17);
+            Horario.Size = new Size(75, 22);
             Horario.Text = "horario";
             // 
             // alison
             // 
             alison.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             alison.Name = "alison";
-            alison.Size = new Size(226, 17);
+            alison.Size = new Size(324, 22);
             alison.Text = "Desenvolvido por: Alison Fernando";
             // 
             // relogio
@@ -222,30 +236,34 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 65);
+            dataGridView1.Location = new Point(17, 108);
+            dataGridView1.Margin = new Padding(4, 5, 4, 5);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(272, 51);
+            dataGridView1.Size = new Size(389, 85);
             dataGridView1.TabIndex = 3;
             // 
-            // marcaDeEquipamentoToolStripMenuItem
+            // CadUserMenu
             // 
-            marcaDeEquipamentoToolStripMenuItem.Name = "marcaDeEquipamentoToolStripMenuItem";
-            marcaDeEquipamentoToolStripMenuItem.Size = new Size(197, 22);
-            marcaDeEquipamentoToolStripMenuItem.Text = "Marca de equipamento";
-            marcaDeEquipamentoToolStripMenuItem.Click += marcaDeEquipamentoToolStripMenuItem_Click;
+            CadUserMenu.Name = "CadUserMenu";
+            CadUserMenu.RightToLeft = RightToLeft.No;
+            CadUserMenu.Size = new Size(298, 34);
+            CadUserMenu.Text = "Usuário";
+            CadUserMenu.Click += CadUserMenu_Click;
             // 
             // TelaPrincipal
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1143, 750);
             Controls.Add(dataGridView1);
             Controls.Add(FooterPrincipal);
             Controls.Add(HeaderDescricao);
             Controls.Add(MenuPrincipal);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = MenuPrincipal;
+            Margin = new Padding(4, 5, 4, 5);
             Name = "TelaPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Principal";
@@ -287,5 +305,6 @@
         private ToolStripMenuItem MenuUserCad;
         private ToolStripMenuItem MenuCadChamado;
         private ToolStripMenuItem marcaDeEquipamentoToolStripMenuItem;
+        private ToolStripMenuItem CadUserMenu;
     }
 }

@@ -11,6 +11,9 @@ namespace model
         public string nome;
         public string email;
         public string senha;
+        public string confirmEmail;
+        public string confirmSenha;
+        public string SenhaHash { get; set; }
 
         public string Nome
         {
@@ -26,6 +29,15 @@ namespace model
             set { senha = value; }
         }
 
+        public string ConfirmarSenha
+        {   get { return confirmEmail; }
+            set { confirmEmail = value; }
+        }
 
+        public string ConfirmarEmail
+        {
+            get { return confirmSenha; }
+            set { confirmSenha = value; }
+        }
     }
 }

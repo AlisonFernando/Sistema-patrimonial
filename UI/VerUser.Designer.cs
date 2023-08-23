@@ -29,24 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerUser));
-            dataGridView1 = new DataGridView();
             panel2 = new Panel();
             header = new Label();
             panel1 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            MostrarUsuarios = new DataGridView();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(31, 70);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(744, 302);
-            dataGridView1.TabIndex = 0;
             // 
             // panel2
             // 
@@ -54,8 +43,9 @@
             panel2.Controls.Add(header);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(800, 50);
+            panel2.Size = new Size(1143, 83);
             panel2.TabIndex = 11;
             // 
             // header
@@ -63,9 +53,10 @@
             header.AutoSize = true;
             header.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             header.ForeColor = SystemColors.Control;
-            header.Location = new Point(322, 9);
+            header.Location = new Point(397, 20);
+            header.Margin = new Padding(4, 0, 4, 0);
             header.Name = "header";
-            header.Size = new Size(212, 28);
+            header.Size = new Size(315, 41);
             header.TabIndex = 11;
             header.Text = "Usuarios cadastrados";
             header.TextAlign = ContentAlignment.TopCenter;
@@ -73,36 +64,47 @@
             // panel1
             // 
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 378);
+            panel1.Location = new Point(0, 630);
+            panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 72);
+            panel1.Size = new Size(1143, 120);
             panel1.TabIndex = 12;
+            // 
+            // MostrarUsuarios
+            // 
+            MostrarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            MostrarUsuarios.Location = new Point(35, 101);
+            MostrarUsuarios.Name = "MostrarUsuarios";
+            MostrarUsuarios.RowHeadersWidth = 62;
+            MostrarUsuarios.RowTemplate.Height = 33;
+            MostrarUsuarios.Size = new Size(1060, 329);
+            MostrarUsuarios.TabIndex = 13;
             // 
             // VerUser
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1143, 750);
+            Controls.Add(MostrarUsuarios);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Controls.Add(dataGridView1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             Name = "VerUser";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Consultar usuarios";
             Load += VerUser_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView dataGridView1;
         private Panel panel2;
         private Label header;
         private Panel panel1;
+        private DataGridView MostrarUsuarios;
     }
 }

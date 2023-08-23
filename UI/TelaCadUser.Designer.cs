@@ -44,6 +44,7 @@
             label2 = new Label();
             txtConfirSenha = new TextBox();
             label3 = new Label();
+            btn_limpar = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -55,7 +56,7 @@
             txtUserNome.Margin = new Padding(4, 0, 4, 0);
             txtUserNome.Name = "txtUserNome";
             txtUserNome.Size = new Size(61, 25);
-            txtUserNome.TabIndex = 0;
+            txtUserNome.TabIndex = 22;
             txtUserNome.Text = "Nome";
             // 
             // txtEmailUser
@@ -102,6 +103,7 @@
             btnCancelarCadUser.TabIndex = 1;
             btnCancelarCadUser.Text = "Cancelar";
             btnCancelarCadUser.UseVisualStyleBackColor = false;
+            btnCancelarCadUser.Click += btnCancelarCadUser_Click;
             // 
             // btnCadUserSucesso
             // 
@@ -124,7 +126,7 @@
             inputUserNome.MaxLength = 100;
             inputUserNome.Name = "inputUserNome";
             inputUserNome.Size = new Size(237, 31);
-            inputUserNome.TabIndex = 4;
+            inputUserNome.TabIndex = 1;
             // 
             // inputUserEmail
             // 
@@ -133,7 +135,7 @@
             inputUserEmail.MaxLength = 100;
             inputUserEmail.Name = "inputUserEmail";
             inputUserEmail.Size = new Size(237, 31);
-            inputUserEmail.TabIndex = 5;
+            inputUserEmail.TabIndex = 2;
             // 
             // inputUserSenha
             // 
@@ -142,7 +144,7 @@
             inputUserSenha.MaxLength = 100;
             inputUserSenha.Name = "inputUserSenha";
             inputUserSenha.Size = new Size(237, 31);
-            inputUserSenha.TabIndex = 6;
+            inputUserSenha.TabIndex = 4;
             inputUserSenha.UseSystemPasswordChar = true;
             // 
             // panel2
@@ -175,7 +177,7 @@
             txtConfirEmail.MaxLength = 100;
             txtConfirEmail.Name = "txtConfirEmail";
             txtConfirEmail.Size = new Size(237, 31);
-            txtConfirEmail.TabIndex = 11;
+            txtConfirEmail.TabIndex = 3;
             // 
             // label2
             // 
@@ -194,7 +196,7 @@
             txtConfirSenha.MaxLength = 100;
             txtConfirSenha.Name = "txtConfirSenha";
             txtConfirSenha.Size = new Size(237, 31);
-            txtConfirSenha.TabIndex = 14;
+            txtConfirSenha.TabIndex = 5;
             txtConfirSenha.UseSystemPasswordChar = true;
             // 
             // label3
@@ -207,11 +209,24 @@
             label3.TabIndex = 13;
             label3.Text = "Confirmar senha";
             // 
+            // btn_limpar
+            // 
+            btn_limpar.BackColor = Color.DarkGreen;
+            btn_limpar.ForeColor = Color.White;
+            btn_limpar.Location = new Point(448, 433);
+            btn_limpar.Name = "btn_limpar";
+            btn_limpar.Size = new Size(126, 40);
+            btn_limpar.TabIndex = 15;
+            btn_limpar.Text = "Limpar";
+            btn_limpar.UseVisualStyleBackColor = false;
+            btn_limpar.Click += btn_limpar_Click;
+            // 
             // TelaCadUser
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(610, 589);
+            Controls.Add(btn_limpar);
             Controls.Add(txtConfirSenha);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -254,5 +269,6 @@
         private Label label2;
         private TextBox txtConfirSenha;
         private Label label3;
+        private Button btn_limpar;
     }
 }
