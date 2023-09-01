@@ -20,10 +20,11 @@ namespace DAL
         ConexaoDB mConn = new ConexaoDB();
         string sql;
         MySqlCommand cmd;
+        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
 
         public void InserirUsuario(Usuario usuario)
         {
-            string senhaNaoCriptografada = usuario.Senha; // Supondo que você tenha uma propriedade 'Senha' na classe Usuario
+            string senhaNaoCriptografada = usuario.Senha;
             string senhaCriptografada = HashPassword(senhaNaoCriptografada);
             usuario.SenhaHash = senhaCriptografada;
 
@@ -64,29 +65,47 @@ namespace DAL
             }
             return emailExists;
         }
-
-        public List<Usuario> GetUsuarios()
+        
+        public string ObterSenhaCriptografada(string usuario)
         {
-            using (IDbConnection connection = mConn.AbrirConexao()) {
-                return connection.Query<Usuario>("SELECT id_usuario, Nome, Email, Senha FROM tb_usuario").ToList();
+            string sql = "SELECT Senha FROM tb_usuario WHERE Email = @usuario";
+            using (MySqlConnection connection = mConn.AbrirConexao())
+            {
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@usuario", usuario);
+                    return command.ExecuteScalar() as string;
+                }
             }
         }
-
+        
+        public List<Usuario> GetUsuarios()
+        {
+            
+            using(IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                return dbConnection.Query<Usuario>("SELECT id_usuario, Nome, Email, Senha FROM tb_usuario").ToList();
+            }
+        }
         public void UpdateUsuario(Usuario usuario)
         {
-            using (IDbConnection connection = mConn.AbrirConexao())
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
-                connection.Execute("UPDATE tb_usuario SET Nome = @Nome, Email = @Email WHERE id_usuario = @id_usuario", usuario);
+                dbConnection.Open();
+                string query = "UPDATE tb_usuario SET Nome = @Nome, Email = @Email WHERE id_usuario = @id_usuario";
+                dbConnection.Execute(query, usuario);
             }
         }
 
         public void DeleteUsuario(int id_usuario)
         {
-            using (IDbConnection connection = mConn.AbrirConexao())
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
-                connection.Execute("DELETE FROM tb_usuario WHERE id_usuario = @id_usuario", new { id_usuario });
+                dbConnection.Open();
+                string query = "DELETE FROM tb_usuario WHERE id_usuario = @id_usuario";
+                dbConnection.Execute(query, new { id_usuario });
             }
         }
-
     }
 }

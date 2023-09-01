@@ -8,72 +8,48 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using DAL;
 using model;
 
 namespace UI
 {
     public partial class FormLogin : Form
     {
+        public UserBLL userBLL = new UserBLL();
         public FormLogin()
         {
             InitializeComponent();
         }
 
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_login_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
+            string email = input_email.Text;
+            string senha = input_senha.Text;
 
-            login.Email = input_email.Text;
-            login.Senha = input_senha.Text;
-
-            //Valida se tem espaço em branco nos inputs
-
-            if (login.Email.Trim().Length <= 0)
+            if (email.Trim().Length <= 0)
             {
-                MessageBox.Show("Verifique o e-mail e tente novamente");
+                MessageBox.Show("Digite um email e tente novamente");
                 return;
             }
-            else if (login.Senha.Trim().Length <= 0)
+            else if (senha.Trim().Length <= 0)
             {
-                MessageBox.Show("Verifique a senha e tente novamente");
+                MessageBox.Show("Digite uma senha válida e tente novamente");
                 return;
             }
 
-            //Validação se os dados estão corretos
-            LoginBLL validarCampos = new LoginBLL();
-
-            string ValidarEmail = validarCampos.ValidarEmail(login.Email);
-            string ValidarSenha = validarCampos.ValidarSenha(login.Senha);
-
-            //Valida se o e-mail digitado está correto
-            if (ValidarEmail == "Email correto" && ValidarSenha == "Senha correta")
+            if (userBLL.VerificarCredenciais(email, senha))
             {
+                MessageBox.Show("Login bem-sucedido!");
+                this.Hide();
+
                 TelaPrincipal telaPrincipal = new TelaPrincipal();
-                MessageBox.Show("Você esta logado!");
+                telaPrincipal.Closed += (s, args) => this.Close(); // Fecha o aplicativo quando a tela principal for fechada
                 telaPrincipal.Show();
-                this.Dispose(false);
             }
-            else if (ValidarEmail == "Email incorreto" || ValidarSenha == "Senha incorreta")
+            else
             {
-                MessageBox.Show("E-mail ou senha incorretos!");
-                return;
-
+                MessageBox.Show("Usuário ou senha incorretos.");
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCadUser_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnEsqueciSenha_Click(object sender, EventArgs e)

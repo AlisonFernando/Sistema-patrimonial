@@ -14,8 +14,8 @@ namespace model
         string agendaColaborador;
         public bool ativo;
         string senhaColaborador;
-        public string setor_id { get; set; }
-        public string equipamento_id { get; set; }
+        public string id_setor { get; set; }
+        public string SenhaHash { get; set; }
 
 
         public string NomeColaborador

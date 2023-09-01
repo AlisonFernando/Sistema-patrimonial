@@ -31,8 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerUser));
             panel2 = new Panel();
             header = new Label();
-            panel1 = new Panel();
             MostrarUsuarios = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
+            SenhaH = new DataGridViewTextBoxColumn();
+            ConfirmarEmail = new DataGridViewTextBoxColumn();
+            ConfirmarSenha = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
             SuspendLayout();
@@ -61,24 +65,67 @@
             header.Text = "Usuarios cadastrados";
             header.TextAlign = ContentAlignment.TopCenter;
             // 
-            // panel1
-            // 
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 630);
-            panel1.Margin = new Padding(4, 5, 4, 5);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1143, 120);
-            panel1.TabIndex = 12;
-            // 
             // MostrarUsuarios
             // 
+            MostrarUsuarios.AllowUserToAddRows = false;
+            MostrarUsuarios.AllowUserToDeleteRows = false;
             MostrarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarUsuarios.Location = new Point(35, 101);
+            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, SenhaH, ConfirmarEmail, ConfirmarSenha });
+            MostrarUsuarios.Location = new Point(34, 102);
             MostrarUsuarios.Name = "MostrarUsuarios";
+            MostrarUsuarios.ReadOnly = true;
             MostrarUsuarios.RowHeadersWidth = 62;
             MostrarUsuarios.RowTemplate.Height = 33;
-            MostrarUsuarios.Size = new Size(1060, 329);
+            MostrarUsuarios.Size = new Size(1060, 636);
             MostrarUsuarios.TabIndex = 13;
+            // 
+            // ID
+            // 
+            ID.DataPropertyName = "id_usuario";
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 8;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 150;
+            // 
+            // Nome
+            // 
+            Nome.DataPropertyName = "Nome";
+            Nome.HeaderText = "Nome";
+            Nome.MinimumWidth = 8;
+            Nome.Name = "Nome";
+            Nome.ReadOnly = true;
+            Nome.Width = 150;
+            // 
+            // SenhaH
+            // 
+            SenhaH.DataPropertyName = "SenhaHash";
+            SenhaH.HeaderText = "SenhaH";
+            SenhaH.MinimumWidth = 8;
+            SenhaH.Name = "SenhaH";
+            SenhaH.ReadOnly = true;
+            SenhaH.Visible = false;
+            SenhaH.Width = 150;
+            // 
+            // ConfirmarEmail
+            // 
+            ConfirmarEmail.DataPropertyName = "ConfirmarEmail";
+            ConfirmarEmail.HeaderText = "ConfirmarEmail";
+            ConfirmarEmail.MinimumWidth = 8;
+            ConfirmarEmail.Name = "ConfirmarEmail";
+            ConfirmarEmail.ReadOnly = true;
+            ConfirmarEmail.Visible = false;
+            ConfirmarEmail.Width = 150;
+            // 
+            // ConfirmarSenha
+            // 
+            ConfirmarSenha.DataPropertyName = "ConfirmarSenha";
+            ConfirmarSenha.HeaderText = "ConfirmarSenha";
+            ConfirmarSenha.MinimumWidth = 8;
+            ConfirmarSenha.Name = "ConfirmarSenha";
+            ConfirmarSenha.ReadOnly = true;
+            ConfirmarSenha.Visible = false;
+            ConfirmarSenha.Width = 150;
             // 
             // VerUser
             // 
@@ -86,7 +133,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1143, 750);
             Controls.Add(MostrarUsuarios);
-            Controls.Add(panel1);
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 5, 4, 5);
@@ -104,7 +150,12 @@
         #endregion
         private Panel panel2;
         private Label header;
-        private Panel panel1;
         private DataGridView MostrarUsuarios;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nome;
+        private DataGridViewTextBoxColumn SenhaH;
+        private DataGridViewTextBoxColumn ConfirmarEmail;
+        private DataGridViewTextBoxColumn ConfirmarSenha;
     }
 }

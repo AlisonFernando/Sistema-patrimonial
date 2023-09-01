@@ -15,6 +15,7 @@ namespace model
         public bool ativo;
         public string marca_id { get; set; }
         public string colaborador_id { get; set; }
+        public int ID_equipamento { get; set; }
 
 
         public string Nome

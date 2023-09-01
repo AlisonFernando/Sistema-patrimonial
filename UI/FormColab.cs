@@ -32,7 +32,7 @@ namespace UI
             colaborador.TelefoneColaborador = inputColabTel.Text;
             colaborador.Ativo_inativo = check_ativo.Checked;
             colaborador.EmailColaborador = inputColabEmail.Text;
-            colaborador.setor_id = escolherSetor.SelectedValue.ToString();
+            colaborador.id_setor = escolherSetor.SelectedValue.ToString();
             //colaborador.equipamento_id = checkedListBox1.SelectedValue.ToString();
             //colaborador.equipamento_id = listBox1.SelectedValue.ToString();
 

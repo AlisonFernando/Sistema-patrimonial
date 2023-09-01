@@ -14,8 +14,8 @@ namespace UI
 {
     public partial class VerUser : Form
     {
-        UserBLL userBLL = new UserBLL();
-        public List<Usuario> usuarios = new List<Usuario>();
+        private UserBLL userBLL = new UserBLL();
+        private List<Usuario> usuarios = new List<Usuario>();
         public VerUser()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace UI
         }
         public void LoadUsuarios()
         {
-            List<Usuario> usuarios = userBLL.GetUsuarios(); // Agora a variável usuarios é declarada localmente
+            usuarios = userBLL.GetUsuarios();
             MostrarUsuarios.DataSource = usuarios;
         }
     }

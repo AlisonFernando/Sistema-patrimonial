@@ -21,21 +21,30 @@ namespace DAL
             {
                 ativo = "1";
             }
+            string senhaNaoCriptografada = colaborador.SenhaColaborador;
+            string senhaCriptografada = HashPassword(senhaNaoCriptografada);
+            colaborador.SenhaHash = senhaCriptografada;
 
-            sql = "INSERT INTO tb_colaborador(Nome, Link_agenda, Telefone, Ativo_inativo, Email, setor_id) VALUES " +
-                    "(@NomeColaborador, @AgendaColaborador, @TelefoneColaborador, @Ativo_inativo, @EmailColaborador, @setor_id) ";
+            sql = "INSERT INTO tb_colaborador(Nome, Email, Agenda, Telefone, Ativo_inativo, Senha, id_setor) VALUES " +
+                  "(@NomeColaborador, @EmailColaborador, @AgendaColaborador, @TelefoneColaborador, @Ativo_inativo, @senha_colaborador, @id_setor) ";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
+            cmd.Parameters.AddWithValue("@emailColaborador", colaborador.EmailColaborador);
             cmd.Parameters.AddWithValue("@agendaColaborador", colaborador.AgendaColaborador);
             cmd.Parameters.AddWithValue("@telefoneColaborador", colaborador.TelefoneColaborador);
             cmd.Parameters.AddWithValue("@ativo_inativo", ativo);
-            cmd.Parameters.AddWithValue("@emailColaborador", colaborador.EmailColaborador);
-            cmd.Parameters.AddWithValue("@setor_id", colaborador.setor_id);
-            //cmd.Parameters.AddWithValue("equipamento_id", colaborador.equipamento_id);
+            cmd.Parameters.AddWithValue("@senha_colaborador", colaborador.SenhaHash);
+            cmd.Parameters.AddWithValue("@id_setor", colaborador.id_setor);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
+        }
+        private string HashPassword(string password)
+        {
+            string salt = BCrypt.Net.BCrypt.GenerateSalt();
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, salt);
+            return hashedPassword;
         }
 
         public bool VerificarNome(String nomeColab)
@@ -84,10 +93,12 @@ namespace DAL
 
             string sql = "SELECT Nome_colaborador FROM tb_colaborador WHERE ID_colaborador = @id";
             using (MySqlConnection connection = mConn.AbrirConexao())
-            using (MySqlCommand cmd = new MySqlCommand(sql, connection))
             {
-                cmd.Parameters.AddWithValue("@id", idcolaborador);
-                nomeColaborador = cmd.ExecuteScalar() as string;
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", idcolaborador);
+                    nomeColaborador = cmd.ExecuteScalar() as string;
+                }
             }
             return nomeColaborador;
         }

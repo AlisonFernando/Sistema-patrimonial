@@ -1,4 +1,5 @@
-﻿using model;
+﻿using Dapper;
+using model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
@@ -15,6 +16,7 @@ namespace DAL
         ConexaoDB mConn = new ConexaoDB();
         string sql;
         MySqlCommand cmd;
+        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
 
         public void InserirEquipamento(Equipamento equipamento)
         {
@@ -24,16 +26,15 @@ namespace DAL
                 ativo = "1";
             }
 
-            sql = "INSERT INTO tb_equipamentos(Nome_equipamento, Ativo_inativo, Valor, Descricao, Etiqueta_identificacao, id_colaborador, id_marca) VALUES " +
-                    "(@Nome, @Descricao, @Ativo_inativo, @Valor, @Etiqueta, @colaborador_id, @marca_id)";
+            sql = "INSERT INTO tb_equipamentos(Nome_equipamento, Ativo_inativo, Valor, Descricao, Etiqueta_identificacao, id_marca) VALUES " +
+                    "(@Nome, @Ativo_inativo, @Valor, @Descricao, @Etiqueta, @marca_id)";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
-
+            
             cmd.Parameters.AddWithValue("@nome", equipamento.Nome);
-            cmd.Parameters.AddWithValue("@descricao", equipamento.Descricao);
             cmd.Parameters.AddWithValue("@ativo_inativo", ativo);
             cmd.Parameters.AddWithValue("@valor", equipamento.Valor);
+            cmd.Parameters.AddWithValue("@descricao", equipamento.Descricao);
             cmd.Parameters.AddWithValue("@etiqueta", equipamento.Etiqueta);
-            cmd.Parameters.AddWithValue("@colaborador_id", equipamento.colaborador_id);
             cmd.Parameters.AddWithValue("@marca_id", equipamento.marca_id);
 
             cmd.ExecuteNonQuery();
@@ -88,18 +89,34 @@ namespace DAL
                 throw;
             }
         }
-        public string ObterNomeEquipamentoPorId(string idEquipamento)
-        {
-            string nomeEquipamento = string.Empty;
 
-            string sql = "SELECT Nome_equipamento FROM tb_equipamentos WHERE ID_equipamento = @id";
-            using (MySqlConnection connection = mConn.AbrirConexao())
-            using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+        public List<Equipamento> GetEquipamentos()
+        {
+
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
-                cmd.Parameters.AddWithValue("@id", idEquipamento);
-                nomeEquipamento = cmd.ExecuteScalar() as string;
+                dbConnection.Open();
+                return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento, Valor, Descricao, Etiqueta_identificacao FROM tb_equipamentos").ToList();
             }
-            return nomeEquipamento;
+        }
+        public void UpdateEquipamentos(Equipamento equipamento)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_equipamentos SET Nome_Equipamento = @Nome, Valor = @Valor, Descricao = @Descricao  WHERE ID_equipamento = @ID_equipamento";
+                dbConnection.Execute(query, equipamento);
+            }
+        }
+
+        public void DeleteEquipamento(int ID_equipamento)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "DELETE FROM tb_equipamentos WHERE ID_equipamento = @ID_equipamento";
+                dbConnection.Execute(query, new { ID_equipamento });
+            }
         }
     }
 }

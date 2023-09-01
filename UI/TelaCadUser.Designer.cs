@@ -33,6 +33,7 @@
             txtEmailUser = new Label();
             txtUserSenha = new Label();
             panel1 = new Panel();
+            txtID = new TextBox();
             btnCancelarCadUser = new Button();
             btnCadUserSucesso = new Button();
             inputUserNome = new TextBox();
@@ -45,14 +46,22 @@
             txtConfirSenha = new TextBox();
             label3 = new Label();
             btn_limpar = new Button();
+            MostrarUsuarios = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
+            SenhaH = new DataGridViewTextBoxColumn();
+            ConfirmarEmail = new DataGridViewTextBoxColumn();
+            ConfirmarSenha = new DataGridViewTextBoxColumn();
+            btnDeletar = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
             SuspendLayout();
             // 
             // txtUserNome
             // 
             txtUserNome.AutoSize = true;
-            txtUserNome.Location = new Point(183, 112);
+            txtUserNome.Location = new Point(37, 96);
             txtUserNome.Margin = new Padding(4, 0, 4, 0);
             txtUserNome.Name = "txtUserNome";
             txtUserNome.Size = new Size(61, 25);
@@ -62,7 +71,7 @@
             // txtEmailUser
             // 
             txtEmailUser.AutoSize = true;
-            txtEmailUser.Location = new Point(183, 185);
+            txtEmailUser.Location = new Point(37, 169);
             txtEmailUser.Margin = new Padding(4, 0, 4, 0);
             txtEmailUser.Name = "txtEmailUser";
             txtEmailUser.Size = new Size(61, 25);
@@ -72,7 +81,7 @@
             // txtUserSenha
             // 
             txtUserSenha.AutoSize = true;
-            txtUserSenha.Location = new Point(183, 329);
+            txtUserSenha.Location = new Point(37, 313);
             txtUserSenha.Margin = new Padding(4, 0, 4, 0);
             txtUserSenha.Name = "txtUserSenha";
             txtUserSenha.Size = new Size(60, 25);
@@ -81,15 +90,23 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(txtID);
             panel1.Controls.Add(btnCancelarCadUser);
-            panel1.Controls.Add(btnCadUserSucesso);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 506);
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(9, 10, 9, 10);
-            panel1.Size = new Size(610, 83);
+            panel1.Size = new Size(955, 83);
             panel1.TabIndex = 3;
+            // 
+            // txtID
+            // 
+            txtID.Location = new Point(325, 26);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(150, 31);
+            txtID.TabIndex = 26;
+            txtID.Visible = false;
             // 
             // btnCancelarCadUser
             // 
@@ -108,12 +125,11 @@
             // btnCadUserSucesso
             // 
             btnCadUserSucesso.BackColor = Color.DarkGreen;
-            btnCadUserSucesso.Dock = DockStyle.Right;
             btnCadUserSucesso.ForeColor = SystemColors.Control;
-            btnCadUserSucesso.Location = new Point(387, 10);
+            btnCadUserSucesso.Location = new Point(155, 456);
             btnCadUserSucesso.Margin = new Padding(4, 5, 4, 5);
             btnCadUserSucesso.Name = "btnCadUserSucesso";
-            btnCadUserSucesso.Size = new Size(214, 63);
+            btnCadUserSucesso.Size = new Size(115, 40);
             btnCadUserSucesso.TabIndex = 0;
             btnCadUserSucesso.Text = "Cadastrar";
             btnCadUserSucesso.UseVisualStyleBackColor = false;
@@ -121,7 +137,7 @@
             // 
             // inputUserNome
             // 
-            inputUserNome.Location = new Point(183, 142);
+            inputUserNome.Location = new Point(37, 126);
             inputUserNome.Margin = new Padding(4, 5, 4, 5);
             inputUserNome.MaxLength = 100;
             inputUserNome.Name = "inputUserNome";
@@ -130,7 +146,7 @@
             // 
             // inputUserEmail
             // 
-            inputUserEmail.Location = new Point(183, 215);
+            inputUserEmail.Location = new Point(37, 199);
             inputUserEmail.Margin = new Padding(4, 5, 4, 5);
             inputUserEmail.MaxLength = 100;
             inputUserEmail.Name = "inputUserEmail";
@@ -139,7 +155,7 @@
             // 
             // inputUserSenha
             // 
-            inputUserSenha.Location = new Point(183, 359);
+            inputUserSenha.Location = new Point(37, 343);
             inputUserSenha.Margin = new Padding(4, 5, 4, 5);
             inputUserSenha.MaxLength = 100;
             inputUserSenha.Name = "inputUserSenha";
@@ -155,7 +171,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(610, 83);
+            panel2.Size = new Size(955, 83);
             panel2.TabIndex = 10;
             // 
             // label1
@@ -163,7 +179,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.Control;
-            label1.Location = new Point(183, 15);
+            label1.Location = new Point(13, 24);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(265, 41);
@@ -172,7 +188,7 @@
             // 
             // txtConfirEmail
             // 
-            txtConfirEmail.Location = new Point(183, 284);
+            txtConfirEmail.Location = new Point(37, 268);
             txtConfirEmail.Margin = new Padding(4, 5, 4, 5);
             txtConfirEmail.MaxLength = 100;
             txtConfirEmail.Name = "txtConfirEmail";
@@ -182,7 +198,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(183, 254);
+            label2.Location = new Point(37, 238);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(145, 25);
@@ -191,7 +207,7 @@
             // 
             // txtConfirSenha
             // 
-            txtConfirSenha.Location = new Point(183, 433);
+            txtConfirSenha.Location = new Point(37, 417);
             txtConfirSenha.Margin = new Padding(4, 5, 4, 5);
             txtConfirSenha.MaxLength = 100;
             txtConfirSenha.Name = "txtConfirSenha";
@@ -202,7 +218,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(183, 403);
+            label3.Location = new Point(37, 387);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(142, 25);
@@ -213,20 +229,95 @@
             // 
             btn_limpar.BackColor = Color.DarkGreen;
             btn_limpar.ForeColor = Color.White;
-            btn_limpar.Location = new Point(448, 433);
+            btn_limpar.Location = new Point(37, 456);
             btn_limpar.Name = "btn_limpar";
-            btn_limpar.Size = new Size(126, 40);
+            btn_limpar.Size = new Size(115, 40);
             btn_limpar.TabIndex = 15;
             btn_limpar.Text = "Limpar";
             btn_limpar.UseVisualStyleBackColor = false;
             btn_limpar.Click += btn_limpar_Click;
             // 
+            // MostrarUsuarios
+            // 
+            MostrarUsuarios.AllowUserToAddRows = false;
+            MostrarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, SenhaH, ConfirmarEmail, ConfirmarSenha });
+            MostrarUsuarios.Location = new Point(296, 126);
+            MostrarUsuarios.Name = "MostrarUsuarios";
+            MostrarUsuarios.RowHeadersVisible = false;
+            MostrarUsuarios.RowHeadersWidth = 62;
+            MostrarUsuarios.RowTemplate.Height = 33;
+            MostrarUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            MostrarUsuarios.Size = new Size(476, 260);
+            MostrarUsuarios.TabIndex = 23;
+            MostrarUsuarios.CellContentClick += MostrarUsuarios_CellContentClick;
+            MostrarUsuarios.CellMouseDoubleClick += MostrarUsuarios_CellMouseDoubleClick;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "id_usuario";
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 50;
+            Id.Name = "Id";
+            Id.Width = 50;
+            // 
+            // Nome
+            // 
+            Nome.DataPropertyName = "Nome";
+            Nome.HeaderText = "Nome";
+            Nome.MinimumWidth = 8;
+            Nome.Name = "Nome";
+            Nome.Width = 150;
+            // 
+            // SenhaH
+            // 
+            SenhaH.DataPropertyName = "SenhaHash";
+            SenhaH.HeaderText = "SenhaH";
+            SenhaH.MinimumWidth = 8;
+            SenhaH.Name = "SenhaH";
+            SenhaH.Visible = false;
+            SenhaH.Width = 150;
+            // 
+            // ConfirmarEmail
+            // 
+            ConfirmarEmail.DataPropertyName = "ConfirmarEmail";
+            ConfirmarEmail.HeaderText = "ConfirmarEmail";
+            ConfirmarEmail.MinimumWidth = 8;
+            ConfirmarEmail.Name = "ConfirmarEmail";
+            ConfirmarEmail.Visible = false;
+            ConfirmarEmail.Width = 150;
+            // 
+            // ConfirmarSenha
+            // 
+            ConfirmarSenha.DataPropertyName = "ConfirmarSenha";
+            ConfirmarSenha.HeaderText = "ConfirmarSenha";
+            ConfirmarSenha.MinimumWidth = 8;
+            ConfirmarSenha.Name = "ConfirmarSenha";
+            ConfirmarSenha.Visible = false;
+            ConfirmarSenha.Width = 150;
+            // 
+            // btnDeletar
+            // 
+            btnDeletar.BackColor = Color.DarkGreen;
+            btnDeletar.ForeColor = SystemColors.Control;
+            btnDeletar.Location = new Point(296, 394);
+            btnDeletar.Margin = new Padding(4, 5, 4, 5);
+            btnDeletar.Name = "btnDeletar";
+            btnDeletar.Size = new Size(115, 40);
+            btnDeletar.TabIndex = 24;
+            btnDeletar.Text = "Deletar";
+            btnDeletar.UseVisualStyleBackColor = false;
+            btnDeletar.Click += btnDeletar_Click;
+            // 
             // TelaCadUser
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(610, 589);
+            ClientSize = new Size(955, 589);
+            Controls.Add(btnDeletar);
+            Controls.Add(MostrarUsuarios);
             Controls.Add(btn_limpar);
+            Controls.Add(btnCadUserSucesso);
             Controls.Add(txtConfirSenha);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -245,9 +336,12 @@
             Name = "TelaCadUser";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar usuario";
+            Load += TelaCadUser_Load;
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -270,5 +364,13 @@
         private TextBox txtConfirSenha;
         private Label label3;
         private Button btn_limpar;
+        private DataGridView MostrarUsuarios;
+        private Button btnDeletar;
+        private TextBox txtID;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Nome;
+        private DataGridViewTextBoxColumn SenhaH;
+        private DataGridViewTextBoxColumn ConfirmarEmail;
+        private DataGridViewTextBoxColumn ConfirmarSenha;
     }
 }
