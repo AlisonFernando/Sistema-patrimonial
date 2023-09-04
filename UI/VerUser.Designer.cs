@@ -71,12 +71,12 @@
             MostrarUsuarios.AllowUserToDeleteRows = false;
             MostrarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, SenhaH, ConfirmarEmail, ConfirmarSenha });
-            MostrarUsuarios.Location = new Point(34, 102);
+            MostrarUsuarios.Location = new Point(272, 134);
             MostrarUsuarios.Name = "MostrarUsuarios";
             MostrarUsuarios.ReadOnly = true;
             MostrarUsuarios.RowHeadersWidth = 62;
             MostrarUsuarios.RowTemplate.Height = 33;
-            MostrarUsuarios.Size = new Size(1060, 636);
+            MostrarUsuarios.Size = new Size(611, 309);
             MostrarUsuarios.TabIndex = 13;
             // 
             // ID

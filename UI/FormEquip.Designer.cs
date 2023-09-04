@@ -272,6 +272,7 @@
             Nome_equipamento.HeaderText = "Nome";
             Nome_equipamento.MinimumWidth = 8;
             Nome_equipamento.Name = "Nome_equipamento";
+            Nome_equipamento.Visible = false;
             Nome_equipamento.Width = 150;
             // 
             // Valor_Equip
@@ -296,6 +297,7 @@
             Etiqueta.HeaderText = "Etiqueta";
             Etiqueta.MinimumWidth = 8;
             Etiqueta.Name = "Etiqueta";
+            Etiqueta.Visible = false;
             Etiqueta.Width = 150;
             // 
             // CadEquip
@@ -360,12 +362,12 @@
         private DataGridViewTextBoxColumn Descricao;
         private DataGridViewTextBoxColumn Etiqueta_identificacao;
         private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn id_colaborador;
+        private DataGridViewTextBoxColumn id_marca;
         private DataGridViewTextBoxColumn ID_equipamento;
         private DataGridViewTextBoxColumn Nome_equipamento;
         private DataGridViewTextBoxColumn Valor_Equip;
         private DataGridViewTextBoxColumn Descricao_Equip;
         private DataGridViewTextBoxColumn Etiqueta;
-        private DataGridViewTextBoxColumn id_colaborador;
-        private DataGridViewTextBoxColumn id_marca;
     }
 }
