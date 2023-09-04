@@ -53,6 +53,11 @@
             ConfirmarEmail = new DataGridViewTextBoxColumn();
             ConfirmarSenha = new DataGridViewTextBoxColumn();
             btnDeletar = new Button();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
@@ -61,7 +66,7 @@
             // txtUserNome
             // 
             txtUserNome.AutoSize = true;
-            txtUserNome.Location = new Point(37, 96);
+            txtUserNome.Location = new Point(50, 96);
             txtUserNome.Margin = new Padding(4, 0, 4, 0);
             txtUserNome.Name = "txtUserNome";
             txtUserNome.Size = new Size(61, 25);
@@ -71,7 +76,7 @@
             // txtEmailUser
             // 
             txtEmailUser.AutoSize = true;
-            txtEmailUser.Location = new Point(37, 169);
+            txtEmailUser.Location = new Point(50, 169);
             txtEmailUser.Margin = new Padding(4, 0, 4, 0);
             txtEmailUser.Name = "txtEmailUser";
             txtEmailUser.Size = new Size(61, 25);
@@ -81,7 +86,7 @@
             // txtUserSenha
             // 
             txtUserSenha.AutoSize = true;
-            txtUserSenha.Location = new Point(37, 313);
+            txtUserSenha.Location = new Point(50, 313);
             txtUserSenha.Margin = new Padding(4, 0, 4, 0);
             txtUserSenha.Name = "txtUserSenha";
             txtUserSenha.Size = new Size(60, 25);
@@ -198,7 +203,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(37, 238);
+            label2.Location = new Point(51, 238);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(145, 25);
@@ -218,7 +223,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(37, 387);
+            label3.Location = new Point(54, 387);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(142, 25);
@@ -309,11 +314,67 @@
             btnDeletar.UseVisualStyleBackColor = false;
             btnDeletar.Click += btnDeletar_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(37, 96);
+            label4.Name = "label4";
+            label4.Size = new Size(20, 25);
+            label4.TabIndex = 25;
+            label4.Text = "*";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.ForeColor = Color.Red;
+            label5.Location = new Point(37, 169);
+            label5.Name = "label5";
+            label5.Size = new Size(20, 25);
+            label5.TabIndex = 26;
+            label5.Text = "*";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.ForeColor = Color.Red;
+            label6.Location = new Point(37, 238);
+            label6.Name = "label6";
+            label6.Size = new Size(20, 25);
+            label6.TabIndex = 27;
+            label6.Text = "*";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = Color.Red;
+            label7.Location = new Point(37, 313);
+            label7.Name = "label7";
+            label7.Size = new Size(20, 25);
+            label7.TabIndex = 28;
+            label7.Text = "*";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.ForeColor = Color.Red;
+            label8.Location = new Point(37, 387);
+            label8.Name = "label8";
+            label8.Size = new Size(20, 25);
+            label8.TabIndex = 29;
+            label8.Text = "*";
+            // 
             // TelaCadUser
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(955, 589);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(txtUserNome);
+            Controls.Add(label4);
             Controls.Add(btnDeletar);
             Controls.Add(MostrarUsuarios);
             Controls.Add(btn_limpar);
@@ -329,7 +390,6 @@
             Controls.Add(panel1);
             Controls.Add(txtUserSenha);
             Controls.Add(txtEmailUser);
-            Controls.Add(txtUserNome);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
@@ -372,5 +432,10 @@
         private DataGridViewTextBoxColumn SenhaH;
         private DataGridViewTextBoxColumn ConfirmarEmail;
         private DataGridViewTextBoxColumn ConfirmarSenha;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
     }
 }
