@@ -96,7 +96,7 @@ namespace DAL
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento, Valor, Descricao, Etiqueta_identificacao FROM tb_equipamentos").ToList();
+                return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento AS 'Nome', Valor, Descricao, Etiqueta_identificacao AS 'Etiqueta' FROM tb_equipamentos").ToList();
             }
         }
         public void UpdateEquipamentos(Equipamento equipamento)

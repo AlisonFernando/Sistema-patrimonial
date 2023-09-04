@@ -8,12 +8,12 @@ namespace model
 {
     public class Colaborador
     {
-        string nomeColaborador;
         string emailColaborador;
-        string telefoneColaborador;
-        string agendaColaborador;
-        public bool ativo;
+        string nomeColaborador;
         string senhaColaborador;
+        string agendaColaborador;
+        string telefoneColaborador;
+        public bool ativo;
         public string id_setor { get; set; }
         public string SenhaHash { get; set; }
 

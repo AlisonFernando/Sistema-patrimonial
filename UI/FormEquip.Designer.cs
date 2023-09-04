@@ -248,7 +248,7 @@
             MostrarEquipamentos.AllowUserToAddRows = false;
             MostrarEquipamentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipamentos.Columns.AddRange(new DataGridViewColumn[] { ID_equipamento, Nome_equipamento, Valor_Equip, Descricao_Equip, Etiqueta });
-            MostrarEquipamentos.Location = new Point(17, 345);
+            MostrarEquipamentos.Location = new Point(18, 345);
             MostrarEquipamentos.Name = "MostrarEquipamentos";
             MostrarEquipamentos.RowHeadersVisible = false;
             MostrarEquipamentos.RowHeadersWidth = 62;

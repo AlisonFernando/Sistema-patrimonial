@@ -17,14 +17,17 @@ namespace DAL
 
         public void CadastrarChamado(Chamado chamado)
         {
-            sql = "INSERT INTO tb_chamado(Data_hora_chamado, Descricao, equipamento_id, colaborador_id) VALUES " +
-                    "(@DataHora, @Descricao, @equipamento_id, @colaborador_id)";
+            sql = "INSERT INTO tb_chamado(Data_hora_do_chamado, descricao, id_usuario, id_status) VALUES " +
+                    "(@DataHora, @Descricao, @id_usuario, @id_status)";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("DataHora", chamado.DataHora);
             cmd.Parameters.AddWithValue("@descricao", chamado.Descricao);
-            cmd.Parameters.AddWithValue("@equipamento_id", chamado.equipamento_id);
-            cmd.Parameters.AddWithValue("@colaborador_id", chamado.colaborador_id);
+            cmd.Parameters.AddWithValue("@id_usuario", chamado.id_usuario);
+            cmd.Parameters.AddWithValue("id_status", chamado.id_status);
+            cmd.Parameters.AddWithValue("@equipamento_id", chamado.id_equipamento);
+            
+
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
