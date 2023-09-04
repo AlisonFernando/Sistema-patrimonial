@@ -31,6 +31,7 @@ namespace UI
         {
             equipamentos = equipamentoBLL.GetEquipamentos();
             MostrarEquipamentos.DataSource = equipamentos;
+            inputEtiquetaEquip.Enabled = true;
         }
 
         private void btn_cadastrar_Click(object sender, EventArgs e)
@@ -45,7 +46,7 @@ namespace UI
             equipamento.Valor = inputPrecoEquip.Text;
             equipamento.Etiqueta = inputEtiquetaEquip.Text;
             equipamento.Ativo_inativo = check_ativo.Checked;
-            equipamento.marca_id = escolherMarca.SelectedValue.ToString();
+            equipamento.id_marca = escolherMarca.SelectedValue.ToString();
 
             // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
             if (equipamento.Nome.Trim().Length <= 0)
@@ -125,6 +126,7 @@ namespace UI
             inputDesEquip.Text = string.Empty;
             inputEtiquetaEquip.Text = string.Empty;
             inputPrecoEquip.Text = string.Empty;
+            inputEtiquetaEquip.Enabled = true;
         }
 
         private void btn_Deletar_Click(object sender, EventArgs e)
@@ -140,7 +142,9 @@ namespace UI
                     LoadEquipamentos();
                 }
                 MessageBox.Show("Equipamento deletado com sucesso!");
+                inputEtiquetaEquip.Enabled = true;
             }
+
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
@@ -162,22 +166,8 @@ namespace UI
                 inputPrecoEquip.Text = equipamento.Valor;
                 inputDesEquip.Text = equipamento.Descricao;
                 inputEtiquetaEquip.Text = equipamento.Etiqueta;
-
-
-
-                /*
-                                Usuario usuario = usuarios.Find(u => u.id_usuario == id_usuario);
-                                if (usuario != null)
-                                {
-                                    DataGridViewTextBoxCell cellNome = selectedRow.Cells["Nome"] as DataGridViewTextBoxCell;
-                                    DataGridViewTextBoxCell cellEmail = selectedRow.Cells["Email"] as DataGridViewTextBoxCell;
-
-                                    cellNome.ReadOnly = false;
-                                    cellEmail.ReadOnly = false;*/
-
+                inputEtiquetaEquip.Enabled = false;
             }
-
-            //MessageBox.Show("Usuário alterado com sucesso!");
         }
     }
 }

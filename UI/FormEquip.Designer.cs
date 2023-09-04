@@ -272,7 +272,6 @@
             Nome_equipamento.HeaderText = "Nome";
             Nome_equipamento.MinimumWidth = 8;
             Nome_equipamento.Name = "Nome_equipamento";
-            Nome_equipamento.Visible = false;
             Nome_equipamento.Width = 150;
             // 
             // Valor_Equip
@@ -297,7 +296,6 @@
             Etiqueta.HeaderText = "Etiqueta";
             Etiqueta.MinimumWidth = 8;
             Etiqueta.Name = "Etiqueta";
-            Etiqueta.Visible = false;
             Etiqueta.Width = 150;
             // 
             // CadEquip

@@ -51,12 +51,5 @@ namespace UI
                 MessageBox.Show("Usuário ou senha incorretos.");
             }
         }
-
-        private void btnEsqueciSenha_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            UI.TelaEsqueciSenha telaEsqueciSenha = new UI.TelaEsqueciSenha();
-            telaEsqueciSenha.ShowDialog();
-        }
     }
 }

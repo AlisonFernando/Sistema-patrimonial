@@ -27,7 +27,7 @@ namespace DAL
             }
 
             sql = "INSERT INTO tb_equipamentos(Nome_equipamento, Ativo_inativo, Valor, Descricao, Etiqueta_identificacao, id_marca) VALUES " +
-                    "(@Nome, @Ativo_inativo, @Valor, @Descricao, @Etiqueta, @marca_id)";
+                    "(@Nome, @Ativo_inativo, @Valor, @Descricao, @Etiqueta, @id_marca)";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
             
             cmd.Parameters.AddWithValue("@nome", equipamento.Nome);
@@ -35,7 +35,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@valor", equipamento.Valor);
             cmd.Parameters.AddWithValue("@descricao", equipamento.Descricao);
             cmd.Parameters.AddWithValue("@etiqueta", equipamento.Etiqueta);
-            cmd.Parameters.AddWithValue("@marca_id", equipamento.marca_id);
+            cmd.Parameters.AddWithValue("@id_marca", equipamento.id_marca);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();

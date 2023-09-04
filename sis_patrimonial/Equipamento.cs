@@ -13,8 +13,8 @@ namespace model
         public string valor;
         public string etiqueta;
         public bool ativo;
-        public string marca_id { get; set; }
-        public string colaborador_id { get; set; }
+        public string id_marca { get; set; }
+        public string id_colaborador { get; set; }
         public int ID_equipamento { get; set; }
 
 

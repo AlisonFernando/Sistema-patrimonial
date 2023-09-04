@@ -35,7 +35,6 @@
             input_senha = new TextBox();
             label2 = new Label();
             btn_login = new Button();
-            btnEsqueciSenha = new Button();
             panel1 = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -112,21 +111,6 @@
             btn_login.Click += btn_login_Click;
             btn_login.Enter += btn_login_Click;
             // 
-            // btnEsqueciSenha
-            // 
-            btnEsqueciSenha.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEsqueciSenha.BackColor = Color.DarkGreen;
-            btnEsqueciSenha.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEsqueciSenha.ForeColor = SystemColors.ButtonHighlight;
-            btnEsqueciSenha.Location = new Point(105, 376);
-            btnEsqueciSenha.Margin = new Padding(4, 5, 4, 5);
-            btnEsqueciSenha.Name = "btnEsqueciSenha";
-            btnEsqueciSenha.Size = new Size(284, 68);
-            btnEsqueciSenha.TabIndex = 9;
-            btnEsqueciSenha.Text = "Esqueci meus dados";
-            btnEsqueciSenha.UseVisualStyleBackColor = false;
-            btnEsqueciSenha.Click += btnEsqueciSenha_Click;
-            // 
             // panel1
             // 
             panel1.BackColor = Color.DarkGreen;
@@ -142,9 +126,8 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(519, 487);
+            ClientSize = new Size(519, 394);
             Controls.Add(panel1);
-            Controls.Add(btnEsqueciSenha);
             Controls.Add(btn_login);
             Controls.Add(input_senha);
             Controls.Add(label2);
@@ -171,7 +154,6 @@
         private TextBox input_senha;
         private Label label2;
         public Button btn_login;
-        public Button btnEsqueciSenha;
         private Panel panel1;
     }
 }
