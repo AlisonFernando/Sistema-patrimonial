@@ -33,8 +33,6 @@ namespace UI
             colaborador.Ativo_inativo = check_ativo.Checked;
             colaborador.EmailColaborador = inputColabEmail.Text;
             colaborador.id_setor = escolherSetor.SelectedValue.ToString();
-            //colaborador.equipamento_id = checkedListBox1.SelectedValue.ToString();
-            //colaborador.equipamento_id = listBox1.SelectedValue.ToString();
 
             // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
             if (colaborador.NomeColaborador.Trim().Length <= 0)
@@ -88,8 +86,8 @@ namespace UI
         private void CadColaborador_Load(object sender, EventArgs e)
         {
             CarregarSetorComboBox();
-            CarregarEquipamentos();
-            //ObterEquipamentosSelecionados();
+            LoadEquipamentos();
+
         }
 
         private void CarregarSetorComboBox()
@@ -102,78 +100,10 @@ namespace UI
             escolherSetor.DataSource = dt;
         }
 
-        /*private void CarregarEquipamentos()
+        private void btn_selectEquips_Click(object sender, EventArgs e)
         {
-            EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
-            DataTable dt = equipamentoBLL.ChamarEquipamentos();
-
-            checkedListBox1.DataSource = dt;
-            checkedListBox1.DisplayMember = "Nome_equipamento";
-            checkedListBox1.ValueMember = "ID_equipamento";
+            UI.SelectEquips selectEquips = new UI.SelectEquips();
+            selectEquips.ShowDialog();
         }
-        private void ObterEquipamentosSelecionados()
-        {
-            StringBuilder selectedIds = new StringBuilder();
-
-            foreach (DataRowView item in checkedListBox1.CheckedItems)
-            {
-                if (selectedIds.Length > 0)
-                    selectedIds.Append(",");
-
-                selectedIds.Append(item["ID_equipamento"]);
-            }.
-        }*/
-
-        /*private void CarregarEquipamentos()
-        {
-            EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
-            DataTable dt = equipamentoBLL.ChamarEquipamentos();
-
-            listBox1.DataSource = dt;
-            listBox1.DisplayMember = "Nome_equipamento";
-            listBox1.ValueMember = "ID_equipamento";
-        }
-        private void buttonSalvar_Click(object sender, EventArgs e)
-        {
-            ObterEquipamentosSelecionados();
-        }
-
-        private void ObterEquipamentosSelecionados()
-        {
-            StringBuilder selectedIds = new StringBuilder();
-
-            foreach (DataRowView item in listBox1.SelectedItems)
-            {
-                if (selectedIds.Length > 0)
-                    selectedIds.Append(",");
-
-                selectedIds.Append(item["ID_equipamento"]);
-            }
-        }*/
-
-        private List<string> selectedIds = new List<string>();
-        private void CarregarEquipamentos()
-        {
-
-            EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
-            DataTable dt = equipamentoBLL.ChamarEquipamentos();
-
-            dataGridViewEquipamentos.DataSource = dt;
-
-            foreach (DataGridViewRow row in dataGridViewEquipamentos.Rows)
-            {
-                DataGridViewCheckBoxCell cell = row.Cells["Selecionar"] as DataGridViewCheckBoxCell;
-
-                if (cell.Value != null && (bool)cell.Value)
-                {
-                    string selectedId = row.Cells["ID_equipamento"].Value.ToString();
-                    selectedIds.Add(selectedId);
-                }
-            }
-
-            ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
-            colaboradorDAL.SalvarEquipamentosSelecionados(selectedIds);
-        }
-
     }
 }

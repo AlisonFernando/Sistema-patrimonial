@@ -40,6 +40,7 @@ namespace model
             get { return ativo; }
             set { ativo = value; }
         }
+        
         public string EmailColaborador
         {
             get { return emailColaborador; }

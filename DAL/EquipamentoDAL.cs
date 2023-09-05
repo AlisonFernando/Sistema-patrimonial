@@ -62,41 +62,23 @@ namespace DAL
         }
 
 
-        //Escolher os equipamentos ativos no banco de dados para cadastrar no colaborador
-        public DataTable EscolherEquipamentos()
+        //Escolher os equipamentos disponíveis para passar para o colaborador
+        public List<Equipamento> GetEquipamentosDisponiveis()
         {
-            DataTable dt = new DataTable();
 
-            try
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
-                string sql = "SELECT * FROM tb_equipamentos WHERE Ativo_inativo = @Ativo_inativo";
-                using (MySqlConnection connection = mConn.AbrirConexao())
-                {
-                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@Ativo_inativo", 1);
-
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            adapter.Fill(dt);
-                        }
-                    }
-                }
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
+                dbConnection.Open();
+                return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento Nome, Ativo_inativo Ativo_inativo, Valor, Descricao, Etiqueta_identificacao Etiqueta, id_colaborador id_colaborador, id_marca id_marca FROM tb_equipamentos WHERE id_colaborador IS NULL").ToList();
             }
         }
-
         public List<Equipamento> GetEquipamentos()
         {
 
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento AS 'Nome', Valor, Descricao, Etiqueta_identificacao AS 'Etiqueta' FROM tb_equipamentos").ToList();
+                return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento Nome, Ativo_inativo Ativo_inativo, Valor, Descricao, Etiqueta_identificacao Etiqueta, id_colaborador id_colaborador, id_marca id_marca FROM tb_equipamentos").ToList();
             }
         }
         public void UpdateEquipamentos(Equipamento equipamento)

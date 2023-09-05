@@ -152,14 +152,14 @@ namespace UI
             this.Close();
         }
 
-        private void MostrarEquipamentos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void MostrarEquipamentos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow selectedRow = MostrarEquipamentos.Rows[e.RowIndex];
 
                 int ID_equipamento = (int)selectedRow.Cells["ID_equipamento"].Value;
-                Equipamento equipamento = equipamentos.Find(e => e.ID_equipamento == ID_equipamento);
+                Equipamento equipamento = equipamentos.Find(f => f.ID_equipamento == ID_equipamento);
 
                 txtID.Text = equipamento.ID_equipamento.ToString();
                 inputEquipNome.Text = equipamento.Nome;

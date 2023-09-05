@@ -37,13 +37,11 @@ namespace BLL
             }
            
         }
-        public DataTable ChamarEquipamentos()
+        public List<Equipamento> GetEquipamentosDisponiveis()
         {
-            EquipamentoDAL equipamentoDAL = new EquipamentoDAL();
 
-            return equipamentoDAL.EscolherEquipamentos();
+            return equipamentoDAL.GetEquipamentosDisponiveis();
         }
-
         public List<Equipamento> GetEquipamentos()
         {
 

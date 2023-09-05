@@ -50,9 +50,12 @@
             MostrarEquipamentos = new DataGridView();
             ID_equipamento = new DataGridViewTextBoxColumn();
             Nome_equipamento = new DataGridViewTextBoxColumn();
-            Valor_Equip = new DataGridViewTextBoxColumn();
-            Descricao_Equip = new DataGridViewTextBoxColumn();
+            Ativo = new DataGridViewTextBoxColumn();
+            value = new DataGridViewTextBoxColumn();
+            description = new DataGridViewTextBoxColumn();
             Etiqueta = new DataGridViewTextBoxColumn();
+            colabID = new DataGridViewTextBoxColumn();
+            marca_id = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentos).BeginInit();
             SuspendLayout();
             // 
@@ -177,7 +180,7 @@
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(9, 10, 9, 10);
-            panel2.Size = new Size(896, 83);
+            panel2.Size = new Size(1616, 83);
             panel2.TabIndex = 13;
             // 
             // escolherMarca
@@ -247,62 +250,88 @@
             // 
             MostrarEquipamentos.AllowUserToAddRows = false;
             MostrarEquipamentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarEquipamentos.Columns.AddRange(new DataGridViewColumn[] { ID_equipamento, Nome_equipamento, Valor_Equip, Descricao_Equip, Etiqueta });
-            MostrarEquipamentos.Location = new Point(18, 345);
+            MostrarEquipamentos.Columns.AddRange(new DataGridViewColumn[] { ID_equipamento, Nome_equipamento, Ativo, value, description, Etiqueta, colabID, marca_id });
+            MostrarEquipamentos.Location = new Point(17, 332);
             MostrarEquipamentos.Name = "MostrarEquipamentos";
-            MostrarEquipamentos.RowHeadersVisible = false;
             MostrarEquipamentos.RowHeadersWidth = 62;
             MostrarEquipamentos.RowTemplate.Height = 33;
             MostrarEquipamentos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MostrarEquipamentos.Size = new Size(656, 267);
+            MostrarEquipamentos.Size = new Size(814, 278);
             MostrarEquipamentos.TabIndex = 25;
-            MostrarEquipamentos.CellMouseDoubleClick += MostrarEquipamentos_CellMouseDoubleClick;
+            MostrarEquipamentos.CellContentDoubleClick += MostrarEquipamentos_CellContentDoubleClick;
             // 
             // ID_equipamento
             // 
             ID_equipamento.DataPropertyName = "ID_equipamento";
-            ID_equipamento.HeaderText = "ID";
-            ID_equipamento.MinimumWidth = 50;
+            ID_equipamento.HeaderText = "ID_equipamento";
+            ID_equipamento.MinimumWidth = 8;
             ID_equipamento.Name = "ID_equipamento";
-            ID_equipamento.Width = 50;
+            ID_equipamento.Width = 150;
             // 
             // Nome_equipamento
             // 
-            Nome_equipamento.DataPropertyName = "Nome_equipamento";
+            Nome_equipamento.DataPropertyName = "Nome";
             Nome_equipamento.HeaderText = "Nome";
             Nome_equipamento.MinimumWidth = 8;
             Nome_equipamento.Name = "Nome_equipamento";
             Nome_equipamento.Width = 150;
             // 
-            // Valor_Equip
+            // Ativo
             // 
-            Valor_Equip.DataPropertyName = "Valor";
-            Valor_Equip.HeaderText = "Valor";
-            Valor_Equip.MinimumWidth = 8;
-            Valor_Equip.Name = "Valor_Equip";
-            Valor_Equip.Width = 150;
+            Ativo.DataPropertyName = "Ativo_inativo";
+            Ativo.HeaderText = "Ativo_inativo";
+            Ativo.MinimumWidth = 8;
+            Ativo.Name = "Ativo";
+            Ativo.Visible = false;
+            Ativo.Width = 150;
             // 
-            // Descricao_Equip
+            // value
             // 
-            Descricao_Equip.DataPropertyName = "Descricao";
-            Descricao_Equip.HeaderText = "Descricao";
-            Descricao_Equip.MinimumWidth = 8;
-            Descricao_Equip.Name = "Descricao_Equip";
-            Descricao_Equip.Width = 150;
+            value.DataPropertyName = "Valor";
+            value.HeaderText = "Valor";
+            value.MinimumWidth = 8;
+            value.Name = "value";
+            value.Width = 150;
+            // 
+            // description
+            // 
+            description.DataPropertyName = "Descricao";
+            description.HeaderText = "Descrição";
+            description.MinimumWidth = 8;
+            description.Name = "description";
+            description.Width = 150;
             // 
             // Etiqueta
             // 
-            Etiqueta.DataPropertyName = "Etiqueta_identificacao";
+            Etiqueta.DataPropertyName = "Etiqueta";
             Etiqueta.HeaderText = "Etiqueta";
             Etiqueta.MinimumWidth = 8;
             Etiqueta.Name = "Etiqueta";
             Etiqueta.Width = 150;
             // 
+            // colabID
+            // 
+            colabID.DataPropertyName = "id_colaborador";
+            colabID.HeaderText = "colaborador_id";
+            colabID.MinimumWidth = 8;
+            colabID.Name = "colabID";
+            colabID.Visible = false;
+            colabID.Width = 150;
+            // 
+            // marca_id
+            // 
+            marca_id.DataPropertyName = "id_marca";
+            marca_id.HeaderText = "marca_id";
+            marca_id.MinimumWidth = 8;
+            marca_id.Name = "marca_id";
+            marca_id.Visible = false;
+            marca_id.Width = 150;
+            // 
             // CadEquip
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 771);
+            ClientSize = new Size(1616, 832);
             Controls.Add(MostrarEquipamentos);
             Controls.Add(btn_Deletar);
             Controls.Add(txtID);
@@ -354,18 +383,22 @@
         private Button btn_Limpar;
         private TextBox txtID;
         private Button btn_Deletar;
-        private DataGridView MostrarEquipamentos;
         private DataGridViewTextBoxColumn Ativo_inativo;
         private DataGridViewTextBoxColumn Valor;
         private DataGridViewTextBoxColumn Descricao;
         private DataGridViewTextBoxColumn Etiqueta_identificacao;
-        private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn id_colaborador;
         private DataGridViewTextBoxColumn id_marca;
+        private DataGridView MostrarEquipamentos;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nome;
         private DataGridViewTextBoxColumn ID_equipamento;
         private DataGridViewTextBoxColumn Nome_equipamento;
-        private DataGridViewTextBoxColumn Valor_Equip;
-        private DataGridViewTextBoxColumn Descricao_Equip;
+        private DataGridViewTextBoxColumn value;
+        private DataGridViewTextBoxColumn description;
         private DataGridViewTextBoxColumn Etiqueta;
+        private DataGridViewTextBoxColumn colabID;
+        private DataGridViewTextBoxColumn marca_id;
+        private DataGridViewTextBoxColumn Ativo;
     }
 }
