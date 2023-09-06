@@ -80,14 +80,11 @@ namespace UI
                     MessageBox.Show("Cadastro efetuado");
                 }
             }
-
         }
 
         private void CadColaborador_Load(object sender, EventArgs e)
         {
             CarregarSetorComboBox();
-            LoadEquipamentos();
-
         }
 
         private void CarregarSetorComboBox()
