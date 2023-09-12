@@ -21,7 +21,7 @@ namespace UI
 
         private void CadastrarMarca_Click(object sender, EventArgs e)
         {
-            Marca marca= new Marca();
+            Marca marca = new Marca();
 
             marca.Nome = inputMarcaNome.Text;
 

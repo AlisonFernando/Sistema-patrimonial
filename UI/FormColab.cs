@@ -16,16 +16,38 @@ namespace UI
 {
     public partial class CadColaborador : Form
     {
+
         public CadColaborador()
         {
             InitializeComponent();
+
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+        }
+
+        private void CadColaborador_Load(object sender, EventArgs e)
+        {
+            CarregarSetorComboBox();
+        }
+
+        private void CarregarSetorComboBox()
+        {
+            SetorBLL setorBLL = new SetorBLL();
+            DataTable dt = setorBLL.CarregarSetor();
+
+            escolherSetor.DisplayMember = "Nome_Setor"; // Define a coluna a ser exibida
+            escolherSetor.ValueMember = "ID_setor";    // Define a coluna a ser usada como valor selecionado
+            escolherSetor.DataSource = dt;
+        }
+
+        private void btn_selectEquips_Click(object sender, EventArgs e)
+        {
             Colaborador colaborador = new Colaborador();
             Setor setor = new Setor();
 
+            //Passa o texto dos campos digitados
             colaborador.NomeColaborador = InputColabNome.Text;
             colaborador.SenhaColaborador = inputColabSenha.Text;
             colaborador.AgendaColaborador = inputColabAgenda.Text;
@@ -33,6 +55,17 @@ namespace UI
             colaborador.Ativo_inativo = check_ativo.Checked;
             colaborador.EmailColaborador = inputColabEmail.Text;
             colaborador.id_setor = escolherSetor.SelectedValue.ToString();
+
+
+            //Recebe os campos já tratados para usar na tela SelectEquips
+            DadosGlobais.NomeColaborador = colaborador.NomeColaborador;
+            DadosGlobais.SenhaColaborador = colaborador.SenhaColaborador;
+            DadosGlobais.AgendaColaborador = colaborador.AgendaColaborador;
+            DadosGlobais.TelefoneColaborador = colaborador.TelefoneColaborador;
+            DadosGlobais.Ativo_inativo = colaborador.Ativo_inativo;
+            DadosGlobais.EmailColaborador = colaborador.EmailColaborador;
+            DadosGlobais.id_setor = colaborador.id_setor;
+
 
             // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
             if (colaborador.NomeColaborador.Trim().Length <= 0)
@@ -68,39 +101,20 @@ namespace UI
             {
                 MessageBox.Show("Já possui no banco de dados");
                 return;
-
             }
-            else if (verificar == "nome não existe")
-            {
-                ColaboradorBLL CadcolaboradorBLL = new ColaboradorBLL();
-                string retorno = CadcolaboradorBLL.CadColab(colaborador);
-
-                if (retorno == "Sucesso")
-                {
-                    MessageBox.Show("Cadastro efetuado");
-                }
-            }
-        }
-
-        private void CadColaborador_Load(object sender, EventArgs e)
-        {
-            CarregarSetorComboBox();
-        }
-
-        private void CarregarSetorComboBox()
-        {
-            SetorBLL setorBLL = new SetorBLL();
-            DataTable dt = setorBLL.CarregarSetor();
-
-            escolherSetor.DisplayMember = "Nome_Setor"; // Define a coluna a ser exibida
-            escolherSetor.ValueMember = "ID_setor";    // Define a coluna a ser usada como valor selecionado
-            escolherSetor.DataSource = dt;
-        }
-
-        private void btn_selectEquips_Click(object sender, EventArgs e)
-        {
             UI.SelectEquips selectEquips = new UI.SelectEquips();
             selectEquips.ShowDialog();
+        }
+
+        public static class DadosGlobais
+        {
+            public static string NomeColaborador { get; set; }
+            public static string SenhaColaborador { get; set; }
+            public static string AgendaColaborador { get; set; }
+            public static string TelefoneColaborador { get; set; }
+            public static bool Ativo_inativo { get; set; }
+            public static string EmailColaborador { get; set; }
+            public static string id_setor { get; set; }
         }
     }
 }

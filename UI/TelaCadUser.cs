@@ -53,35 +53,50 @@ namespace UI
                 MessageBox.Show("Verifique o e-mail e tente novamente");
                 return;
             }
-            else if (txtConfirEmail.Text.Trim().Length <= 0)
+
+            else if (txtConfirEmail.Enabled != false)
             {
-                MessageBox.Show("Digite um email e tente novamente!");
-                return;
+                if (txtConfirEmail.Text.Trim().Length <= 0)
+                {
+                    MessageBox.Show("Digite um email e tente novamente!");
+                    return;
+                }
             }
-            else if (usuario.Senha.Trim().Length <= 0)
+            else if (inputUserSenha.Enabled != false)
             {
-                MessageBox.Show("Verifique a senha e tente novamente");
-                return;
-            }
-            else if (txtConfirSenha.Text.Trim().Length <= 0)
-            {
-                MessageBox.Show("Digite uma senha e tente novamente");
-                return;
+                if (usuario.Senha.Trim().Length <= 0)
+                {
+                    MessageBox.Show("Verifique a senha e tente novamente");
+                    return;
+                }
             }
 
+            else if (txtConfirSenha.Enabled != false)
+            {
+                if (txtConfirSenha.Text.Trim().Length <= 0)
+                {
+                    MessageBox.Show("Digite uma senha e tente novamente");
+                    return;
+                }
+            }
 
             //Verifica se os campos de confirmação batem com o digitado
-            if (usuario.ConfirmarEmail != usuario.Email)
+            else if (txtConfirEmail.Enabled != false)
             {
-                MessageBox.Show("E-mail errado, verifique e tente novamente");
-                return;
+                if (usuario.ConfirmarEmail != usuario.Email)
+                {
+                    MessageBox.Show("E-mail errado, verifique e tente novamente");
+                    return;
+                }
             }
-            else if (usuario.ConfirmarSenha != usuario.Senha)
+            else if (txtConfirSenha.Enabled != false)
             {
-                MessageBox.Show("Senha digitada está incorreta, tente novamente");
-                return;
+                if (usuario.ConfirmarSenha != usuario.SenhaHash)
+                {
+                    MessageBox.Show("Senha digitada está incorreta, tente novamente");
+                    return;
+                }
             }
-
 
             string verificar;
 
@@ -133,6 +148,9 @@ namespace UI
 
             btn_limpar.PerformClick();
             LoadUsuarios();
+            txtConfirEmail.Enabled = true;
+            txtConfirSenha.Enabled = true;
+            inputUserSenha.Enabled = true;
         }
 
         private void btn_limpar_Click(object sender, EventArgs e)
@@ -142,6 +160,10 @@ namespace UI
             inputUserSenha.Text = string.Empty;
             txtConfirEmail.Text = string.Empty;
             txtConfirSenha.Text = string.Empty;
+            txtConfirEmail.Enabled = true;
+            txtConfirSenha.Enabled = true;
+            inputUserSenha.Enabled = true;
+
         }
 
         private void btnCancelarCadUser_Click(object sender, EventArgs e)
@@ -188,9 +210,9 @@ namespace UI
                 txtID.Text = usuario.id_usuario.ToString();
                 inputUserNome.Text = usuario.Nome;
                 inputUserEmail.Text = usuario.email;
-                inputUserSenha.Text = usuario.Senha;
-                txtConfirEmail.Text = usuario.ConfirmarEmail;
-                txtConfirSenha.Text = usuario.ConfirmarSenha;
+                txtConfirEmail.Enabled = false;
+                txtConfirSenha.Enabled = false;
+                inputUserSenha.Enabled = false;
 
 
                 /*

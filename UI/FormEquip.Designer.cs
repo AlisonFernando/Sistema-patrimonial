@@ -56,7 +56,9 @@
             Etiqueta = new DataGridViewTextBoxColumn();
             colabID = new DataGridViewTextBoxColumn();
             marca_id = new DataGridViewTextBoxColumn();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentos).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // NomeEquip
@@ -148,8 +150,9 @@
             // btn_cancelar
             // 
             btn_cancelar.BackColor = Color.DarkGreen;
+            btn_cancelar.Dock = DockStyle.Left;
             btn_cancelar.ForeColor = SystemColors.Control;
-            btn_cancelar.Location = new Point(17, 622);
+            btn_cancelar.Location = new Point(9, 10);
             btn_cancelar.Margin = new Padding(4, 5, 4, 5);
             btn_cancelar.Name = "btn_cancelar";
             btn_cancelar.Size = new Size(199, 63);
@@ -162,10 +165,12 @@
             // 
             btn_cadastrar.BackColor = Color.DarkGreen;
             btn_cadastrar.Cursor = Cursors.Hand;
+            btn_cadastrar.Dock = DockStyle.Right;
             btn_cadastrar.ForeColor = SystemColors.Control;
-            btn_cadastrar.Location = new Point(224, 622);
+            btn_cadastrar.Location = new Point(638, 10);
             btn_cadastrar.Margin = new Padding(4, 5, 4, 5);
             btn_cadastrar.Name = "btn_cadastrar";
+            btn_cadastrar.Padding = new Padding(6);
             btn_cadastrar.Size = new Size(207, 63);
             btn_cadastrar.TabIndex = 7;
             btn_cadastrar.Text = "Cadastrar";
@@ -180,7 +185,7 @@
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(9, 10, 9, 10);
-            panel2.Size = new Size(1616, 83);
+            panel2.Size = new Size(854, 83);
             panel2.TabIndex = 13;
             // 
             // escolherMarca
@@ -217,10 +222,10 @@
             // 
             btn_Limpar.BackColor = Color.DarkGreen;
             btn_Limpar.ForeColor = Color.White;
-            btn_Limpar.Location = new Point(659, 620);
+            btn_Limpar.Location = new Point(238, 616);
             btn_Limpar.Margin = new Padding(4, 5, 4, 5);
             btn_Limpar.Name = "btn_Limpar";
-            btn_Limpar.Size = new Size(172, 63);
+            btn_Limpar.Size = new Size(214, 63);
             btn_Limpar.TabIndex = 22;
             btn_Limpar.Text = "Limpar";
             btn_Limpar.UseVisualStyleBackColor = false;
@@ -228,7 +233,7 @@
             // 
             // txtID
             // 
-            txtID.Location = new Point(301, 703);
+            txtID.Location = new Point(238, 26);
             txtID.Name = "txtID";
             txtID.Size = new Size(150, 31);
             txtID.TabIndex = 23;
@@ -238,7 +243,7 @@
             // 
             btn_Deletar.BackColor = Color.DarkGreen;
             btn_Deletar.ForeColor = Color.White;
-            btn_Deletar.Location = new Point(438, 620);
+            btn_Deletar.Location = new Point(17, 616);
             btn_Deletar.Name = "btn_Deletar";
             btn_Deletar.Size = new Size(214, 63);
             btn_Deletar.TabIndex = 24;
@@ -327,17 +332,27 @@
             marca_id.Visible = false;
             marca_id.Width = 150;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(btn_cancelar);
+            panel1.Controls.Add(btn_cadastrar);
+            panel1.Controls.Add(txtID);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 749);
+            panel1.Name = "panel1";
+            panel1.Padding = new Padding(9, 10, 9, 10);
+            panel1.Size = new Size(854, 83);
+            panel1.TabIndex = 26;
+            // 
             // CadEquip
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1616, 832);
+            ClientSize = new Size(854, 832);
+            Controls.Add(panel1);
             Controls.Add(MostrarEquipamentos);
-            Controls.Add(btn_Deletar);
-            Controls.Add(txtID);
             Controls.Add(btn_Limpar);
-            Controls.Add(btn_cancelar);
-            Controls.Add(btn_cadastrar);
+            Controls.Add(btn_Deletar);
             Controls.Add(check_ativo);
             Controls.Add(label1);
             Controls.Add(escolherMarca);
@@ -359,6 +374,8 @@
             Text = "Cadastrar equipamento";
             Load += CadEquip_Load;
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentos).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -400,5 +417,6 @@
         private DataGridViewTextBoxColumn colabID;
         private DataGridViewTextBoxColumn marca_id;
         private DataGridViewTextBoxColumn Ativo;
+        private Panel panel1;
     }
 }

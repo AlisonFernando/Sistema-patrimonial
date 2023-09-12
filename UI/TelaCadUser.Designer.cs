@@ -102,7 +102,7 @@
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(9, 10, 9, 10);
-            panel1.Size = new Size(955, 83);
+            panel1.Size = new Size(801, 83);
             panel1.TabIndex = 3;
             // 
             // txtID
@@ -176,7 +176,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(955, 83);
+            panel2.Size = new Size(801, 83);
             panel2.TabIndex = 10;
             // 
             // label1
@@ -368,7 +368,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(955, 589);
+            ClientSize = new Size(801, 589);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);

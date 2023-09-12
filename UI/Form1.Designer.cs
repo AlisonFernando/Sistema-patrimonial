@@ -36,6 +36,7 @@
             MenuCadEquip = new ToolStripMenuItem();
             MenuCadChamado = new ToolStripMenuItem();
             marcaDeEquipamentoToolStripMenuItem = new ToolStripMenuItem();
+            CadUserMenu = new ToolStripMenuItem();
             visualizarToolStripMenuItem = new ToolStripMenuItem();
             MenuInfoColaborador = new ToolStripMenuItem();
             MenuInfoEquip = new ToolStripMenuItem();
@@ -54,7 +55,6 @@
             alison = new ToolStripStatusLabel();
             relogio = new System.Windows.Forms.Timer(components);
             dataGridView1 = new DataGridView();
-            CadUserMenu = new ToolStripMenuItem();
             MenuPrincipal.SuspendLayout();
             HeaderDescricao.SuspendLayout();
             FooterPrincipal.SuspendLayout();
@@ -106,6 +106,14 @@
             marcaDeEquipamentoToolStripMenuItem.Size = new Size(298, 34);
             marcaDeEquipamentoToolStripMenuItem.Text = "Marca de equipamento";
             marcaDeEquipamentoToolStripMenuItem.Click += marcaDeEquipamentoToolStripMenuItem_Click;
+            // 
+            // CadUserMenu
+            // 
+            CadUserMenu.Name = "CadUserMenu";
+            CadUserMenu.RightToLeft = RightToLeft.No;
+            CadUserMenu.Size = new Size(298, 34);
+            CadUserMenu.Text = "Usuário";
+            CadUserMenu.Click += CadUserMenu_Click;
             // 
             // visualizarToolStripMenuItem
             // 
@@ -243,14 +251,6 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(389, 85);
             dataGridView1.TabIndex = 3;
-            // 
-            // CadUserMenu
-            // 
-            CadUserMenu.Name = "CadUserMenu";
-            CadUserMenu.RightToLeft = RightToLeft.No;
-            CadUserMenu.Size = new Size(298, 34);
-            CadUserMenu.Text = "Usuário";
-            CadUserMenu.Click += CadUserMenu_Click;
             // 
             // TelaPrincipal
             // 

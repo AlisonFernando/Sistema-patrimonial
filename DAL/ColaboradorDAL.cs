@@ -13,6 +13,7 @@ namespace DAL
         ConexaoDB mConn = new ConexaoDB();
         string sql;
         MySqlCommand cmd;
+        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
 
         public void InserirColaborador(Colaborador colaborador)
         {
@@ -40,11 +41,58 @@ namespace DAL
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
         }
+
         private string HashPassword(string password)
         {
             string salt = BCrypt.Net.BCrypt.GenerateSalt();
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, salt);
             return hashedPassword;
+        }
+
+
+        public int ObterIdColaboradorPorNome(string nomeColaborador)
+        {
+            int idColaborador = -1; // Valor padrão caso o colaborador não seja encontrado
+
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+
+                string query = "SELECT id_colaborador FROM tb_colaborador WHERE Nome = @nomeColaborador";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@nomeColaborador", nomeColaborador);
+
+                object result = cmd.ExecuteScalar();
+                if (result != null)
+                {
+                    idColaborador = Convert.ToInt32(result);
+                }
+
+                connection.Close();
+            }
+
+            return idColaborador;
+        }
+
+
+        public void AssociarEquipamentosAoColaborador(int id_colaborador, List<int> idsEquipamentosSelecionados)
+        {
+            // Conexão com o banco de dados MySQL (substitua com suas configurações)
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+
+                foreach (int ID_equipamento in idsEquipamentosSelecionados)
+                {
+                    // Atualize a tabela tb_equipamentos com o ID do colaborador
+                    string updateQuery = "UPDATE tb_equipamentos SET id_colaborador = @id_colaborador WHERE ID_equipamento = @ID_equipamento";
+                    MySqlCommand cmd = new MySqlCommand(updateQuery, connection);
+                    cmd.Parameters.AddWithValue("@id_colaborador", id_colaborador);
+                    cmd.Parameters.AddWithValue("@ID_equipamento", ID_equipamento);
+                    cmd.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
 
         public bool VerificarNome(String nomeColab)

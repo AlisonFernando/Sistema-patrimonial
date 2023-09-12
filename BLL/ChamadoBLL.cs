@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,7 @@ namespace BLL
 {
     public class ChamadoBLL
     {
+
         public string CadChamado(Chamado chamado)
         {
             ChamadoDAL chamadoDAL = new ChamadoDAL();
@@ -20,11 +22,30 @@ namespace BLL
             return "Sucesso";
         }
 
-        public DataTable ChamarEtiquetas()
+        public DataTable ChamarEtiquetasDisponiveis()
         {
             ChamadoDAL chamadoDAL = new ChamadoDAL();
 
-            return chamadoDAL.EscolherEtiqueta();
+            return chamadoDAL.EscolherEtiquetasDisponiveis();
         }
-    }
+        public DataTable EscolherNomeUsuario()
+        {
+            ChamadoDAL chamadoDAL = new ChamadoDAL();
+            
+            return  chamadoDAL.EscolherNomeUsuario();
+        }
+
+        public string BuscarNomeEquipamento(int idEquipamento)
+        {
+            ChamadoDAL chamadoDAL = new ChamadoDAL();
+            return chamadoDAL.BuscarNomeEquipamento(idEquipamento);
+        }
+
+        public DataTable BuscarStatusChamado()
+        {
+            ChamadoDAL chamadoDAL = new ChamadoDAL();
+
+            return chamadoDAL.BuscarStatusChamado();
+        }
+    }    
 }

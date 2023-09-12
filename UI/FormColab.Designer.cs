@@ -44,10 +44,9 @@
             HeaderCadColab = new Panel();
             label1 = new Label();
             check_ativo = new CheckBox();
-            btnCadastrar = new Button();
+            btn_selectEquips = new Button();
             btnCancelarCad = new Button();
             FotterCadColab = new Panel();
-            btn_selectEquips = new Button();
             HeaderCadColab.SuspendLayout();
             FotterCadColab.SuspendLayout();
             SuspendLayout();
@@ -184,7 +183,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(178, 32);
+            label1.Location = new Point(210, 32);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(192, 25);
@@ -202,19 +201,19 @@
             check_ativo.Text = "Ativo";
             check_ativo.UseVisualStyleBackColor = true;
             // 
-            // btnCadastrar
+            // btn_selectEquips
             // 
-            btnCadastrar.BackColor = Color.DarkGreen;
-            btnCadastrar.Dock = DockStyle.Right;
-            btnCadastrar.ForeColor = SystemColors.Control;
-            btnCadastrar.Location = new Point(371, 10);
-            btnCadastrar.Margin = new Padding(4, 5, 4, 5);
-            btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(214, 53);
-            btnCadastrar.TabIndex = 8;
-            btnCadastrar.Text = "Cadastrar";
-            btnCadastrar.UseVisualStyleBackColor = false;
-            btnCadastrar.Click += btnCadastrar_Click;
+            btn_selectEquips.BackColor = Color.DarkGreen;
+            btn_selectEquips.Dock = DockStyle.Right;
+            btn_selectEquips.ForeColor = Color.White;
+            btn_selectEquips.Location = new Point(365, 10);
+            btn_selectEquips.Margin = new Padding(4, 5, 4, 5);
+            btn_selectEquips.Name = "btn_selectEquips";
+            btn_selectEquips.Size = new Size(220, 73);
+            btn_selectEquips.TabIndex = 17;
+            btn_selectEquips.Text = "Selecionar equipamentos";
+            btn_selectEquips.UseVisualStyleBackColor = false;
+            btn_selectEquips.Click += btn_selectEquips_Click;
             // 
             // btnCancelarCad
             // 
@@ -224,41 +223,28 @@
             btnCancelarCad.Location = new Point(9, 10);
             btnCancelarCad.Margin = new Padding(4, 5, 4, 5);
             btnCancelarCad.Name = "btnCancelarCad";
-            btnCancelarCad.Size = new Size(214, 53);
+            btnCancelarCad.Size = new Size(214, 73);
             btnCancelarCad.TabIndex = 15;
             btnCancelarCad.Text = "Cancelar";
             btnCancelarCad.UseVisualStyleBackColor = false;
             // 
             // FotterCadColab
             // 
+            FotterCadColab.Controls.Add(btn_selectEquips);
             FotterCadColab.Controls.Add(btnCancelarCad);
-            FotterCadColab.Controls.Add(btnCadastrar);
             FotterCadColab.Dock = DockStyle.Bottom;
-            FotterCadColab.Location = new Point(0, 465);
+            FotterCadColab.Location = new Point(0, 434);
             FotterCadColab.Margin = new Padding(4, 5, 4, 5);
             FotterCadColab.Name = "FotterCadColab";
             FotterCadColab.Padding = new Padding(9, 10, 9, 10);
-            FotterCadColab.Size = new Size(594, 73);
+            FotterCadColab.Size = new Size(594, 93);
             FotterCadColab.TabIndex = 15;
-            // 
-            // btn_selectEquips
-            // 
-            btn_selectEquips.BackColor = Color.DarkGreen;
-            btn_selectEquips.ForeColor = Color.White;
-            btn_selectEquips.Location = new Point(12, 413);
-            btn_selectEquips.Name = "btn_selectEquips";
-            btn_selectEquips.Size = new Size(220, 44);
-            btn_selectEquips.TabIndex = 17;
-            btn_selectEquips.Text = "Selecionar equipamentos";
-            btn_selectEquips.UseVisualStyleBackColor = false;
-            btn_selectEquips.Click += btn_selectEquips_Click;
             // 
             // CadColaborador
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(594, 538);
-            Controls.Add(btn_selectEquips);
+            ClientSize = new Size(594, 527);
             Controls.Add(check_ativo);
             Controls.Add(HeaderCadColab);
             Controls.Add(FotterCadColab);
@@ -305,9 +291,8 @@
         private Panel HeaderCadColab;
         private CheckBox check_ativo;
         private Label label1;
-        private Button btnCadastrar;
+        private Button btn_selectEquips;
         private Button btnCancelarCad;
         private Panel FotterCadColab;
-        private Button btn_selectEquips;
     }
 }

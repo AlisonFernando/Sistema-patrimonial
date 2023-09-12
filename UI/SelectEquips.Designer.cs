@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectEquips));
             MostrarEquipsDisponiveis = new DataGridView();
             ID_equipamento = new DataGridViewTextBoxColumn();
             Nome = new DataGridViewTextBoxColumn();
@@ -38,8 +39,24 @@
             id_colaborador = new DataGridViewTextBoxColumn();
             id_marca = new DataGridViewTextBoxColumn();
             EquipsSelecionados = new DataGridView();
+            ID_select = new DataGridViewTextBoxColumn();
+            NomeEquip = new DataGridViewTextBoxColumn();
+            Ativo_inativoEquip = new DataGridViewTextBoxColumn();
+            ValorEquips = new DataGridViewTextBoxColumn();
+            DecricaoEquip = new DataGridViewTextBoxColumn();
+            EtiquetaEquips = new DataGridViewTextBoxColumn();
+            id_colab = new DataGridViewTextBoxColumn();
+            id_marcaEquip = new DataGridViewTextBoxColumn();
+            btn_limpar = new Button();
+            btnCadColab = new Button();
+            FotterCadColab = new Panel();
+            panel1 = new Panel();
+            btn_voltar = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipsDisponiveis).BeginInit();
             ((System.ComponentModel.ISupportInitialize)EquipsSelecionados).BeginInit();
+            FotterCadColab.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // MostrarEquipsDisponiveis
@@ -47,12 +64,12 @@
             MostrarEquipsDisponiveis.AllowUserToAddRows = false;
             MostrarEquipsDisponiveis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipsDisponiveis.Columns.AddRange(new DataGridViewColumn[] { ID_equipamento, Nome, Ativo_inativo, Valor, Descricao, Etiqueta_identificacao, id_colaborador, id_marca });
-            MostrarEquipsDisponiveis.Location = new Point(62, 29);
+            MostrarEquipsDisponiveis.Location = new Point(0, 73);
             MostrarEquipsDisponiveis.Name = "MostrarEquipsDisponiveis";
             MostrarEquipsDisponiveis.RowHeadersWidth = 62;
             MostrarEquipsDisponiveis.RowTemplate.Height = 33;
             MostrarEquipsDisponiveis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MostrarEquipsDisponiveis.Size = new Size(814, 225);
+            MostrarEquipsDisponiveis.Size = new Size(810, 225);
             MostrarEquipsDisponiveis.TabIndex = 0;
             MostrarEquipsDisponiveis.CellMouseDoubleClick += MostrarEquipsDisponiveis_CellMouseDoubleClick;
             // 
@@ -107,6 +124,7 @@
             // 
             // id_colaborador
             // 
+            id_colaborador.DataPropertyName = "id_colaborador";
             id_colaborador.HeaderText = "id_colaborador";
             id_colaborador.MinimumWidth = 8;
             id_colaborador.Name = "id_colaborador";
@@ -115,6 +133,7 @@
             // 
             // id_marca
             // 
+            id_marca.DataPropertyName = "id_marca";
             id_marca.HeaderText = "id_marca";
             id_marca.MinimumWidth = 8;
             id_marca.Name = "id_marca";
@@ -125,27 +144,178 @@
             // 
             EquipsSelecionados.AllowUserToAddRows = false;
             EquipsSelecionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            EquipsSelecionados.Location = new Point(62, 320);
+            EquipsSelecionados.Columns.AddRange(new DataGridViewColumn[] { ID_select, NomeEquip, Ativo_inativoEquip, ValorEquips, DecricaoEquip, EtiquetaEquips, id_colab, id_marcaEquip });
+            EquipsSelecionados.Location = new Point(0, 320);
             EquipsSelecionados.Name = "EquipsSelecionados";
             EquipsSelecionados.RowHeadersWidth = 62;
             EquipsSelecionados.RowTemplate.Height = 33;
             EquipsSelecionados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            EquipsSelecionados.Size = new Size(814, 331);
+            EquipsSelecionados.Size = new Size(810, 332);
             EquipsSelecionados.TabIndex = 1;
+            // 
+            // ID_select
+            // 
+            ID_select.DataPropertyName = "ID_equipamento";
+            ID_select.HeaderText = "ID";
+            ID_select.MinimumWidth = 8;
+            ID_select.Name = "ID_select";
+            ID_select.Width = 150;
+            // 
+            // NomeEquip
+            // 
+            NomeEquip.DataPropertyName = "Nome_equipamento";
+            NomeEquip.HeaderText = "Nome";
+            NomeEquip.MinimumWidth = 8;
+            NomeEquip.Name = "NomeEquip";
+            NomeEquip.Width = 150;
+            // 
+            // Ativo_inativoEquip
+            // 
+            Ativo_inativoEquip.HeaderText = "Ativo";
+            Ativo_inativoEquip.MinimumWidth = 8;
+            Ativo_inativoEquip.Name = "Ativo_inativoEquip";
+            Ativo_inativoEquip.Visible = false;
+            Ativo_inativoEquip.Width = 150;
+            // 
+            // ValorEquips
+            // 
+            ValorEquips.DataPropertyName = "Valor";
+            ValorEquips.HeaderText = "Valor";
+            ValorEquips.MinimumWidth = 8;
+            ValorEquips.Name = "ValorEquips";
+            ValorEquips.Width = 150;
+            // 
+            // DecricaoEquip
+            // 
+            DecricaoEquip.DataPropertyName = "Descricao";
+            DecricaoEquip.HeaderText = "Descrição";
+            DecricaoEquip.MinimumWidth = 8;
+            DecricaoEquip.Name = "DecricaoEquip";
+            DecricaoEquip.Width = 150;
+            // 
+            // EtiquetaEquips
+            // 
+            EtiquetaEquips.DataPropertyName = "Etiqueta_identificaco";
+            EtiquetaEquips.HeaderText = "Etiqueta";
+            EtiquetaEquips.MinimumWidth = 8;
+            EtiquetaEquips.Name = "EtiquetaEquips";
+            EtiquetaEquips.Width = 150;
+            // 
+            // id_colab
+            // 
+            id_colab.DataPropertyName = "id_colaborador";
+            id_colab.HeaderText = "id_colaborador";
+            id_colab.MinimumWidth = 8;
+            id_colab.Name = "id_colab";
+            id_colab.Visible = false;
+            id_colab.Width = 150;
+            // 
+            // id_marcaEquip
+            // 
+            id_marcaEquip.DataPropertyName = "id_marca";
+            id_marcaEquip.HeaderText = "id_marca";
+            id_marcaEquip.MinimumWidth = 8;
+            id_marcaEquip.Name = "id_marcaEquip";
+            id_marcaEquip.Visible = false;
+            id_marcaEquip.Width = 150;
+            // 
+            // btn_limpar
+            // 
+            btn_limpar.BackColor = Color.DarkGreen;
+            btn_limpar.Dock = DockStyle.Left;
+            btn_limpar.ForeColor = Color.White;
+            btn_limpar.Location = new Point(9, 10);
+            btn_limpar.Margin = new Padding(4, 5, 4, 5);
+            btn_limpar.Name = "btn_limpar";
+            btn_limpar.Size = new Size(197, 73);
+            btn_limpar.TabIndex = 2;
+            btn_limpar.Text = "Limpar";
+            btn_limpar.UseVisualStyleBackColor = false;
+            btn_limpar.Click += btn_limpar_Click;
+            // 
+            // btnCadColab
+            // 
+            btnCadColab.BackColor = Color.DarkGreen;
+            btnCadColab.Dock = DockStyle.Right;
+            btnCadColab.ForeColor = Color.White;
+            btnCadColab.Location = new Point(604, 10);
+            btnCadColab.Margin = new Padding(4, 5, 4, 5);
+            btnCadColab.Name = "btnCadColab";
+            btnCadColab.Size = new Size(197, 73);
+            btnCadColab.TabIndex = 3;
+            btnCadColab.Text = "Cadastrar";
+            btnCadColab.UseVisualStyleBackColor = false;
+            btnCadColab.Click += btnCadColab_Click;
+            // 
+            // FotterCadColab
+            // 
+            FotterCadColab.Controls.Add(btnCadColab);
+            FotterCadColab.Controls.Add(btn_limpar);
+            FotterCadColab.Dock = DockStyle.Bottom;
+            FotterCadColab.Location = new Point(0, 657);
+            FotterCadColab.Margin = new Padding(4, 5, 4, 5);
+            FotterCadColab.Name = "FotterCadColab";
+            FotterCadColab.Padding = new Padding(9, 10, 9, 10);
+            FotterCadColab.Size = new Size(810, 93);
+            FotterCadColab.TabIndex = 16;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.DarkGreen;
+            panel1.Controls.Add(btn_voltar);
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4, 5, 4, 5);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(810, 65);
+            panel1.TabIndex = 17;
+            // 
+            // btn_voltar
+            // 
+            btn_voltar.AutoSize = true;
+            btn_voltar.BackColor = Color.White;
+            btn_voltar.FlatStyle = FlatStyle.Flat;
+            btn_voltar.ForeColor = Color.DimGray;
+            btn_voltar.Image = Properties.Resources.seta_esquerda;
+            btn_voltar.Location = new Point(25, 15);
+            btn_voltar.Name = "btn_voltar";
+            btn_voltar.Size = new Size(45, 45);
+            btn_voltar.TabIndex = 1;
+            btn_voltar.UseVisualStyleBackColor = false;
+            btn_voltar.Click += btn_voltar_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(250, 15);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(313, 32);
+            label1.TabIndex = 0;
+            label1.Text = "Equipamentos disponiveis";
             // 
             // SelectEquips
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(942, 805);
+            ClientSize = new Size(810, 750);
+            Controls.Add(panel1);
+            Controls.Add(FotterCadColab);
             Controls.Add(EquipsSelecionados);
             Controls.Add(MostrarEquipsDisponiveis);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "SelectEquips";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SelectEquips";
             ((System.ComponentModel.ISupportInitialize)MostrarEquipsDisponiveis).EndInit();
             ((System.ComponentModel.ISupportInitialize)EquipsSelecionados).EndInit();
+            FotterCadColab.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -161,5 +331,24 @@
         private DataGridViewTextBoxColumn id_colaborador;
         private DataGridViewTextBoxColumn id_marca;
         private DataGridView EquipsSelecionados;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nome_equip;
+        private DataGridViewTextBoxColumn ValorEquip;
+        private DataGridViewTextBoxColumn DescricaoEquip;
+        private DataGridViewTextBoxColumn EtiquetaEquip;
+        private DataGridViewTextBoxColumn ID_select;
+        private DataGridViewTextBoxColumn NomeEquip;
+        private DataGridViewTextBoxColumn Ativo_inativoEquip;
+        private DataGridViewTextBoxColumn ValorEquips;
+        private DataGridViewTextBoxColumn DecricaoEquip;
+        private DataGridViewTextBoxColumn EtiquetaEquips;
+        private DataGridViewTextBoxColumn id_colab;
+        private DataGridViewTextBoxColumn id_marcaEquip;
+        private Button btn_limpar;
+        private Button btnCadColab;
+        private Panel FotterCadColab;
+        private Panel panel1;
+        private Label label1;
+        private Button btn_voltar;
     }
 }

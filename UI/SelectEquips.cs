@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI;
+using static UI.CadColaborador;
 
 namespace UI
 {
@@ -18,11 +20,11 @@ namespace UI
         Colaborador colaborador = new Colaborador();
         private EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
         private List<Equipamento> equipamentos = new List<Equipamento>();
+        private List<string> equipamentosSelecionados = new List<string>();
         public SelectEquips()
         {
             InitializeComponent();
             LoadEquipamentos();
-
         }
         public void LoadEquipamentos()
         {
@@ -30,47 +32,119 @@ namespace UI
             MostrarEquipsDisponiveis.DataSource = equipamentos;
         }
 
+        private List<int> equipamentosSelecionadosIDs = new List<int>(); // Crie uma lista para armazenar os IDs dos equipamentos selecionados
+
         private void MostrarEquipsDisponiveis_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 DataGridViewRow selectedRow = MostrarEquipsDisponiveis.Rows[e.RowIndex];
 
                 int ID_equipamento = (int)selectedRow.Cells["ID_equipamento"].Value;
                 Equipamento equipamento = equipamentos.Find(f => f.ID_equipamento == ID_equipamento);
 
-                EquipsSelecionados.Columns.Clear();
+                if (equipamentosSelecionadosIDs.Contains(ID_equipamento))
+                {
+                    // Mostra a mensagem de erro
+                    MessageBox.Show("Já escolheu este equipamento, escolha outro e tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    // Adicione o ID do equipamento à lista de IDs de equipamentos selecionados
+                    equipamentosSelecionadosIDs.Add(ID_equipamento);
 
-                // Cria uma coluna para o ID
-                DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
-                idColumn.HeaderText = "ID";
-                idColumn.Name = "ID";
-                EquipsSelecionados.Columns.Add(idColumn);
+                    // Obtém os outros valores das células da linha clicada na primeira DataGridView
+                    string nome = selectedRow.Cells["Nome"].Value.ToString();
+                    string valor = selectedRow.Cells["Valor"].Value.ToString();
+                    string descricao = selectedRow.Cells["Descricao"].Value.ToString();
+                    string etiqueta = selectedRow.Cells["Etiqueta_identificacao"].Value.ToString();
 
-                // Cria uma coluna para o Nome
-                DataGridViewTextBoxColumn nomeColumn = new DataGridViewTextBoxColumn();
-                nomeColumn.HeaderText = "Nome";
-                nomeColumn.Name = "Nome";
-                EquipsSelecionados.Columns.Add(nomeColumn);
-
-                // Cria uma coluna para o Valor
-                DataGridViewTextBoxColumn valorColumn = new DataGridViewTextBoxColumn();
-                valorColumn.HeaderText = "Valor";
-                valorColumn.Name = "Valor";
-                EquipsSelecionados.Columns.Add(valorColumn);
-
-                // Cria uma coluna para a Descrição
-                DataGridViewTextBoxColumn descricaoColumn = new DataGridViewTextBoxColumn();
-                descricaoColumn.HeaderText = "Descrição";
-                descricaoColumn.Name = "Descrição";
-                EquipsSelecionados.Columns.Add(descricaoColumn);
-
-                // Cria uma coluna para a Etiqueta
-                DataGridViewTextBoxColumn etiquetaColumn = new DataGridViewTextBoxColumn();
-                etiquetaColumn.HeaderText = "Etiqueta";
-                etiquetaColumn.Name = "Etiqueta";
-                EquipsSelecionados.Columns.Add(etiquetaColumn);
+                    // Adicione os valores à segunda DataGridView
+                    EquipsSelecionados.Rows.Add(ID_equipamento, nome, valor, descricao, etiqueta);
+                }
             }
+        }
+        public List<int> ObterIdsEquipamentosSelecionados()
+        {
+            List<int> equipamentosSelecionados = new List<int>();
+
+            foreach (DataGridViewRow row in EquipsSelecionados.Rows)
+            {
+                if (row.Cells["ID_select"].Value != null)
+                {
+                    int idEquipamento;
+                    if (int.TryParse(row.Cells["ID_select"].Value.ToString(), out idEquipamento))
+                    {
+                        equipamentosSelecionados.Add(idEquipamento);
+                    }
+                }
+            }
+
+            return equipamentosSelecionados;
+        }
+
+        private void btn_limpar_Click(object sender, EventArgs e)
+        {
+            EquipsSelecionados.Rows.Clear();
+            equipamentosSelecionados.Clear();
+        }
+
+
+        private void btnCadColab_Click(object sender, EventArgs e)
+        {
+
+            Colaborador colaborador = new Colaborador();
+            Setor setor = new Setor();
+
+            // Obtenha os dados do colaborador a partir de DadosGlobais
+            colaborador.NomeColaborador = DadosGlobais.NomeColaborador;
+            colaborador.SenhaColaborador = DadosGlobais.SenhaColaborador;
+            colaborador.AgendaColaborador = DadosGlobais.AgendaColaborador;
+            colaborador.TelefoneColaborador = DadosGlobais.TelefoneColaborador;
+            colaborador.Ativo_inativo = DadosGlobais.Ativo_inativo;
+            colaborador.EmailColaborador = DadosGlobais.EmailColaborador;
+            colaborador.id_setor = DadosGlobais.id_setor;
+
+            ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
+            string verificar = colaboradorBLL.VerificarNome(colaborador.NomeColaborador);
+
+            if (verificar == "nome não existe")
+            {
+                // Cadastre o colaborador
+                string retorno = colaboradorBLL.CadColab(colaborador);
+
+                if (retorno == "Sucesso")
+                {
+                    MessageBox.Show("Colaborador cadastro com sucesso");
+
+                    // Obtenha o ID do colaborador recém-cadastrado
+                    int idColaborador = colaboradorBLL.ObterIdColaboradorPorNome(colaborador.NomeColaborador);
+
+                    // Associe os equipamentos ao colaborador
+                    List<int> equipamentosSelecionados = ObterIdsEquipamentosSelecionados();
+                    string associacaoEquipamentos = colaboradorBLL.AssociarEquipamentosAoColaborador(idColaborador, equipamentosSelecionados);
+
+                    if (associacaoEquipamentos == "Sucesso")
+                    {
+                        // Limpe a lista de equipamentos selecionados e a grade de exibição
+                        EquipsSelecionados.Rows.Clear();
+                        equipamentosSelecionados.Clear();
+
+                        MessageBox.Show("Equipamentos associados com sucesso");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao associar equipamentos ao colaborador");
+                    }
+                }
+            }
+        }
+
+        private void btn_voltar_Click(object sender, EventArgs e)
+        {
+            UI.CadColaborador cadColaborador = new UI.CadColaborador();
+            cadColaborador.ShowDialog();
+            this.Hide();
         }
     }
 }

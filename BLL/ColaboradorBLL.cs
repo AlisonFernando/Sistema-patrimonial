@@ -13,9 +13,7 @@ namespace BLL
         public string CadColab(Colaborador colaborador)
         {
             ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
-
             colaboradorDAL.InserirColaborador(colaborador);
-
             return "Sucesso";
         }
 
@@ -32,7 +30,20 @@ namespace BLL
             {
                 return "nome não existe";
             }
-
         }
+
+        public string AssociarEquipamentosAoColaborador(int idColaborador, List<int> equipamentosSelecionados)
+        {
+            ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
+            colaboradorDAL.AssociarEquipamentosAoColaborador(idColaborador, equipamentosSelecionados);
+            return "Sucesso";
+        }
+
+        public int ObterIdColaboradorPorNome(string nomeColaborador)
+        {
+            ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
+            return colaboradorDAL.ObterIdColaboradorPorNome(nomeColaborador);
+        }
+
     }
 }
