@@ -89,6 +89,7 @@ namespace UI
             // Verificar se todos os campos obrigatórios estão preenchidos
             if (selectEtiqueta.SelectedValue == null)
             {
+                
                 MessageBox.Show("Selecione uma etiqueta antes de abrir o chamado.");
                 return;
             }
