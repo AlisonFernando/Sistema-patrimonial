@@ -94,7 +94,6 @@ namespace UI
         {
 
             Colaborador colaborador = new Colaborador();
-            Setor setor = new Setor();
 
             // Obtenha os dados do colaborador a partir de DadosGlobais
             colaborador.NomeColaborador = DadosGlobais.NomeColaborador;
@@ -142,9 +141,10 @@ namespace UI
 
         private void btn_voltar_Click(object sender, EventArgs e)
         {
-            UI.CadColaborador cadColaborador = new UI.CadColaborador();
-            cadColaborador.ShowDialog();
-            this.Hide();
+            this.Close();
+            /*UI.CadColaborador cadColaborador = new UI.CadColaborador();
+            cadColaborador.ShowDialog();*/
+            
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Net.Mail;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,6 +46,7 @@ namespace UI
 
         private void btn_selectEquips_Click(object sender, EventArgs e)
         {
+            ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
             Colaborador colaborador = new Colaborador();
             Setor setor = new Setor();
 
@@ -73,6 +76,11 @@ namespace UI
                 MessageBox.Show("Verifique o nome do colaborador e tente novamente");
                 return;
             }
+            else if (colaborador.EmailColaborador.Trim().Length <= 0)
+            {
+                MessageBox.Show("Verifique o email e tente novamente");
+                return;
+            }
             else if (colaborador.SenhaColaborador.Trim().Length <= 0)
             {
                 MessageBox.Show("Verifique a senha e tente novamento");
@@ -88,14 +96,37 @@ namespace UI
                 MessageBox.Show("Verifique o telefone e tente novamente");
                 return;
             }
-            else if (colaborador.EmailColaborador.Trim().Length <= 0)
+
+            //Verificar se o que foi digitado no campo de telefone são números
+            string textoDigitado = inputColabTel.Text;
+
+            textoDigitado = new string(textoDigitado.Where(char.IsDigit).ToArray());
+
+            if (textoDigitado.Length == 11)
             {
-                MessageBox.Show("Verifique o email e tente novamente");
+                colaborador.TelefoneColaborador = textoDigitado;
+            }
+            else
+            {
+                MessageBox.Show("O número de telefone deve conter exatamente 11 dígitos.", "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                inputColabTel.Focus();
                 return;
             }
-            //Verificação se o nome digitado já existe ou não no banco de dados
 
-            ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
+            //Verifica se o que foi digitando no campo de email é realmente um email
+            string email = inputColabEmail.Text;
+            if (colaboradorBLL.IsValidEmail(email))
+            {
+                colaborador.EmailColaborador = email;
+            }
+            else
+            {
+                MessageBox.Show("Por favor, insira um endereço de e-mail válido.", "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                inputColabEmail.Text = string.Empty;
+                return;
+            }
+
+            
             string verificar = colaboradorBLL.VerificarNome(colaborador.NomeColaborador);
             if (verificar == "nome existente")
             {
@@ -115,6 +146,11 @@ namespace UI
             public static bool Ativo_inativo { get; set; }
             public static string EmailColaborador { get; set; }
             public static string id_setor { get; set; }
+        }
+
+        private void btnCancelarCad_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

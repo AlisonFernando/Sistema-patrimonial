@@ -3,6 +3,7 @@ using model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,7 +32,18 @@ namespace BLL
                 return "nome não existe";
             }
         }
-
+        public bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public string AssociarEquipamentosAoColaborador(int idColaborador, List<int> equipamentosSelecionados)
         {
             ColaboradorDAL colaboradorDAL = new ColaboradorDAL();

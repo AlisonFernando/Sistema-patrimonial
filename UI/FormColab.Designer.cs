@@ -227,6 +227,7 @@
             btnCancelarCad.TabIndex = 15;
             btnCancelarCad.Text = "Cancelar";
             btnCancelarCad.UseVisualStyleBackColor = false;
+            btnCancelarCad.Click += btnCancelarCad_Click;
             // 
             // FotterCadColab
             // 

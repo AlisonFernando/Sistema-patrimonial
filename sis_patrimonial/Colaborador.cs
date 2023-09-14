@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,8 @@ namespace model
             get { return ativo; }
             set { ativo = value; }
         }
-        
+
+        [EmailAddress]
         public string EmailColaborador
         {
             get { return emailColaborador; }
