@@ -54,11 +54,11 @@
             Horario = new ToolStripStatusLabel();
             alison = new ToolStripStatusLabel();
             relogio = new System.Windows.Forms.Timer(components);
-            dataGridView1 = new DataGridView();
+            pictureBox1 = new PictureBox();
             MenuPrincipal.SuspendLayout();
             HeaderDescricao.SuspendLayout();
             FooterPrincipal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // MenuPrincipal
@@ -241,23 +241,24 @@
             relogio.Enabled = true;
             relogio.Tick += timer1_Tick;
             // 
-            // dataGridView1
+            // pictureBox1
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(17, 108);
-            dataGridView1.Margin = new Padding(4, 5, 4, 5);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(389, 85);
-            dataGridView1.TabIndex = 3;
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Dock = DockStyle.Bottom;
+            pictureBox1.Image = Properties.Resources.Logotipo_Scotconsultoria__;
+            pictureBox1.Location = new Point(0, 572);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1143, 149);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
             // 
             // TelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1143, 750);
-            Controls.Add(dataGridView1);
+            Controls.Add(pictureBox1);
             Controls.Add(FooterPrincipal);
             Controls.Add(HeaderDescricao);
             Controls.Add(MenuPrincipal);
@@ -274,7 +275,7 @@
             HeaderDescricao.PerformLayout();
             FooterPrincipal.ResumeLayout(false);
             FooterPrincipal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -301,10 +302,10 @@
         private System.Windows.Forms.Timer relogio;
         private ToolStripMenuItem MenuRelatorioColabAtivo;
         private ToolStripLabel label;
-        private DataGridView dataGridView1;
         private ToolStripMenuItem MenuUserCad;
         private ToolStripMenuItem MenuCadChamado;
         private ToolStripMenuItem marcaDeEquipamentoToolStripMenuItem;
         private ToolStripMenuItem CadUserMenu;
+        private PictureBox pictureBox1;
     }
 }

@@ -63,9 +63,39 @@ namespace UI.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logo_r {
+            get {
+                object obj = ResourceManager.GetObject("Logo_r", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo_r_sys {
+            get {
+                object obj = ResourceManager.GetObject("Logo_r_sys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_scot {
             get {
                 object obj = ResourceManager.GetObject("logo_scot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logotipo_Scotconsultoria__ {
+            get {
+                object obj = ResourceManager.GetObject("Logotipo_Scotconsultoria--", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

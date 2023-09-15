@@ -129,8 +129,6 @@ namespace UI
             {
 
                 // Realiza o cadastro do usuário
-
-
                 string retorno;
 
                 UserBLL cadUserBLL = new UserBLL();

@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaAbrirChamado));
             panel2 = new Panel();
             btnCadUserSucesso = new Button();
+            btn_limpar = new Button();
             panel1 = new Panel();
             label1 = new Label();
             selectEtiqueta = new ComboBox();
@@ -41,7 +42,6 @@
             txtEquip = new TextBox();
             label5 = new Label();
             btn_pesquisar = new Button();
-            btn_limpar = new Button();
             dateTimePicker1 = new DateTimePicker();
             label6 = new Label();
             selectUser = new ComboBox();
@@ -77,6 +77,20 @@
             btnCadUserSucesso.Text = "Abrir chamado";
             btnCadUserSucesso.UseVisualStyleBackColor = false;
             btnCadUserSucesso.Click += btnCadUserSucesso_Click;
+            // 
+            // btn_limpar
+            // 
+            btn_limpar.BackColor = Color.DarkGreen;
+            btn_limpar.Dock = DockStyle.Left;
+            btn_limpar.ForeColor = SystemColors.Control;
+            btn_limpar.Location = new Point(9, 10);
+            btn_limpar.Margin = new Padding(4, 5, 4, 5);
+            btn_limpar.Name = "btn_limpar";
+            btn_limpar.Size = new Size(214, 63);
+            btn_limpar.TabIndex = 23;
+            btn_limpar.Text = "Limpar ";
+            btn_limpar.UseVisualStyleBackColor = false;
+            btn_limpar.Click += btn_limpar_Click;
             // 
             // panel1
             // 
@@ -183,20 +197,6 @@
             btn_pesquisar.UseVisualStyleBackColor = false;
             btn_pesquisar.Click += btn_pesquisar_Click;
             // 
-            // btn_limpar
-            // 
-            btn_limpar.BackColor = Color.DarkGreen;
-            btn_limpar.Dock = DockStyle.Left;
-            btn_limpar.ForeColor = SystemColors.Control;
-            btn_limpar.Location = new Point(9, 10);
-            btn_limpar.Margin = new Padding(4, 5, 4, 5);
-            btn_limpar.Name = "btn_limpar";
-            btn_limpar.Size = new Size(214, 63);
-            btn_limpar.TabIndex = 23;
-            btn_limpar.Text = "Limpar ";
-            btn_limpar.UseVisualStyleBackColor = false;
-            btn_limpar.Click += btn_limpar_Click;
-            // 
             // dateTimePicker1
             // 
             dateTimePicker1.CustomFormat = "dd/MM/yyyy HH:mm";
@@ -264,7 +264,7 @@
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 5, 4, 5);
-            MinimizeBox = false;
+            MaximizeBox = false;
             Name = "TelaAbrirChamado";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AbrirChamado";

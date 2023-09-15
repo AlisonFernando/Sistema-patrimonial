@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
             progressBar1 = new ProgressBar();
             SysPatrimonial = new Label();
             versao = new Label();
@@ -74,10 +73,11 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(221, 103);
+            pictureBox1.Image = Properties.Resources.Logo_r_sys;
+            pictureBox1.Location = new Point(190, 102);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(154, 146);
+            pictureBox1.Size = new Size(219, 267);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
@@ -87,7 +87,7 @@
             panel1.ForeColor = Color.DarkGreen;
             panel1.Location = new Point(-14, -1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(627, 150);
+            panel1.Size = new Size(627, 97);
             panel1.TabIndex = 4;
             // 
             // timer1

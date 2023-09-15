@@ -57,6 +57,8 @@
             colabID = new DataGridViewTextBoxColumn();
             marca_id = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
+            label2 = new Label();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentos).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -180,6 +182,7 @@
             // panel2
             // 
             panel2.BackColor = Color.DarkGreen;
+            panel2.Controls.Add(label2);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(4, 5, 4, 5);
@@ -344,6 +347,17 @@
             panel1.Size = new Size(854, 83);
             panel1.TabIndex = 26;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(227, 23);
+            label2.Name = "label2";
+            label2.Size = new Size(362, 41);
+            label2.TabIndex = 0;
+            label2.Text = "Cadastrar equipamentos";
+            // 
             // CadEquip
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -373,6 +387,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar equipamento";
             Load += CadEquip_Load;
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentos).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -418,5 +434,6 @@
         private DataGridViewTextBoxColumn marca_id;
         private DataGridViewTextBoxColumn Ativo;
         private Panel panel1;
+        private Label label2;
     }
 }
