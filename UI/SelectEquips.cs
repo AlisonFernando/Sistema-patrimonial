@@ -144,7 +144,7 @@ namespace UI
             this.Close();
             /*UI.CadColaborador cadColaborador = new UI.CadColaborador();
             cadColaborador.ShowDialog();*/
-            
+
         }
     }
 }
