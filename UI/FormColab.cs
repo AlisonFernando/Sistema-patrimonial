@@ -126,7 +126,7 @@ namespace UI
                 return;
             }
 
-            
+
             string verificar = colaboradorBLL.VerificarNome(colaborador.NomeColaborador);
             if (verificar == "nome existente")
             {

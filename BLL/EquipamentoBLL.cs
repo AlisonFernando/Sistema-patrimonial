@@ -59,5 +59,11 @@ namespace BLL
         {
             equipamentoDAL.DeleteEquipamento(ID_equipamento);
         }
+
+        public List<Equipamento> ObterEquipamentos()
+        {
+           return equipamentoDAL.GetEquipamentosRelatorio();
+        }
+
     }
 }

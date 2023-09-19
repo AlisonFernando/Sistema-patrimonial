@@ -43,41 +43,20 @@ namespace UI
             usuario.ConfirmarSenha = txtConfirSenha.Text;
 
             // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
-            if (usuario.Nome.Trim().Length <= 0)
+            if (string.IsNullOrWhiteSpace(usuario.Nome))
             {
                 MessageBox.Show("Verifique seu nome e tente novamente");
-                return;
+                inputUserNome.Focus();
             }
-            else if (usuario.Email.Trim().Length <= 0)
+            else if (string.IsNullOrWhiteSpace(usuario.Email))
             {
                 MessageBox.Show("Verifique o e-mail e tente novamente");
-                return;
+                inputUserEmail.Focus();
             }
-
-            else if (txtConfirEmail.Enabled != false)
+            else if (string.IsNullOrWhiteSpace(usuario.Senha))
             {
-                if (txtConfirEmail.Text.Trim().Length <= 0)
-                {
-                    MessageBox.Show("Digite um email e tente novamente!");
-                    return;
-                }
-            }
-            else if (inputUserSenha.Enabled != false)
-            {
-                if (usuario.Senha.Trim().Length <= 0)
-                {
-                    MessageBox.Show("Verifique a senha e tente novamente");
-                    return;
-                }
-            }
-
-            else if (txtConfirSenha.Enabled != false)
-            {
-                if (txtConfirSenha.Text.Trim().Length <= 0)
-                {
-                    MessageBox.Show("Digite uma senha e tente novamente");
-                    return;
-                }
+                MessageBox.Show("Verifique a senha e tente novamente");
+                inputUserSenha.Focus();
             }
 
             //Verifica se os campos de confirmação batem com o digitado
@@ -85,15 +64,15 @@ namespace UI
             {
                 if (usuario.ConfirmarEmail != usuario.Email)
                 {
-                    MessageBox.Show("E-mail errado, verifique e tente novamente");
+                    MessageBox.Show("E-mail errado ou não preenchido no campo, verifique e tente novamente");
                     return;
                 }
             }
             else if (txtConfirSenha.Enabled != false)
             {
-                if (usuario.ConfirmarSenha != usuario.SenhaHash)
+                if (usuario.ConfirmarSenha != usuario.Senha)
                 {
-                    MessageBox.Show("Senha digitada está incorreta, tente novamente");
+                    MessageBox.Show("Senha digitada está incorreta ou não foi preenchido o campo, tente novamente");
                     return;
                 }
             }
@@ -188,6 +167,7 @@ namespace UI
 
 
                 MessageBox.Show("Usuário deletado com sucesso!");
+                btn_limpar.PerformClick();
             }
         }
 

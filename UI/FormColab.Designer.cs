@@ -182,11 +182,12 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(210, 32);
+            label1.Location = new Point(154, 30);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(192, 25);
+            label1.Size = new Size(273, 32);
             label1.TabIndex = 0;
             label1.Text = "Cadastrar Colaborador";
             // 

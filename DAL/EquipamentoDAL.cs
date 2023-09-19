@@ -100,5 +100,15 @@ namespace DAL
                 dbConnection.Execute(query, new { ID_equipamento });
             }
         }
+        public List<Equipamento> GetEquipamentosRelatorio()
+        {
+
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                return dbConnection.Query<Equipamento>("SELECT Nome_equipamento FROM tb_equipamentos").ToList();
+            }
+        }
+
     }
 }

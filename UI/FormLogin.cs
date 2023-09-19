@@ -26,18 +26,22 @@ namespace UI
             string email = input_email.Text;
             string senha = input_senha.Text;
 
-            if (email.Trim().Length <= 0)
+            if (string.IsNullOrWhiteSpace(email))
             {
-                MessageBox.Show("Digite um email e tente novamente");
+                MessageBox.Show("Digite um email válido e tente novamente.");
                 return;
             }
-            else if (senha.Trim().Length <= 0)
+            else if (string.IsNullOrWhiteSpace(senha))
             {
-                MessageBox.Show("Digite uma senha válida e tente novamente");
+                MessageBox.Show("Digite uma senha válida e tente novamente.");
                 return;
             }
-
-            if (userBLL.VerificarCredenciais(email, senha))
+            else if (email.Any(char.IsUpper))
+            {
+                MessageBox.Show("O email não pode conter letras maiúsculas.");
+                return;
+            }
+            else if (userBLL.VerificarCredenciais(email, senha))
             {
                 MessageBox.Show("Login bem-sucedido!");
                 this.Hide();

@@ -17,15 +17,22 @@ namespace UI
     {
         private EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
         private List<Equipamento> equipamentos = new List<Equipamento>();
-        public CadEquip()
+        public CadEquip(Equipamento equipamento)
         {
             InitializeComponent();
+            txtID.Text = equipamento.ToString();
+            inputEquipNome.Text = equipamento.nome;
+            inputPrecoEquip.Text = equipamento.valor.ToString();
+            inputDesEquip.Text = equipamento.descricao;
+            inputEtiquetaEquip.Text = equipamento.etiqueta;
         }
 
         private void CadEquip_Load(object sender, EventArgs e)
         {
             CarregarMarcasComboBox();
             LoadEquipamentos();
+            inputEtiquetaEquip.Enabled = false;
+
         }
         public void LoadEquipamentos()
         {
@@ -152,7 +159,7 @@ namespace UI
             this.Close();
         }
 
-        private void MostrarEquipamentos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public void MostrarEquipamentos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -168,6 +175,13 @@ namespace UI
                 inputEtiquetaEquip.Text = equipamento.Etiqueta;
                 inputEtiquetaEquip.Enabled = false;
             }
+        }
+
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TelaVerEquips telaVerEquips = new TelaVerEquips();
+            telaVerEquips.ShowDialog();
         }
     }
 }

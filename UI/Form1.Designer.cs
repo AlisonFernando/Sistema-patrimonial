@@ -133,6 +133,7 @@
             MenuInfoEquip.Name = "MenuInfoEquip";
             MenuInfoEquip.Size = new Size(283, 34);
             MenuInfoEquip.Text = "Info Equipamentos";
+            MenuInfoEquip.Click += MenuInfoEquip_Click;
             // 
             // MenuUserCad
             // 

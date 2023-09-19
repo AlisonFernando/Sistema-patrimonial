@@ -41,6 +41,7 @@
             btn_cancelar = new Button();
             btn_cadastrar = new Button();
             panel2 = new Panel();
+            label2 = new Label();
             escolherMarca = new ComboBox();
             label1 = new Label();
             check_ativo = new CheckBox();
@@ -57,7 +58,7 @@
             colabID = new DataGridViewTextBoxColumn();
             marca_id = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
-            label2 = new Label();
+            btnVisualizar = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentos).BeginInit();
             panel1.SuspendLayout();
@@ -190,6 +191,17 @@
             panel2.Padding = new Padding(9, 10, 9, 10);
             panel2.Size = new Size(854, 83);
             panel2.TabIndex = 13;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(227, 23);
+            label2.Name = "label2";
+            label2.Size = new Size(362, 41);
+            label2.TabIndex = 0;
+            label2.Text = "Cadastrar equipamentos";
             // 
             // escolherMarca
             // 
@@ -347,22 +359,25 @@
             panel1.Size = new Size(854, 83);
             panel1.TabIndex = 26;
             // 
-            // label2
+            // btnVisualizar
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(227, 23);
-            label2.Name = "label2";
-            label2.Size = new Size(362, 41);
-            label2.TabIndex = 0;
-            label2.Text = "Cadastrar equipamentos";
+            btnVisualizar.BackColor = Color.DarkGreen;
+            btnVisualizar.ForeColor = Color.White;
+            btnVisualizar.Location = new Point(460, 616);
+            btnVisualizar.Margin = new Padding(4, 5, 4, 5);
+            btnVisualizar.Name = "btnVisualizar";
+            btnVisualizar.Size = new Size(214, 63);
+            btnVisualizar.TabIndex = 27;
+            btnVisualizar.Text = "Visualizar equipamentos";
+            btnVisualizar.UseVisualStyleBackColor = false;
+            btnVisualizar.Click += btnVisualizar_Click;
             // 
             // CadEquip
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(854, 832);
+            Controls.Add(btnVisualizar);
             Controls.Add(panel1);
             Controls.Add(MostrarEquipamentos);
             Controls.Add(btn_Limpar);
@@ -435,5 +450,6 @@
         private DataGridViewTextBoxColumn Ativo;
         private Panel panel1;
         private Label label2;
+        private Button btnVisualizar;
     }
 }
