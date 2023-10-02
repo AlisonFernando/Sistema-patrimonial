@@ -20,9 +20,15 @@ namespace UI
         private UserBLL userBLL = new UserBLL();
         private List<Usuario> usuarios = new List<Usuario>();
 
-        public TelaCadUser()
+        public TelaCadUser(Usuario usuario)
         {
             InitializeComponent();
+            txtID.Text = usuario.id_usuario.ToString();
+            inputUserNome.Text = usuario.nome;
+            inputUserEmail.Text = usuario.email.ToString();
+            inputUserSenha.Enabled = false;
+            txtConfirEmail.Enabled = false;
+            txtConfirSenha.Enabled = false;
         }
         public void LoadUsuarios()
         {
@@ -48,19 +54,24 @@ namespace UI
                 MessageBox.Show("Verifique seu nome e tente novamente");
                 inputUserNome.Focus();
             }
-            else if (string.IsNullOrWhiteSpace(usuario.Email))
+            else if (inputUserSenha.Enabled = true)
             {
-                MessageBox.Show("Verifique o e-mail e tente novamente");
-                inputUserEmail.Focus();
+                if (string.IsNullOrWhiteSpace(usuario.Email))
+                {
+                    MessageBox.Show("Verifique o e-mail e tente novamente");
+                    inputUserEmail.Focus();
+                }
             }
-            else if (string.IsNullOrWhiteSpace(usuario.Senha))
+            else if (inputUserEmail.Enabled = true)
             {
-                MessageBox.Show("Verifique a senha e tente novamente");
-                inputUserSenha.Focus();
+                if (string.IsNullOrWhiteSpace(usuario.Senha))
+                {
+                    MessageBox.Show("Verifique a senha e tente novamente");
+                    inputUserSenha.Focus();
+                }
             }
 
-            //Verifica se os campos de confirmação batem com o digitado
-            else if (txtConfirEmail.Enabled != false)
+            else if (txtConfirEmail.Enabled = true)
             {
                 if (usuario.ConfirmarEmail != usuario.Email)
                 {
@@ -68,7 +79,7 @@ namespace UI
                     return;
                 }
             }
-            else if (txtConfirSenha.Enabled != false)
+            else if (txtConfirSenha.Enabled = true)
             {
                 if (usuario.ConfirmarSenha != usuario.Senha)
                 {
@@ -84,7 +95,7 @@ namespace UI
 
             if (UserBLL.IsValidEmail(email))
             {
-                MessageBox.Show("E-mail válido.");
+
             }
             else
             {
@@ -118,13 +129,12 @@ namespace UI
 
                 if (retorno == "Sucesso")
                 {
-                    MessageBox.Show("Cadastro efetuado");
+                    MessageBox.Show("Ação efetuada com sucesso!");
 
                 }
             }
-
-            btn_limpar.PerformClick();
             LoadUsuarios();
+            btn_limpar.PerformClick();
             txtConfirEmail.Enabled = true;
             txtConfirSenha.Enabled = true;
             inputUserSenha.Enabled = true;
@@ -206,6 +216,13 @@ namespace UI
             }
 
             //MessageBox.Show("Usuário alterado com sucesso!");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            VerUser verUser = new VerUser();
+            verUser.ShowDialog();
         }
     }
 }

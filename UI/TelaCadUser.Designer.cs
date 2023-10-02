@@ -58,6 +58,7 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
@@ -76,7 +77,7 @@
             // txtEmailUser
             // 
             txtEmailUser.AutoSize = true;
-            txtEmailUser.Location = new Point(50, 169);
+            txtEmailUser.Location = new Point(305, 96);
             txtEmailUser.Margin = new Padding(4, 0, 4, 0);
             txtEmailUser.Name = "txtEmailUser";
             txtEmailUser.Size = new Size(61, 25);
@@ -86,7 +87,7 @@
             // txtUserSenha
             // 
             txtUserSenha.AutoSize = true;
-            txtUserSenha.Location = new Point(50, 313);
+            txtUserSenha.Location = new Point(51, 162);
             txtUserSenha.Margin = new Padding(4, 0, 4, 0);
             txtUserSenha.Name = "txtUserSenha";
             txtUserSenha.Size = new Size(60, 25);
@@ -97,19 +98,20 @@
             // 
             panel1.Controls.Add(txtID);
             panel1.Controls.Add(btnCancelarCadUser);
+            panel1.Controls.Add(btnCadUserSucesso);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 506);
+            panel1.Location = new Point(0, 666);
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(9, 10, 9, 10);
-            panel1.Size = new Size(801, 83);
+            panel1.Size = new Size(567, 83);
             panel1.TabIndex = 3;
             // 
             // txtID
             // 
-            txtID.Location = new Point(325, 26);
+            txtID.Location = new Point(232, 26);
             txtID.Name = "txtID";
-            txtID.Size = new Size(150, 31);
+            txtID.Size = new Size(43, 31);
             txtID.TabIndex = 26;
             txtID.Visible = false;
             // 
@@ -122,7 +124,7 @@
             btnCancelarCadUser.Margin = new Padding(4, 5, 4, 5);
             btnCancelarCadUser.Name = "btnCancelarCadUser";
             btnCancelarCadUser.Size = new Size(214, 63);
-            btnCancelarCadUser.TabIndex = 1;
+            btnCancelarCadUser.TabIndex = 6;
             btnCancelarCadUser.Text = "Cancelar";
             btnCancelarCadUser.UseVisualStyleBackColor = false;
             btnCancelarCadUser.Click += btnCancelarCadUser_Click;
@@ -130,13 +132,14 @@
             // btnCadUserSucesso
             // 
             btnCadUserSucesso.BackColor = Color.DarkGreen;
+            btnCadUserSucesso.Dock = DockStyle.Right;
             btnCadUserSucesso.ForeColor = SystemColors.Control;
-            btnCadUserSucesso.Location = new Point(155, 456);
+            btnCadUserSucesso.Location = new Point(344, 10);
             btnCadUserSucesso.Margin = new Padding(4, 5, 4, 5);
             btnCadUserSucesso.Name = "btnCadUserSucesso";
-            btnCadUserSucesso.Size = new Size(115, 40);
-            btnCadUserSucesso.TabIndex = 0;
-            btnCadUserSucesso.Text = "Cadastrar";
+            btnCadUserSucesso.Size = new Size(214, 63);
+            btnCadUserSucesso.TabIndex = 7;
+            btnCadUserSucesso.Text = "Aplicar";
             btnCadUserSucesso.UseVisualStyleBackColor = false;
             btnCadUserSucesso.Click += btnCadUserSucesso_Click;
             // 
@@ -151,7 +154,7 @@
             // 
             // inputUserEmail
             // 
-            inputUserEmail.Location = new Point(37, 199);
+            inputUserEmail.Location = new Point(292, 126);
             inputUserEmail.Margin = new Padding(4, 5, 4, 5);
             inputUserEmail.MaxLength = 100;
             inputUserEmail.Name = "inputUserEmail";
@@ -160,12 +163,12 @@
             // 
             // inputUserSenha
             // 
-            inputUserSenha.Location = new Point(37, 343);
+            inputUserSenha.Location = new Point(38, 192);
             inputUserSenha.Margin = new Padding(4, 5, 4, 5);
             inputUserSenha.MaxLength = 100;
             inputUserSenha.Name = "inputUserSenha";
             inputUserSenha.Size = new Size(237, 31);
-            inputUserSenha.TabIndex = 4;
+            inputUserSenha.TabIndex = 3;
             inputUserSenha.UseSystemPasswordChar = true;
             // 
             // panel2
@@ -176,7 +179,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(801, 83);
+            panel2.Size = new Size(567, 83);
             panel2.TabIndex = 10;
             // 
             // label1
@@ -184,7 +187,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.Control;
-            label1.Location = new Point(257, 21);
+            label1.Location = new Point(137, 18);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(265, 41);
@@ -193,17 +196,17 @@
             // 
             // txtConfirEmail
             // 
-            txtConfirEmail.Location = new Point(37, 268);
+            txtConfirEmail.Location = new Point(291, 192);
             txtConfirEmail.Margin = new Padding(4, 5, 4, 5);
             txtConfirEmail.MaxLength = 100;
             txtConfirEmail.Name = "txtConfirEmail";
             txtConfirEmail.Size = new Size(237, 31);
-            txtConfirEmail.TabIndex = 3;
+            txtConfirEmail.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(51, 238);
+            label2.Location = new Point(305, 162);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(145, 25);
@@ -212,7 +215,7 @@
             // 
             // txtConfirSenha
             // 
-            txtConfirSenha.Location = new Point(37, 417);
+            txtConfirSenha.Location = new Point(38, 266);
             txtConfirSenha.Margin = new Padding(4, 5, 4, 5);
             txtConfirSenha.MaxLength = 100;
             txtConfirSenha.Name = "txtConfirSenha";
@@ -223,7 +226,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(54, 387);
+            label3.Location = new Point(55, 236);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(142, 25);
@@ -234,7 +237,7 @@
             // 
             btn_limpar.BackColor = Color.DarkGreen;
             btn_limpar.ForeColor = Color.White;
-            btn_limpar.Location = new Point(37, 456);
+            btn_limpar.Location = new Point(75, 565);
             btn_limpar.Name = "btn_limpar";
             btn_limpar.Size = new Size(115, 40);
             btn_limpar.TabIndex = 15;
@@ -247,13 +250,13 @@
             MostrarUsuarios.AllowUserToAddRows = false;
             MostrarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, SenhaH, ConfirmarEmail, ConfirmarSenha });
-            MostrarUsuarios.Location = new Point(296, 126);
+            MostrarUsuarios.Location = new Point(81, 323);
             MostrarUsuarios.Name = "MostrarUsuarios";
             MostrarUsuarios.RowHeadersVisible = false;
             MostrarUsuarios.RowHeadersWidth = 62;
             MostrarUsuarios.RowTemplate.Height = 33;
             MostrarUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MostrarUsuarios.Size = new Size(476, 260);
+            MostrarUsuarios.Size = new Size(413, 236);
             MostrarUsuarios.TabIndex = 23;
             MostrarUsuarios.CellContentClick += MostrarUsuarios_CellContentClick;
             MostrarUsuarios.CellMouseDoubleClick += MostrarUsuarios_CellMouseDoubleClick;
@@ -305,7 +308,7 @@
             // 
             btnDeletar.BackColor = Color.DarkGreen;
             btnDeletar.ForeColor = SystemColors.Control;
-            btnDeletar.Location = new Point(296, 394);
+            btnDeletar.Location = new Point(197, 567);
             btnDeletar.Margin = new Padding(4, 5, 4, 5);
             btnDeletar.Name = "btnDeletar";
             btnDeletar.Size = new Size(115, 40);
@@ -328,7 +331,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(37, 169);
+            label5.Location = new Point(292, 96);
             label5.Name = "label5";
             label5.Size = new Size(20, 25);
             label5.TabIndex = 26;
@@ -338,7 +341,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(37, 238);
+            label6.Location = new Point(291, 162);
             label6.Name = "label6";
             label6.Size = new Size(20, 25);
             label6.TabIndex = 27;
@@ -348,7 +351,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(37, 313);
+            label7.Location = new Point(38, 162);
             label7.Name = "label7";
             label7.Size = new Size(20, 25);
             label7.TabIndex = 28;
@@ -358,17 +361,30 @@
             // 
             label8.AutoSize = true;
             label8.ForeColor = Color.Red;
-            label8.Location = new Point(37, 387);
+            label8.Location = new Point(38, 236);
             label8.Name = "label8";
             label8.Size = new Size(20, 25);
             label8.TabIndex = 29;
             label8.Text = "*";
             // 
+            // button1
+            // 
+            button1.BackColor = Color.DarkGreen;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(373, 283);
+            button1.Name = "button1";
+            button1.Size = new Size(121, 34);
+            button1.TabIndex = 30;
+            button1.Text = "Ver usuarios";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // TelaCadUser
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(801, 589);
+            ClientSize = new Size(567, 749);
+            Controls.Add(button1);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -378,7 +394,6 @@
             Controls.Add(btnDeletar);
             Controls.Add(MostrarUsuarios);
             Controls.Add(btn_limpar);
-            Controls.Add(btnCadUserSucesso);
             Controls.Add(txtConfirSenha);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -437,5 +452,6 @@
         private Label label6;
         private Label label7;
         private Label label8;
+        private Button button1;
     }
 }

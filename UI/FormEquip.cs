@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class CadEquip : Form
+    public partial class CadEquipamento : Form
     {
         private EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
         private List<Equipamento> equipamentos = new List<Equipamento>();
-        public CadEquip(Equipamento equipamento)
+        public CadEquipamento(Equipamento equipamento)
         {
             InitializeComponent();
             txtID.Text = equipamento.ToString();
@@ -27,7 +27,7 @@ namespace UI
             inputEtiquetaEquip.Text = equipamento.etiqueta;
         }
 
-        private void CadEquip_Load(object sender, EventArgs e)
+        private void CadEquipamento_Load(object sender, EventArgs e)
         {
             CarregarMarcasComboBox();
             LoadEquipamentos();

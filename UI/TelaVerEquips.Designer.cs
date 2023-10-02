@@ -40,7 +40,7 @@
             id_marca = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             btnVoltar = new Button();
-            btnEquips = new Button();
+            btnVerEquips = new Button();
             txtID = new TextBox();
             HeaderCadColab = new Panel();
             label1 = new Label();
@@ -137,7 +137,7 @@
             // panel1
             // 
             panel1.Controls.Add(btnVoltar);
-            panel1.Controls.Add(btnEquips);
+            panel1.Controls.Add(btnVerEquips);
             panel1.Controls.Add(txtID);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 550);
@@ -160,21 +160,21 @@
             btnVoltar.UseVisualStyleBackColor = false;
             btnVoltar.Click += btnVoltar_Click;
             // 
-            // btnEquips
+            // btnVerEquips
             // 
-            btnEquips.BackColor = Color.DarkGreen;
-            btnEquips.Cursor = Cursors.Hand;
-            btnEquips.Dock = DockStyle.Right;
-            btnEquips.ForeColor = SystemColors.Control;
-            btnEquips.Location = new Point(846, 10);
-            btnEquips.Margin = new Padding(4, 5, 4, 5);
-            btnEquips.Name = "btnEquips";
-            btnEquips.Padding = new Padding(6);
-            btnEquips.Size = new Size(249, 63);
-            btnEquips.TabIndex = 7;
-            btnEquips.Text = "Cadastrar equipamentos";
-            btnEquips.UseVisualStyleBackColor = false;
-            btnEquips.Click += btnEquips_Click;
+            btnVerEquips.BackColor = Color.DarkGreen;
+            btnVerEquips.Cursor = Cursors.Hand;
+            btnVerEquips.Dock = DockStyle.Right;
+            btnVerEquips.ForeColor = SystemColors.Control;
+            btnVerEquips.Location = new Point(846, 10);
+            btnVerEquips.Margin = new Padding(4, 5, 4, 5);
+            btnVerEquips.Name = "btnVerEquips";
+            btnVerEquips.Padding = new Padding(6);
+            btnVerEquips.Size = new Size(249, 63);
+            btnVerEquips.TabIndex = 7;
+            btnVerEquips.Text = "Cadastrar equipamentos";
+            btnVerEquips.UseVisualStyleBackColor = false;
+            btnVerEquips.Click += btnEquips_Click;
             // 
             // txtID
             // 
@@ -222,7 +222,7 @@
             btnPesquisar.ForeColor = Color.White;
             btnPesquisar.Location = new Point(233, 117);
             btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(185, 34);
+            btnPesquisar.Size = new Size(187, 34);
             btnPesquisar.TabIndex = 30;
             btnPesquisar.Text = "Pesquisar por nome";
             btnPesquisar.UseVisualStyleBackColor = false;
@@ -269,7 +269,7 @@
         private DataGridView MostrarEquipamentos;
         private Panel panel1;
         private Button btnVoltar;
-        private Button btnEquips;
+        private Button btnVerEquips;
         private TextBox txtID;
         private Panel HeaderCadColab;
         private Label label1;

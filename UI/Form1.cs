@@ -27,8 +27,8 @@ namespace UI
 
         private void MenuCadEquip_Click(object sender, EventArgs e)
         {
-            UI.CadEquip cadEquip = new UI.CadEquip(null);
-            cadEquip.ShowDialog();
+            UI.TelaVerEquips telaVerEquips = new UI.TelaVerEquips();
+            telaVerEquips.ShowDialog();
 
         }
 
@@ -52,8 +52,8 @@ namespace UI
 
         private void CadUserMenu_Click(object sender, EventArgs e)
         {
-            UI.TelaCadUser telaCadUser = new UI.TelaCadUser();
-            telaCadUser.ShowDialog();
+            UI.VerUser verUser = new UI.VerUser();
+            verUser.ShowDialog();
         }
 
         private void MenuInfoEquip_Click(object sender, EventArgs e)

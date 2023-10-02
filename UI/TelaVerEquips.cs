@@ -27,9 +27,6 @@ namespace UI
             LoadEquipamentos();
             btnPesquisar.Click += new EventHandler(btnPesquisar_Click);
             MostrarEquipamentos.CellMouseDoubleClick += MostrarEquipamentos_CellMouseDoubleClick;
-
-
-
         }
 
         public void LoadEquipamentos()
@@ -63,9 +60,9 @@ namespace UI
 
         private void btnEquips_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            /*CadEquip cadEquip = new CadEquip()
-            cadEquip.ShowDialog();*/
+            this.Close();
+            /*UI.CadEquipamento cadEquipamento = new UI.CadEquipamento(null);
+            cadEquipamento.ShowDialog();*/
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -76,7 +73,7 @@ namespace UI
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             TelaPrincipal principal = new TelaPrincipal();
             principal.ShowDialog();
         }
@@ -90,7 +87,7 @@ namespace UI
                 int ID_equipamento = (int)selectedRow.Cells["ID_equipamento"].Value;
                 Equipamento equipamento = equipamentos.Find(f => f.ID_equipamento == ID_equipamento);
 
-                CadEquip cadEquip = new CadEquip(equipamento);
+                CadEquipamento cadEquip = new CadEquipamento(equipamento);
 
                 cadEquip.ShowDialog();
             }

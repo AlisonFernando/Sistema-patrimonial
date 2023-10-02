@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class CadEquip
+    partial class CadEquipamento
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadEquip));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadEquipamento));
             NomeEquip = new Label();
             MarcaEquip = new Label();
             DescricaoEquip = new Label();
@@ -372,7 +372,7 @@
             btnVisualizar.UseVisualStyleBackColor = false;
             btnVisualizar.Click += btnVisualizar_Click;
             // 
-            // CadEquip
+            // CadEquipamento
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -398,10 +398,10 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
-            Name = "CadEquip";
+            Name = "CadEquipamento";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar equipamento";
-            Load += CadEquip_Load;
+            Load += CadEquipamento_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentos).EndInit();
