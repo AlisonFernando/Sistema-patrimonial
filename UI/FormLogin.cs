@@ -31,17 +31,30 @@ namespace UI
                 MessageBox.Show("Digite um email válido e tente novamente.");
                 return;
             }
-            else if (string.IsNullOrWhiteSpace(senha))
+            else if (email.Contains(" "))
+            {
+                MessageBox.Show("O email não pode conter espaços em branco.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(senha))
             {
                 MessageBox.Show("Digite uma senha válida e tente novamente.");
                 return;
             }
-            else if (email.Any(char.IsUpper))
+            else if (senha.Contains(" "))
+            {
+                MessageBox.Show("A senha não pode conter espaços em branco.");
+                return;
+            }
+
+            if (email.Any(char.IsUpper))
             {
                 MessageBox.Show("O email não pode conter letras maiúsculas.");
                 return;
             }
-            else if (userBLL.VerificarCredenciais(email, senha))
+
+            if (userBLL.VerificarCredenciais(email, senha))
             {
                 MessageBox.Show("Login bem-sucedido!");
                 this.Hide();

@@ -14,9 +14,7 @@ namespace model
         public bool finalizado;
 
         public string motivo_manutencao;
-
-
-
+        public DateTime DataHora { get; set;}
 
         public bool Finalizado
         {

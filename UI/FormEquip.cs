@@ -20,18 +20,21 @@ namespace UI
         public CadEquipamento(Equipamento equipamento)
         {
             InitializeComponent();
-            txtID.Text = equipamento.ToString();
-            inputEquipNome.Text = equipamento.nome;
-            inputPrecoEquip.Text = equipamento.valor.ToString();
-            inputDesEquip.Text = equipamento.descricao;
-            inputEtiquetaEquip.Text = equipamento.etiqueta;
-        }
 
+            if (equipamento != null)
+            {
+                txtID.Text = equipamento.ID_equipamento.ToString();
+                inputEquipNome.Text = equipamento.nome;
+                inputDesEquip.Text = equipamento.descricao;
+                inputPrecoEquip.Text = equipamento.valor;
+                inputEtiquetaEquip.Text = equipamento.etiqueta.ToString();
+            }
+        }
         private void CadEquipamento_Load(object sender, EventArgs e)
         {
             CarregarMarcasComboBox();
             LoadEquipamentos();
-            inputEtiquetaEquip.Enabled = false;
+            inputEtiquetaEquip.Enabled = true;
 
         }
         public void LoadEquipamentos()
@@ -45,6 +48,7 @@ namespace UI
         {
             Marca marca = new Marca();
             Equipamento equipamento = new Equipamento();
+
             if (!string.IsNullOrEmpty(txtID.Text))
                 equipamento.ID_equipamento = int.Parse(txtID.Text);
 
@@ -55,67 +59,84 @@ namespace UI
             equipamento.Ativo_inativo = check_ativo.Checked;
             equipamento.id_marca = escolherMarca.SelectedValue.ToString();
 
-            // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
-            if (equipamento.Nome.Trim().Length <= 0)
-            {
-                MessageBox.Show("Verifique o nome do equipamento e tente novamente");
-                return;
-            }
-            else if (equipamento.Descricao.Trim().Length <= 0)
-            {
-                MessageBox.Show("Verifique a descrição e tente novamente");
-                return;
-            }
-            else if (equipamento.Valor.Trim().Length <= 0)
-            {
-                MessageBox.Show("Verifique o valor digitado e tente novamente");
-                return;
-            }
-            else if (equipamento.Etiqueta.Trim().Length <= 0)
+            // Habilita apenas o campo "etiqueta" durante a atualização
+            inputEtiquetaEquip.Enabled = string.IsNullOrEmpty(txtID.Text);
+
+            // Verificação de espaços em branco nos campos etiqueta e valor
+            if (string.IsNullOrWhiteSpace(equipamento.Etiqueta))
             {
                 MessageBox.Show("Verifique a etiqueta e tente novamente");
                 return;
             }
+            else if (string.IsNullOrWhiteSpace(equipamento.Valor))
+            {
+                MessageBox.Show("Verifique o valor digitado e tente novamente");
+                return;
+            }
+            else if (equipamento.Etiqueta.Contains(" ") || equipamento.Valor.Contains(" "))
+            {
+                MessageBox.Show("A etiqueta e o valor não podem conter espaços em branco.");
+                return;
+            }
 
-
-
-            string verificar;
-            //Verifica se a etiqueta existe no banco de dados
+            // Verificação da etiqueta no banco de dados (apenas durante inserção)
             if (string.IsNullOrEmpty(txtID.Text))
             {
                 EquipamentoBLL verificaretiqueta = new EquipamentoBLL();
-                verificar = verificaretiqueta.VerificarEtiqueta(equipamento.Etiqueta);
+                string verificar = verificaretiqueta.VerificarEtiqueta(equipamento.Etiqueta);
 
-            }
-            else
-                verificar = "Etiqueta não existe";
-
-            if (verificar == "Etiqueta existente")
-            {
-                MessageBox.Show("Essa etiqueta existe no banco de dados");
-                return;
-            }
-            else if (verificar == "Etiqueta não existe")
-            {
-
-                // Realiza o cadastro do equipamento
-                string retorno;
-
-                EquipamentoBLL cadEqupBLL = new EquipamentoBLL();
-                if (!string.IsNullOrEmpty(txtID.Text))
-                    retorno = cadEqupBLL.UpdateEquipamentos(equipamento);
-                else
-                    retorno = cadEqupBLL.CadEquip(equipamento);
-
-                if (retorno == "Sucesso")
+                if (verificar == "Etiqueta existente")
                 {
-                    MessageBox.Show("Cadastro efetuado");
+                    MessageBox.Show("Essa etiqueta existe no banco de dados");
+                    return;
                 }
+            }
+
+            // Realiza o cadastro ou atualização do equipamento
+            string retorno;
+
+            EquipamentoBLL cadEqupBLL = new EquipamentoBLL();
+            if (!string.IsNullOrEmpty(txtID.Text))
+                retorno = cadEqupBLL.UpdateEquipamentos(equipamento);
+            else
+                retorno = cadEqupBLL.CadEquip(equipamento);
+
+            if (retorno == "Sucesso")
+            {
+                MessageBox.Show("Aplicação com sucesso");
             }
 
             btn_Limpar.PerformClick();
             LoadEquipamentos();
         }
+
+        private void inputPrecoEquip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite apenas números, vírgula e backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+
+            // Permite apenas uma vírgula
+            if (e.KeyChar == ',' && (sender as TextBox).Text.Contains(","))
+            {
+                e.Handled = true;
+            }
+
+            // Formata o valor no formato de moeda
+            if (e.KeyChar == '.' || e.KeyChar == ',')
+            {
+                e.KeyChar = ',';
+
+                if ((sender as TextBox).Text.Contains(","))
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+
 
         private void CarregarMarcasComboBox()
         {

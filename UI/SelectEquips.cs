@@ -25,6 +25,8 @@ namespace UI
         {
             InitializeComponent();
             LoadEquipamentos();
+            btnPesquisar.Click += new EventHandler(btnPesquisar_Click);
+            MostrarEquipsDisponiveis.CellMouseDoubleClick += MostrarEquipsDisponiveis_CellMouseDoubleClick;
         }
         public void LoadEquipamentos()
         {
@@ -145,6 +147,29 @@ namespace UI
             /*UI.CadColaborador cadColaborador = new UI.CadColaborador();
             cadColaborador.ShowDialog();*/
 
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            string nomePesquisado = txtPesquisar.Text.Trim();
+
+            List<Equipamento> equipamentosFiltrados = equipamentos
+                .Where(equipamento => equipamento.Nome.Contains(nomePesquisado, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            if (equipamentosFiltrados.Count == 0)
+            {
+                MessageBox.Show("Equipamento não encontrado.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (nomePesquisado == string.Empty)
+            {
+                MessageBox.Show("Digite um equipamento e tente novamente");
+                txtPesquisar.Focus();
+            }
+            else
+            {
+                MostrarEquipsDisponiveis.DataSource = equipamentosFiltrados;
+            }
         }
     }
 }

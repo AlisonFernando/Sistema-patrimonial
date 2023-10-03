@@ -23,12 +23,15 @@ namespace UI
         public TelaCadUser(Usuario usuario)
         {
             InitializeComponent();
-            txtID.Text = usuario.id_usuario.ToString();
-            inputUserNome.Text = usuario.nome;
-            inputUserEmail.Text = usuario.email.ToString();
-            inputUserSenha.Enabled = false;
-            txtConfirEmail.Enabled = false;
-            txtConfirSenha.Enabled = false;
+            if (usuario != null)
+            {
+                txtID.Text = usuario.id_usuario.ToString();
+                inputUserNome.Text = usuario.nome;
+                inputUserEmail.Text = usuario.email.ToString();
+                inputUserSenha.Enabled = false;
+                txtConfirEmail.Enabled = false;
+                txtConfirSenha.Enabled = false;
+            }
         }
         public void LoadUsuarios()
         {
@@ -42,97 +45,110 @@ namespace UI
 
             if (!string.IsNullOrEmpty(txtID.Text))
                 usuario.id_usuario = int.Parse(txtID.Text);
+
             usuario.Nome = inputUserNome.Text;
             usuario.Email = inputUserEmail.Text;
             usuario.Senha = inputUserSenha.Text;
             usuario.ConfirmarEmail = txtConfirEmail.Text;
             usuario.ConfirmarSenha = txtConfirSenha.Text;
 
-            // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
-            if (string.IsNullOrWhiteSpace(usuario.Nome))
+            // Verificação de espaços em branco em nome e email
+            if (string.IsNullOrWhiteSpace(usuario.Nome) || string.IsNullOrWhiteSpace(usuario.Email))
             {
-                MessageBox.Show("Verifique seu nome e tente novamente");
-                inputUserNome.Focus();
-            }
-            else if (inputUserSenha.Enabled = true)
-            {
-                if (string.IsNullOrWhiteSpace(usuario.Email))
-                {
-                    MessageBox.Show("Verifique o e-mail e tente novamente");
-                    inputUserEmail.Focus();
-                }
-            }
-            else if (inputUserEmail.Enabled = true)
-            {
-                if (string.IsNullOrWhiteSpace(usuario.Senha))
-                {
-                    MessageBox.Show("Verifique a senha e tente novamente");
-                    inputUserSenha.Focus();
-                }
+                MessageBox.Show("Nome e email devem ser preenchidos.");
+                return;
             }
 
-            else if (txtConfirEmail.Enabled = true)
+            // Verificação de espaços em branco em nome e email
+            if (usuario.Nome.Contains(" ") || usuario.Email.Contains(" "))
             {
-                if (usuario.ConfirmarEmail != usuario.Email)
-                {
-                    MessageBox.Show("E-mail errado ou não preenchido no campo, verifique e tente novamente");
-                    return;
-                }
-            }
-            else if (txtConfirSenha.Enabled = true)
-            {
-                if (usuario.ConfirmarSenha != usuario.Senha)
-                {
-                    MessageBox.Show("Senha digitada está incorreta ou não foi preenchido o campo, tente novamente");
-                    return;
-                }
+                MessageBox.Show("Nome e email não podem conter espaços em branco.");
+                return;
             }
 
-            string verificar;
-
-            // Verifica se o e-mail digitado já existe no banco de dados
-            string email = inputUserEmail.Text;
-
-            if (UserBLL.IsValidEmail(email))
-            {
-
-            }
-            else
+            // Verificação do email
+            if (!UserBLL.IsValidEmail(usuario.Email))
             {
                 MessageBox.Show("E-mail inválido.");
                 return;
             }
+
+            // Verificação se o email já existe no banco de dados (apenas durante inserção)
             if (string.IsNullOrEmpty(txtID.Text))
             {
                 UserBLL verificarEmailBLL = new UserBLL();
-                verificar = verificarEmailBLL.VerificarEmail(usuario.Email);
-            }
-            else
-                verificar = "Email não existe";
+                string verificar = verificarEmailBLL.VerificarEmail(usuario.Email);
 
-            if (verificar == "Email existente")
-            {
-                MessageBox.Show("O email já existe no banco de dados");
-                return;
-            }
-            else if (verificar == "Email não existe")
-            {
-
-                // Realiza o cadastro do usuário
-                string retorno;
-
-                UserBLL cadUserBLL = new UserBLL();
-                if (!string.IsNullOrEmpty(txtID.Text))
-                    retorno = cadUserBLL.UpdateUsuario(usuario);
-                else
-                    retorno = cadUserBLL.CadUser(usuario);
-
-                if (retorno == "Sucesso")
+                if (verificar == "Email existente")
                 {
-                    MessageBox.Show("Ação efetuada com sucesso!");
-
+                    MessageBox.Show("O email já existe no banco de dados");
+                    return;
                 }
             }
+
+            // Verificação se é uma atualização de nome ou e-mail (ignorando senha e confirmações)
+            bool atualizacaoNomeOuEmail = !string.IsNullOrEmpty(txtID.Text) && (inputUserNome.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Nome || inputUserEmail.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Email);
+
+            if (!atualizacaoNomeOuEmail)
+            {
+                // Verificação da senha (opcional durante atualização)
+                if (string.IsNullOrWhiteSpace(usuario.Senha))
+                {
+                    MessageBox.Show("Verifique a senha e tente novamente");
+                    inputUserSenha.Focus();
+                    return;
+                }
+
+                // Verificação de espaços em branco na senha
+                if (!string.IsNullOrEmpty(usuario.Senha) && usuario.Senha.Contains(" "))
+                {
+                    MessageBox.Show("A senha não pode conter espaços em branco.");
+                    return;
+                }
+
+                // Verificação do campo Confirmar Email (opcional durante atualização)
+                if (string.IsNullOrWhiteSpace(usuario.ConfirmarEmail))
+                {
+                    MessageBox.Show("Digite a confirmação de email e tente novamente");
+                    txtConfirEmail.Focus();
+                    return;
+                }
+
+                if (usuario.ConfirmarEmail != usuario.Email)
+                {
+                    MessageBox.Show("E-mail de confirmação diferente do email principal.");
+                    return;
+                }
+
+                // Verificação do campo Confirmar Senha (opcional durante atualização)
+                if (string.IsNullOrWhiteSpace(usuario.ConfirmarSenha))
+                {
+                    MessageBox.Show("Digite a confirmação de senha e tente novamente");
+                    txtConfirSenha.Focus();
+                    return;
+                }
+
+                if (usuario.ConfirmarSenha != usuario.Senha)
+                {
+                    MessageBox.Show("Senha de confirmação diferente da senha principal.");
+                    return;
+                }
+            }
+
+            // Realiza o cadastro ou atualização do usuário
+            string retorno;
+
+            UserBLL cadUserBLL = new UserBLL();
+            if (!string.IsNullOrEmpty(txtID.Text))
+                retorno = cadUserBLL.UpdateUsuario(usuario);
+            else
+                retorno = cadUserBLL.CadUser(usuario);
+
+            if (retorno == "Sucesso")
+            {
+                MessageBox.Show("Ação efetuada com sucesso!");
+            }
+
             LoadUsuarios();
             btn_limpar.PerformClick();
             txtConfirEmail.Enabled = true;
@@ -150,7 +166,6 @@ namespace UI
             txtConfirEmail.Enabled = true;
             txtConfirSenha.Enabled = true;
             inputUserSenha.Enabled = true;
-
         }
 
         private void btnCancelarCadUser_Click(object sender, EventArgs e)
@@ -201,21 +216,7 @@ namespace UI
                 txtConfirEmail.Enabled = false;
                 txtConfirSenha.Enabled = false;
                 inputUserSenha.Enabled = false;
-
-
-                /*
-                                Usuario usuario = usuarios.Find(u => u.id_usuario == id_usuario);
-                                if (usuario != null)
-                                {
-                                    DataGridViewTextBoxCell cellNome = selectedRow.Cells["Nome"] as DataGridViewTextBoxCell;
-                                    DataGridViewTextBoxCell cellEmail = selectedRow.Cells["Email"] as DataGridViewTextBoxCell;
-
-                                    cellNome.ReadOnly = false;
-                                    cellEmail.ReadOnly = false;*/
-
             }
-
-            //MessageBox.Show("Usuário alterado com sucesso!");
         }
 
         private void button1_Click(object sender, EventArgs e)

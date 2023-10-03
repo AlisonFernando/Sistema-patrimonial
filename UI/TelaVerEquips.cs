@@ -61,8 +61,8 @@ namespace UI
         private void btnEquips_Click(object sender, EventArgs e)
         {
             this.Close();
-            /*UI.CadEquipamento cadEquipamento = new UI.CadEquipamento(null);
-            cadEquipamento.ShowDialog();*/
+            UI.CadEquipamento cadEquipamento = new UI.CadEquipamento(null);
+            cadEquipamento.ShowDialog();
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)

@@ -59,6 +59,11 @@
             marca_id = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             btnVisualizar = new Button();
+            label4 = new Label();
+            label3 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentos).BeginInit();
             panel1.SuspendLayout();
@@ -67,7 +72,7 @@
             // NomeEquip
             // 
             NomeEquip.AutoSize = true;
-            NomeEquip.Location = new Point(17, 117);
+            NomeEquip.Location = new Point(32, 117);
             NomeEquip.Margin = new Padding(4, 0, 4, 0);
             NomeEquip.Name = "NomeEquip";
             NomeEquip.Size = new Size(199, 25);
@@ -77,7 +82,7 @@
             // MarcaEquip
             // 
             MarcaEquip.AutoSize = true;
-            MarcaEquip.Location = new Point(351, 117);
+            MarcaEquip.Location = new Point(372, 117);
             MarcaEquip.Margin = new Padding(4, 0, 4, 0);
             MarcaEquip.Name = "MarcaEquip";
             MarcaEquip.Size = new Size(60, 25);
@@ -87,7 +92,7 @@
             // DescricaoEquip
             // 
             DescricaoEquip.AutoSize = true;
-            DescricaoEquip.Location = new Point(17, 190);
+            DescricaoEquip.Location = new Point(32, 190);
             DescricaoEquip.Margin = new Padding(4, 0, 4, 0);
             DescricaoEquip.Name = "DescricaoEquip";
             DescricaoEquip.Size = new Size(88, 25);
@@ -97,7 +102,7 @@
             // PrecoEquip
             // 
             PrecoEquip.AutoSize = true;
-            PrecoEquip.Location = new Point(351, 190);
+            PrecoEquip.Location = new Point(372, 190);
             PrecoEquip.Margin = new Padding(4, 0, 4, 0);
             PrecoEquip.Name = "PrecoEquip";
             PrecoEquip.Size = new Size(56, 25);
@@ -107,7 +112,7 @@
             // EtiquetaEquip
             // 
             EtiquetaEquip.AutoSize = true;
-            EtiquetaEquip.Location = new Point(17, 263);
+            EtiquetaEquip.Location = new Point(32, 265);
             EtiquetaEquip.Margin = new Padding(4, 0, 4, 0);
             EtiquetaEquip.Name = "EtiquetaEquip";
             EtiquetaEquip.Size = new Size(76, 25);
@@ -176,7 +181,7 @@
             btn_cadastrar.Padding = new Padding(6);
             btn_cadastrar.Size = new Size(207, 63);
             btn_cadastrar.TabIndex = 7;
-            btn_cadastrar.Text = "Cadastrar";
+            btn_cadastrar.Text = "Aplicar";
             btn_cadastrar.UseVisualStyleBackColor = false;
             btn_cadastrar.Click += btn_cadastrar_Click;
             // 
@@ -372,11 +377,66 @@
             btnVisualizar.UseVisualStyleBackColor = false;
             btnVisualizar.Click += btnVisualizar_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(17, 119);
+            label4.Name = "label4";
+            label4.Size = new Size(20, 25);
+            label4.TabIndex = 30;
+            label4.Text = "*";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.Red;
+            label3.Location = new Point(17, 194);
+            label3.Name = "label3";
+            label3.Size = new Size(20, 25);
+            label3.TabIndex = 31;
+            label3.Text = "*";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.ForeColor = Color.Red;
+            label5.Location = new Point(17, 265);
+            label5.Name = "label5";
+            label5.Size = new Size(20, 25);
+            label5.TabIndex = 32;
+            label5.Text = "*";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.ForeColor = Color.Red;
+            label6.Location = new Point(351, 119);
+            label6.Name = "label6";
+            label6.Size = new Size(20, 25);
+            label6.TabIndex = 33;
+            label6.Text = "*";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = Color.Red;
+            label7.Location = new Point(351, 194);
+            label7.Name = "label7";
+            label7.Size = new Size(20, 25);
+            label7.TabIndex = 34;
+            label7.Text = "*";
+            // 
             // CadEquipamento
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(854, 832);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label3);
+            Controls.Add(label4);
             Controls.Add(btnVisualizar);
             Controls.Add(panel1);
             Controls.Add(MostrarEquipamentos);
@@ -451,5 +511,10 @@
         private Panel panel1;
         private Label label2;
         private Button btnVisualizar;
+        private Label label4;
+        private Label label3;
+        private Label label5;
+        private Label label6;
+        private Label label7;
     }
 }

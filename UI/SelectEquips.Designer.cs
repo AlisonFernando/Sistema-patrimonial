@@ -53,6 +53,8 @@
             panel1 = new Panel();
             btn_voltar = new Button();
             label1 = new Label();
+            txtPesquisar = new TextBox();
+            btnPesquisar = new Button();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipsDisponiveis).BeginInit();
             ((System.ComponentModel.ISupportInitialize)EquipsSelecionados).BeginInit();
             FotterCadColab.SuspendLayout();
@@ -64,13 +66,12 @@
             MostrarEquipsDisponiveis.AllowUserToAddRows = false;
             MostrarEquipsDisponiveis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipsDisponiveis.Columns.AddRange(new DataGridViewColumn[] { ID_equipamento, Nome, Ativo_inativo, Valor, Descricao, Etiqueta_identificacao, id_colaborador, id_marca });
-            MostrarEquipsDisponiveis.Location = new Point(0, 44);
-            MostrarEquipsDisponiveis.Margin = new Padding(2, 2, 2, 2);
+            MostrarEquipsDisponiveis.Location = new Point(6, 156);
             MostrarEquipsDisponiveis.Name = "MostrarEquipsDisponiveis";
             MostrarEquipsDisponiveis.RowHeadersWidth = 62;
             MostrarEquipsDisponiveis.RowTemplate.Height = 33;
             MostrarEquipsDisponiveis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MostrarEquipsDisponiveis.Size = new Size(580, 135);
+            MostrarEquipsDisponiveis.Size = new Size(829, 225);
             MostrarEquipsDisponiveis.TabIndex = 0;
             MostrarEquipsDisponiveis.CellMouseDoubleClick += MostrarEquipsDisponiveis_CellMouseDoubleClick;
             // 
@@ -146,13 +147,12 @@
             EquipsSelecionados.AllowUserToAddRows = false;
             EquipsSelecionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             EquipsSelecionados.Columns.AddRange(new DataGridViewColumn[] { ID_select, NomeEquip, Ativo_inativoEquip, ValorEquips, DecricaoEquip, EtiquetaEquips, id_colab, id_marcaEquip });
-            EquipsSelecionados.Location = new Point(0, 192);
-            EquipsSelecionados.Margin = new Padding(2, 2, 2, 2);
+            EquipsSelecionados.Location = new Point(7, 410);
             EquipsSelecionados.Name = "EquipsSelecionados";
             EquipsSelecionados.RowHeadersWidth = 62;
             EquipsSelecionados.RowTemplate.Height = 33;
             EquipsSelecionados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            EquipsSelecionados.Size = new Size(580, 199);
+            EquipsSelecionados.Size = new Size(829, 332);
             EquipsSelecionados.TabIndex = 1;
             // 
             // ID_select
@@ -226,9 +226,10 @@
             btn_limpar.BackColor = Color.DarkGreen;
             btn_limpar.Dock = DockStyle.Left;
             btn_limpar.ForeColor = Color.White;
-            btn_limpar.Location = new Point(6, 6);
+            btn_limpar.Location = new Point(9, 10);
+            btn_limpar.Margin = new Padding(4, 5, 4, 5);
             btn_limpar.Name = "btn_limpar";
-            btn_limpar.Size = new Size(138, 44);
+            btn_limpar.Size = new Size(197, 73);
             btn_limpar.TabIndex = 2;
             btn_limpar.Text = "Limpar";
             btn_limpar.UseVisualStyleBackColor = false;
@@ -239,9 +240,10 @@
             btnCadColab.BackColor = Color.DarkGreen;
             btnCadColab.Dock = DockStyle.Right;
             btnCadColab.ForeColor = Color.White;
-            btnCadColab.Location = new Point(447, 6);
+            btnCadColab.Location = new Point(638, 10);
+            btnCadColab.Margin = new Padding(4, 5, 4, 5);
             btnCadColab.Name = "btnCadColab";
-            btnCadColab.Size = new Size(138, 44);
+            btnCadColab.Size = new Size(197, 73);
             btnCadColab.TabIndex = 3;
             btnCadColab.Text = "Cadastrar";
             btnCadColab.UseVisualStyleBackColor = false;
@@ -252,10 +254,11 @@
             FotterCadColab.Controls.Add(btnCadColab);
             FotterCadColab.Controls.Add(btn_limpar);
             FotterCadColab.Dock = DockStyle.Bottom;
-            FotterCadColab.Location = new Point(0, 394);
+            FotterCadColab.Location = new Point(0, 750);
+            FotterCadColab.Margin = new Padding(4, 5, 4, 5);
             FotterCadColab.Name = "FotterCadColab";
-            FotterCadColab.Padding = new Padding(6, 6, 6, 6);
-            FotterCadColab.Size = new Size(591, 56);
+            FotterCadColab.Padding = new Padding(9, 10, 9, 10);
+            FotterCadColab.Size = new Size(844, 93);
             FotterCadColab.TabIndex = 16;
             // 
             // panel1
@@ -265,8 +268,9 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(591, 39);
+            panel1.Size = new Size(844, 65);
             panel1.TabIndex = 17;
             // 
             // btn_voltar
@@ -276,10 +280,9 @@
             btn_voltar.FlatStyle = FlatStyle.Flat;
             btn_voltar.ForeColor = Color.DimGray;
             btn_voltar.Image = Properties.Resources.seta_esquerda;
-            btn_voltar.Location = new Point(11, 2);
-            btn_voltar.Margin = new Padding(2, 2, 2, 2);
+            btn_voltar.Location = new Point(16, 3);
             btn_voltar.Name = "btn_voltar";
-            btn_voltar.Size = new Size(40, 40);
+            btn_voltar.Size = new Size(57, 67);
             btn_voltar.TabIndex = 1;
             btn_voltar.UseVisualStyleBackColor = false;
             btn_voltar.Click += btn_voltar_Click;
@@ -289,23 +292,44 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(175, 9);
+            label1.Location = new Point(250, 15);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(211, 21);
+            label1.Size = new Size(313, 32);
             label1.TabIndex = 0;
             label1.Text = "Equipamentos disponiveis";
             // 
+            // txtPesquisar
+            // 
+            txtPesquisar.Location = new Point(11, 117);
+            txtPesquisar.Name = "txtPesquisar";
+            txtPesquisar.Size = new Size(176, 31);
+            txtPesquisar.TabIndex = 18;
+            // 
+            // btnPesquisar
+            // 
+            btnPesquisar.BackColor = Color.DarkGreen;
+            btnPesquisar.ForeColor = Color.White;
+            btnPesquisar.Location = new Point(193, 114);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(183, 34);
+            btnPesquisar.TabIndex = 19;
+            btnPesquisar.Text = "Pesquisar por nome";
+            btnPesquisar.UseVisualStyleBackColor = false;
+            btnPesquisar.Click += btnPesquisar_Click;
+            // 
             // SelectEquips
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(591, 450);
+            ClientSize = new Size(844, 843);
+            Controls.Add(btnPesquisar);
+            Controls.Add(txtPesquisar);
             Controls.Add(panel1);
             Controls.Add(FotterCadColab);
             Controls.Add(EquipsSelecionados);
             Controls.Add(MostrarEquipsDisponiveis);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(2, 2, 2, 2);
             MaximizeBox = false;
             Name = "SelectEquips";
             StartPosition = FormStartPosition.CenterScreen;
@@ -316,6 +340,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -349,5 +374,7 @@
         private Panel panel1;
         private Label label1;
         private Button btn_voltar;
+        private TextBox txtPesquisar;
+        private Button btnPesquisar;
     }
 }

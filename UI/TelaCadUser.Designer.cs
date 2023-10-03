@@ -168,7 +168,7 @@
             inputUserSenha.MaxLength = 100;
             inputUserSenha.Name = "inputUserSenha";
             inputUserSenha.Size = new Size(237, 31);
-            inputUserSenha.TabIndex = 3;
+            inputUserSenha.TabIndex = 4;
             inputUserSenha.UseSystemPasswordChar = true;
             // 
             // panel2
@@ -201,7 +201,7 @@
             txtConfirEmail.MaxLength = 100;
             txtConfirEmail.Name = "txtConfirEmail";
             txtConfirEmail.Size = new Size(237, 31);
-            txtConfirEmail.TabIndex = 4;
+            txtConfirEmail.TabIndex = 3;
             // 
             // label2
             // 
