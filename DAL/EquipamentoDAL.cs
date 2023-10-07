@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,6 +82,15 @@ namespace DAL
                 return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento Nome, Ativo_inativo Ativo_inativo, Valor, Descricao, Etiqueta_identificacao Etiqueta, id_colaborador id_colaborador, id_marca id_marca FROM tb_equipamentos").ToList();
             }
         }
+        public List<manutencao> ManutencaoEquips()
+        {
+            using ( IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                return dbConnection.Query<manutencao>("select chamado.descricao descricao, chamado.id_status, Equip.Nome_equipamento from tb_chamado chamado join tb_equipamentos Equip on Equip.ID_equipamento = chamado.id_equipamento").ToList();
+            }
+        }
+
         public void UpdateEquipamentos(Equipamento equipamento)
         {
             using (IDbConnection dbConnection = new MySqlConnection(conec))

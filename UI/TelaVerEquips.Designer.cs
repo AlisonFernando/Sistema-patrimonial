@@ -64,6 +64,7 @@
             MostrarEquipamentos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MostrarEquipamentos.Size = new Size(965, 326);
             MostrarEquipamentos.TabIndex = 0;
+            MostrarEquipamentos.CellContentClick += MostrarEquipamentos_CellContentClick;
             MostrarEquipamentos.CellMouseDoubleClick += MostrarEquipamentos_CellMouseDoubleClick;
             // 
             // ID_equipamento

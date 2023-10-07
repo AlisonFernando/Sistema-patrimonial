@@ -82,5 +82,10 @@ namespace UI
             UI.TelaPrincipal telaPrincipal = new UI.TelaPrincipal();
             telaPrincipal.ShowDialog();
         }
+
+        private void MostrarUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

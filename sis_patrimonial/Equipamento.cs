@@ -16,7 +16,8 @@ namespace model
         public string id_marca { get; set; }
         public string id_colaborador { get; set; }
         public int ID_equipamento { get; set; }
-
+        public int id_status {get; set;}
+        
 
         public string Nome
         {

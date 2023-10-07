@@ -61,5 +61,11 @@ namespace UI
             UI.TelaVerEquips telaVerEquips = new UI.TelaVerEquips();
             telaVerEquips.ShowDialog();
         }
+
+        private void equipamentosEmManutençãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.TelaManutencao telaManutencao = new UI.TelaManutencao();
+            telaManutencao.ShowDialog();
+        }
     }
 }

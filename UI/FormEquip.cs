@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,33 +111,6 @@ namespace UI
             LoadEquipamentos();
         }
 
-        private void inputPrecoEquip_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Permite apenas números, vírgula e backspace
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
-            {
-                e.Handled = true;
-            }
-
-            // Permite apenas uma vírgula
-            if (e.KeyChar == ',' && (sender as TextBox).Text.Contains(","))
-            {
-                e.Handled = true;
-            }
-
-            // Formata o valor no formato de moeda
-            if (e.KeyChar == '.' || e.KeyChar == ',')
-            {
-                e.KeyChar = ',';
-
-                if ((sender as TextBox).Text.Contains(","))
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-
-
 
         private void CarregarMarcasComboBox()
         {
@@ -172,7 +146,6 @@ namespace UI
                 MessageBox.Show("Equipamento deletado com sucesso!");
                 inputEtiquetaEquip.Enabled = true;
             }
-
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
@@ -203,6 +176,6 @@ namespace UI
             this.Hide();
             TelaVerEquips telaVerEquips = new TelaVerEquips();
             telaVerEquips.ShowDialog();
-        }
+        }        
     }
 }

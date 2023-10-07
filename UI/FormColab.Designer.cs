@@ -152,6 +152,7 @@
             inputColabTel.Name = "inputColabTel";
             inputColabTel.Size = new Size(183, 31);
             inputColabTel.TabIndex = 4;
+            inputColabTel.TextChanged += inputColabTel_TextChanged;
             // 
             // Setor
             // 

@@ -152,5 +152,21 @@ namespace UI
         {
             this.Close();
         }
+
+        private void inputColabTel_TextChanged(object sender, EventArgs e)
+        {
+            string phoneNumber = new string(inputColabTel.Text.Where(char.IsDigit).ToArray());
+
+            if (phoneNumber.Length == 11)
+            {
+                phoneNumber = string.Format("({0}) {1}-{2}",
+                    phoneNumber.Substring(0, 2),
+                    phoneNumber.Substring(2, 5),
+                    phoneNumber.Substring(6, 4));
+            }
+
+            inputColabTel.Text = phoneNumber;
+            inputColabTel.SelectionStart = inputColabTel.Text.Length;
+        }
     }
 }

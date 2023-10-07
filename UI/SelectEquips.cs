@@ -89,6 +89,7 @@ namespace UI
         {
             EquipsSelecionados.Rows.Clear();
             equipamentosSelecionados.Clear();
+            LoadEquipamentos();
         }
 
 

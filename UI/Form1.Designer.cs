@@ -41,6 +41,7 @@
             MenuInfoColaborador = new ToolStripMenuItem();
             MenuInfoEquip = new ToolStripMenuItem();
             MenuUserCad = new ToolStripMenuItem();
+            equipamentosEmManutençãoToolStripMenuItem = new ToolStripMenuItem();
             relatóriosToolStripMenuItem = new ToolStripMenuItem();
             MenuRelatorioEquip = new ToolStripMenuItem();
             MenuRelatorioPrecoEquip = new ToolStripMenuItem();
@@ -117,7 +118,7 @@
             // 
             // visualizarToolStripMenuItem
             // 
-            visualizarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuInfoColaborador, MenuInfoEquip, MenuUserCad });
+            visualizarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuInfoColaborador, MenuInfoEquip, MenuUserCad, equipamentosEmManutençãoToolStripMenuItem });
             visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
             visualizarToolStripMenuItem.Size = new Size(101, 29);
             visualizarToolStripMenuItem.Text = "Visualizar";
@@ -125,22 +126,29 @@
             // MenuInfoColaborador
             // 
             MenuInfoColaborador.Name = "MenuInfoColaborador";
-            MenuInfoColaborador.Size = new Size(283, 34);
+            MenuInfoColaborador.Size = new Size(361, 34);
             MenuInfoColaborador.Text = "Info Colaboradores";
             // 
             // MenuInfoEquip
             // 
             MenuInfoEquip.Name = "MenuInfoEquip";
-            MenuInfoEquip.Size = new Size(283, 34);
+            MenuInfoEquip.Size = new Size(361, 34);
             MenuInfoEquip.Text = "Info Equipamentos";
             MenuInfoEquip.Click += MenuInfoEquip_Click;
             // 
             // MenuUserCad
             // 
             MenuUserCad.Name = "MenuUserCad";
-            MenuUserCad.Size = new Size(283, 34);
+            MenuUserCad.Size = new Size(361, 34);
             MenuUserCad.Text = "Usuarios cadastrados";
             MenuUserCad.Click += MenuUserCad_Click;
+            // 
+            // equipamentosEmManutençãoToolStripMenuItem
+            // 
+            equipamentosEmManutençãoToolStripMenuItem.Name = "equipamentosEmManutençãoToolStripMenuItem";
+            equipamentosEmManutençãoToolStripMenuItem.Size = new Size(361, 34);
+            equipamentosEmManutençãoToolStripMenuItem.Text = "Equipamentos em manutenção";
+            equipamentosEmManutençãoToolStripMenuItem.Click += equipamentosEmManutençãoToolStripMenuItem_Click;
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -308,5 +316,6 @@
         private ToolStripMenuItem marcaDeEquipamentoToolStripMenuItem;
         private ToolStripMenuItem CadUserMenu;
         private PictureBox pictureBox1;
+        private ToolStripMenuItem equipamentosEmManutençãoToolStripMenuItem;
     }
 }

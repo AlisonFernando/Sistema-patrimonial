@@ -92,5 +92,10 @@ namespace UI
                 cadEquip.ShowDialog();
             }
         }
+
+        private void MostrarEquipamentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

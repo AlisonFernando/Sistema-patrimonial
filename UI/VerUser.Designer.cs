@@ -84,6 +84,7 @@
             MostrarUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MostrarUsuarios.Size = new Size(611, 309);
             MostrarUsuarios.TabIndex = 13;
+            MostrarUsuarios.CellContentClick += MostrarUsuarios_CellContentClick;
             MostrarUsuarios.CellMouseDoubleClick += MostrarUsuarios_CellMouseDoubleClick;
             // 
             // ID

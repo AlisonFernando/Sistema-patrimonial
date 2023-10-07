@@ -8,24 +8,14 @@ namespace model
 {
     public class manutencao
     {
-        public int id_manutencao {get; set;}
-        public int id_equipamento { get; set;}
+        public int id_status { get; set;}
 
-        public bool finalizado;
+        public string descricao;
+        public string Nome_equipamento { get; set;}
+        public int ID_equipamento { get; set;}
+        public string status {  get; set;}
 
-        public string motivo_manutencao;
-        public DateTime DataHora { get; set;}
+        public string andamento_do_chamado { get; set;}
 
-        public bool Finalizado
-        {
-            get { return finalizado; }
-            set { finalizado = value; }
-        }
-
-        public string Manutencao
-        {
-            get { return motivo_manutencao; }
-            set { motivo_manutencao = value; }
-        }
     }
 }
