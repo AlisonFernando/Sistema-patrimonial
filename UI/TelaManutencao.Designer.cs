@@ -37,11 +37,6 @@
             btnVoltar = new Button();
             label3 = new Label();
             MostrarEquipsFinalizados = new DataGridView();
-            ID_Chamado = new DataGridViewTextBoxColumn();
-            descricao = new DataGridViewTextBoxColumn();
-            idUsuario = new DataGridViewTextBoxColumn();
-            Status = new DataGridViewTextBoxColumn();
-            Equipamento = new DataGridViewTextBoxColumn();
             label4 = new Label();
             txtPesquisarFinalizado = new TextBox();
             btnPesquisarFinalizado = new Button();
@@ -61,6 +56,7 @@
             dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
+            Usuario = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipsFinalizados).BeginInit();
@@ -151,10 +147,12 @@
             // MostrarEquipsFinalizados
             // 
             MostrarEquipsFinalizados.AllowUserToAddRows = false;
+            MostrarEquipsFinalizados.AllowUserToDeleteRows = false;
             MostrarEquipsFinalizados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarEquipsFinalizados.Columns.AddRange(new DataGridViewColumn[] { ID_Chamado, descricao, idUsuario, Status, Equipamento });
+            MostrarEquipsFinalizados.Columns.AddRange(new DataGridViewColumn[] { Usuario });
             MostrarEquipsFinalizados.Location = new Point(36, 166);
             MostrarEquipsFinalizados.Name = "MostrarEquipsFinalizados";
+            MostrarEquipsFinalizados.ReadOnly = true;
             MostrarEquipsFinalizados.RowHeadersWidth = 62;
             MostrarEquipsFinalizados.RowTemplate.Height = 33;
             MostrarEquipsFinalizados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -162,46 +160,6 @@
             MostrarEquipsFinalizados.Size = new Size(575, 225);
             MostrarEquipsFinalizados.TabIndex = 4;
             MostrarEquipsFinalizados.CellMouseDoubleClick += MostrarEquipsFinalizados_CellMouseDoubleClick;
-            // 
-            // ID_Chamado
-            // 
-            ID_Chamado.DataPropertyName = "id_chamado";
-            ID_Chamado.HeaderText = "ID";
-            ID_Chamado.MinimumWidth = 8;
-            ID_Chamado.Name = "ID_Chamado";
-            ID_Chamado.Width = 150;
-            // 
-            // descricao
-            // 
-            descricao.DataPropertyName = "descricao";
-            descricao.HeaderText = "Descrição";
-            descricao.MinimumWidth = 8;
-            descricao.Name = "descricao";
-            descricao.Width = 150;
-            // 
-            // idUsuario
-            // 
-            idUsuario.DataPropertyName = "id_usuario";
-            idUsuario.HeaderText = "Técnico responsável";
-            idUsuario.MinimumWidth = 8;
-            idUsuario.Name = "idUsuario";
-            idUsuario.Width = 150;
-            // 
-            // Status
-            // 
-            Status.DataPropertyName = "id_status";
-            Status.HeaderText = "Status";
-            Status.MinimumWidth = 8;
-            Status.Name = "Status";
-            Status.Width = 150;
-            // 
-            // Equipamento
-            // 
-            Equipamento.DataPropertyName = "id_equipamento";
-            Equipamento.HeaderText = "Equipamento";
-            Equipamento.MinimumWidth = 8;
-            Equipamento.Name = "Equipamento";
-            Equipamento.Width = 150;
             // 
             // label4
             // 
@@ -276,10 +234,12 @@
             // MostrarEquipsAndamento
             // 
             MostrarEquipsAndamento.AllowUserToAddRows = false;
+            MostrarEquipsAndamento.AllowUserToDeleteRows = false;
             MostrarEquipsAndamento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipsAndamento.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
             MostrarEquipsAndamento.Location = new Point(36, 455);
             MostrarEquipsAndamento.Name = "MostrarEquipsAndamento";
+            MostrarEquipsAndamento.ReadOnly = true;
             MostrarEquipsAndamento.RowHeadersWidth = 62;
             MostrarEquipsAndamento.RowTemplate.Height = 33;
             MostrarEquipsAndamento.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -293,6 +253,7 @@
             dataGridViewTextBoxColumn1.HeaderText = "ID";
             dataGridViewTextBoxColumn1.MinimumWidth = 8;
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
             dataGridViewTextBoxColumn1.Width = 150;
             // 
             // dataGridViewTextBoxColumn2
@@ -301,6 +262,7 @@
             dataGridViewTextBoxColumn2.HeaderText = "Descrição";
             dataGridViewTextBoxColumn2.MinimumWidth = 8;
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
             dataGridViewTextBoxColumn2.Width = 150;
             // 
             // dataGridViewTextBoxColumn3
@@ -309,6 +271,7 @@
             dataGridViewTextBoxColumn3.HeaderText = "Técnico responsável";
             dataGridViewTextBoxColumn3.MinimumWidth = 8;
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
             dataGridViewTextBoxColumn3.Width = 150;
             // 
             // dataGridViewTextBoxColumn4
@@ -317,6 +280,7 @@
             dataGridViewTextBoxColumn4.HeaderText = "Status";
             dataGridViewTextBoxColumn4.MinimumWidth = 8;
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
             dataGridViewTextBoxColumn4.Width = 150;
             // 
             // dataGridViewTextBoxColumn5
@@ -325,15 +289,18 @@
             dataGridViewTextBoxColumn5.HeaderText = "Equipamento";
             dataGridViewTextBoxColumn5.MinimumWidth = 8;
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
             dataGridViewTextBoxColumn5.Width = 150;
             // 
             // MostrarEquipsNaoFinalizados
             // 
             MostrarEquipsNaoFinalizados.AllowUserToAddRows = false;
+            MostrarEquipsNaoFinalizados.AllowUserToDeleteRows = false;
             MostrarEquipsNaoFinalizados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipsNaoFinalizados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10 });
             MostrarEquipsNaoFinalizados.Location = new Point(36, 738);
             MostrarEquipsNaoFinalizados.Name = "MostrarEquipsNaoFinalizados";
+            MostrarEquipsNaoFinalizados.ReadOnly = true;
             MostrarEquipsNaoFinalizados.RowHeadersWidth = 62;
             MostrarEquipsNaoFinalizados.RowTemplate.Height = 33;
             MostrarEquipsNaoFinalizados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -347,6 +314,7 @@
             dataGridViewTextBoxColumn6.HeaderText = "ID";
             dataGridViewTextBoxColumn6.MinimumWidth = 8;
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
             dataGridViewTextBoxColumn6.Width = 150;
             // 
             // dataGridViewTextBoxColumn7
@@ -355,6 +323,7 @@
             dataGridViewTextBoxColumn7.HeaderText = "Descrição";
             dataGridViewTextBoxColumn7.MinimumWidth = 8;
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.ReadOnly = true;
             dataGridViewTextBoxColumn7.Width = 150;
             // 
             // dataGridViewTextBoxColumn8
@@ -363,6 +332,7 @@
             dataGridViewTextBoxColumn8.HeaderText = "Técnico responsável";
             dataGridViewTextBoxColumn8.MinimumWidth = 8;
             dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
             dataGridViewTextBoxColumn8.Width = 150;
             // 
             // dataGridViewTextBoxColumn9
@@ -371,6 +341,7 @@
             dataGridViewTextBoxColumn9.HeaderText = "Status";
             dataGridViewTextBoxColumn9.MinimumWidth = 8;
             dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            dataGridViewTextBoxColumn9.ReadOnly = true;
             dataGridViewTextBoxColumn9.Width = 150;
             // 
             // dataGridViewTextBoxColumn10
@@ -379,7 +350,17 @@
             dataGridViewTextBoxColumn10.HeaderText = "Equipamento";
             dataGridViewTextBoxColumn10.MinimumWidth = 8;
             dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            dataGridViewTextBoxColumn10.ReadOnly = true;
             dataGridViewTextBoxColumn10.Width = 150;
+            // 
+            // Usuario
+            // 
+            Usuario.DataPropertyName = "id_usuario";
+            Usuario.HeaderText = "ID";
+            Usuario.MinimumWidth = 8;
+            Usuario.Name = "Usuario";
+            Usuario.ReadOnly = true;
+            Usuario.Width = 150;
             // 
             // TelaManutencao
             // 
@@ -432,11 +413,6 @@
         private Button btnPesquisarNaoFinalizado;
         private TextBox txtPesquisarNaoFinalizados;
         private Button btnLimpar;
-        private DataGridViewTextBoxColumn ID_Chamado;
-        private DataGridViewTextBoxColumn descricao;
-        private DataGridViewTextBoxColumn idUsuario;
-        private DataGridViewTextBoxColumn Status;
-        private DataGridViewTextBoxColumn Equipamento;
         private DataGridView MostrarEquipsAndamento;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -449,5 +425,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn Usuario;
     }
 }

@@ -12,9 +12,5 @@ namespace BLL
     {
         ChamadoDAL chamadoDAL= new ChamadoDAL();
 
-        public List<Chamado> GetEquipsChamado()
-        {
-            return chamadoDAL.GetEquipsChamado();
-        }
     }
 }

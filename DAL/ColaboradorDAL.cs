@@ -150,5 +150,43 @@ namespace DAL
             }
             return nomeColaborador;
         }
+
+        public List<Colaborador> GetColaboradoresAtivosComSetor()
+        {
+            List<Colaborador> colaboradores = new List<Colaborador>();
+
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+
+                string query = "SELECT c.Nome, c.Email, c.Telefone, s.Nome_setor " +
+               "FROM tb_colaborador c " +
+               "INNER JOIN tb_setor s ON c.id_setor = s.id_setor " +
+               "WHERE c.Ativo_inativo = 1";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Colaborador colaborador = new Colaborador
+                            {
+                                NomeColaborador = reader["Nome"].ToString(),
+                                EmailColaborador = reader["Email"].ToString(),
+                                TelefoneColaborador = reader["Telefone"].ToString(),
+                                SetorNome = reader["Nome_setor"].ToString()
+                            };
+
+                            colaboradores.Add(colaborador);
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return colaboradores;
+        }
     }
 }

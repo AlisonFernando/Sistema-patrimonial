@@ -162,18 +162,21 @@
             MenuRelatorioEquip.Name = "MenuRelatorioEquip";
             MenuRelatorioEquip.Size = new Size(283, 34);
             MenuRelatorioEquip.Text = "Qtd equipamentos";
+            MenuRelatorioEquip.Click += MenuRelatorioEquip_Click;
             // 
             // MenuRelatorioPrecoEquip
             // 
             MenuRelatorioPrecoEquip.Name = "MenuRelatorioPrecoEquip";
             MenuRelatorioPrecoEquip.Size = new Size(283, 34);
             MenuRelatorioPrecoEquip.Text = "Preço equipamentos";
+            MenuRelatorioPrecoEquip.Click += MenuRelatorioPrecoEquip_Click;
             // 
             // MenuRelatorioColabAtivo
             // 
             MenuRelatorioColabAtivo.Name = "MenuRelatorioColabAtivo";
             MenuRelatorioColabAtivo.Size = new Size(283, 34);
             MenuRelatorioColabAtivo.Text = "Colaboradores ativos";
+            MenuRelatorioColabAtivo.Click += MenuRelatorioColabAtivo_Click;
             // 
             // sairToolStripMenuItem
             // 

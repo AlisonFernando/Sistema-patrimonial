@@ -14,13 +14,14 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class TelaRelatorioEquipsQTD : Form
+    public partial class RelatorioColaboradoresAtivos : Form
     {
-        public TelaRelatorioEquipsQTD()
+        private string caminhoDestino;
+        public RelatorioColaboradoresAtivos()
         {
             InitializeComponent();
         }
-        private string caminhoDestino;
+
         private void btnGerarPDF_Click(object sender, EventArgs e)
         {
             try
@@ -41,56 +42,46 @@ namespace UI
                 doc.Open();
 
                 iTextSharp.text.Font titleFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD);
-                iTextSharp.text.Paragraph title = new iTextSharp.text.Paragraph("Relatório da quantidade de Equipamentos", titleFont);
+                iTextSharp.text.Paragraph title = new iTextSharp.text.Paragraph("Relatório de Colaboradores Ativos", titleFont);
                 title.Alignment = Element.ALIGN_CENTER;
                 doc.Add(title);
 
                 // Adicione uma linha separadora
                 doc.Add(new Chunk("\n"));
 
-                // Obtém os dados dos equipamentos
-                EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
-                List<Equipamento> equipamentos = equipamentoBLL.GetEquipamentos();
+                // Obtém os dados dos colaboradores ativos com o nome do setor
+                ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
+                List<Colaborador> colaboradores = colaboradorBLL.GetColaboradoresAtivosComSetor();
 
-                // Crie uma tabela para exibir os dados dos equipamentos
-                PdfPTable table = new PdfPTable(3); // 4 colunas para ID, Nome, Valor e Etiqueta
+                // Crie uma tabela para exibir os dados dos colaboradores
+                PdfPTable table = new PdfPTable(4); // 4 colunas para Nome, Email, Telefone e Setor
                 table.WidthPercentage = 100; // A largura da tabela é 100% do tamanho da página
 
                 // Cabeçalho da tabela
                 iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD);
                 table.AddCell(new PdfPCell(new Phrase("Nome", headerFont)));
-                table.AddCell(new PdfPCell(new Phrase("Valor", headerFont)));
-                table.AddCell(new PdfPCell(new Phrase("Etiqueta", headerFont)));
+                table.AddCell(new PdfPCell(new Phrase("Email", headerFont)));
+                table.AddCell(new PdfPCell(new Phrase("Telefone", headerFont)));
+                table.AddCell(new PdfPCell(new Phrase("Setor", headerFont)));
 
-                // Dados dos equipamentos
+                // Dados dos colaboradores
                 iTextSharp.text.Font dataFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10);
 
-                int totalEquipamentos = 0; // Variável para contar o número de equipamentos
-
-                foreach (Equipamento equipamento in equipamentos)
+                foreach (Colaborador colaborador in colaboradores)
                 {
-                    table.AddCell(new PdfPCell(new Phrase(equipamento.Nome, dataFont)));
-                    table.AddCell(new PdfPCell(new Phrase(equipamento.Valor.ToString(), dataFont)));
-                    table.AddCell(new PdfPCell(new Phrase(equipamento.Etiqueta, dataFont)));
-
-                    totalEquipamentos++; // Incrementa a contagem a cada equipamento listado
+                    table.AddCell(new PdfPCell(new Phrase(colaborador.NomeColaborador, dataFont)));
+                    table.AddCell(new PdfPCell(new Phrase(colaborador.EmailColaborador, dataFont)));
+                    table.AddCell(new PdfPCell(new Phrase(colaborador.TelefoneColaborador, dataFont)));
+                    table.AddCell(new PdfPCell(new Phrase(colaborador.SetorNome, dataFont))); // Use a propriedade SetorNome para obter o nome do setor
                 }
 
                 // Adicione a tabela ao documento
                 doc.Add(table);
 
-                // Adicione uma linha separadora
-                doc.Add(new Chunk("\n"));
-
-                // Adicione o total de equipamentos listados
-                iTextSharp.text.Paragraph totalParagraph = new iTextSharp.text.Paragraph($"Total de Equipamentos Listados: {totalEquipamentos}");
-                totalParagraph.Alignment = Element.ALIGN_RIGHT;
-                doc.Add(totalParagraph);
-
                 // Fecha o documento
                 doc.Close();
 
-                MessageBox.Show("Relatório em PDF gerado com sucesso e salvo em: " + caminhoDestino, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Relatório de Colaboradores Ativos em PDF gerado com sucesso e salvo em: " + caminhoDestino, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

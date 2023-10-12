@@ -67,5 +67,24 @@ namespace UI
             UI.TelaManutencao telaManutencao = new UI.TelaManutencao();
             telaManutencao.ShowDialog();
         }
+
+        private void MenuRelatorioEquip_Click(object sender, EventArgs e)
+        {
+            UI.TelaRelatorioEquipsQTD telaRelatorioEquipsQTD = new TelaRelatorioEquipsQTD();
+            telaRelatorioEquipsQTD.ShowDialog();
+        }
+
+        private void MenuRelatorioPrecoEquip_Click(object sender, EventArgs e)
+        {
+            UI.TelaRelatorioEquip telaRelatorioEquip = new UI.TelaRelatorioEquip();
+            telaRelatorioEquip.ShowDialog();
+
+        }
+
+        private void MenuRelatorioColabAtivo_Click(object sender, EventArgs e)
+        {
+            UI.RelatorioColaboradoresAtivos relatorioColaboradoresAtivos = new UI.RelatorioColaboradoresAtivos();
+            relatorioColaboradoresAtivos.ShowDialog();
+        }
     }
 }

@@ -56,6 +56,11 @@ namespace BLL
             ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
             return colaboradorDAL.ObterIdColaboradorPorNome(nomeColaborador);
         }
+        public List<Colaborador> GetColaboradoresAtivosComSetor()
+        {
+            ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
+            return colaboradorDAL.GetColaboradoresAtivosComSetor();
+        }
 
     }
 }

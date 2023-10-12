@@ -158,15 +158,6 @@ namespace DAL
                 throw;
             }
         }
-        public List<Chamado> GetEquipsChamado()
-        {
-
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
-            {
-                dbConnection.Open();
-                return dbConnection.Query<Chamado>("SELECT id_chamado, descricao, id_usuario, id_status, id_equipamento from tb_chamado").ToList();
-            }
-        }
 
     }
 }

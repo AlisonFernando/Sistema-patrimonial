@@ -15,6 +15,7 @@ namespace model
         string agendaColaborador;
         string telefoneColaborador;
         public bool ativo;
+        public string SetorNome {  get; set; }
         public string id_setor { get; set; }
         public string SenhaHash { get; set; }
 

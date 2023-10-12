@@ -15,5 +15,8 @@ namespace model
         public int id_usuario { get; set; }
         public int id_status { get; set; }
         public string id_equipamento { get; set; }
+        public string NomeUsuario { get; set; }
+        public string NomeStatus { get; set; }
+        public string Nome_Equipamento {  get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class TelaRelatorioEquipsQTD
+    partial class RelatorioColaboradoresAtivos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaRelatorioEquipsQTD));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RelatorioColaboradoresAtivos));
             btnVoltar = new Button();
             btnCaminho = new Button();
             btnGerarPDF = new Button();
@@ -40,10 +40,10 @@
             // 
             btnVoltar.BackgroundImage = Properties.Resources.seta_esquerda;
             btnVoltar.ImeMode = ImeMode.NoControl;
-            btnVoltar.Location = new Point(42, 26);
+            btnVoltar.Location = new Point(24, 12);
             btnVoltar.Name = "btnVoltar";
             btnVoltar.RightToLeft = RightToLeft.No;
-            btnVoltar.Size = new Size(28, 34);
+            btnVoltar.Size = new Size(37, 34);
             btnVoltar.TabIndex = 10;
             btnVoltar.UseVisualStyleBackColor = true;
             btnVoltar.Click += btnVoltar_Click;
@@ -53,7 +53,7 @@
             btnCaminho.BackColor = Color.DarkGreen;
             btnCaminho.ForeColor = Color.White;
             btnCaminho.ImeMode = ImeMode.NoControl;
-            btnCaminho.Location = new Point(468, 189);
+            btnCaminho.Location = new Point(459, 175);
             btnCaminho.Name = "btnCaminho";
             btnCaminho.Size = new Size(164, 34);
             btnCaminho.TabIndex = 9;
@@ -66,7 +66,7 @@
             btnGerarPDF.BackColor = Color.DarkGreen;
             btnGerarPDF.ForeColor = Color.White;
             btnGerarPDF.ImeMode = ImeMode.NoControl;
-            btnGerarPDF.Location = new Point(62, 229);
+            btnGerarPDF.Location = new Point(53, 215);
             btnGerarPDF.Name = "btnGerarPDF";
             btnGerarPDF.Size = new Size(400, 53);
             btnGerarPDF.TabIndex = 8;
@@ -76,7 +76,7 @@
             // 
             // txtDestino
             // 
-            txtDestino.Location = new Point(62, 189);
+            txtDestino.Location = new Point(53, 175);
             txtDestino.Name = "txtDestino";
             txtDestino.Size = new Size(400, 31);
             txtDestino.TabIndex = 7;
@@ -86,30 +86,25 @@
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitulo.ImeMode = ImeMode.NoControl;
-            lblTitulo.Location = new Point(62, 126);
+            lblTitulo.Location = new Point(53, 112);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(215, 38);
             lblTitulo.TabIndex = 6;
             lblTitulo.Text = "Salvar PDF em";
             // 
-            // TelaRelatorioEquipsQTD
+            // RelatorioColaboradoresAtivos
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(689, 450);
+            ClientSize = new Size(674, 339);
             Controls.Add(btnVoltar);
             Controls.Add(btnCaminho);
             Controls.Add(btnGerarPDF);
             Controls.Add(txtDestino);
             Controls.Add(lblTitulo);
-            ForeColor = SystemColors.ControlText;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximizeBox = false;
-            Name = "TelaRelatorioEquipsQTD";
-            RightToLeft = RightToLeft.No;
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Relatório de equipamentos";
+            Name = "RelatorioColaboradoresAtivos";
+            Text = "Relatório de colaboradores ativos";
             ResumeLayout(false);
             PerformLayout();
         }
