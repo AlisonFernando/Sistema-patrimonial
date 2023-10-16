@@ -10,7 +10,12 @@ namespace BLL
 {
     public class ManutencaoBLL
     {
-        ChamadoDAL chamadoDAL= new ChamadoDAL();
+        ManutencaoDAL manutencaoDAL= new ManutencaoDAL();
+
+        public List<manutencao> GetManutencoes()
+        {
+            return manutencaoDAL.GetManutencoes();
+        }
 
     }
 }

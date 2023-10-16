@@ -56,7 +56,7 @@
             dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
-            Usuario = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipsFinalizados).BeginInit();
@@ -69,9 +69,10 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Yellow;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(36, 409);
+            label1.Location = new Point(25, 245);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(529, 32);
+            label1.Size = new Size(342, 21);
             label1.TabIndex = 1;
             label1.Text = "Equipamentos com manutenção em andamento";
             // 
@@ -81,8 +82,9 @@
             panel1.Controls.Add(label2);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1026, 83);
+            panel1.Size = new Size(718, 50);
             panel1.TabIndex = 2;
             // 
             // label2
@@ -90,9 +92,10 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(276, 21);
+            label2.Location = new Point(193, 13);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(445, 41);
+            label2.Size = new Size(299, 28);
             label2.TabIndex = 0;
             label2.Text = "Manutenção de equipamentos";
             // 
@@ -101,10 +104,11 @@
             panel2.Controls.Add(btnLimpar);
             panel2.Controls.Add(btnVoltar);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 967);
+            panel2.Location = new Point(0, 580);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Padding = new Padding(9, 10, 9, 10);
-            panel2.Size = new Size(1026, 83);
+            panel2.Padding = new Padding(6);
+            panel2.Size = new Size(718, 50);
             panel2.TabIndex = 3;
             // 
             // btnLimpar
@@ -112,9 +116,10 @@
             btnLimpar.BackColor = Color.DarkGreen;
             btnLimpar.Dock = DockStyle.Right;
             btnLimpar.ForeColor = Color.White;
-            btnLimpar.Location = new Point(810, 10);
+            btnLimpar.Location = new Point(567, 6);
+            btnLimpar.Margin = new Padding(2);
             btnLimpar.Name = "btnLimpar";
-            btnLimpar.Size = new Size(207, 63);
+            btnLimpar.Size = new Size(145, 38);
             btnLimpar.TabIndex = 2;
             btnLimpar.Text = "Limpar";
             btnLimpar.UseVisualStyleBackColor = false;
@@ -125,9 +130,10 @@
             btnVoltar.BackColor = Color.DarkGreen;
             btnVoltar.Dock = DockStyle.Left;
             btnVoltar.ForeColor = Color.White;
-            btnVoltar.Location = new Point(9, 10);
+            btnVoltar.Location = new Point(6, 6);
+            btnVoltar.Margin = new Padding(2);
             btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(207, 63);
+            btnVoltar.Size = new Size(145, 38);
             btnVoltar.TabIndex = 1;
             btnVoltar.Text = "Voltar";
             btnVoltar.UseVisualStyleBackColor = false;
@@ -138,26 +144,26 @@
             label3.AutoSize = true;
             label3.BackColor = Color.DarkGreen;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(36, 120);
+            label3.Location = new Point(25, 72);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(529, 32);
+            label3.Size = new Size(342, 21);
             label3.TabIndex = 5;
             label3.Text = "Equipamentos com manutenção em andamento";
             // 
             // MostrarEquipsFinalizados
             // 
             MostrarEquipsFinalizados.AllowUserToAddRows = false;
-            MostrarEquipsFinalizados.AllowUserToDeleteRows = false;
             MostrarEquipsFinalizados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarEquipsFinalizados.Columns.AddRange(new DataGridViewColumn[] { Usuario });
-            MostrarEquipsFinalizados.Location = new Point(36, 166);
+            MostrarEquipsFinalizados.Columns.AddRange(new DataGridViewColumn[] { Nome });
+            MostrarEquipsFinalizados.Location = new Point(25, 100);
+            MostrarEquipsFinalizados.Margin = new Padding(2);
             MostrarEquipsFinalizados.Name = "MostrarEquipsFinalizados";
-            MostrarEquipsFinalizados.ReadOnly = true;
             MostrarEquipsFinalizados.RowHeadersWidth = 62;
             MostrarEquipsFinalizados.RowTemplate.Height = 33;
             MostrarEquipsFinalizados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MostrarEquipsFinalizados.ShowRowErrors = false;
-            MostrarEquipsFinalizados.Size = new Size(575, 225);
+            MostrarEquipsFinalizados.Size = new Size(402, 135);
             MostrarEquipsFinalizados.TabIndex = 4;
             MostrarEquipsFinalizados.CellMouseDoubleClick += MostrarEquipsFinalizados_CellMouseDoubleClick;
             // 
@@ -167,26 +173,29 @@
             label4.BackColor = Color.Red;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(36, 693);
+            label4.Location = new Point(25, 416);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(333, 32);
+            label4.Size = new Size(217, 21);
             label4.TabIndex = 7;
             label4.Text = "Equipamentos não finalizados";
             // 
             // txtPesquisarFinalizado
             // 
-            txtPesquisarFinalizado.Location = new Point(621, 166);
+            txtPesquisarFinalizado.Location = new Point(435, 100);
+            txtPesquisarFinalizado.Margin = new Padding(2);
             txtPesquisarFinalizado.Name = "txtPesquisarFinalizado";
-            txtPesquisarFinalizado.Size = new Size(265, 31);
+            txtPesquisarFinalizado.Size = new Size(187, 23);
             txtPesquisarFinalizado.TabIndex = 8;
             // 
             // btnPesquisarFinalizado
             // 
             btnPesquisarFinalizado.BackColor = Color.DarkGreen;
             btnPesquisarFinalizado.ForeColor = Color.White;
-            btnPesquisarFinalizado.Location = new Point(892, 166);
+            btnPesquisarFinalizado.Location = new Point(624, 100);
+            btnPesquisarFinalizado.Margin = new Padding(2);
             btnPesquisarFinalizado.Name = "btnPesquisarFinalizado";
-            btnPesquisarFinalizado.Size = new Size(112, 34);
+            btnPesquisarFinalizado.Size = new Size(78, 20);
             btnPesquisarFinalizado.TabIndex = 9;
             btnPesquisarFinalizado.Text = "Pesquisar";
             btnPesquisarFinalizado.TextAlign = ContentAlignment.BottomCenter;
@@ -197,9 +206,10 @@
             // 
             btnPesquisarEmAndamento.BackColor = Color.Yellow;
             btnPesquisarEmAndamento.ForeColor = Color.Black;
-            btnPesquisarEmAndamento.Location = new Point(892, 455);
+            btnPesquisarEmAndamento.Location = new Point(624, 273);
+            btnPesquisarEmAndamento.Margin = new Padding(2);
             btnPesquisarEmAndamento.Name = "btnPesquisarEmAndamento";
-            btnPesquisarEmAndamento.Size = new Size(112, 34);
+            btnPesquisarEmAndamento.Size = new Size(78, 20);
             btnPesquisarEmAndamento.TabIndex = 11;
             btnPesquisarEmAndamento.Text = "Pesquisar";
             btnPesquisarEmAndamento.UseVisualStyleBackColor = false;
@@ -207,18 +217,20 @@
             // 
             // txtPesquisarEmAndamento
             // 
-            txtPesquisarEmAndamento.Location = new Point(621, 455);
+            txtPesquisarEmAndamento.Location = new Point(435, 273);
+            txtPesquisarEmAndamento.Margin = new Padding(2);
             txtPesquisarEmAndamento.Name = "txtPesquisarEmAndamento";
-            txtPesquisarEmAndamento.Size = new Size(265, 31);
+            txtPesquisarEmAndamento.Size = new Size(187, 23);
             txtPesquisarEmAndamento.TabIndex = 10;
             // 
             // btnPesquisarNaoFinalizado
             // 
             btnPesquisarNaoFinalizado.BackColor = Color.DarkGreen;
             btnPesquisarNaoFinalizado.ForeColor = Color.Black;
-            btnPesquisarNaoFinalizado.Location = new Point(892, 738);
+            btnPesquisarNaoFinalizado.Location = new Point(624, 443);
+            btnPesquisarNaoFinalizado.Margin = new Padding(2);
             btnPesquisarNaoFinalizado.Name = "btnPesquisarNaoFinalizado";
-            btnPesquisarNaoFinalizado.Size = new Size(112, 34);
+            btnPesquisarNaoFinalizado.Size = new Size(78, 20);
             btnPesquisarNaoFinalizado.TabIndex = 13;
             btnPesquisarNaoFinalizado.Text = "Pesquisar";
             btnPesquisarNaoFinalizado.UseVisualStyleBackColor = false;
@@ -226,9 +238,10 @@
             // 
             // txtPesquisarNaoFinalizados
             // 
-            txtPesquisarNaoFinalizados.Location = new Point(621, 738);
+            txtPesquisarNaoFinalizados.Location = new Point(435, 443);
+            txtPesquisarNaoFinalizados.Margin = new Padding(2);
             txtPesquisarNaoFinalizados.Name = "txtPesquisarNaoFinalizados";
-            txtPesquisarNaoFinalizados.Size = new Size(265, 31);
+            txtPesquisarNaoFinalizados.Size = new Size(187, 23);
             txtPesquisarNaoFinalizados.TabIndex = 12;
             // 
             // MostrarEquipsAndamento
@@ -237,14 +250,15 @@
             MostrarEquipsAndamento.AllowUserToDeleteRows = false;
             MostrarEquipsAndamento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipsAndamento.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
-            MostrarEquipsAndamento.Location = new Point(36, 455);
+            MostrarEquipsAndamento.Location = new Point(25, 273);
+            MostrarEquipsAndamento.Margin = new Padding(2);
             MostrarEquipsAndamento.Name = "MostrarEquipsAndamento";
             MostrarEquipsAndamento.ReadOnly = true;
             MostrarEquipsAndamento.RowHeadersWidth = 62;
             MostrarEquipsAndamento.RowTemplate.Height = 33;
             MostrarEquipsAndamento.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MostrarEquipsAndamento.ShowRowErrors = false;
-            MostrarEquipsAndamento.Size = new Size(575, 225);
+            MostrarEquipsAndamento.Size = new Size(402, 135);
             MostrarEquipsAndamento.TabIndex = 14;
             // 
             // dataGridViewTextBoxColumn1
@@ -298,14 +312,15 @@
             MostrarEquipsNaoFinalizados.AllowUserToDeleteRows = false;
             MostrarEquipsNaoFinalizados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipsNaoFinalizados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10 });
-            MostrarEquipsNaoFinalizados.Location = new Point(36, 738);
+            MostrarEquipsNaoFinalizados.Location = new Point(25, 443);
+            MostrarEquipsNaoFinalizados.Margin = new Padding(2);
             MostrarEquipsNaoFinalizados.Name = "MostrarEquipsNaoFinalizados";
             MostrarEquipsNaoFinalizados.ReadOnly = true;
             MostrarEquipsNaoFinalizados.RowHeadersWidth = 62;
             MostrarEquipsNaoFinalizados.RowTemplate.Height = 33;
             MostrarEquipsNaoFinalizados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MostrarEquipsNaoFinalizados.ShowRowErrors = false;
-            MostrarEquipsNaoFinalizados.Size = new Size(575, 225);
+            MostrarEquipsNaoFinalizados.Size = new Size(402, 135);
             MostrarEquipsNaoFinalizados.TabIndex = 15;
             // 
             // dataGridViewTextBoxColumn6
@@ -353,20 +368,17 @@
             dataGridViewTextBoxColumn10.ReadOnly = true;
             dataGridViewTextBoxColumn10.Width = 150;
             // 
-            // Usuario
+            // Nome
             // 
-            Usuario.DataPropertyName = "id_usuario";
-            Usuario.HeaderText = "ID";
-            Usuario.MinimumWidth = 8;
-            Usuario.Name = "Usuario";
-            Usuario.ReadOnly = true;
-            Usuario.Width = 150;
+            Nome.DataPropertyName = "Nome_equipamento";
+            Nome.HeaderText = "Nome";
+            Nome.Name = "Nome";
             // 
             // TelaManutencao
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1026, 1050);
+            ClientSize = new Size(718, 630);
             Controls.Add(MostrarEquipsNaoFinalizados);
             Controls.Add(MostrarEquipsAndamento);
             Controls.Add(btnPesquisarNaoFinalizado);
@@ -382,6 +394,7 @@
             Controls.Add(panel1);
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(2);
             MaximizeBox = false;
             Name = "TelaManutencao";
             StartPosition = FormStartPosition.CenterScreen;
@@ -425,6 +438,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn Usuario;
+        private DataGridViewTextBoxColumn Nome;
     }
 }

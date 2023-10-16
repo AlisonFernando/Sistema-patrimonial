@@ -22,7 +22,15 @@ namespace UI
         }
         public void LoadEquipamentos()
         {
-            
+            List<manutencao> manutencaoData = manutencaoBLL.GetManutencoes();
+
+            List<manutencao> finalizados = manutencaoData.Where(item => item.Status == 1).ToList();
+            List<manutencao> emAndamento = manutencaoData.Where(item => item.Status == 2).ToList();
+            List<manutencao> naoFinalizados = manutencaoData.Where(item => item.Status == 3).ToList();
+
+            MostrarEquipsFinalizados.DataSource = finalizados;
+            MostrarEquipsAndamento.DataSource = emAndamento;
+            MostrarEquipsNaoFinalizados.DataSource = naoFinalizados;
         }
 
         private void btnPesquisarFinalizado_Click(object sender, EventArgs e)
@@ -42,14 +50,14 @@ namespace UI
         {
             string nomePesquisado = txtPesquisarEmAndamento.Text.Trim();
 
-            
+
         }
 
         private void btnPesquisarNaoFinalizado_Click(object sender, EventArgs e)
         {
             string nomePesquisado = txtPesquisarNaoFinalizados.Text.Trim();
 
-            
+
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
