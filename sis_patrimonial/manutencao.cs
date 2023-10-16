@@ -10,7 +10,7 @@ namespace model
     {
         public int id_chamado { get; set; }
 
-        public DateTime DataHora { get; set; }
+        public DateTime DataChamado { get; set; }
 
         public string Descricao { get; set; }
 

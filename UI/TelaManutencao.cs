@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAL;
 using model;
 using System;
 using System.Collections.Generic;
@@ -35,9 +36,19 @@ namespace UI
 
         private void btnPesquisarFinalizado_Click(object sender, EventArgs e)
         {
+            List<manutencao> manutencaoData = manutencaoBLL.GetManutencoes();
             string nomePesquisado = txtPesquisarFinalizado.Text.Trim();
-        }
+            List<manutencao> resultadosPesquisa = new List<manutencao>();
 
+            foreach (manutencao manutencao in manutencaoData)
+            {
+                if (manutencao.NomeEquipamento.ToUpper().Contains(nomePesquisado.ToUpper()))
+                {
+                    resultadosPesquisa.Add(manutencao);
+                }
+            }
+            MostrarEquipsFinalizados.DataSource = resultadosPesquisa;
+        }
         private void TelaManutencao_Load(object sender, EventArgs e)
         {
             btnPesquisarFinalizado.Click += new EventHandler(btnPesquisarFinalizado_Click);
@@ -49,7 +60,17 @@ namespace UI
         private void btnPesquisarEmAndamento_Click(object sender, EventArgs e)
         {
             string nomePesquisado = txtPesquisarEmAndamento.Text.Trim();
+            List<manutencao> manutencaoData = manutencaoBLL.GetManutencoes();
+            List<manutencao> resultadosPesquisa = new List<manutencao>();
 
+            foreach (manutencao manutencao in manutencaoData)
+            {
+                if (manutencao.NomeEquipamento.ToUpper().Contains(nomePesquisado.ToUpper()))
+                {
+                    resultadosPesquisa.Add(manutencao);
+                }
+            }
+            MostrarEquipsAndamento.DataSource = resultadosPesquisa;
 
         }
 
@@ -57,6 +78,17 @@ namespace UI
         {
             string nomePesquisado = txtPesquisarNaoFinalizados.Text.Trim();
 
+            List<manutencao> manutencaoData = manutencaoBLL.GetManutencoes();
+            List<manutencao> resultadosPesquisa = new List<manutencao>();
+
+            foreach (manutencao manutencao in manutencaoData)
+            {
+                if (manutencao.NomeEquipamento.ToUpper().Contains(nomePesquisado.ToUpper()))
+                {
+                    resultadosPesquisa.Add(manutencao);
+                }
+            }
+            MostrarEquipsNaoFinalizados.DataSource = resultadosPesquisa;
 
         }
 

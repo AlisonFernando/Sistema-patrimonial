@@ -38,6 +38,15 @@
             btnVoltar = new Button();
             label3 = new Label();
             MostrarEquipsFinalizados = new DataGridView();
+            Equipamento = new DataGridViewTextBoxColumn();
+            id_Statusss = new DataGridViewTextBoxColumn();
+            descricao = new DataGridViewTextBoxColumn();
+            Usuario = new DataGridViewTextBoxColumn();
+            DataChamado = new DataGridViewTextBoxColumn();
+            id_usuario = new DataGridViewTextBoxColumn();
+            DataErradass = new DataGridViewTextBoxColumn();
+            id_chamado = new DataGridViewTextBoxColumn();
+            id_equipamento = new DataGridViewTextBoxColumn();
             class1BindingSource = new BindingSource(components);
             label4 = new Label();
             txtPesquisarFinalizado = new TextBox();
@@ -47,6 +56,16 @@
             btnPesquisarNaoFinalizado = new Button();
             txtPesquisarNaoFinalizados = new TextBox();
             MostrarEquipsAndamento = new DataGridView();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            id_chamadow = new DataGridViewTextBoxColumn();
+            DataHora = new DataGridViewTextBoxColumn();
+            id_chama = new DataGridViewTextBoxColumn();
+            id_usuarioAndamento = new DataGridViewTextBoxColumn();
+            id_equipamentoAndamento = new DataGridViewTextBoxColumn();
+            id_status = new DataGridViewTextBoxColumn();
+            DataErradas = new DataGridViewTextBoxColumn();
             MostrarEquipsNaoFinalizados = new DataGridView();
             dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
@@ -54,24 +73,9 @@
             Data = new DataGridViewTextBoxColumn();
             id_usuarios = new DataGridViewTextBoxColumn();
             DataErrada = new DataGridViewTextBoxColumn();
+            id_chamadou = new DataGridViewTextBoxColumn();
             id_equipamentos = new DataGridViewTextBoxColumn();
             id_statuss = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            DataHora = new DataGridViewTextBoxColumn();
-            id_usuarioAndamento = new DataGridViewTextBoxColumn();
-            id_equipamentoAndamento = new DataGridViewTextBoxColumn();
-            id_status = new DataGridViewTextBoxColumn();
-            DataErradas = new DataGridViewTextBoxColumn();
-            Equipamento = new DataGridViewTextBoxColumn();
-            descricao = new DataGridViewTextBoxColumn();
-            Usuario = new DataGridViewTextBoxColumn();
-            DataChamado = new DataGridViewTextBoxColumn();
-            id_usuario = new DataGridViewTextBoxColumn();
-            DataErradass = new DataGridViewTextBoxColumn();
-            id_chamado = new DataGridViewTextBoxColumn();
-            id_equipamento = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipsFinalizados).BeginInit();
@@ -98,7 +102,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1026, 83);
+            panel1.Size = new Size(1236, 83);
             panel1.TabIndex = 2;
             // 
             // label2
@@ -106,7 +110,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(276, 22);
+            label2.Location = new Point(412, 24);
             label2.Name = "label2";
             label2.Size = new Size(445, 41);
             label2.TabIndex = 0;
@@ -120,7 +124,7 @@
             panel2.Location = new Point(0, 967);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(9, 10, 9, 10);
-            panel2.Size = new Size(1026, 83);
+            panel2.Size = new Size(1236, 83);
             panel2.TabIndex = 3;
             // 
             // btnLimpar
@@ -128,7 +132,7 @@
             btnLimpar.BackColor = Color.DarkGreen;
             btnLimpar.Dock = DockStyle.Right;
             btnLimpar.ForeColor = Color.White;
-            btnLimpar.Location = new Point(810, 10);
+            btnLimpar.Location = new Point(1020, 10);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(207, 63);
             btnLimpar.TabIndex = 2;
@@ -165,7 +169,7 @@
             MostrarEquipsFinalizados.AllowUserToAddRows = false;
             MostrarEquipsFinalizados.AllowUserToDeleteRows = false;
             MostrarEquipsFinalizados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarEquipsFinalizados.Columns.AddRange(new DataGridViewColumn[] { Equipamento, descricao, Usuario, DataChamado, id_usuario, DataErradass, id_chamado, id_equipamento });
+            MostrarEquipsFinalizados.Columns.AddRange(new DataGridViewColumn[] { Equipamento, id_Statusss, descricao, Usuario, DataChamado, id_usuario, DataErradass, id_chamado, id_equipamento });
             MostrarEquipsFinalizados.Location = new Point(36, 167);
             MostrarEquipsFinalizados.Name = "MostrarEquipsFinalizados";
             MostrarEquipsFinalizados.ReadOnly = true;
@@ -173,9 +177,95 @@
             MostrarEquipsFinalizados.RowTemplate.Height = 33;
             MostrarEquipsFinalizados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MostrarEquipsFinalizados.ShowRowErrors = false;
-            MostrarEquipsFinalizados.Size = new Size(574, 225);
+            MostrarEquipsFinalizados.Size = new Size(664, 225);
             MostrarEquipsFinalizados.TabIndex = 4;
             MostrarEquipsFinalizados.CellMouseDoubleClick += MostrarEquipsFinalizados_CellMouseDoubleClick;
+            // 
+            // Equipamento
+            // 
+            Equipamento.DataPropertyName = "NomeEquipamento";
+            Equipamento.HeaderText = "Equipamento";
+            Equipamento.MinimumWidth = 8;
+            Equipamento.Name = "Equipamento";
+            Equipamento.ReadOnly = true;
+            Equipamento.Width = 150;
+            // 
+            // id_Statusss
+            // 
+            id_Statusss.DataPropertyName = "id_status";
+            id_Statusss.HeaderText = "id_status";
+            id_Statusss.MinimumWidth = 8;
+            id_Statusss.Name = "id_Statusss";
+            id_Statusss.ReadOnly = true;
+            id_Statusss.Visible = false;
+            id_Statusss.Width = 150;
+            // 
+            // descricao
+            // 
+            descricao.DataPropertyName = "descricao";
+            descricao.HeaderText = "Descrição";
+            descricao.MinimumWidth = 8;
+            descricao.Name = "descricao";
+            descricao.ReadOnly = true;
+            descricao.Width = 150;
+            // 
+            // Usuario
+            // 
+            Usuario.DataPropertyName = "NomeUsuario";
+            Usuario.HeaderText = "Técnico";
+            Usuario.MinimumWidth = 8;
+            Usuario.Name = "Usuario";
+            Usuario.ReadOnly = true;
+            Usuario.Width = 150;
+            // 
+            // DataChamado
+            // 
+            DataChamado.DataPropertyName = "DataChamado";
+            DataChamado.HeaderText = "Data";
+            DataChamado.MinimumWidth = 8;
+            DataChamado.Name = "DataChamado";
+            DataChamado.ReadOnly = true;
+            DataChamado.Visible = false;
+            DataChamado.Width = 150;
+            // 
+            // id_usuario
+            // 
+            id_usuario.DataPropertyName = "id_usuario";
+            id_usuario.HeaderText = "id_usuario";
+            id_usuario.MinimumWidth = 8;
+            id_usuario.Name = "id_usuario";
+            id_usuario.ReadOnly = true;
+            id_usuario.Visible = false;
+            id_usuario.Width = 150;
+            // 
+            // DataErradass
+            // 
+            DataErradass.DataPropertyName = "DataChamado";
+            DataErradass.HeaderText = "Data";
+            DataErradass.MinimumWidth = 8;
+            DataErradass.Name = "DataErradass";
+            DataErradass.ReadOnly = true;
+            DataErradass.Width = 150;
+            // 
+            // id_chamado
+            // 
+            id_chamado.DataPropertyName = "id_chamado";
+            id_chamado.HeaderText = "id_chamado";
+            id_chamado.MinimumWidth = 8;
+            id_chamado.Name = "id_chamado";
+            id_chamado.ReadOnly = true;
+            id_chamado.Visible = false;
+            id_chamado.Width = 150;
+            // 
+            // id_equipamento
+            // 
+            id_equipamento.DataPropertyName = "id_equipamento";
+            id_equipamento.HeaderText = "id_equipamento";
+            id_equipamento.MinimumWidth = 8;
+            id_equipamento.Name = "id_equipamento";
+            id_equipamento.ReadOnly = true;
+            id_equipamento.Visible = false;
+            id_equipamento.Width = 150;
             // 
             // class1BindingSource
             // 
@@ -195,7 +285,7 @@
             // 
             // txtPesquisarFinalizado
             // 
-            txtPesquisarFinalizado.Location = new Point(621, 167);
+            txtPesquisarFinalizado.Location = new Point(720, 167);
             txtPesquisarFinalizado.Name = "txtPesquisarFinalizado";
             txtPesquisarFinalizado.Size = new Size(265, 31);
             txtPesquisarFinalizado.TabIndex = 8;
@@ -204,7 +294,7 @@
             // 
             btnPesquisarFinalizado.BackColor = Color.DarkGreen;
             btnPesquisarFinalizado.ForeColor = Color.White;
-            btnPesquisarFinalizado.Location = new Point(891, 167);
+            btnPesquisarFinalizado.Location = new Point(990, 167);
             btnPesquisarFinalizado.Name = "btnPesquisarFinalizado";
             btnPesquisarFinalizado.Size = new Size(111, 33);
             btnPesquisarFinalizado.TabIndex = 9;
@@ -217,7 +307,7 @@
             // 
             btnPesquisarEmAndamento.BackColor = Color.Yellow;
             btnPesquisarEmAndamento.ForeColor = Color.Black;
-            btnPesquisarEmAndamento.Location = new Point(891, 455);
+            btnPesquisarEmAndamento.Location = new Point(990, 455);
             btnPesquisarEmAndamento.Name = "btnPesquisarEmAndamento";
             btnPesquisarEmAndamento.Size = new Size(111, 33);
             btnPesquisarEmAndamento.TabIndex = 11;
@@ -227,7 +317,7 @@
             // 
             // txtPesquisarEmAndamento
             // 
-            txtPesquisarEmAndamento.Location = new Point(621, 455);
+            txtPesquisarEmAndamento.Location = new Point(720, 455);
             txtPesquisarEmAndamento.Name = "txtPesquisarEmAndamento";
             txtPesquisarEmAndamento.Size = new Size(265, 31);
             txtPesquisarEmAndamento.TabIndex = 10;
@@ -236,7 +326,7 @@
             // 
             btnPesquisarNaoFinalizado.BackColor = Color.DarkGreen;
             btnPesquisarNaoFinalizado.ForeColor = Color.Black;
-            btnPesquisarNaoFinalizado.Location = new Point(891, 738);
+            btnPesquisarNaoFinalizado.Location = new Point(990, 746);
             btnPesquisarNaoFinalizado.Name = "btnPesquisarNaoFinalizado";
             btnPesquisarNaoFinalizado.Size = new Size(111, 33);
             btnPesquisarNaoFinalizado.TabIndex = 13;
@@ -246,7 +336,7 @@
             // 
             // txtPesquisarNaoFinalizados
             // 
-            txtPesquisarNaoFinalizados.Location = new Point(621, 738);
+            txtPesquisarNaoFinalizados.Location = new Point(720, 746);
             txtPesquisarNaoFinalizados.Name = "txtPesquisarNaoFinalizados";
             txtPesquisarNaoFinalizados.Size = new Size(265, 31);
             txtPesquisarNaoFinalizados.TabIndex = 12;
@@ -256,7 +346,7 @@
             MostrarEquipsAndamento.AllowUserToAddRows = false;
             MostrarEquipsAndamento.AllowUserToDeleteRows = false;
             MostrarEquipsAndamento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarEquipsAndamento.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, DataHora, id_usuarioAndamento, id_equipamentoAndamento, id_status, DataErradas });
+            MostrarEquipsAndamento.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, id_chamadow, DataHora, id_chama, id_usuarioAndamento, id_equipamentoAndamento, id_status, DataErradas });
             MostrarEquipsAndamento.Location = new Point(36, 455);
             MostrarEquipsAndamento.Name = "MostrarEquipsAndamento";
             MostrarEquipsAndamento.ReadOnly = true;
@@ -264,23 +354,119 @@
             MostrarEquipsAndamento.RowTemplate.Height = 33;
             MostrarEquipsAndamento.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MostrarEquipsAndamento.ShowRowErrors = false;
-            MostrarEquipsAndamento.Size = new Size(574, 225);
+            MostrarEquipsAndamento.Size = new Size(664, 225);
             MostrarEquipsAndamento.TabIndex = 14;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "NomeEquipamento";
+            dataGridViewTextBoxColumn5.HeaderText = "Equipamento";
+            dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            dataGridViewTextBoxColumn5.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "descricao";
+            dataGridViewTextBoxColumn2.HeaderText = "Descrição";
+            dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "NomeUsuario";
+            dataGridViewTextBoxColumn3.HeaderText = "Técnico";
+            dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // id_chamadow
+            // 
+            id_chamadow.DataPropertyName = "m.id_chamado";
+            id_chamadow.HeaderText = "id_chamado";
+            id_chamadow.MinimumWidth = 8;
+            id_chamadow.Name = "id_chamadow";
+            id_chamadow.ReadOnly = true;
+            id_chamadow.Visible = false;
+            id_chamadow.Width = 150;
+            // 
+            // DataHora
+            // 
+            DataHora.DataPropertyName = "Data_hora_do_chamado";
+            DataHora.HeaderText = "DataHora";
+            DataHora.MinimumWidth = 8;
+            DataHora.Name = "DataHora";
+            DataHora.ReadOnly = true;
+            DataHora.Visible = false;
+            DataHora.Width = 150;
+            // 
+            // id_chama
+            // 
+            id_chama.DataPropertyName = "id_chamado";
+            id_chama.HeaderText = "id_chamado";
+            id_chama.MinimumWidth = 8;
+            id_chama.Name = "id_chama";
+            id_chama.ReadOnly = true;
+            id_chama.Visible = false;
+            id_chama.Width = 150;
+            // 
+            // id_usuarioAndamento
+            // 
+            id_usuarioAndamento.DataPropertyName = "id_usuario";
+            id_usuarioAndamento.HeaderText = "id_usuario";
+            id_usuarioAndamento.MinimumWidth = 8;
+            id_usuarioAndamento.Name = "id_usuarioAndamento";
+            id_usuarioAndamento.ReadOnly = true;
+            id_usuarioAndamento.Visible = false;
+            id_usuarioAndamento.Width = 150;
+            // 
+            // id_equipamentoAndamento
+            // 
+            id_equipamentoAndamento.DataPropertyName = "id_equipamento";
+            id_equipamentoAndamento.HeaderText = "id_equipamento";
+            id_equipamentoAndamento.MinimumWidth = 8;
+            id_equipamentoAndamento.Name = "id_equipamentoAndamento";
+            id_equipamentoAndamento.ReadOnly = true;
+            id_equipamentoAndamento.Visible = false;
+            id_equipamentoAndamento.Width = 150;
+            // 
+            // id_status
+            // 
+            id_status.DataPropertyName = "id_status";
+            id_status.HeaderText = "id_satatus";
+            id_status.MinimumWidth = 8;
+            id_status.Name = "id_status";
+            id_status.ReadOnly = true;
+            id_status.Visible = false;
+            id_status.Width = 150;
+            // 
+            // DataErradas
+            // 
+            DataErradas.DataPropertyName = "DataChamado";
+            DataErradas.HeaderText = "Data";
+            DataErradas.MinimumWidth = 8;
+            DataErradas.Name = "DataErradas";
+            DataErradas.ReadOnly = true;
+            DataErradas.Width = 150;
             // 
             // MostrarEquipsNaoFinalizados
             // 
             MostrarEquipsNaoFinalizados.AllowUserToAddRows = false;
             MostrarEquipsNaoFinalizados.AllowUserToDeleteRows = false;
             MostrarEquipsNaoFinalizados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarEquipsNaoFinalizados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, Data, id_usuarios, DataErrada, id_equipamentos, id_statuss });
-            MostrarEquipsNaoFinalizados.Location = new Point(36, 738);
+            MostrarEquipsNaoFinalizados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, Data, id_usuarios, DataErrada, id_chamadou, id_equipamentos, id_statuss });
+            MostrarEquipsNaoFinalizados.Location = new Point(36, 746);
             MostrarEquipsNaoFinalizados.Name = "MostrarEquipsNaoFinalizados";
             MostrarEquipsNaoFinalizados.ReadOnly = true;
             MostrarEquipsNaoFinalizados.RowHeadersWidth = 62;
             MostrarEquipsNaoFinalizados.RowTemplate.Height = 33;
             MostrarEquipsNaoFinalizados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MostrarEquipsNaoFinalizados.ShowRowErrors = false;
-            MostrarEquipsNaoFinalizados.Size = new Size(574, 225);
+            MostrarEquipsNaoFinalizados.Size = new Size(664, 225);
             MostrarEquipsNaoFinalizados.TabIndex = 15;
             // 
             // dataGridViewTextBoxColumn10
@@ -317,6 +503,7 @@
             Data.MinimumWidth = 8;
             Data.Name = "Data";
             Data.ReadOnly = true;
+            Data.Visible = false;
             Data.Width = 150;
             // 
             // id_usuarios
@@ -331,12 +518,22 @@
             // 
             // DataErrada
             // 
-            DataErrada.DataPropertyName = "Data_hora_do_chamdo";
-            DataErrada.HeaderText = "DataErrada";
+            DataErrada.DataPropertyName = "DataChamado";
+            DataErrada.HeaderText = "Data";
             DataErrada.MinimumWidth = 8;
             DataErrada.Name = "DataErrada";
             DataErrada.ReadOnly = true;
             DataErrada.Width = 150;
+            // 
+            // id_chamadou
+            // 
+            id_chamadou.DataPropertyName = "id_chamado";
+            id_chamadou.HeaderText = "id_chamado";
+            id_chamadou.MinimumWidth = 8;
+            id_chamadou.Name = "id_chamadou";
+            id_chamadou.ReadOnly = true;
+            id_chamadou.Visible = false;
+            id_chamadou.Width = 150;
             // 
             // id_equipamentos
             // 
@@ -358,160 +555,11 @@
             id_statuss.Visible = false;
             id_statuss.Width = 150;
             // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "NomeEquipamento";
-            dataGridViewTextBoxColumn5.HeaderText = "Equipamento";
-            dataGridViewTextBoxColumn5.MinimumWidth = 8;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            dataGridViewTextBoxColumn5.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "descricao";
-            dataGridViewTextBoxColumn2.HeaderText = "Descrição";
-            dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "NomeUsuario";
-            dataGridViewTextBoxColumn3.HeaderText = "Técnico";
-            dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // DataHora
-            // 
-            DataHora.HeaderText = "DataHora";
-            DataHora.MinimumWidth = 8;
-            DataHora.Name = "DataHora";
-            DataHora.ReadOnly = true;
-            DataHora.Width = 150;
-            // 
-            // id_usuarioAndamento
-            // 
-            id_usuarioAndamento.DataPropertyName = "id_usuario";
-            id_usuarioAndamento.HeaderText = "id_usuario";
-            id_usuarioAndamento.MinimumWidth = 8;
-            id_usuarioAndamento.Name = "id_usuarioAndamento";
-            id_usuarioAndamento.ReadOnly = true;
-            id_usuarioAndamento.Visible = false;
-            id_usuarioAndamento.Width = 150;
-            // 
-            // id_equipamentoAndamento
-            // 
-            id_equipamentoAndamento.DataPropertyName = "id_equipamento";
-            id_equipamentoAndamento.HeaderText = "id_equipamento";
-            id_equipamentoAndamento.MinimumWidth = 8;
-            id_equipamentoAndamento.Name = "id_equipamentoAndamento";
-            id_equipamentoAndamento.ReadOnly = true;
-            id_equipamentoAndamento.Visible = false;
-            id_equipamentoAndamento.Width = 150;
-            // 
-            // id_status
-            // 
-            id_status.DataPropertyName = "id_status";
-            id_status.HeaderText = "id_satatus";
-            id_status.MinimumWidth = 8;
-            id_status.Name = "id_status";
-            id_status.ReadOnly = true;
-            id_status.Visible = false;
-            id_status.Width = 150;
-            // 
-            // DataErradas
-            // 
-            DataErradas.DataPropertyName = "Data_hora_do_chamado";
-            DataErradas.HeaderText = "DataErrada";
-            DataErradas.MinimumWidth = 8;
-            DataErradas.Name = "DataErradas";
-            DataErradas.ReadOnly = true;
-            DataErradas.Width = 150;
-            // 
-            // Equipamento
-            // 
-            Equipamento.DataPropertyName = "NomeEquipamento";
-            Equipamento.HeaderText = "Equipamento";
-            Equipamento.MinimumWidth = 8;
-            Equipamento.Name = "Equipamento";
-            Equipamento.ReadOnly = true;
-            Equipamento.Width = 150;
-            // 
-            // descricao
-            // 
-            descricao.DataPropertyName = "descricao";
-            descricao.HeaderText = "Descrição";
-            descricao.MinimumWidth = 8;
-            descricao.Name = "descricao";
-            descricao.ReadOnly = true;
-            descricao.Width = 150;
-            // 
-            // Usuario
-            // 
-            Usuario.DataPropertyName = "NomeUsuario";
-            Usuario.HeaderText = "Técnico";
-            Usuario.MinimumWidth = 8;
-            Usuario.Name = "Usuario";
-            Usuario.ReadOnly = true;
-            Usuario.Width = 150;
-            // 
-            // DataChamado
-            // 
-            DataChamado.DataPropertyName = "DataChamado";
-            DataChamado.HeaderText = "Data";
-            DataChamado.MinimumWidth = 8;
-            DataChamado.Name = "DataChamado";
-            DataChamado.ReadOnly = true;
-            DataChamado.Width = 150;
-            // 
-            // id_usuario
-            // 
-            id_usuario.DataPropertyName = "id_usuario";
-            id_usuario.HeaderText = "id_usuario";
-            id_usuario.MinimumWidth = 8;
-            id_usuario.Name = "id_usuario";
-            id_usuario.ReadOnly = true;
-            id_usuario.Visible = false;
-            id_usuario.Width = 150;
-            // 
-            // DataErradass
-            // 
-            DataErradass.DataPropertyName = "Data_hora_do_chamado";
-            DataErradass.HeaderText = "DataErrada";
-            DataErradass.MinimumWidth = 8;
-            DataErradass.Name = "DataErradass";
-            DataErradass.ReadOnly = true;
-            DataErradass.Width = 150;
-            // 
-            // id_chamado
-            // 
-            id_chamado.DataPropertyName = "id_chamado";
-            id_chamado.HeaderText = "id_chamado";
-            id_chamado.MinimumWidth = 8;
-            id_chamado.Name = "id_chamado";
-            id_chamado.ReadOnly = true;
-            id_chamado.Visible = false;
-            id_chamado.Width = 150;
-            // 
-            // id_equipamento
-            // 
-            id_equipamento.DataPropertyName = "id_equipamento";
-            id_equipamento.HeaderText = "id_equipamento";
-            id_equipamento.MinimumWidth = 8;
-            id_equipamento.Name = "id_equipamento";
-            id_equipamento.ReadOnly = true;
-            id_equipamento.Visible = false;
-            id_equipamento.Width = 150;
-            // 
             // TelaManutencao
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1026, 1050);
+            ClientSize = new Size(1236, 1050);
             Controls.Add(MostrarEquipsNaoFinalizados);
             Controls.Add(MostrarEquipsAndamento);
             Controls.Add(btnPesquisarNaoFinalizado);
@@ -562,15 +610,8 @@
         private DataGridView MostrarEquipsAndamento;
         private DataGridView MostrarEquipsNaoFinalizados;
         private BindingSource class1BindingSource;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn Data;
-        private DataGridViewTextBoxColumn id_usuarios;
-        private DataGridViewTextBoxColumn DataErrada;
-        private DataGridViewTextBoxColumn id_equipamentos;
-        private DataGridViewTextBoxColumn id_statuss;
         private DataGridViewTextBoxColumn Equipamento;
+        private DataGridViewTextBoxColumn id_Statusss;
         private DataGridViewTextBoxColumn descricao;
         private DataGridViewTextBoxColumn Usuario;
         private DataGridViewTextBoxColumn DataChamado;
@@ -581,10 +622,21 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn id_chamadow;
         private DataGridViewTextBoxColumn DataHora;
+        private DataGridViewTextBoxColumn id_chama;
         private DataGridViewTextBoxColumn id_usuarioAndamento;
         private DataGridViewTextBoxColumn id_equipamentoAndamento;
         private DataGridViewTextBoxColumn id_status;
         private DataGridViewTextBoxColumn DataErradas;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn Data;
+        private DataGridViewTextBoxColumn id_usuarios;
+        private DataGridViewTextBoxColumn DataErrada;
+        private DataGridViewTextBoxColumn id_chamadou;
+        private DataGridViewTextBoxColumn id_equipamentos;
+        private DataGridViewTextBoxColumn id_statuss;
     }
 }

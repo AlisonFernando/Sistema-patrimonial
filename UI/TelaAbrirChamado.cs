@@ -94,19 +94,19 @@ namespace UI
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtDesc.Text))
+            if (string.IsNullOrWhiteSpace(txtDesc.Text) || string.IsNullOrEmpty(txtDesc.Text.Trim()))
             {
                 MessageBox.Show("Preencha a descrição antes de abrir o chamado.");
                 return;
             }
 
-            if (selectUser.SelectedValue == null)
+            else if (selectUser.SelectedValue == null)
             {
                 MessageBox.Show("Selecione um usuário antes de abrir o chamado.");
                 return;
             }
 
-            if (selectChamado.SelectedValue == null)
+            else if (selectChamado.SelectedValue == null)
             {
                 MessageBox.Show("Selecione um status antes de abrir o chamado.");
                 return;

@@ -41,7 +41,7 @@ namespace DAL
                         {
                             manutencao manutencao = new manutencao();
                             manutencao.id_chamado = (int)reader["id_chamado"];
-                            manutencao.DataHora = (DateTime)reader["DataChamado"];
+                            manutencao.DataChamado = (DateTime)reader["DataChamado"];
                             manutencao.Descricao = reader["descricao"].ToString();
                             manutencao.NomeUsuario = reader["NomeUsuario"].ToString(); // Nome do usuário
                             manutencao.id_status = (int)reader["id_status"]; // Andamento do chamado

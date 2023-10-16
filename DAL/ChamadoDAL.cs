@@ -46,7 +46,7 @@ namespace DAL
 
                     // Criar uma instância de 'manutencao' e preencher com os valores do 'chamado'
                     manutencao manutencao = new manutencao();
-                    manutencao.DataHora = chamado.DataHora;
+                    manutencao.DataChamado = chamado.DataHora;
                     manutencao.Descricao = chamado.Descricao;
                     manutencao.id_usuario = chamado.id_usuario;
                     manutencao.id_status = chamado.id_status;
@@ -59,7 +59,7 @@ namespace DAL
                     using (MySqlCommand cmdManutencao = new MySqlCommand(sqlManutencao, connection))
                     {
                         cmdManutencao.Parameters.AddWithValue("@idChamado", idChamadoGerado);
-                        cmdManutencao.Parameters.AddWithValue("@DataHora", manutencao.DataHora);
+                        cmdManutencao.Parameters.AddWithValue("@DataHora", manutencao.DataChamado);
                         cmdManutencao.Parameters.AddWithValue("@Descricao", manutencao.Descricao);
                         cmdManutencao.Parameters.AddWithValue("@id_usuario", manutencao.id_usuario);
                         cmdManutencao.Parameters.AddWithValue("@id_status", manutencao.id_status);
