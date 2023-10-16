@@ -20,7 +20,7 @@ namespace UI
             if (manutencao != null)
             {
 
-                txtNomeEquipamento.Text = manutencao.Nome_equipamento;
+                txtNomeEquipamento.Text = manutencao.NomeEquipamento;
             }
         }
         private void CarregarStatusComboBox()

@@ -22,37 +22,32 @@ namespace UI
         private void CadastrarMarca_Click(object sender, EventArgs e)
         {
             Marca marca = new Marca();
-
             marca.Nome = inputMarcaNome.Text;
 
-
-            // Executa a verificação se caso o usuário não digitar nenhum valor nos campos
-            if (marca.Nome.Trim().Length <= 0)
+            // Verifica se o nome da marca está em branco ou contém apenas espaços em branco
+            if (string.IsNullOrWhiteSpace(marca.Nome) || marca.Nome.Trim() == "")
             {
-                MessageBox.Show("Verifique seu nome e tente novamente");
+                MessageBox.Show("O nome da marca não pode ficar em branco ou conter apenas espaços em branco.");
                 return;
             }
 
-            // Verifica se o nome da marca digitada já existe
-            MarcaBLL verificarMarcaBLL = new MarcaBLL();
-            string verificar = verificarMarcaBLL.VerificarMarca(marca.Nome);
+            MarcaBLL marcaBLL = new MarcaBLL();
+            string verificar = marcaBLL.VerificarMarca(marca.Nome);
 
             if (verificar == "Marca existente")
             {
-                MessageBox.Show("A marca digitada já existe no banco de dados");
-                return;
+                MessageBox.Show("A marca já existe no banco de dados.");
             }
             else if (verificar == "Marca não existe")
             {
-
-                // Realiza o cadastro do usuário
-                MarcaBLL marcaBLL = new MarcaBLL();
                 string retorno = marcaBLL.CadMarca(marca);
-
                 if (retorno == "Sucesso")
                 {
-                    MessageBox.Show("Marca cadastrada");
-
+                    MessageBox.Show("Marca cadastrada com sucesso.");
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao cadastrar a marca no banco de dados.");
                 }
             }
         }

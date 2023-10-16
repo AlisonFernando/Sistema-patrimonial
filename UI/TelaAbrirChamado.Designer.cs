@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaAbrirChamado));
             panel2 = new Panel();
+            btnVoltar = new Button();
             btnCadUserSucesso = new Button();
             btn_limpar = new Button();
             panel1 = new Panel();
@@ -47,7 +48,6 @@
             selectUser = new ComboBox();
             label7 = new Label();
             selectChamado = new ComboBox();
-            btnVoltar = new Button();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -64,6 +64,20 @@
             panel2.Padding = new Padding(9, 10, 9, 10);
             panel2.Size = new Size(627, 83);
             panel2.TabIndex = 11;
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.BackColor = Color.DarkGreen;
+            btnVoltar.Dock = DockStyle.Left;
+            btnVoltar.ForeColor = SystemColors.Control;
+            btnVoltar.Location = new Point(9, 10);
+            btnVoltar.Margin = new Padding(4, 5, 4, 5);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.Size = new Size(214, 63);
+            btnVoltar.TabIndex = 2;
+            btnVoltar.Text = "Voltar";
+            btnVoltar.UseVisualStyleBackColor = false;
+            btnVoltar.Click += btnVoltar_Click;
             // 
             // btnCadUserSucesso
             // 
@@ -204,7 +218,7 @@
             dateTimePicker1.Location = new Point(331, 135);
             dateTimePicker1.Margin = new Padding(4, 5, 4, 5);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(190, 31);
+            dateTimePicker1.Size = new Size(204, 31);
             dateTimePicker1.TabIndex = 24;
             // 
             // label6
@@ -241,20 +255,6 @@
             selectChamado.Name = "selectChamado";
             selectChamado.Size = new Size(183, 33);
             selectChamado.TabIndex = 28;
-            // 
-            // btnVoltar
-            // 
-            btnVoltar.BackColor = Color.DarkGreen;
-            btnVoltar.Dock = DockStyle.Left;
-            btnVoltar.ForeColor = SystemColors.Control;
-            btnVoltar.Location = new Point(9, 10);
-            btnVoltar.Margin = new Padding(4, 5, 4, 5);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(214, 63);
-            btnVoltar.TabIndex = 2;
-            btnVoltar.Text = "Voltar";
-            btnVoltar.UseVisualStyleBackColor = false;
-            btnVoltar.Click += btnVoltar_Click;
             // 
             // TelaAbrirChamado
             // 

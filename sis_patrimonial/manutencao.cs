@@ -8,11 +8,22 @@ namespace model
 {
     public class manutencao
     {
-        public int Status { get; set; }
-        public string DescricaoChamado { get; set; }
-        public string Nome_equipamento { get; set; }
-        public string NomeUsuario { get; set; }
-        public string AndamentoChamado { get; set; }
-    }
+        public int id_chamado { get; set; }
 
+        public DateTime DataHora { get; set; }
+
+        public string Descricao { get; set; }
+
+        public int id_usuario { get; set; }
+
+        public int id_status { get; set; }
+
+        public string id_equipamento { get; set; }
+
+        public string NomeEquipamento { get; set; }
+
+        public string NomeUsuario { get; set; }
+
+        //public string AndamentoChamado { get; set; }
+    }
 }

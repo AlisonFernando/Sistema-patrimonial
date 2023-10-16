@@ -24,9 +24,9 @@ namespace UI
         {
             List<manutencao> manutencaoData = manutencaoBLL.GetManutencoes();
 
-            List<manutencao> finalizados = manutencaoData.Where(item => item.Status == 1).ToList();
-            List<manutencao> emAndamento = manutencaoData.Where(item => item.Status == 2).ToList();
-            List<manutencao> naoFinalizados = manutencaoData.Where(item => item.Status == 3).ToList();
+            List<manutencao> finalizados = manutencaoData.Where(item => item.id_status == 1).ToList();
+            List<manutencao> emAndamento = manutencaoData.Where(item => item.id_status == 2).ToList();
+            List<manutencao> naoFinalizados = manutencaoData.Where(item => item.id_status == 3).ToList();
 
             MostrarEquipsFinalizados.DataSource = finalizados;
             MostrarEquipsAndamento.DataSource = emAndamento;

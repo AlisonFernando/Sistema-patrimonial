@@ -17,8 +17,6 @@ namespace DAL
         string sql;
         MySqlCommand cmd;
 
-
-
         public List<manutencao> GetManutencoes()
         {
             List<manutencao> manutencaoList = new List<manutencao>();
@@ -27,19 +25,35 @@ namespace DAL
             {
                 connection.Open();
 
-                string query = "SELECT M.*, C.descricao AS ChamadoDescricao, U.Nome AS UsuarioNome, E.Nome_equipamento, S.andamento_do_chamado " +
-                               "FROM tb_manutencao M " +
-                               "INNER JOIN tb_chamado C ON M.id_chamado = C.id_chamado " +
-                               "INNER JOIN tb_usuario U ON C.id_usuario = U.id_usuario " +
-                               "INNER JOIN tb_equipamentos E ON M.ID_equipamento = E.ID_equipamento " +
-                               "INNER JOIN tb_status S ON M.id_status = S.id_status;"; 
+                string query = "SELECT m.id_chamado, m.Data_hora_do_chamado AS DataChamado, m.descricao, u.Nome AS NomeUsuario, m.id_status, e.nome_equipamento AS NomeEquipamento " +
+               "FROM tb_manutencao AS m " +
+               "JOIN tb_equipamentos AS e ON m.id_equipamento = e.id_equipamento " +
+               "JOIN tb_usuario AS u ON m.id_usuario = u.id_usuario";
 
-                connection.Close();
+
+
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            manutencao manutencao = new manutencao();
+                            manutencao.id_chamado = (int)reader["id_chamado"];
+                            manutencao.DataHora = (DateTime)reader["DataChamado"];
+                            manutencao.Descricao = reader["descricao"].ToString();
+                            manutencao.NomeUsuario = reader["NomeUsuario"].ToString(); // Nome do usuário
+                            manutencao.id_status = (int)reader["id_status"]; // Andamento do chamado
+                            manutencao.NomeEquipamento = reader["NomeEquipamento"].ToString();
+
+                            manutencaoList.Add(manutencao);
+                        }
+                    }
+                }
             }
 
             return manutencaoList;
         }
-
-
     }
 }

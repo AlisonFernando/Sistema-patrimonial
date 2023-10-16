@@ -22,23 +22,53 @@ namespace DAL
         {
             try
             {
-                string sql = "INSERT INTO tb_chamado(Data_hora_do_chamado, descricao, id_usuario, id_status, id_equipamento) VALUES " +
-                             "(@DataHora, @Descricao, @id_usuario, @id_status, @id_equipamento)";
+                string sqlChamado = "INSERT INTO tb_chamado(Data_hora_do_chamado, descricao, id_usuario, id_status, id_equipamento) " +
+                                    "VALUES (@DataHora, @Descricao, @id_usuario, @id_status, @id_equipamento)";
 
                 using (MySqlConnection connection = mConn.AbrirConexao())
                 {
-                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    using (MySqlCommand cmdChamado = new MySqlCommand(sqlChamado, connection))
                     {
-                        cmd.Parameters.AddWithValue("@DataHora", chamado.DataHora);
-                        cmd.Parameters.AddWithValue("@Descricao", chamado.Descricao);
-                        cmd.Parameters.AddWithValue("@id_usuario", chamado.id_usuario);
-                        cmd.Parameters.AddWithValue("@id_status", chamado.id_status);
-                        cmd.Parameters.AddWithValue("@id_equipamento", chamado.id_equipamento);
+                        cmdChamado.Parameters.AddWithValue("@DataHora", chamado.DataHora);
+                        cmdChamado.Parameters.AddWithValue("@Descricao", chamado.Descricao);
+                        cmdChamado.Parameters.AddWithValue("@id_usuario", chamado.id_usuario);
+                        cmdChamado.Parameters.AddWithValue("@id_status", chamado.id_status);
+                        cmdChamado.Parameters.AddWithValue("@id_equipamento", chamado.id_equipamento);
 
-                        cmd.ExecuteNonQuery();
+                        cmdChamado.ExecuteNonQuery();
                     }
 
-                    // Após inserir o chamado, atualize a disponibilidade da etiqueta
+                    // Após inserir o chamado, recuperar o id_chamado gerado
+                    UInt64 idChamadoGerado; // Alteração aqui
+                    string selectLastIdSql = "SELECT LAST_INSERT_ID()";
+                    MySqlCommand selectLastIdCommand = new MySqlCommand(selectLastIdSql, connection);
+                    idChamadoGerado = (UInt64)selectLastIdCommand.ExecuteScalar(); // Alteração aqui
+
+                    // Criar uma instância de 'manutencao' e preencher com os valores do 'chamado'
+                    manutencao manutencao = new manutencao();
+                    manutencao.DataHora = chamado.DataHora;
+                    manutencao.Descricao = chamado.Descricao;
+                    manutencao.id_usuario = chamado.id_usuario;
+                    manutencao.id_status = chamado.id_status;
+                    manutencao.id_equipamento = chamado.id_equipamento;
+
+                    // Agora, insira na tabela tb_manutencao usando o id_chamado
+                    string sqlManutencao = "INSERT INTO tb_manutencao(id_chamado, data_hora_do_chamado, descricao, id_usuario, id_status, id_equipamento) " +
+                                           "VALUES (@idChamado, @DataHora, @Descricao, @id_usuario, @id_status, @id_equipamento)";
+
+                    using (MySqlCommand cmdManutencao = new MySqlCommand(sqlManutencao, connection))
+                    {
+                        cmdManutencao.Parameters.AddWithValue("@idChamado", idChamadoGerado);
+                        cmdManutencao.Parameters.AddWithValue("@DataHora", manutencao.DataHora);
+                        cmdManutencao.Parameters.AddWithValue("@Descricao", manutencao.Descricao);
+                        cmdManutencao.Parameters.AddWithValue("@id_usuario", manutencao.id_usuario);
+                        cmdManutencao.Parameters.AddWithValue("@id_status", manutencao.id_status);
+                        cmdManutencao.Parameters.AddWithValue("@id_equipamento", manutencao.id_equipamento);
+
+                        cmdManutencao.ExecuteNonQuery();
+                    }
+
+                    // Após inserir na tabela tb_manutencao, atualize a disponibilidade da etiqueta
                     AtualizarDisponibilidadeEtiqueta(connection, chamado.id_equipamento, false);
                 }
             }
@@ -47,7 +77,6 @@ namespace DAL
                 throw;
             }
         }
-
         private void AtualizarDisponibilidadeEtiqueta(MySqlConnection connection, string idEquipamento, bool ativo_inativo)
         {
             string sql = "UPDATE tb_equipamentos SET Ativo_inativo = @Ativo_inativo WHERE ID_equipamento = @ID_equipamento";
