@@ -221,9 +221,7 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            VerUser verUser = new VerUser();
-            verUser.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -33,9 +33,9 @@
             label1 = new Label();
             ComboBoxStatus = new ComboBox();
             panel2 = new Panel();
+            txtID = new TextBox();
             btnVoltar = new Button();
             btnAtualizar = new Button();
-            txtID = new TextBox();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,6 +77,15 @@
             panel2.Size = new Size(637, 83);
             panel2.TabIndex = 4;
             // 
+            // txtID
+            // 
+            txtID.Enabled = false;
+            txtID.Location = new Point(222, 26);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(123, 31);
+            txtID.TabIndex = 2;
+            txtID.Visible = false;
+            // 
             // btnVoltar
             // 
             btnVoltar.BackColor = Color.DarkGreen;
@@ -88,6 +97,7 @@
             btnVoltar.TabIndex = 1;
             btnVoltar.Text = "Voltar";
             btnVoltar.UseVisualStyleBackColor = false;
+            btnVoltar.Click += btnVoltar_Click;
             // 
             // btnAtualizar
             // 
@@ -100,15 +110,6 @@
             btnAtualizar.TabIndex = 0;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = false;
-            // 
-            // txtID
-            // 
-            txtID.Enabled = false;
-            txtID.Location = new Point(222, 26);
-            txtID.Name = "txtID";
-            txtID.Size = new Size(123, 31);
-            txtID.TabIndex = 2;
-            txtID.Visible = false;
             // 
             // TelaStatus
             // 

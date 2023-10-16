@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class TelaRelatorioEquip
+    partial class TelaVerColaboradores
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaRelatorioEquip));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaVerColaboradores));
             SuspendLayout();
             // 
-            // TelaRelatorioEquip
+            // TelaVerColaboradores
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximizeBox = false;
-            Name = "TelaRelatorioEquip";
+            Name = "TelaVerColaboradores";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Relatório de equipamentos";
-            UseWaitCursor = true;
+            Text = "Ver Colaboradores";
             ResumeLayout(false);
         }
 

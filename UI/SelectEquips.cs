@@ -145,9 +145,6 @@ namespace UI
         private void btn_voltar_Click(object sender, EventArgs e)
         {
             this.Close();
-            /*UI.CadColaborador cadColaborador = new UI.CadColaborador();
-            cadColaborador.ShowDialog();*/
-
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)

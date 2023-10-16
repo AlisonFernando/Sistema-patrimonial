@@ -74,8 +74,6 @@ namespace UI
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
-            TelaPrincipal principal = new TelaPrincipal();
-            principal.ShowDialog();
         }
 
         public void MostrarEquipamentos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

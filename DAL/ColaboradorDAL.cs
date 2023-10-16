@@ -160,9 +160,9 @@ namespace DAL
                 connection.Open();
 
                 string query = "SELECT c.Nome, c.Email, c.Telefone, s.Nome_setor " +
-               "FROM tb_colaborador c " +
-               "INNER JOIN tb_setor s ON c.id_setor = s.id_setor " +
-               "WHERE c.Ativo_inativo = 1";
+                              "FROM tb_colaborador c " +
+                              "INNER JOIN tb_setor s ON c.id_setor = s.id_setor " +
+                              "WHERE c.Ativo_inativo = 1";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
@@ -188,5 +188,6 @@ namespace DAL
 
             return colaboradores;
         }
+
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class TelaRelatorioEquip : Form
+    public partial class TelaVerColaboradores : Form
     {
-        public TelaRelatorioEquip()
+        public TelaVerColaboradores()
         {
             InitializeComponent();
         }

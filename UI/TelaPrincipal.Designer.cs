@@ -128,6 +128,7 @@
             MenuInfoColaborador.Name = "MenuInfoColaborador";
             MenuInfoColaborador.Size = new Size(361, 34);
             MenuInfoColaborador.Text = "Info Colaboradores";
+            MenuInfoColaborador.Click += MenuInfoColaborador_Click;
             // 
             // MenuInfoEquip
             // 

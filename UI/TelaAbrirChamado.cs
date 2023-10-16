@@ -137,5 +137,10 @@ namespace UI
             selectChamado.SelectedIndex = -1;
             selectEtiqueta.SelectedIndex = -1;
         }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

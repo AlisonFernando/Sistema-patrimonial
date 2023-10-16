@@ -74,17 +74,22 @@ namespace UI
             telaRelatorioEquipsQTD.ShowDialog();
         }
 
-        private void MenuRelatorioPrecoEquip_Click(object sender, EventArgs e)
-        {
-            UI.TelaRelatorioEquip telaRelatorioEquip = new UI.TelaRelatorioEquip();
-            telaRelatorioEquip.ShowDialog();
-
-        }
-
         private void MenuRelatorioColabAtivo_Click(object sender, EventArgs e)
         {
             UI.RelatorioColaboradoresAtivos relatorioColaboradoresAtivos = new UI.RelatorioColaboradoresAtivos();
             relatorioColaboradoresAtivos.ShowDialog();
+        }
+
+        private void MenuRelatorioPrecoEquip_Click(object sender, EventArgs e)
+        {
+            UI.RelatorioEquipamentoPreco relatorioEquipamentoPreco = new RelatorioEquipamentoPreco();
+            relatorioEquipamentoPreco.ShowDialog();
+        }
+
+        private void MenuInfoColaborador_Click(object sender, EventArgs e)
+        {
+            UI.TelaVerColaboradores telaVerColaboradores = new UI.TelaVerColaboradores();
+            telaVerColaboradores.ShowDialog();
         }
     }
 }
