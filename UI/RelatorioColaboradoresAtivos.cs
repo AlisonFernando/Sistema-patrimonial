@@ -51,7 +51,7 @@ namespace UI
 
                 // Obtém os dados dos colaboradores ativos com o nome do setor
                 ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
-                List<Colaborador> colaboradores = colaboradorBLL.GetColaboradoresAtivosComSetor();
+                List<Colaborador> colaboradores = colaboradorBLL.GetColaboradoresAtivosComSetor().OrderBy(colaborador => colaborador.NomeColaborador).ToList();
 
                 // Crie uma tabela para exibir os dados dos colaboradores
                 PdfPTable table = new PdfPTable(4); // 4 colunas para Nome, Email, Telefone e Setor

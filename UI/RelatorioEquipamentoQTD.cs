@@ -50,7 +50,7 @@ namespace UI
 
                 // Obtém os dados dos equipamentos
                 EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
-                List<Equipamento> equipamentos = equipamentoBLL.GetEquipamentos();
+                List<Equipamento> equipamentos = equipamentoBLL.GetEquipamentos().OrderBy(equipamento => equipamento.nome).ToList();
 
                 // Crie uma tabela para exibir os dados dos equipamentos
                 PdfPTable table = new PdfPTable(3); // 4 colunas para ID, Nome, Valor e Etiqueta
@@ -89,7 +89,6 @@ namespace UI
 
                 // Fecha o documento
                 doc.Close();
-
                 MessageBox.Show("Relatório em PDF gerado com sucesso e salvo em: " + caminhoDestino, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
