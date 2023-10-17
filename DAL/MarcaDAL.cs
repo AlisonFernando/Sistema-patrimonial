@@ -1,4 +1,5 @@
-﻿using model;
+﻿using Dapper;
+using model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace DAL
         ConexaoDB mConn = new ConexaoDB();
         string sql;
         MySqlCommand cmd;
+        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
 
         public void InserirMarca(Marca marca)
         {
@@ -66,6 +68,15 @@ namespace DAL
             }
             return dt;
         }
-        
+        public List<Marca> GetMarcas()
+        {
+
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                return dbConnection.Query<Marca>("SELECT id_marca, Nome FROM tb_marca").ToList();
+            }
+        }
+
     }
 }

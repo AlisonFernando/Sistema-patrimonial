@@ -12,7 +12,7 @@ namespace BLL
     {
         ManutencaoDAL manutencaoDAL= new ManutencaoDAL();
 
-        public List<manutencao> GetManutencoes()
+        public List<Manutencao> GetManutencoes()
         {
             return manutencaoDAL.GetManutencoes();
         }

@@ -33,12 +33,16 @@ namespace UI
                 txtConfirSenha.Enabled = false;
             }
         }
+        private void TelaCadUser_Load(object sender, EventArgs e)
+        {
+            LoadUsuarios();
+        }
+
         public void LoadUsuarios()
         {
             usuarios = userBLL.GetUsuarios();
             MostrarUsuarios.DataSource = usuarios;
         }
-
         private void btnCadUserSucesso_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
@@ -89,48 +93,15 @@ namespace UI
             // Verificação se é uma atualização de nome ou e-mail (ignorando senha e confirmações)
             bool atualizacaoNomeOuEmail = !string.IsNullOrEmpty(txtID.Text) && (inputUserNome.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Nome || inputUserEmail.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Email);
 
-            if (!atualizacaoNomeOuEmail)
+            if (atualizacaoNomeOuEmail)
             {
-                // Verificação da senha (opcional durante atualização)
-                if (string.IsNullOrWhiteSpace(usuario.Senha))
-                {
-                    MessageBox.Show("Verifique a senha e tente novamente");
-                    inputUserSenha.Focus();
-                    return;
-                }
+                // Verificação se o novo email já existe no banco de dados (exceto o usuário atual)
+                UserBLL verificarEmailBLL = new UserBLL();
+                string verificar = verificarEmailBLL.VerificarEmail(usuario.Email);
 
-                // Verificação de espaços em branco na senha
-                if (!string.IsNullOrEmpty(usuario.Senha) && usuario.Senha.Contains(" "))
+                if (verificar == "Email existente" && usuario.Email != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Email)
                 {
-                    MessageBox.Show("A senha não pode conter espaços em branco.");
-                    return;
-                }
-
-                // Verificação do campo Confirmar Email (opcional durante atualização)
-                if (string.IsNullOrWhiteSpace(usuario.ConfirmarEmail))
-                {
-                    MessageBox.Show("Digite a confirmação de email e tente novamente");
-                    txtConfirEmail.Focus();
-                    return;
-                }
-
-                if (usuario.ConfirmarEmail != usuario.Email)
-                {
-                    MessageBox.Show("E-mail de confirmação diferente do email principal.");
-                    return;
-                }
-
-                // Verificação do campo Confirmar Senha (opcional durante atualização)
-                if (string.IsNullOrWhiteSpace(usuario.ConfirmarSenha))
-                {
-                    MessageBox.Show("Digite a confirmação de senha e tente novamente");
-                    txtConfirSenha.Focus();
-                    return;
-                }
-
-                if (usuario.ConfirmarSenha != usuario.Senha)
-                {
-                    MessageBox.Show("Senha de confirmação diferente da senha principal.");
+                    MessageBox.Show("O email já existe no banco de dados");
                     return;
                 }
             }
@@ -156,6 +127,7 @@ namespace UI
             inputUserSenha.Enabled = true;
         }
 
+
         private void btn_limpar_Click(object sender, EventArgs e)
         {
             inputUserNome.Text = string.Empty;
@@ -167,16 +139,6 @@ namespace UI
             txtConfirSenha.Enabled = true;
             inputUserSenha.Enabled = true;
         }
-
-        private void btnCancelarCadUser_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        private void TelaCadUser_Load(object sender, EventArgs e)
-        {
-            LoadUsuarios();
-        }
-
         private void btnDeletar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtID.Text))
@@ -195,12 +157,14 @@ namespace UI
                 btn_limpar.PerformClick();
             }
         }
-
-        private void MostrarUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnCancelarCadUser_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
-
+        private void btnVerUser_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
         private void MostrarUsuarios_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -217,11 +181,6 @@ namespace UI
                 txtConfirSenha.Enabled = false;
                 inputUserSenha.Enabled = false;
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

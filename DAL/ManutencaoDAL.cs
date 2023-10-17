@@ -17,15 +17,15 @@ namespace DAL
         string sql;
         MySqlCommand cmd;
 
-        public List<manutencao> GetManutencoes()
+        public List<Manutencao> GetManutencoes()
         {
-            List<manutencao> manutencaoList = new List<manutencao>();
+            List<Manutencao> manutencaoList = new List<Manutencao>();
 
             using (MySqlConnection connection = new MySqlConnection(conec))
             {
                 connection.Open();
 
-                string query = "SELECT m.id_chamado, m.Data_hora_do_chamado AS DataChamado, m.descricao, u.Nome AS NomeUsuario, m.id_status, e.nome_equipamento AS NomeEquipamento " +
+                string query = "SELECT m.id_chamado, m.id_equipamento, m.Data_hora_do_chamado AS DataChamado, m.descricao, u.Nome AS NomeUsuario, m.id_status, e.nome_equipamento AS NomeEquipamento " +
                "FROM tb_manutencao AS m " +
                "JOIN tb_equipamentos AS e ON m.id_equipamento = e.id_equipamento " +
                "JOIN tb_usuario AS u ON m.id_usuario = u.id_usuario";
@@ -39,7 +39,7 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            manutencao manutencao = new manutencao();
+                            Manutencao manutencao = new Manutencao();
                             manutencao.id_chamado = (int)reader["id_chamado"];
                             manutencao.DataChamado = (DateTime)reader["DataChamado"];
                             manutencao.Descricao = reader["descricao"].ToString();

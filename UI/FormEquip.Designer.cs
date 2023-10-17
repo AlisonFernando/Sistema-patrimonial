@@ -50,10 +50,12 @@
             btn_Deletar = new Button();
             MostrarEquipamentos = new DataGridView();
             ID_equipamento = new DataGridViewTextBoxColumn();
+            ValorNumerico = new DataGridViewTextBoxColumn();
             Nome_equipamento = new DataGridViewTextBoxColumn();
             Ativo = new DataGridViewTextBoxColumn();
             value = new DataGridViewTextBoxColumn();
             description = new DataGridViewTextBoxColumn();
+            id_status = new DataGridViewTextBoxColumn();
             Etiqueta = new DataGridViewTextBoxColumn();
             colabID = new DataGridViewTextBoxColumn();
             marca_id = new DataGridViewTextBoxColumn();
@@ -72,7 +74,7 @@
             // NomeEquip
             // 
             NomeEquip.AutoSize = true;
-            NomeEquip.Location = new Point(32, 117);
+            NomeEquip.Location = new Point(242, 116);
             NomeEquip.Margin = new Padding(4, 0, 4, 0);
             NomeEquip.Name = "NomeEquip";
             NomeEquip.Size = new Size(199, 25);
@@ -82,7 +84,7 @@
             // MarcaEquip
             // 
             MarcaEquip.AutoSize = true;
-            MarcaEquip.Location = new Point(372, 117);
+            MarcaEquip.Location = new Point(432, 320);
             MarcaEquip.Margin = new Padding(4, 0, 4, 0);
             MarcaEquip.Name = "MarcaEquip";
             MarcaEquip.Size = new Size(60, 25);
@@ -92,7 +94,7 @@
             // DescricaoEquip
             // 
             DescricaoEquip.AutoSize = true;
-            DescricaoEquip.Location = new Point(32, 190);
+            DescricaoEquip.Location = new Point(242, 182);
             DescricaoEquip.Margin = new Padding(4, 0, 4, 0);
             DescricaoEquip.Name = "DescricaoEquip";
             DescricaoEquip.Size = new Size(88, 25);
@@ -102,7 +104,7 @@
             // PrecoEquip
             // 
             PrecoEquip.AutoSize = true;
-            PrecoEquip.Location = new Point(372, 190);
+            PrecoEquip.Location = new Point(248, 322);
             PrecoEquip.Margin = new Padding(4, 0, 4, 0);
             PrecoEquip.Name = "PrecoEquip";
             PrecoEquip.Size = new Size(56, 25);
@@ -112,7 +114,7 @@
             // EtiquetaEquip
             // 
             EtiquetaEquip.AutoSize = true;
-            EtiquetaEquip.Location = new Point(32, 265);
+            EtiquetaEquip.Location = new Point(242, 256);
             EtiquetaEquip.Margin = new Padding(4, 0, 4, 0);
             EtiquetaEquip.Name = "EtiquetaEquip";
             EtiquetaEquip.Size = new Size(76, 25);
@@ -121,34 +123,34 @@
             // 
             // inputEquipNome
             // 
-            inputEquipNome.Location = new Point(17, 147);
+            inputEquipNome.Location = new Point(227, 146);
             inputEquipNome.Margin = new Padding(4, 5, 4, 5);
             inputEquipNome.MaxLength = 100;
             inputEquipNome.Name = "inputEquipNome";
-            inputEquipNome.Size = new Size(317, 31);
+            inputEquipNome.Size = new Size(387, 31);
             inputEquipNome.TabIndex = 1;
             // 
             // inputDesEquip
             // 
-            inputDesEquip.Location = new Point(17, 220);
+            inputDesEquip.Location = new Point(227, 212);
             inputDesEquip.Margin = new Padding(4, 5, 4, 5);
             inputDesEquip.MaxLength = 100;
             inputDesEquip.Name = "inputDesEquip";
-            inputDesEquip.Size = new Size(317, 31);
+            inputDesEquip.Size = new Size(387, 31);
             inputDesEquip.TabIndex = 2;
             // 
             // inputEtiquetaEquip
             // 
-            inputEtiquetaEquip.Location = new Point(17, 293);
+            inputEtiquetaEquip.Location = new Point(227, 284);
             inputEtiquetaEquip.Margin = new Padding(4, 5, 4, 5);
             inputEtiquetaEquip.MaxLength = 10;
             inputEtiquetaEquip.Name = "inputEtiquetaEquip";
-            inputEtiquetaEquip.Size = new Size(317, 31);
+            inputEtiquetaEquip.Size = new Size(387, 31);
             inputEtiquetaEquip.TabIndex = 3;
             // 
             // inputPrecoEquip
             // 
-            inputPrecoEquip.Location = new Point(351, 220);
+            inputPrecoEquip.Location = new Point(227, 352);
             inputPrecoEquip.Margin = new Padding(4, 5, 4, 5);
             inputPrecoEquip.MaxLength = 10;
             inputPrecoEquip.Name = "inputPrecoEquip";
@@ -164,7 +166,7 @@
             btn_cancelar.Margin = new Padding(4, 5, 4, 5);
             btn_cancelar.Name = "btn_cancelar";
             btn_cancelar.Size = new Size(199, 63);
-            btn_cancelar.TabIndex = 1;
+            btn_cancelar.TabIndex = 8;
             btn_cancelar.Text = "Cancelar";
             btn_cancelar.UseVisualStyleBackColor = false;
             btn_cancelar.Click += btn_cancelar_Click;
@@ -202,7 +204,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(227, 23);
+            label2.Location = new Point(238, 17);
             label2.Name = "label2";
             label2.Size = new Size(362, 41);
             label2.TabIndex = 0;
@@ -211,7 +213,7 @@
             // escolherMarca
             // 
             escolherMarca.FormattingEnabled = true;
-            escolherMarca.Location = new Point(351, 147);
+            escolherMarca.Location = new Point(411, 350);
             escolherMarca.Margin = new Padding(4, 5, 4, 5);
             escolherMarca.Name = "escolherMarca";
             escolherMarca.Size = new Size(164, 33);
@@ -220,7 +222,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(351, 267);
+            label1.Location = new Point(227, 388);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(115, 25);
@@ -230,7 +232,7 @@
             // check_ativo
             // 
             check_ativo.AutoSize = true;
-            check_ativo.Location = new Point(351, 297);
+            check_ativo.Location = new Point(227, 418);
             check_ativo.Margin = new Padding(4, 5, 4, 5);
             check_ativo.Name = "check_ativo";
             check_ativo.Size = new Size(80, 29);
@@ -242,7 +244,7 @@
             // 
             btn_Limpar.BackColor = Color.DarkGreen;
             btn_Limpar.ForeColor = Color.White;
-            btn_Limpar.Location = new Point(238, 616);
+            btn_Limpar.Location = new Point(331, 794);
             btn_Limpar.Margin = new Padding(4, 5, 4, 5);
             btn_Limpar.Name = "btn_Limpar";
             btn_Limpar.Size = new Size(214, 63);
@@ -263,7 +265,7 @@
             // 
             btn_Deletar.BackColor = Color.DarkGreen;
             btn_Deletar.ForeColor = Color.White;
-            btn_Deletar.Location = new Point(17, 616);
+            btn_Deletar.Location = new Point(19, 794);
             btn_Deletar.Name = "btn_Deletar";
             btn_Deletar.Size = new Size(214, 63);
             btn_Deletar.TabIndex = 24;
@@ -274,10 +276,12 @@
             // MostrarEquipamentos
             // 
             MostrarEquipamentos.AllowUserToAddRows = false;
+            MostrarEquipamentos.AllowUserToDeleteRows = false;
             MostrarEquipamentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarEquipamentos.Columns.AddRange(new DataGridViewColumn[] { ID_equipamento, Nome_equipamento, Ativo, value, description, Etiqueta, colabID, marca_id });
-            MostrarEquipamentos.Location = new Point(17, 332);
+            MostrarEquipamentos.Columns.AddRange(new DataGridViewColumn[] { ID_equipamento, ValorNumerico, Nome_equipamento, Ativo, value, description, id_status, Etiqueta, colabID, marca_id });
+            MostrarEquipamentos.Location = new Point(19, 510);
             MostrarEquipamentos.Name = "MostrarEquipamentos";
+            MostrarEquipamentos.ReadOnly = true;
             MostrarEquipamentos.RowHeadersWidth = 62;
             MostrarEquipamentos.RowTemplate.Height = 33;
             MostrarEquipamentos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -291,7 +295,18 @@
             ID_equipamento.HeaderText = "ID_equipamento";
             ID_equipamento.MinimumWidth = 8;
             ID_equipamento.Name = "ID_equipamento";
+            ID_equipamento.ReadOnly = true;
             ID_equipamento.Width = 150;
+            // 
+            // ValorNumerico
+            // 
+            ValorNumerico.DataPropertyName = "ValorNumerico";
+            ValorNumerico.HeaderText = "ValorNumerico";
+            ValorNumerico.MinimumWidth = 8;
+            ValorNumerico.Name = "ValorNumerico";
+            ValorNumerico.ReadOnly = true;
+            ValorNumerico.Visible = false;
+            ValorNumerico.Width = 150;
             // 
             // Nome_equipamento
             // 
@@ -299,6 +314,7 @@
             Nome_equipamento.HeaderText = "Nome";
             Nome_equipamento.MinimumWidth = 8;
             Nome_equipamento.Name = "Nome_equipamento";
+            Nome_equipamento.ReadOnly = true;
             Nome_equipamento.Width = 150;
             // 
             // Ativo
@@ -307,6 +323,7 @@
             Ativo.HeaderText = "Ativo_inativo";
             Ativo.MinimumWidth = 8;
             Ativo.Name = "Ativo";
+            Ativo.ReadOnly = true;
             Ativo.Visible = false;
             Ativo.Width = 150;
             // 
@@ -316,6 +333,7 @@
             value.HeaderText = "Valor";
             value.MinimumWidth = 8;
             value.Name = "value";
+            value.ReadOnly = true;
             value.Width = 150;
             // 
             // description
@@ -324,7 +342,18 @@
             description.HeaderText = "Descrição";
             description.MinimumWidth = 8;
             description.Name = "description";
+            description.ReadOnly = true;
             description.Width = 150;
+            // 
+            // id_status
+            // 
+            id_status.DataPropertyName = "id_status";
+            id_status.HeaderText = "id_status";
+            id_status.MinimumWidth = 8;
+            id_status.Name = "id_status";
+            id_status.ReadOnly = true;
+            id_status.Visible = false;
+            id_status.Width = 150;
             // 
             // Etiqueta
             // 
@@ -332,6 +361,7 @@
             Etiqueta.HeaderText = "Etiqueta";
             Etiqueta.MinimumWidth = 8;
             Etiqueta.Name = "Etiqueta";
+            Etiqueta.ReadOnly = true;
             Etiqueta.Width = 150;
             // 
             // colabID
@@ -340,6 +370,7 @@
             colabID.HeaderText = "colaborador_id";
             colabID.MinimumWidth = 8;
             colabID.Name = "colabID";
+            colabID.ReadOnly = true;
             colabID.Visible = false;
             colabID.Width = 150;
             // 
@@ -349,6 +380,7 @@
             marca_id.HeaderText = "marca_id";
             marca_id.MinimumWidth = 8;
             marca_id.Name = "marca_id";
+            marca_id.ReadOnly = true;
             marca_id.Visible = false;
             marca_id.Width = 150;
             // 
@@ -358,7 +390,7 @@
             panel1.Controls.Add(btn_cadastrar);
             panel1.Controls.Add(txtID);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 749);
+            panel1.Location = new Point(0, 897);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(9, 10, 9, 10);
             panel1.Size = new Size(854, 83);
@@ -368,7 +400,7 @@
             // 
             btnVisualizar.BackColor = Color.DarkGreen;
             btnVisualizar.ForeColor = Color.White;
-            btnVisualizar.Location = new Point(460, 616);
+            btnVisualizar.Location = new Point(619, 796);
             btnVisualizar.Margin = new Padding(4, 5, 4, 5);
             btnVisualizar.Name = "btnVisualizar";
             btnVisualizar.Size = new Size(214, 63);
@@ -381,7 +413,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Red;
-            label4.Location = new Point(17, 119);
+            label4.Location = new Point(227, 118);
             label4.Name = "label4";
             label4.Size = new Size(20, 25);
             label4.TabIndex = 30;
@@ -391,7 +423,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.Red;
-            label3.Location = new Point(17, 194);
+            label3.Location = new Point(227, 186);
             label3.Name = "label3";
             label3.Size = new Size(20, 25);
             label3.TabIndex = 31;
@@ -401,7 +433,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(17, 265);
+            label5.Location = new Point(227, 256);
             label5.Name = "label5";
             label5.Size = new Size(20, 25);
             label5.TabIndex = 32;
@@ -411,7 +443,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(351, 119);
+            label6.Location = new Point(411, 322);
             label6.Name = "label6";
             label6.Size = new Size(20, 25);
             label6.TabIndex = 33;
@@ -421,7 +453,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(351, 194);
+            label7.Location = new Point(227, 326);
             label7.Name = "label7";
             label7.Size = new Size(20, 25);
             label7.TabIndex = 34;
@@ -431,7 +463,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(854, 832);
+            ClientSize = new Size(854, 980);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -500,14 +532,6 @@
         private DataGridView MostrarEquipamentos;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Nome;
-        private DataGridViewTextBoxColumn ID_equipamento;
-        private DataGridViewTextBoxColumn Nome_equipamento;
-        private DataGridViewTextBoxColumn value;
-        private DataGridViewTextBoxColumn description;
-        private DataGridViewTextBoxColumn Etiqueta;
-        private DataGridViewTextBoxColumn colabID;
-        private DataGridViewTextBoxColumn marca_id;
-        private DataGridViewTextBoxColumn Ativo;
         private Panel panel1;
         private Label label2;
         private Button btnVisualizar;
@@ -516,5 +540,15 @@
         private Label label5;
         private Label label6;
         private Label label7;
+        private DataGridViewTextBoxColumn ID_equipamento;
+        private DataGridViewTextBoxColumn ValorNumerico;
+        private DataGridViewTextBoxColumn Nome_equipamento;
+        private DataGridViewTextBoxColumn Ativo;
+        private DataGridViewTextBoxColumn value;
+        private DataGridViewTextBoxColumn description;
+        private DataGridViewTextBoxColumn id_status;
+        private DataGridViewTextBoxColumn Etiqueta;
+        private DataGridViewTextBoxColumn colabID;
+        private DataGridViewTextBoxColumn marca_id;
     }
 }

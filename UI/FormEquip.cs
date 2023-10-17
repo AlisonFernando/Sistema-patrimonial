@@ -63,8 +63,18 @@ namespace UI
             // Habilita apenas o campo "etiqueta" durante a atualização
             inputEtiquetaEquip.Enabled = string.IsNullOrEmpty(txtID.Text);
 
-            // Verificação de espaços em branco nos campos etiqueta e valor
-            if (string.IsNullOrWhiteSpace(equipamento.Etiqueta))
+            // Verificação de espaços em branco nos campos Nome, Descrição, Etiqueta e Valor
+            if (string.IsNullOrWhiteSpace(equipamento.Nome))
+            {
+                MessageBox.Show("Verifique o nome e tente novamente");
+                return;
+            }
+            else if (string.IsNullOrWhiteSpace(equipamento.Descricao))
+            {
+                MessageBox.Show("Verifique a descrição e tente novamente");
+                return;
+            }
+            else if (string.IsNullOrWhiteSpace(equipamento.Etiqueta))
             {
                 MessageBox.Show("Verifique a etiqueta e tente novamente");
                 return;
@@ -74,9 +84,9 @@ namespace UI
                 MessageBox.Show("Verifique o valor digitado e tente novamente");
                 return;
             }
-            else if (equipamento.Etiqueta.Contains(" ") || equipamento.Valor.Contains(" "))
+            else if (equipamento.Nome.Contains(" ") || equipamento.Descricao.Contains(" ") || equipamento.Etiqueta.Contains(" ") || equipamento.Valor.Contains(" "))
             {
-                MessageBox.Show("A etiqueta e o valor não podem conter espaços em branco.");
+                MessageBox.Show("Nome, descrição, etiqueta e valor não podem conter espaços em branco.");
                 return;
             }
 
@@ -110,8 +120,6 @@ namespace UI
             btn_Limpar.PerformClick();
             LoadEquipamentos();
         }
-
-
         private void CarregarMarcasComboBox()
         {
             MarcaBLL marcaBLL = new MarcaBLL();
@@ -176,6 +184,6 @@ namespace UI
             this.Hide();
             TelaVerEquips telaVerEquips = new TelaVerEquips();
             telaVerEquips.ShowDialog();
-        }        
+        }
     }
 }

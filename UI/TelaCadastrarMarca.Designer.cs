@@ -34,10 +34,17 @@
             panel1 = new Panel();
             button2 = new Button();
             CadastrarMarca = new Button();
-            inputMarcaNome = new TextBox();
+            txtMarca = new TextBox();
             NomeEquip = new Label();
+            label2 = new Label();
+            MostrarMarcasCadastradas = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            NomeMarca = new DataGridViewTextBoxColumn();
+            btnPesquisar = new Button();
+            btnLimpar = new Button();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)MostrarMarcasCadastradas).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -101,35 +108,106 @@
             CadastrarMarca.Name = "CadastrarMarca";
             CadastrarMarca.Size = new Size(214, 63);
             CadastrarMarca.TabIndex = 1;
-            CadastrarMarca.Text = "Cadastrar";
+            CadastrarMarca.Text = "Aplicar";
             CadastrarMarca.UseVisualStyleBackColor = false;
             CadastrarMarca.Click += CadastrarMarca_Click;
             // 
-            // inputMarcaNome
+            // txtMarca
             // 
-            inputMarcaNome.Location = new Point(133, 215);
-            inputMarcaNome.Margin = new Padding(4, 5, 4, 5);
-            inputMarcaNome.MaxLength = 100;
-            inputMarcaNome.Name = "inputMarcaNome";
-            inputMarcaNome.Size = new Size(317, 31);
-            inputMarcaNome.TabIndex = 17;
+            txtMarca.Location = new Point(46, 156);
+            txtMarca.Margin = new Padding(4, 5, 4, 5);
+            txtMarca.MaxLength = 100;
+            txtMarca.Name = "txtMarca";
+            txtMarca.Size = new Size(317, 31);
+            txtMarca.TabIndex = 17;
             // 
             // NomeEquip
             // 
             NomeEquip.AutoSize = true;
-            NomeEquip.Location = new Point(133, 185);
+            NomeEquip.Location = new Point(59, 126);
             NomeEquip.Margin = new Padding(4, 0, 4, 0);
             NomeEquip.Name = "NomeEquip";
             NomeEquip.Size = new Size(139, 25);
             NomeEquip.TabIndex = 16;
             NomeEquip.Text = "Nome da marca";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = Color.Red;
+            label2.Location = new Point(46, 126);
+            label2.Name = "label2";
+            label2.Size = new Size(20, 25);
+            label2.TabIndex = 18;
+            label2.Text = "*";
+            // 
+            // MostrarMarcasCadastradas
+            // 
+            MostrarMarcasCadastradas.AllowUserToAddRows = false;
+            MostrarMarcasCadastradas.AllowUserToDeleteRows = false;
+            MostrarMarcasCadastradas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            MostrarMarcasCadastradas.Columns.AddRange(new DataGridViewColumn[] { ID, NomeMarca });
+            MostrarMarcasCadastradas.Location = new Point(46, 207);
+            MostrarMarcasCadastradas.Name = "MostrarMarcasCadastradas";
+            MostrarMarcasCadastradas.ReadOnly = true;
+            MostrarMarcasCadastradas.RowHeadersWidth = 62;
+            MostrarMarcasCadastradas.RowTemplate.Height = 33;
+            MostrarMarcasCadastradas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            MostrarMarcasCadastradas.Size = new Size(291, 168);
+            MostrarMarcasCadastradas.TabIndex = 19;
+            // 
+            // ID
+            // 
+            ID.DataPropertyName = "id_marca";
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 8;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 40;
+            // 
+            // NomeMarca
+            // 
+            NomeMarca.DataPropertyName = "Nome";
+            NomeMarca.HeaderText = "Nome da marca";
+            NomeMarca.MinimumWidth = 8;
+            NomeMarca.Name = "NomeMarca";
+            NomeMarca.ReadOnly = true;
+            NomeMarca.Width = 190;
+            // 
+            // btnPesquisar
+            // 
+            btnPesquisar.BackColor = Color.DarkGreen;
+            btnPesquisar.ForeColor = Color.White;
+            btnPesquisar.Location = new Point(370, 156);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(159, 34);
+            btnPesquisar.TabIndex = 20;
+            btnPesquisar.Text = "Pesquisar marca";
+            btnPesquisar.UseVisualStyleBackColor = false;
+            btnPesquisar.Click += btnPesquisar_Click;
+            // 
+            // btnLimpar
+            // 
+            btnLimpar.BackColor = Color.DarkGreen;
+            btnLimpar.ForeColor = Color.White;
+            btnLimpar.Location = new Point(46, 381);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Size = new Size(81, 34);
+            btnLimpar.TabIndex = 21;
+            btnLimpar.Text = "Limpar";
+            btnLimpar.UseVisualStyleBackColor = false;
+            btnLimpar.Click += btnLimpar_Click;
+            // 
             // TelaCadastrarMarca
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(610, 520);
-            Controls.Add(inputMarcaNome);
+            Controls.Add(btnLimpar);
+            Controls.Add(btnPesquisar);
+            Controls.Add(MostrarMarcasCadastradas);
+            Controls.Add(label2);
+            Controls.Add(txtMarca);
             Controls.Add(NomeEquip);
             Controls.Add(panel1);
             Controls.Add(panel2);
@@ -141,6 +219,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)MostrarMarcasCadastradas).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -152,7 +231,13 @@
         private Panel panel1;
         private Button CadastrarMarca;
         private Button button2;
-        private TextBox inputMarcaNome;
+        private TextBox txtMarca;
         private Label NomeEquip;
+        private Label label2;
+        private DataGridView MostrarMarcasCadastradas;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn NomeMarca;
+        private Button btnPesquisar;
+        private Button btnLimpar;
     }
 }

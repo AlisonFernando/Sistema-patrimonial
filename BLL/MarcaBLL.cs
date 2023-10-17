@@ -42,5 +42,11 @@ namespace BLL
             return resultado;
         }
 
+        public List<Marca> GetMarcas()
+        {
+            MarcaDAL marcaDAL = new MarcaDAL();
+            return marcaDAL.GetMarcas();
+        }
+
     }
 }

@@ -60,56 +60,56 @@
             // Nome
             // 
             Nome.AutoSize = true;
-            Nome.Location = new Point(26, 124);
+            Nome.Location = new Point(140, 111);
             Nome.Margin = new Padding(4, 0, 4, 0);
             Nome.Name = "Nome";
             Nome.Size = new Size(61, 25);
-            Nome.TabIndex = 0;
+            Nome.TabIndex = 99;
             Nome.Text = "Nome";
             // 
             // Email
             // 
             Email.AutoSize = true;
-            Email.Location = new Point(26, 198);
+            Email.Location = new Point(140, 185);
             Email.Margin = new Padding(4, 0, 4, 0);
             Email.Name = "Email";
             Email.Size = new Size(61, 25);
-            Email.TabIndex = 1;
+            Email.TabIndex = 98;
             Email.Text = "E-mail";
             // 
             // Senha
             // 
             Senha.AutoSize = true;
-            Senha.Location = new Point(209, 272);
+            Senha.Location = new Point(139, 253);
             Senha.Margin = new Padding(4, 0, 4, 0);
             Senha.Name = "Senha";
             Senha.Size = new Size(60, 25);
-            Senha.TabIndex = 2;
+            Senha.TabIndex = 97;
             Senha.Text = "Senha";
             // 
             // Agenda
             // 
             Agenda.AutoSize = true;
-            Agenda.Location = new Point(26, 345);
+            Agenda.Location = new Point(26, 465);
             Agenda.Margin = new Padding(4, 0, 4, 0);
             Agenda.Name = "Agenda";
             Agenda.Size = new Size(136, 25);
-            Agenda.TabIndex = 3;
+            Agenda.TabIndex = 94;
             Agenda.Text = "Agenda google";
             // 
             // Telefone
             // 
             Telefone.AutoSize = true;
-            Telefone.Location = new Point(396, 124);
+            Telefone.Location = new Point(143, 319);
             Telefone.Margin = new Padding(4, 0, 4, 0);
             Telefone.Name = "Telefone";
             Telefone.Size = new Size(77, 25);
-            Telefone.TabIndex = 4;
+            Telefone.TabIndex = 96;
             Telefone.Text = "Telefone";
             // 
             // InputColabNome
             // 
-            InputColabNome.Location = new Point(9, 155);
+            InputColabNome.Location = new Point(123, 142);
             InputColabNome.Margin = new Padding(4, 5, 4, 5);
             InputColabNome.MaxLength = 30;
             InputColabNome.Name = "InputColabNome";
@@ -118,16 +118,16 @@
             // 
             // inputColabAgenda
             // 
-            inputColabAgenda.Location = new Point(9, 375);
+            inputColabAgenda.Location = new Point(9, 495);
             inputColabAgenda.Margin = new Padding(4, 5, 4, 5);
             inputColabAgenda.MaxLength = 90;
             inputColabAgenda.Name = "inputColabAgenda";
             inputColabAgenda.Size = new Size(574, 31);
-            inputColabAgenda.TabIndex = 7;
+            inputColabAgenda.TabIndex = 6;
             // 
             // inputColabEmail
             // 
-            inputColabEmail.Location = new Point(9, 228);
+            inputColabEmail.Location = new Point(123, 215);
             inputColabEmail.Margin = new Padding(4, 5, 4, 5);
             inputColabEmail.MaxLength = 40;
             inputColabEmail.Name = "inputColabEmail";
@@ -136,43 +136,44 @@
             // 
             // inputColabSenha
             // 
-            inputColabSenha.Location = new Point(196, 302);
+            inputColabSenha.Location = new Point(123, 283);
             inputColabSenha.Margin = new Padding(4, 5, 4, 5);
-            inputColabSenha.MaxLength = 10;
+            inputColabSenha.MaxLength = 3;
             inputColabSenha.Name = "inputColabSenha";
-            inputColabSenha.Size = new Size(173, 31);
+            inputColabSenha.Size = new Size(357, 31);
             inputColabSenha.TabIndex = 5;
             inputColabSenha.UseSystemPasswordChar = true;
             // 
             // inputColabTel
             // 
-            inputColabTel.Location = new Point(380, 155);
+            inputColabTel.Location = new Point(123, 349);
             inputColabTel.Margin = new Padding(4, 5, 4, 5);
-            inputColabTel.MaxLength = 11;
+            inputColabTel.MaxLength = 4;
             inputColabTel.Name = "inputColabTel";
             inputColabTel.Size = new Size(183, 31);
-            inputColabTel.TabIndex = 4;
+            inputColabTel.TabIndex = 9;
             inputColabTel.TextChanged += inputColabTel_TextChanged;
             // 
             // Setor
             // 
             Setor.AutoSize = true;
-            Setor.Location = new Point(26, 272);
+            Setor.Location = new Point(143, 385);
             Setor.Margin = new Padding(4, 0, 4, 0);
             Setor.Name = "Setor";
             Setor.Size = new Size(54, 25);
-            Setor.TabIndex = 11;
+            Setor.TabIndex = 95;
             Setor.Text = "Setor";
             // 
             // escolherSetor
             // 
             escolherSetor.FormattingEnabled = true;
             escolherSetor.Items.AddRange(new object[] { "Engenharia", "Criação", "Administração", "Marketing", "Ligação", "TI" });
-            escolherSetor.Location = new Point(9, 302);
+            escolherSetor.Location = new Point(123, 415);
             escolherSetor.Margin = new Padding(4, 5, 4, 5);
+            escolherSetor.MaxDropDownItems = 5;
             escolherSetor.Name = "escolherSetor";
             escolherSetor.Size = new Size(177, 33);
-            escolherSetor.TabIndex = 3;
+            escolherSetor.TabIndex = 8;
             // 
             // HeaderCadColab
             // 
@@ -189,23 +190,23 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(154, 30);
+            label1.Location = new Point(129, 19);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(273, 32);
-            label1.TabIndex = 0;
+            label1.Size = new Size(337, 41);
+            label1.TabIndex = 91;
             label1.Text = "Cadastrar Colaborador";
             // 
             // check_ativo
             // 
             check_ativo.AutoSize = true;
-            check_ativo.Location = new Point(380, 228);
+            check_ativo.Location = new Point(12, 536);
             check_ativo.Margin = new Padding(4, 5, 4, 5);
             check_ativo.Name = "check_ativo";
             check_ativo.Size = new Size(80, 29);
-            check_ativo.TabIndex = 6;
+            check_ativo.TabIndex = 7;
             check_ativo.Text = "Ativo";
             check_ativo.UseVisualStyleBackColor = true;
             // 
@@ -218,7 +219,7 @@
             btn_selectEquips.Margin = new Padding(4, 5, 4, 5);
             btn_selectEquips.Name = "btn_selectEquips";
             btn_selectEquips.Size = new Size(220, 73);
-            btn_selectEquips.TabIndex = 17;
+            btn_selectEquips.TabIndex = 8;
             btn_selectEquips.Text = "Selecionar equipamentos";
             btn_selectEquips.UseVisualStyleBackColor = false;
             btn_selectEquips.Click += btn_selectEquips_Click;
@@ -232,7 +233,7 @@
             btnCancelarCad.Margin = new Padding(4, 5, 4, 5);
             btnCancelarCad.Name = "btnCancelarCad";
             btnCancelarCad.Size = new Size(214, 73);
-            btnCancelarCad.TabIndex = 15;
+            btnCancelarCad.TabIndex = 9;
             btnCancelarCad.Text = "Cancelar";
             btnCancelarCad.UseVisualStyleBackColor = false;
             btnCancelarCad.Click += btnCancelarCad_Click;
@@ -242,7 +243,7 @@
             FotterCadColab.Controls.Add(btn_selectEquips);
             FotterCadColab.Controls.Add(btnCancelarCad);
             FotterCadColab.Dock = DockStyle.Bottom;
-            FotterCadColab.Location = new Point(0, 434);
+            FotterCadColab.Location = new Point(0, 611);
             FotterCadColab.Margin = new Padding(4, 5, 4, 5);
             FotterCadColab.Name = "FotterCadColab";
             FotterCadColab.Padding = new Padding(9, 10, 9, 10);
@@ -253,7 +254,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.Red;
-            label2.Location = new Point(12, 126);
+            label2.Location = new Point(126, 113);
             label2.Name = "label2";
             label2.Size = new Size(20, 25);
             label2.TabIndex = 17;
@@ -263,7 +264,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.Red;
-            label3.Location = new Point(12, 201);
+            label3.Location = new Point(126, 188);
             label3.Name = "label3";
             label3.Size = new Size(20, 25);
             label3.TabIndex = 18;
@@ -273,7 +274,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Red;
-            label4.Location = new Point(12, 274);
+            label4.Location = new Point(129, 387);
             label4.Name = "label4";
             label4.Size = new Size(20, 25);
             label4.TabIndex = 19;
@@ -283,7 +284,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(196, 274);
+            label5.Location = new Point(126, 255);
             label5.Name = "label5";
             label5.Size = new Size(20, 25);
             label5.TabIndex = 20;
@@ -293,7 +294,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(380, 126);
+            label6.Location = new Point(127, 321);
             label6.Name = "label6";
             label6.Size = new Size(20, 25);
             label6.TabIndex = 21;
@@ -303,7 +304,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(9, 347);
+            label7.Location = new Point(9, 467);
             label7.Name = "label7";
             label7.Size = new Size(20, 25);
             label7.TabIndex = 22;
@@ -313,7 +314,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(594, 527);
+            ClientSize = new Size(594, 704);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);

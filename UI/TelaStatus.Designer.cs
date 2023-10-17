@@ -110,6 +110,7 @@
             btnAtualizar.TabIndex = 0;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = false;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // TelaStatus
             // 

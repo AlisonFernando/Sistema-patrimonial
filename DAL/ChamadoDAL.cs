@@ -45,7 +45,7 @@ namespace DAL
                     idChamadoGerado = (UInt64)selectLastIdCommand.ExecuteScalar(); // Alteração aqui
 
                     // Criar uma instância de 'manutencao' e preencher com os valores do 'chamado'
-                    manutencao manutencao = new manutencao();
+                    Manutencao manutencao = new Manutencao();
                     manutencao.DataChamado = chamado.DataHora;
                     manutencao.Descricao = chamado.Descricao;
                     manutencao.id_usuario = chamado.id_usuario;

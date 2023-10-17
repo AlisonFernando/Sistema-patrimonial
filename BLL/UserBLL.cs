@@ -48,9 +48,6 @@ namespace BLL
                 return false;
             }
         }
-
-
-
         public bool VerificarCredenciais(string usuario, string senha)
         {
             string senhaCriptografadaDoBanco = userDAL.ObterSenhaCriptografada(usuario);
