@@ -16,6 +16,7 @@ namespace model
         public string confirmSenha;
         public string SenhaHash { get; set; }
         public int id_usuario { get; set; }
+        public int UserAcesso { get; set; }
 
         public string Nome
         {

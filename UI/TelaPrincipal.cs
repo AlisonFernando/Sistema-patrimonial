@@ -2,10 +2,49 @@ namespace UI
 {
     public partial class TelaPrincipal : Form
     {
-        public TelaPrincipal()
+        private int UserChamado;
+        public TelaPrincipal(int userChamado)
         {
             InitializeComponent();
+
+            UserChamado = userChamado;
+
+            if (UserChamado == 1)
+            {
+                // Código para administradores (ADM)
+                MenuCadColaborador.Enabled = true;
+                MenuCadEquip.Enabled = true;
+                MenuCadChamado.Enabled = true;
+                marcaDeEquipamentoToolStripMenuItem.Enabled = true;
+                CadUserMenu.Enabled = true;
+                MenuInfoColaborador.Enabled = true;
+                MenuInfoEquip.Enabled = true;
+                MenuUserCad.Enabled = true;
+                equipamentosEmManutençãoToolStripMenuItem.Enabled = true;
+                MenuRelatorioColabAtivo.Enabled = true;
+                MenuRelatorioEquip.Enabled = true;
+                MenuRelatorioPrecoEquip.Enabled = true;
+                MenuSair.Enabled = true;
+            }
+            else if(UserChamado == 2)
+            {
+                // Código para Técnicos de Informatica (TI)
+                MenuCadColaborador.Enabled = false;
+                MenuCadEquip.Enabled = true;
+                MenuCadChamado.Enabled = true;
+                marcaDeEquipamentoToolStripMenuItem.Enabled = true;
+                CadUserMenu.Enabled = false;
+                MenuInfoColaborador.Enabled = false;
+                MenuInfoEquip.Enabled = true;
+                MenuUserCad.Enabled = false;
+                equipamentosEmManutençãoToolStripMenuItem.Enabled = true;
+                MenuRelatorioColabAtivo.Enabled = false;
+                MenuRelatorioEquip.Enabled = true;
+                MenuRelatorioPrecoEquip.Enabled = true;
+                MenuSair.Enabled = true;
+            }
         }
+
 
         private void sairToolStripMenuItem1_Click(object sender, EventArgs e)
         {

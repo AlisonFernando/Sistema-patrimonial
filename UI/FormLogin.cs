@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using DAL;
+using Microsoft.VisualBasic.ApplicationServices;
 using model;
 
 namespace UI
@@ -56,10 +57,16 @@ namespace UI
 
             if (userBLL.VerificarCredenciais(email, senha))
             {
+                int userChamado = userBLL.ObterUserChamado(email);
+
+                // Atribua o valor à variável global.
+                Program.UserChamado = userChamado;
+
+                // Abra a TelaPrincipal.
                 MessageBox.Show("Login bem-sucedido!");
                 this.Hide();
 
-                TelaPrincipal telaPrincipal = new TelaPrincipal();
+                TelaPrincipal telaPrincipal = new TelaPrincipal(userChamado);
                 telaPrincipal.Closed += (s, args) => this.Close(); // Fecha o aplicativo quando a tela principal for fechada
                 telaPrincipal.Show();
             }
@@ -68,5 +75,6 @@ namespace UI
                 MessageBox.Show("Usuário ou senha incorretos.");
             }
         }
+
     }
 }

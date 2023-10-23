@@ -35,22 +35,6 @@ namespace UI
             MostrarEquipsAndamento.DataSource = emAndamento;
             MostrarEquipsNaoFinalizados.DataSource = naoFinalizados;
         }
-
-        private void btnPesquisarFinalizado_Click(object sender, EventArgs e)
-        {
-            string nomePesquisado = txtPesquisarFinalizado.Text.Trim();
-            List<Manutencao> manutencaoData = manutencaoBLL.GetManutencoes();
-            List<Manutencao> resultadosPesquisa = new List<Manutencao>();
-
-            foreach (Manutencao manutencao in manutencaoData)
-            {
-                if (manutencao.NomeEquipamento.ToUpper().Contains(nomePesquisado.ToUpper()))
-                {
-                    resultadosPesquisa.Add(manutencao);
-                }
-            }
-            MostrarEquipsFinalizados.DataSource = resultadosPesquisa;
-        }
         private void TelaManutencao_Load(object sender, EventArgs e)
         {
             btnPesquisarFinalizado.Click += new EventHandler(btnPesquisarFinalizado_Click);
@@ -58,42 +42,74 @@ namespace UI
             btnPesquisarNaoFinalizado.Click += new EventHandler(btnPesquisarNaoFinalizado_Click);
 
         }
+        private void btnPesquisarFinalizado_Click(object sender, EventArgs e)
+        {
+            string nomePesquisado = txtPesquisarFinalizado.Text.Trim();
+            List<Manutencao> manutencaoData = (List<Manutencao>)MostrarEquipsFinalizados.DataSource; // Obtenha os dados da tabela
+
+            if (manutencaoData != null)
+            {
+                List<Manutencao> resultadosPesquisa = manutencaoData
+                    .Where(manutencao => manutencao.NomeEquipamento.ToUpper().Contains(nomePesquisado.ToUpper()))
+                    .ToList();
+
+                if (resultadosPesquisa.Any())
+                {
+                    MostrarEquipsFinalizados.DataSource = resultadosPesquisa;
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum resultado encontrado.");
+                    LoadEquipamentos();
+                }
+            }
+        }
 
         private void btnPesquisarEmAndamento_Click(object sender, EventArgs e)
         {
             string nomePesquisado = txtPesquisarEmAndamento.Text.Trim();
-            List<Manutencao> manutencaoData = manutencaoBLL.GetManutencoes();
-            List<Manutencao> resultadosPesquisa = new List<Manutencao>();
+            List<Manutencao> manutencaoData = (List<Manutencao>)MostrarEquipsAndamento.DataSource;
 
-            foreach (Manutencao manutencao in manutencaoData)
+            if (manutencaoData != null)
             {
-                if (manutencao.NomeEquipamento.ToUpper().Contains(nomePesquisado.ToUpper()))
+                List<Manutencao> resultadosPesquisa = manutencaoData
+                    .Where(manutencao => manutencao.NomeEquipamento.ToUpper().Contains(nomePesquisado.ToUpper()))
+                    .ToList();
+
+                if (resultadosPesquisa.Any())
                 {
-                    resultadosPesquisa.Add(manutencao);
+                    MostrarEquipsAndamento.DataSource = resultadosPesquisa;
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum resultado encontrado.");
+                    LoadEquipamentos();
                 }
             }
-            MostrarEquipsAndamento.DataSource = resultadosPesquisa;
-
         }
 
         private void btnPesquisarNaoFinalizado_Click(object sender, EventArgs e)
         {
             string nomePesquisado = txtPesquisarNaoFinalizados.Text.Trim();
+            List<Manutencao> manutencaoData = (List<Manutencao>)MostrarEquipsNaoFinalizados.DataSource; // Obtenha os dados da tabela
 
-            List<Manutencao> manutencaoData = manutencaoBLL.GetManutencoes();
-            List<Manutencao> resultadosPesquisa = new List<Manutencao>();
-
-            foreach (Manutencao manutencao in manutencaoData)
+            if (manutencaoData != null)
             {
-                if (manutencao.NomeEquipamento.ToUpper().Contains(nomePesquisado.ToUpper()))
+                List<Manutencao> resultadosPesquisa = manutencaoData
+                    .Where(manutencao => manutencao.NomeEquipamento.ToUpper().Contains(nomePesquisado.ToUpper()))
+                    .ToList();
+
+                if (resultadosPesquisa.Any())
                 {
-                    resultadosPesquisa.Add(manutencao);
+                    MostrarEquipsNaoFinalizados.DataSource = resultadosPesquisa;
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum resultado encontrado.");
+                    LoadEquipamentos();
                 }
             }
-            MostrarEquipsNaoFinalizados.DataSource = resultadosPesquisa;
         }
-
-
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             LoadEquipamentos();
@@ -114,7 +130,7 @@ namespace UI
             {
                 DataGridViewRow selectedRow = MostrarEquipsFinalizados.Rows[e.RowIndex];
 
-                int id_equipamento = (int)selectedRow.Cells["id_chamado"].Value;
+                int id_equipamento = (int)selectedRow.Cells["ChamadosFinalizados"].Value;
                 Manutencao manutencao = manutencaoData.Find(m => m.id_chamado == id_equipamento);
 
                 if (manutencao != null)
@@ -132,7 +148,7 @@ namespace UI
             {
                 DataGridViewRow selectedRow = MostrarEquipsAndamento.Rows[e.RowIndex];
 
-                int id_equipamento = (int)selectedRow.Cells["id_chamado"].Value;
+                int id_equipamento = (int)selectedRow.Cells["ChamadosEmAndamento"].Value;
                 Manutencao manutencao = manutencaoData.Find(m => m.id_chamado == id_equipamento);
 
                 if (manutencao != null)
@@ -150,7 +166,7 @@ namespace UI
             {
                 DataGridViewRow selectedRow = MostrarEquipsNaoFinalizados.Rows[e.RowIndex];
 
-                int id_equipamento = (int)selectedRow.Cells["id_chamado"].Value;
+                int id_equipamento = (int)selectedRow.Cells["ChamadosNaoFinalizados"].Value;
                 Manutencao manutencao = manutencaoData.Find(m => m.id_chamado == id_equipamento);
 
                 if (manutencao != null)
@@ -161,6 +177,21 @@ namespace UI
             }
         }
         private void TelaManutencao_Activated(object sender, EventArgs e)
+        {
+            LoadEquipamentos();
+        }
+
+        private void btnReloadFinalizados_Click(object sender, EventArgs e)
+        {
+            LoadEquipamentos();
+        }
+
+        private void btnReloadAndamento_Click(object sender, EventArgs e)
+        {
+            LoadEquipamentos();
+        }
+
+        private void btnReloadNaoFinalizados_Click(object sender, EventArgs e)
         {
             LoadEquipamentos();
         }

@@ -32,17 +32,19 @@
             panel2 = new Panel();
             header = new Label();
             MostrarUsuarios = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Nome = new DataGridViewTextBoxColumn();
-            SenhaH = new DataGridViewTextBoxColumn();
-            ConfirmarEmail = new DataGridViewTextBoxColumn();
-            ConfirmarSenha = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             btnVoltar = new Button();
             btnCadUser = new Button();
             txtID = new TextBox();
             txtPesquisar = new TextBox();
             btnPesquisar = new Button();
+            ID = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            SenhaH = new DataGridViewTextBoxColumn();
+            UserAcesso = new DataGridViewTextBoxColumn();
+            ConfirmarEmail = new DataGridViewTextBoxColumn();
+            ConfirmarSenha = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
             panel1.SuspendLayout();
@@ -75,10 +77,12 @@
             // MostrarUsuarios
             // 
             MostrarUsuarios.AllowUserToAddRows = false;
+            MostrarUsuarios.AllowUserToDeleteRows = false;
             MostrarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, SenhaH, ConfirmarEmail, ConfirmarSenha });
+            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, Email, SenhaH, UserAcesso, ConfirmarEmail, ConfirmarSenha });
             MostrarUsuarios.Location = new Point(257, 230);
             MostrarUsuarios.Name = "MostrarUsuarios";
+            MostrarUsuarios.ReadOnly = true;
             MostrarUsuarios.RowHeadersWidth = 62;
             MostrarUsuarios.RowTemplate.Height = 33;
             MostrarUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -86,49 +90,6 @@
             MostrarUsuarios.TabIndex = 13;
             MostrarUsuarios.CellContentClick += MostrarUsuarios_CellContentClick;
             MostrarUsuarios.CellMouseDoubleClick += MostrarUsuarios_CellMouseDoubleClick;
-            // 
-            // ID
-            // 
-            ID.DataPropertyName = "id_usuario";
-            ID.HeaderText = "id_usuario";
-            ID.MinimumWidth = 8;
-            ID.Name = "ID";
-            ID.Width = 150;
-            // 
-            // Nome
-            // 
-            Nome.DataPropertyName = "Nome";
-            Nome.HeaderText = "Nome";
-            Nome.MinimumWidth = 8;
-            Nome.Name = "Nome";
-            Nome.Width = 150;
-            // 
-            // SenhaH
-            // 
-            SenhaH.DataPropertyName = "SenhaHash";
-            SenhaH.HeaderText = "SenhaH";
-            SenhaH.MinimumWidth = 8;
-            SenhaH.Name = "SenhaH";
-            SenhaH.Visible = false;
-            SenhaH.Width = 150;
-            // 
-            // ConfirmarEmail
-            // 
-            ConfirmarEmail.DataPropertyName = "ConfirmarEmail";
-            ConfirmarEmail.HeaderText = "ConfirmarEmail";
-            ConfirmarEmail.MinimumWidth = 8;
-            ConfirmarEmail.Name = "ConfirmarEmail";
-            ConfirmarEmail.Visible = false;
-            ConfirmarEmail.Width = 150;
-            // 
-            // ConfirmarSenha
-            // 
-            ConfirmarSenha.DataPropertyName = "ConfirmarSenha";
-            ConfirmarSenha.HeaderText = "ConfirmarSenha";
-            ConfirmarSenha.MinimumWidth = 8;
-            ConfirmarSenha.Name = "ConfirmarSenha";
-            ConfirmarSenha.Visible = false;
-            ConfirmarSenha.Width = 150;
             // 
             // panel1
             // 
@@ -199,6 +160,73 @@
             btnPesquisar.UseVisualStyleBackColor = false;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
+            // ID
+            // 
+            ID.DataPropertyName = "id_usuario";
+            ID.HeaderText = "id_usuario";
+            ID.MinimumWidth = 8;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 150;
+            // 
+            // Nome
+            // 
+            Nome.DataPropertyName = "Nome";
+            Nome.HeaderText = "Nome";
+            Nome.MinimumWidth = 8;
+            Nome.Name = "Nome";
+            Nome.ReadOnly = true;
+            Nome.Width = 150;
+            // 
+            // Email
+            // 
+            Email.DataPropertyName = "Email";
+            Email.HeaderText = "Email";
+            Email.MinimumWidth = 8;
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            Email.Width = 150;
+            // 
+            // SenhaH
+            // 
+            SenhaH.DataPropertyName = "SenhaHash";
+            SenhaH.HeaderText = "SenhaH";
+            SenhaH.MinimumWidth = 8;
+            SenhaH.Name = "SenhaH";
+            SenhaH.ReadOnly = true;
+            SenhaH.Visible = false;
+            SenhaH.Width = 150;
+            // 
+            // UserAcesso
+            // 
+            UserAcesso.DataPropertyName = "UserAcesso";
+            UserAcesso.HeaderText = "Nivel de acesso";
+            UserAcesso.MinimumWidth = 8;
+            UserAcesso.Name = "UserAcesso";
+            UserAcesso.ReadOnly = true;
+            UserAcesso.Visible = false;
+            UserAcesso.Width = 190;
+            // 
+            // ConfirmarEmail
+            // 
+            ConfirmarEmail.DataPropertyName = "ConfirmarEmail";
+            ConfirmarEmail.HeaderText = "ConfirmarEmail";
+            ConfirmarEmail.MinimumWidth = 8;
+            ConfirmarEmail.Name = "ConfirmarEmail";
+            ConfirmarEmail.ReadOnly = true;
+            ConfirmarEmail.Visible = false;
+            ConfirmarEmail.Width = 150;
+            // 
+            // ConfirmarSenha
+            // 
+            ConfirmarSenha.DataPropertyName = "ConfirmarSenha";
+            ConfirmarSenha.HeaderText = "ConfirmarSenha";
+            ConfirmarSenha.MinimumWidth = 8;
+            ConfirmarSenha.Name = "ConfirmarSenha";
+            ConfirmarSenha.ReadOnly = true;
+            ConfirmarSenha.Visible = false;
+            ConfirmarSenha.Width = 150;
+            // 
             // VerUser
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -230,16 +258,18 @@
         private Label header;
         private DataGridView MostrarUsuarios;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Nome;
-        private DataGridViewTextBoxColumn SenhaH;
-        private DataGridViewTextBoxColumn ConfirmarEmail;
-        private DataGridViewTextBoxColumn ConfirmarSenha;
         private Panel panel1;
         private Button btnVoltar;
         private Button btnCadUser;
         private TextBox txtID;
         private TextBox txtPesquisar;
         private Button btnPesquisar;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nome;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn SenhaH;
+        private DataGridViewTextBoxColumn UserAcesso;
+        private DataGridViewTextBoxColumn ConfirmarEmail;
+        private DataGridViewTextBoxColumn ConfirmarSenha;
     }
 }

@@ -84,6 +84,9 @@ namespace BLL
 
             userDAL.UpdateUsuario(usuario);
         }
-
+        public int ObterUserChamado(string email)
+        {
+            return userDAL.ObterUserChamado(email);
+        }
     }
 }

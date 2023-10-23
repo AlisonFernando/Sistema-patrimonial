@@ -127,7 +127,7 @@ namespace UI
             DataTable dt = marcaBLL.CarregarMarcas();
 
             escolherMarca.DisplayMember = "Nome"; // Define a coluna a ser exibida
-            escolherMarca.ValueMember = "id_marca";    // Define a coluna a ser usada como valor selecionado
+            escolherMarca.ValueMember = "id_marca"; // Define a coluna a ser usada como valor selecionado
             escolherMarca.DataSource = dt;
         }
 

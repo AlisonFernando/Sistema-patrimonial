@@ -36,12 +36,25 @@ namespace UI
         private void TelaCadUser_Load(object sender, EventArgs e)
         {
             LoadUsuarios();
+            CarregarPerfisDeAcesso();
         }
 
         public void LoadUsuarios()
         {
             usuarios = userBLL.GetUsuarios();
             MostrarUsuarios.DataSource = usuarios;
+        }
+
+        Dictionary<string, int> niveisAcesso = new Dictionary<string, int>
+        {
+            { "ADM", 1 },
+            { "TI", 2 }
+        };
+        private void CarregarPerfisDeAcesso()
+        {
+            ComboBoxAcesso.DataSource = new BindingSource(niveisAcesso, null);
+            ComboBoxAcesso.DisplayMember = "Key";
+            ComboBoxAcesso.ValueMember = "Value";
         }
         private void btnCadUserSucesso_Click(object sender, EventArgs e)
         {
@@ -55,6 +68,7 @@ namespace UI
             usuario.Senha = inputUserSenha.Text;
             usuario.ConfirmarEmail = txtConfirEmail.Text;
             usuario.ConfirmarSenha = txtConfirSenha.Text;
+            usuario.UserAcesso = (int)ComboBoxAcesso.SelectedValue;
 
             // Verificação de espaços em branco em nome e email
             if (string.IsNullOrWhiteSpace(usuario.Nome) || string.IsNullOrWhiteSpace(usuario.Email))

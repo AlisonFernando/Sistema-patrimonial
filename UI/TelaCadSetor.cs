@@ -73,6 +73,7 @@ namespace UI
             {
                 MessageBox.Show("Esse setor já está cadastrado, tente novamente");
                 txtPesquisar.Focus();
+                return;
             }
             else if (verificar == "Setor não existe")
             {
@@ -96,6 +97,8 @@ namespace UI
                         MessageBox.Show("Erro ao aplicar a ação.");
                     }
                 }
+                MessageBox.Show("Nome do setor alterado com sucesso");
+                LoadSetor();
             }
         }
         private void btnDeletar_Click(object sender, EventArgs e)
@@ -114,7 +117,6 @@ namespace UI
             }
             LoadSetor();
         }
-
         private void MostrarSetores_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -126,6 +128,29 @@ namespace UI
 
                 txtID.Text = setor.id_setor.ToString();
                 txtPesquisar.Text = setor.nome;
+            }
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            string nomePesquisado = txtPesquisar.Text.Trim();
+
+            List<Setor> setoresFiltrados = setores
+                .Where(setor => setor.Nome.Contains(nomePesquisado, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            if (setoresFiltrados.Count == 0)
+            {
+                MessageBox.Show("Setor não encontrado.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (nomePesquisado == string.Empty)
+            {
+                MessageBox.Show("Digite um setor e tente novamente");
+                txtPesquisar.Focus();
+            }
+            else
+            {
+                MostrarSetores.DataSource = setoresFiltrados;
             }
         }
     }

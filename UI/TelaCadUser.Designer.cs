@@ -49,6 +49,7 @@
             MostrarUsuarios = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             Nome = new DataGridViewTextBoxColumn();
+            UserAcesso = new DataGridViewTextBoxColumn();
             SenhaH = new DataGridViewTextBoxColumn();
             ConfirmarEmail = new DataGridViewTextBoxColumn();
             ConfirmarSenha = new DataGridViewTextBoxColumn();
@@ -59,6 +60,7 @@
             label7 = new Label();
             label8 = new Label();
             btnVerUser = new Button();
+            ComboBoxAcesso = new ComboBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
@@ -100,7 +102,7 @@
             panel1.Controls.Add(btnCancelarCadUser);
             panel1.Controls.Add(txtID);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 807);
+            panel1.Location = new Point(0, 844);
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(9, 10, 9, 10);
@@ -116,7 +118,7 @@
             btnCadUserSucesso.Name = "btnCadUserSucesso";
             btnCadUserSucesso.Padding = new Padding(4, 5, 4, 5);
             btnCadUserSucesso.Size = new Size(214, 63);
-            btnCadUserSucesso.TabIndex = 6;
+            btnCadUserSucesso.TabIndex = 8;
             btnCadUserSucesso.Text = "Aplicar";
             btnCadUserSucesso.UseVisualStyleBackColor = false;
             btnCadUserSucesso.Click += btnCadUserSucesso_Click;
@@ -237,7 +239,7 @@
             // 
             btn_limpar.BackColor = Color.DarkGreen;
             btn_limpar.ForeColor = Color.White;
-            btn_limpar.Location = new Point(21, 748);
+            btn_limpar.Location = new Point(16, 788);
             btn_limpar.Name = "btn_limpar";
             btn_limpar.Size = new Size(144, 40);
             btn_limpar.TabIndex = 28;
@@ -248,10 +250,12 @@
             // MostrarUsuarios
             // 
             MostrarUsuarios.AllowUserToAddRows = false;
+            MostrarUsuarios.AllowUserToDeleteRows = false;
             MostrarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, SenhaH, ConfirmarEmail, ConfirmarSenha });
-            MostrarUsuarios.Location = new Point(17, 504);
+            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, UserAcesso, SenhaH, ConfirmarEmail, ConfirmarSenha });
+            MostrarUsuarios.Location = new Point(12, 544);
             MostrarUsuarios.Name = "MostrarUsuarios";
+            MostrarUsuarios.ReadOnly = true;
             MostrarUsuarios.RowHeadersVisible = false;
             MostrarUsuarios.RowHeadersWidth = 62;
             MostrarUsuarios.RowTemplate.Height = 33;
@@ -266,6 +270,7 @@
             Id.HeaderText = "Id";
             Id.MinimumWidth = 50;
             Id.Name = "Id";
+            Id.ReadOnly = true;
             Id.Width = 50;
             // 
             // Nome
@@ -274,7 +279,18 @@
             Nome.HeaderText = "Nome";
             Nome.MinimumWidth = 8;
             Nome.Name = "Nome";
+            Nome.ReadOnly = true;
             Nome.Width = 150;
+            // 
+            // UserAcesso
+            // 
+            UserAcesso.DataPropertyName = "UserAcesso";
+            UserAcesso.HeaderText = "Nivel de acesso";
+            UserAcesso.MinimumWidth = 8;
+            UserAcesso.Name = "UserAcesso";
+            UserAcesso.ReadOnly = true;
+            UserAcesso.Visible = false;
+            UserAcesso.Width = 190;
             // 
             // SenhaH
             // 
@@ -282,6 +298,7 @@
             SenhaH.HeaderText = "SenhaH";
             SenhaH.MinimumWidth = 8;
             SenhaH.Name = "SenhaH";
+            SenhaH.ReadOnly = true;
             SenhaH.Visible = false;
             SenhaH.Width = 150;
             // 
@@ -291,6 +308,7 @@
             ConfirmarEmail.HeaderText = "ConfirmarEmail";
             ConfirmarEmail.MinimumWidth = 8;
             ConfirmarEmail.Name = "ConfirmarEmail";
+            ConfirmarEmail.ReadOnly = true;
             ConfirmarEmail.Visible = false;
             ConfirmarEmail.Width = 150;
             // 
@@ -300,6 +318,7 @@
             ConfirmarSenha.HeaderText = "ConfirmarSenha";
             ConfirmarSenha.MinimumWidth = 8;
             ConfirmarSenha.Name = "ConfirmarSenha";
+            ConfirmarSenha.ReadOnly = true;
             ConfirmarSenha.Visible = false;
             ConfirmarSenha.Width = 150;
             // 
@@ -307,7 +326,7 @@
             // 
             btnDeletar.BackColor = Color.DarkGreen;
             btnDeletar.ForeColor = SystemColors.Control;
-            btnDeletar.Location = new Point(218, 748);
+            btnDeletar.Location = new Point(213, 788);
             btnDeletar.Margin = new Padding(4, 5, 4, 5);
             btnDeletar.Name = "btnDeletar";
             btnDeletar.Size = new Size(134, 40);
@@ -370,7 +389,7 @@
             // 
             btnVerUser.BackColor = Color.DarkGreen;
             btnVerUser.ForeColor = Color.White;
-            btnVerUser.Location = new Point(405, 746);
+            btnVerUser.Location = new Point(400, 786);
             btnVerUser.Name = "btnVerUser";
             btnVerUser.Size = new Size(134, 40);
             btnVerUser.TabIndex = 30;
@@ -378,11 +397,20 @@
             btnVerUser.UseVisualStyleBackColor = false;
             btnVerUser.Click += btnVerUser_Click;
             // 
+            // ComboBoxAcesso
+            // 
+            ComboBoxAcesso.FormattingEnabled = true;
+            ComboBoxAcesso.Location = new Point(108, 450);
+            ComboBoxAcesso.Name = "ComboBoxAcesso";
+            ComboBoxAcesso.Size = new Size(182, 33);
+            ComboBoxAcesso.TabIndex = 6;
+            // 
             // TelaCadUser
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(567, 890);
+            ClientSize = new Size(567, 927);
+            Controls.Add(ComboBoxAcesso);
             Controls.Add(btnVerUser);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -439,11 +467,6 @@
         private DataGridView MostrarUsuarios;
         private Button btnDeletar;
         private TextBox txtID;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn Nome;
-        private DataGridViewTextBoxColumn SenhaH;
-        private DataGridViewTextBoxColumn ConfirmarEmail;
-        private DataGridViewTextBoxColumn ConfirmarSenha;
         private Label label4;
         private Label label5;
         private Label label6;
@@ -453,5 +476,12 @@
         private Button btnCancelarCadUser;
         private Button btnCadUserSucesso;
         private Button btnVerUser;
+        private ComboBox ComboBoxAcesso;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Nome;
+        private DataGridViewTextBoxColumn UserAcesso;
+        private DataGridViewTextBoxColumn SenhaH;
+        private DataGridViewTextBoxColumn ConfirmarEmail;
+        private DataGridViewTextBoxColumn ConfirmarSenha;
     }
 }

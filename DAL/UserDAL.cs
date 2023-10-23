@@ -28,12 +28,13 @@ namespace DAL
             string senhaCriptografada = HashPassword(senhaNaoCriptografada);
             usuario.SenhaHash = senhaCriptografada;
 
-            sql = "INSERT INTO tb_usuario(Nome, Email, Senha) VALUES (@Nome, @Email, @Senha) ";
+            sql = "INSERT INTO tb_usuario(Nome, Email, Senha, UserAcesso) VALUES (@Nome, @Email, @Senha, @UserAcesso) ";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@nome", usuario.Nome);
             cmd.Parameters.AddWithValue("@email", usuario.Email);
             cmd.Parameters.AddWithValue("@senha", usuario.SenhaHash);
+            cmd.Parameters.AddWithValue("@UserAcesso", usuario.UserAcesso);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
@@ -85,7 +86,7 @@ namespace DAL
             using(IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                return dbConnection.Query<Usuario>("SELECT id_usuario, Nome, Email, Senha FROM tb_usuario").ToList();
+                return dbConnection.Query<Usuario>("SELECT id_usuario, Nome, Email, Senha, UserAcesso FROM tb_usuario").ToList();
             }
         }
         public void UpdateUsuario(Usuario usuario)
@@ -106,6 +107,17 @@ namespace DAL
                 string query = "DELETE FROM tb_usuario WHERE id_usuario = @id_usuario";
                 dbConnection.Execute(query, new { id_usuario });
             }
+        }
+        public int ObterUserChamado(string email)
+        {
+            sql = "SELECT UserAcesso FROM tb_usuario WHERE Email = @Email";
+
+            cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+            cmd.Parameters.AddWithValue("@Email", email);
+            var result = cmd.ExecuteScalar();
+            mConn.FecharConexao();
+
+            return result == DBNull.Value ? -1 : Convert.ToInt32(result);
         }
     }
 }
