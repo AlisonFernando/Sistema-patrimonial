@@ -63,10 +63,10 @@ namespace UI
                 return;
             }
 
-            // Verificação de espaços em branco em nome e email
-            if (usuario.Nome.Contains(" ") || usuario.Email.Contains(" "))
+            // Verificação de espaços em branco em email
+            if (usuario.Email.Contains(" "))
             {
-                MessageBox.Show("Nome e email não podem conter espaços em branco.");
+                MessageBox.Show("Email não podem conter espaços em branco.");
                 return;
             }
 
@@ -163,7 +163,9 @@ namespace UI
         }
         private void btnVerUser_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
+            UI.VerUser telaveruser = new UI.VerUser();
+            telaveruser.ShowDialog();
         }
         private void MostrarUsuarios_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {

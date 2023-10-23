@@ -12,5 +12,6 @@ namespace model
         public DateTime dateTime { get; set; }
         public string entidade { get; set; }
         public string operacao { get; set; }
+        public string NomeUsuario { get; set; }
     }
 }

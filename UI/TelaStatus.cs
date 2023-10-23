@@ -11,20 +11,34 @@ namespace UI
             InitializeComponent();
             if (manutencao != null)
             {
-
                 txtNomeEquipamento.Text = manutencao.NomeEquipamento;
-                txtID.Text = manutencao.id_equipamento;
 
+                // Verifique se manutencao.id_equipamento é um número inteiro válido
+                if (int.TryParse(manutencao.id_equipamento, out int equipamentoId))
+                {
+                    txtID.Text = equipamentoId.ToString();
+                }
+                else
+                {
+                    // Lida com o cenário em que id_equipamento não é um número válido
+                    txtID.Text = string.Empty; // Ou outra ação apropriada
+                }
+
+                txtData.Text = manutencao.DataChamado.ToString();
+                txtUsuario.Text = manutencao.NomeUsuario;
+                txtDesc.Text = manutencao.Descricao;
             }
         }
+
         private void CarregarStatusComboBox()
         {
             StatusBLL statusBLL = new StatusBLL();
             DataTable dt = statusBLL.CarregarStatus();
 
+            ComboBoxStatus.DataSource = dt;
             ComboBoxStatus.DisplayMember = "andamento_do_chamado";
             ComboBoxStatus.ValueMember = "id_status";
-            ComboBoxStatus.DataSource = dt;
+            
         }
 
         private void TelaStatus_Load(object sender, EventArgs e)
@@ -43,25 +57,32 @@ namespace UI
             {
                 int idStatus = (int)ComboBoxStatus.SelectedValue;
                 string nomeEquipamento = txtNomeEquipamento.Text;
-                var id_equipamentoText = txtID.Text;
-                var id_equipamento = Convert.ToInt32(id_equipamentoText);
 
-
-                StatusBLL statusBLL = new StatusBLL();
-
-                if (statusBLL.AtualizarStatusEquipamento(id_equipamento, idStatus))
+                // Use int.TryParse para converter a string em um int
+                if (int.TryParse(txtID.Text, out int id_equipamento))
                 {
-                    MessageBox.Show("Status atualizado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    StatusBLL statusBLL = new StatusBLL();
+
+                    if (statusBLL.AtualizarStatusEquipamento(id_equipamento, idStatus))
+                    {
+                        MessageBox.Show("Status atualizado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falha na atualização do status.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Falha na atualização do status.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("O ID do equipamento não é um número válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
                 MessageBox.Show("Selecione um status válido antes de aplicar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
     }
 }

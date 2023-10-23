@@ -37,7 +37,7 @@ namespace DAL
             {
                 connection.Open();
 
-                string query = "UPDATE tb_chamado SET id_status = @idStatus WHERE id_equipamento = @id_equipamento";
+                string query = "UPDATE tb_manutencao SET id_status = @idStatus WHERE id_equipamento = @id_equipamento";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {

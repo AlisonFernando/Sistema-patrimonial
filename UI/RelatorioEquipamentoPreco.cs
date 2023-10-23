@@ -23,7 +23,7 @@ namespace UI
 
 {
     public partial class RelatorioEquipamentoPreco : Form
-    {        
+    {
         public RelatorioEquipamentoPreco()
         {
             InitializeComponent();

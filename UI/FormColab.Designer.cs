@@ -129,7 +129,7 @@
             // 
             inputColabEmail.Location = new Point(123, 215);
             inputColabEmail.Margin = new Padding(4, 5, 4, 5);
-            inputColabEmail.MaxLength = 40;
+            inputColabEmail.MaxLength = 100;
             inputColabEmail.Name = "inputColabEmail";
             inputColabEmail.Size = new Size(361, 31);
             inputColabEmail.TabIndex = 2;
@@ -138,20 +138,20 @@
             // 
             inputColabSenha.Location = new Point(123, 283);
             inputColabSenha.Margin = new Padding(4, 5, 4, 5);
-            inputColabSenha.MaxLength = 3;
+            inputColabSenha.MaxLength = 100;
             inputColabSenha.Name = "inputColabSenha";
             inputColabSenha.Size = new Size(357, 31);
-            inputColabSenha.TabIndex = 5;
+            inputColabSenha.TabIndex = 3;
             inputColabSenha.UseSystemPasswordChar = true;
             // 
             // inputColabTel
             // 
             inputColabTel.Location = new Point(123, 349);
             inputColabTel.Margin = new Padding(4, 5, 4, 5);
-            inputColabTel.MaxLength = 4;
+            inputColabTel.MaxLength = 11;
             inputColabTel.Name = "inputColabTel";
             inputColabTel.Size = new Size(183, 31);
-            inputColabTel.TabIndex = 9;
+            inputColabTel.TabIndex = 4;
             inputColabTel.TextChanged += inputColabTel_TextChanged;
             // 
             // Setor
@@ -173,7 +173,7 @@
             escolherSetor.MaxDropDownItems = 5;
             escolherSetor.Name = "escolherSetor";
             escolherSetor.Size = new Size(177, 33);
-            escolherSetor.TabIndex = 8;
+            escolherSetor.TabIndex = 5;
             // 
             // HeaderCadColab
             // 
@@ -219,7 +219,7 @@
             btn_selectEquips.Margin = new Padding(4, 5, 4, 5);
             btn_selectEquips.Name = "btn_selectEquips";
             btn_selectEquips.Size = new Size(220, 73);
-            btn_selectEquips.TabIndex = 8;
+            btn_selectEquips.TabIndex = 7;
             btn_selectEquips.Text = "Selecionar equipamentos";
             btn_selectEquips.UseVisualStyleBackColor = false;
             btn_selectEquips.Click += btn_selectEquips_Click;
@@ -233,7 +233,7 @@
             btnCancelarCad.Margin = new Padding(4, 5, 4, 5);
             btnCancelarCad.Name = "btnCancelarCad";
             btnCancelarCad.Size = new Size(214, 73);
-            btnCancelarCad.TabIndex = 9;
+            btnCancelarCad.TabIndex = 8;
             btnCancelarCad.Text = "Cancelar";
             btnCancelarCad.UseVisualStyleBackColor = false;
             btnCancelarCad.Click += btnCancelarCad_Click;

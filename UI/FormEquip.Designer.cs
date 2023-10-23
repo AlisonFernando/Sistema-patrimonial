@@ -84,7 +84,7 @@
             // MarcaEquip
             // 
             MarcaEquip.AutoSize = true;
-            MarcaEquip.Location = new Point(432, 320);
+            MarcaEquip.Location = new Point(248, 320);
             MarcaEquip.Margin = new Padding(4, 0, 4, 0);
             MarcaEquip.Name = "MarcaEquip";
             MarcaEquip.Size = new Size(60, 25);
@@ -104,7 +104,7 @@
             // PrecoEquip
             // 
             PrecoEquip.AutoSize = true;
-            PrecoEquip.Location = new Point(248, 322);
+            PrecoEquip.Location = new Point(471, 322);
             PrecoEquip.Margin = new Padding(4, 0, 4, 0);
             PrecoEquip.Name = "PrecoEquip";
             PrecoEquip.Size = new Size(56, 25);
@@ -150,12 +150,13 @@
             // 
             // inputPrecoEquip
             // 
-            inputPrecoEquip.Location = new Point(227, 352);
+            inputPrecoEquip.Location = new Point(450, 352);
             inputPrecoEquip.Margin = new Padding(4, 5, 4, 5);
             inputPrecoEquip.MaxLength = 10;
             inputPrecoEquip.Name = "inputPrecoEquip";
             inputPrecoEquip.Size = new Size(164, 31);
             inputPrecoEquip.TabIndex = 5;
+            inputPrecoEquip.KeyPress += inputPrecoEquip_KeyPress;
             // 
             // btn_cancelar
             // 
@@ -213,7 +214,7 @@
             // escolherMarca
             // 
             escolherMarca.FormattingEnabled = true;
-            escolherMarca.Location = new Point(411, 350);
+            escolherMarca.Location = new Point(227, 350);
             escolherMarca.Margin = new Padding(4, 5, 4, 5);
             escolherMarca.Name = "escolherMarca";
             escolherMarca.Size = new Size(164, 33);
@@ -443,7 +444,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(411, 322);
+            label6.Location = new Point(227, 322);
             label6.Name = "label6";
             label6.Size = new Size(20, 25);
             label6.TabIndex = 33;
@@ -453,7 +454,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(227, 326);
+            label7.Location = new Point(450, 326);
             label7.Name = "label7";
             label7.Size = new Size(20, 25);
             label7.TabIndex = 34;

@@ -38,8 +38,8 @@ namespace UI
 
         private void btnPesquisarFinalizado_Click(object sender, EventArgs e)
         {
-            List<Manutencao> manutencaoData = manutencaoBLL.GetManutencoes();
             string nomePesquisado = txtPesquisarFinalizado.Text.Trim();
+            List<Manutencao> manutencaoData = manutencaoBLL.GetManutencoes();
             List<Manutencao> resultadosPesquisa = new List<Manutencao>();
 
             foreach (Manutencao manutencao in manutencaoData)
@@ -159,6 +159,10 @@ namespace UI
                     telaStatus.ShowDialog();
                 }
             }
+        }
+        private void TelaManutencao_Activated(object sender, EventArgs e)
+        {
+            LoadEquipamentos();
         }
     }
 }

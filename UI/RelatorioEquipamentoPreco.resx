@@ -218,15 +218,18 @@
   <data name="&gt;&gt;btnCaminho.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnVoltar.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
   <data name="btnVoltar.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnVoltar.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
   <data name="btnVoltar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 34</value>
+    <value>44, 39</value>
   </data>
   <data name="btnVoltar.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -250,7 +253,7 @@
     <value>10, 25</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>637, 372</value>
+    <value>674, 339</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -605,7 +608,7 @@
     <value>Relatório de equipamentos</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>RelatorioEquipamentoQTD</value>
+    <value>RelatorioEquipamentoPreco</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

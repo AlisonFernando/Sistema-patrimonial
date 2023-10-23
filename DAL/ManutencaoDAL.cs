@@ -46,6 +46,7 @@ namespace DAL
                             manutencao.NomeUsuario = reader["NomeUsuario"].ToString(); // Nome do usuário
                             manutencao.id_status = (int)reader["id_status"]; // Andamento do chamado
                             manutencao.NomeEquipamento = reader["NomeEquipamento"].ToString();
+                            manutencao.id_equipamento = reader["id_equipamento"].ToString();
 
                             manutencaoList.Add(manutencao);
                         }

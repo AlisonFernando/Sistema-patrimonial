@@ -36,6 +36,7 @@ namespace UI
             CarregarMarcasComboBox();
             LoadEquipamentos();
             inputEtiquetaEquip.Enabled = true;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
 
         }
         public void LoadEquipamentos()
@@ -64,12 +65,12 @@ namespace UI
             inputEtiquetaEquip.Enabled = string.IsNullOrEmpty(txtID.Text);
 
             // Verificação de espaços em branco nos campos Nome, Descrição, Etiqueta e Valor
-            if (string.IsNullOrWhiteSpace(equipamento.Nome))
+            if (string.IsNullOrEmpty(equipamento.Nome))
             {
                 MessageBox.Show("Verifique o nome e tente novamente");
                 return;
             }
-            else if (string.IsNullOrWhiteSpace(equipamento.Descricao))
+            else if (string.IsNullOrEmpty(equipamento.Descricao))
             {
                 MessageBox.Show("Verifique a descrição e tente novamente");
                 return;
@@ -84,7 +85,7 @@ namespace UI
                 MessageBox.Show("Verifique o valor digitado e tente novamente");
                 return;
             }
-            else if (equipamento.Nome.Contains(" ") || equipamento.Descricao.Contains(" ") || equipamento.Etiqueta.Contains(" ") || equipamento.Valor.Contains(" "))
+            else if (equipamento.Etiqueta.Contains(" ") || equipamento.Valor.Contains(" "))
             {
                 MessageBox.Show("Nome, descrição, etiqueta e valor não podem conter espaços em branco.");
                 return;
@@ -184,6 +185,25 @@ namespace UI
             this.Hide();
             TelaVerEquips telaVerEquips = new TelaVerEquips();
             telaVerEquips.ShowDialog();
+        }
+
+        private void inputPrecoEquip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // Se o caractere é um número ou ponto decimal, atualize o valor formatado
+            if (char.IsDigit(e.KeyChar) || e.KeyChar == '.')
+            {
+                string textoAtual = inputPrecoEquip.Text.Replace("R$","").Trim();
+                if (decimal.TryParse(textoAtual, out decimal preco))
+                {
+                    string valorFormatado = string.Format(new CultureInfo("pt-BR"), "R${0:N2}", preco);
+                    inputPrecoEquip.Text = valorFormatado;
+                }
+            }
         }
     }
 }

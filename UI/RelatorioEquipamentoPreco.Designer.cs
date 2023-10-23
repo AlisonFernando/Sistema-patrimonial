@@ -66,13 +66,13 @@
             // 
             // btnVoltar
             // 
-            btnVoltar.Image = Properties.Resources.seta_esquerda;
             resources.ApplyResources(btnVoltar, "btnVoltar");
+            btnVoltar.Image = Properties.Resources.seta_esquerda;
             btnVoltar.Name = "btnVoltar";
             btnVoltar.UseVisualStyleBackColor = true;
             btnVoltar.Click += btnVoltar_Click;
             // 
-            // RelatorioEquipamentoQTD
+            // RelatorioEquipamentoPreco
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
@@ -82,7 +82,7 @@
             Controls.Add(txtDestino);
             Controls.Add(lblTitulo);
             MaximizeBox = false;
-            Name = "RelatorioEquipamentoQTD";
+            Name = "RelatorioEquipamentoPreco";
             ResumeLayout(false);
             PerformLayout();
         }

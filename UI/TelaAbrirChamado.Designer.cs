@@ -58,7 +58,7 @@
             panel2.Controls.Add(btnVoltar);
             panel2.Controls.Add(btnCadUserSucesso);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 440);
+            panel2.Location = new Point(0, 646);
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(9, 10, 9, 10);
@@ -154,8 +154,10 @@
             // 
             txtDesc.Location = new Point(13, 393);
             txtDesc.Margin = new Padding(4, 5, 4, 5);
+            txtDesc.MaxLength = 10000;
+            txtDesc.Multiline = true;
             txtDesc.Name = "txtDesc";
-            txtDesc.Size = new Size(601, 31);
+            txtDesc.Size = new Size(601, 243);
             txtDesc.TabIndex = 15;
             // 
             // label3
@@ -260,7 +262,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(627, 523);
+            ClientSize = new Size(627, 729);
             Controls.Add(selectChamado);
             Controls.Add(btn_limpar);
             Controls.Add(label7);

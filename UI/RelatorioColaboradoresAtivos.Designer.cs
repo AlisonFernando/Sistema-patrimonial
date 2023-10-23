@@ -39,11 +39,12 @@
             // btnVoltar
             // 
             btnVoltar.BackgroundImage = Properties.Resources.seta_esquerda;
+            btnVoltar.BackgroundImageLayout = ImageLayout.Stretch;
             btnVoltar.ImeMode = ImeMode.NoControl;
-            btnVoltar.Location = new Point(24, 12);
+            btnVoltar.Location = new Point(12, 12);
             btnVoltar.Name = "btnVoltar";
             btnVoltar.RightToLeft = RightToLeft.No;
-            btnVoltar.Size = new Size(37, 34);
+            btnVoltar.Size = new Size(40, 39);
             btnVoltar.TabIndex = 10;
             btnVoltar.UseVisualStyleBackColor = true;
             btnVoltar.Click += btnVoltar_Click;
@@ -104,6 +105,7 @@
             Controls.Add(lblTitulo);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "RelatorioColaboradoresAtivos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Relatório de colaboradores ativos";
             ResumeLayout(false);
             PerformLayout();

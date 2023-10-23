@@ -39,11 +39,12 @@
             // btnVoltar
             // 
             btnVoltar.BackgroundImage = Properties.Resources.seta_esquerda;
+            btnVoltar.BackgroundImageLayout = ImageLayout.Stretch;
             btnVoltar.ImeMode = ImeMode.NoControl;
-            btnVoltar.Location = new Point(42, 26);
+            btnVoltar.Location = new Point(12, 12);
             btnVoltar.Name = "btnVoltar";
             btnVoltar.RightToLeft = RightToLeft.No;
-            btnVoltar.Size = new Size(28, 34);
+            btnVoltar.Size = new Size(39, 41);
             btnVoltar.TabIndex = 10;
             btnVoltar.UseVisualStyleBackColor = true;
             btnVoltar.Click += btnVoltar_Click;
@@ -97,7 +98,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(689, 450);
+            ClientSize = new Size(674, 339);
             Controls.Add(btnVoltar);
             Controls.Add(btnCaminho);
             Controls.Add(btnGerarPDF);

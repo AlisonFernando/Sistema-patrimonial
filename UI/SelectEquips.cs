@@ -56,13 +56,13 @@ namespace UI
                     equipamentosSelecionadosIDs.Add(ID_equipamento);
 
                     // Obtém os outros valores das células da linha clicada na primeira DataGridView
-                    string nome = selectedRow.Cells["Nome"].Value.ToString();
-                    string valor = selectedRow.Cells["Valor"].Value.ToString();
-                    string descricao = selectedRow.Cells["Descricao"].Value.ToString();
-                    string etiqueta = selectedRow.Cells["Etiqueta_identificacao"].Value.ToString();
+                    equipamento.nome = selectedRow.Cells["Nome"].Value.ToString();
+                    //string valor = selectedRow.Cells["Valor"].Value.ToString();
+                    equipamento.descricao = selectedRow.Cells["Descricao"].Value.ToString();
+                    equipamento.etiqueta = selectedRow.Cells["Etiqueta_identificacao"].Value.ToString();
 
                     // Adicione os valores à segunda DataGridView
-                    EquipsSelecionados.Rows.Add(ID_equipamento, nome, valor, descricao, etiqueta);
+                    EquipsSelecionados.Rows.Add(ID_equipamento, equipamento.nome, equipamento.descricao, equipamento.etiqueta);
                 }
             }
         }

@@ -45,6 +45,7 @@ namespace UI
             if (verificar == "Marca existente")
             {
                 MessageBox.Show("A marca já existe no banco de dados.");
+                txtMarca.Focus();
             }
             else if (verificar == "Marca não existe")
             {
