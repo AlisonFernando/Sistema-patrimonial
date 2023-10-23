@@ -8,10 +8,10 @@ namespace model
 {
     public class Logs
     {
-        public int id_log { get; set; }
-        public DateTime dateTime { get; set; }
-        public string entidade { get; set; }
-        public string operacao { get; set; }
-        public string NomeUsuario { get; set; }
+        public int IdLog { get; set; }
+        public DateTime DataHora { get; set; }
+        public string Operacao { get; set; }
+        public string Entidade { get; set; }
+        public int IdUsuario { get; set; }
     }
 }
