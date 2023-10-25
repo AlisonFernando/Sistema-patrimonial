@@ -11,11 +11,11 @@ namespace BLL
 {
     public class MarcaBLL
     {
-        public string CadMarca(Marca marca)
+        public string CadMarca(Marca marca, string emailUsuarioLogado)
         {
             MarcaDAL marcaDAL = new MarcaDAL();
 
-            marcaDAL.InserirMarca(marca);
+            marcaDAL.InserirMarca(marca, emailUsuarioLogado);
 
             return "Sucesso";
         }

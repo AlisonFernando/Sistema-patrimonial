@@ -15,7 +15,7 @@ namespace DAL
         MySqlCommand cmd;
         public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
 
-        public void InserirColaborador(Colaborador colaborador)
+        public void InserirColaborador(Colaborador colaborador, string emailUsuarioLogado)
         {
             string ativo = "0";
             if (colaborador.Ativo_inativo)
@@ -37,6 +37,21 @@ namespace DAL
             cmd.Parameters.AddWithValue("@ativo_inativo", ativo);
             cmd.Parameters.AddWithValue("@senha_colaborador", colaborador.SenhaHash);
             cmd.Parameters.AddWithValue("@id_setor", colaborador.id_setor);
+
+            cmd.ExecuteNonQuery();
+            mConn.FecharConexao();
+
+
+            // Inserir o registro de log na tabela tb_logs
+            DateTime dataHoraAcao = DateTime.Now;
+            string tipoOperacao = "cadastro de colaborador"; // Defina o tipo de operação conforme necessário
+
+            sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+            cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+
+            cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+            cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+            cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();

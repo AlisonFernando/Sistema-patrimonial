@@ -11,10 +11,10 @@ namespace BLL
 {
     public class ColaboradorBLL
     {
-        public string CadColab(Colaborador colaborador)
+        public string CadColab(Colaborador colaborador, string emailUsuarioLogado)
         {
             ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
-            colaboradorDAL.InserirColaborador(colaborador);
+            colaboradorDAL.InserirColaborador(colaborador, emailUsuarioLogado);
             return "Sucesso";
         }
 

@@ -16,10 +16,10 @@ namespace BLL
             DataTable resultado = statusDAL.CarregarStatus();
             return resultado;
         }
-        public bool AtualizarStatusEquipamento(int id_equipamento, int idStatus)
+        public bool AtualizarStatusEquipamento(int id_equipamento, int idStatus, string emailUsuarioLogado)
         {
             // Chame o método na camada de dados
-            return statusDAL.AtualizarStatusEquipamento(id_equipamento, idStatus);
+            return statusDAL.AtualizarStatusEquipamento(id_equipamento, idStatus, emailUsuarioLogado);
         }
     }
 }

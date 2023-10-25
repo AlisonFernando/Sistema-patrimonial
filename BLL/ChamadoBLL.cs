@@ -13,11 +13,11 @@ namespace BLL
     public class ChamadoBLL
     {
 
-        public string CadChamado(Chamado chamado)
+        public string CadChamado(Chamado chamado, string emailUsuarioLogado)
         {
             ChamadoDAL chamadoDAL = new ChamadoDAL();
 
-            chamadoDAL.CadastrarChamado(chamado);
+            chamadoDAL.CadastrarChamado(chamado, emailUsuarioLogado);
 
             return "Sucesso";
         }

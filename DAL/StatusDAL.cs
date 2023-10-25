@@ -11,8 +11,9 @@ namespace DAL
     public class StatusDAL
     {
         public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
-
         ConexaoDB mConn = new ConexaoDB();
+        string sql;
+        MySqlCommand cmd;
 
         public DataTable CarregarStatus()
         {
@@ -31,7 +32,7 @@ namespace DAL
             }
             return dt;
         }
-        public bool AtualizarStatusEquipamento(int id_equipamento, int idStatus)
+        public bool AtualizarStatusEquipamento(int id_equipamento, int idStatus, string emailUsuarioLogado)
         {
             using (MySqlConnection connection = new MySqlConnection(conec))
             {
@@ -44,6 +45,21 @@ namespace DAL
                     // Adicione os parâmetros com seus valores
                     command.Parameters.AddWithValue("@idStatus", idStatus);
                     command.Parameters.AddWithValue("@id_equipamento", id_equipamento);
+
+
+                    // Inserir o registro de log na tabela tb_logs
+                    DateTime dataHoraAcao = DateTime.Now;
+                    string tipoOperacao = "atualização no status do chamado"; // Defina o tipo de operação conforme necessário
+
+                    sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                    cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+
+                    cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+                    cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+                    cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
+
+                    cmd.ExecuteNonQuery();
+                    mConn.FecharConexao();
 
                     try
                     {
@@ -58,6 +74,8 @@ namespace DAL
                         {
                             return false; // Nenhuma linha afetada, atualização não bem-sucedida
                         }
+
+                        
                     }
                     catch (MySqlException ex)
                     {
@@ -68,7 +86,7 @@ namespace DAL
                 }
             }
 
-            return false; // O código não deve chegar até aqui, mas forneça um valor padrão para cobrir todos os cenários
+            return false;
         }
 
 

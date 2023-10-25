@@ -17,7 +17,7 @@ namespace DAL
         MySqlCommand cmd;
         public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
 
-        public void InserirMarca(Marca marca)
+        public void InserirMarca(Marca marca, string emailUsuarioLogado)
         {
 
             sql = "INSERT INTO tb_marca(Nome) VALUES (@Nome) ";
@@ -25,6 +25,20 @@ namespace DAL
 
             cmd.Parameters.AddWithValue("@nome", marca.Nome);
 
+
+            cmd.ExecuteNonQuery();
+            mConn.FecharConexao();
+
+            // Inserir o registro de log na tabela tb_logs
+            DateTime dataHoraAcao = DateTime.Now;
+            string tipoOperacao = "cadastro de marca"; // Defina o tipo de operação conforme necessário
+
+            sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+            cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+
+            cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+            cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+            cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();

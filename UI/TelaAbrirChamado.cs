@@ -122,7 +122,7 @@ namespace UI
             };
 
             ChamadoBLL chamadoBLL = new ChamadoBLL();
-            chamadoBLL.CadChamado(chamado);
+            chamadoBLL.CadChamado(chamado, Program.UserEmail);
 
 
             CarregarEtiquetasComboBox();
@@ -132,6 +132,7 @@ namespace UI
         }
         private void LimparCampos()
         {
+            txtEquip.Text = string.Empty;
             txtDesc.Clear();
             selectUser.SelectedIndex = -1;
             selectChamado.SelectedIndex = -1;

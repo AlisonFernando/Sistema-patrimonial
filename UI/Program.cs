@@ -5,6 +5,7 @@ namespace UI
     internal static class Program
     {
         public static int UserChamado;
+        public static string UserEmail = "";
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

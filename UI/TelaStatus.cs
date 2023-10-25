@@ -63,7 +63,7 @@ namespace UI
                 {
                     StatusBLL statusBLL = new StatusBLL();
 
-                    if (statusBLL.AtualizarStatusEquipamento(id_equipamento, idStatus))
+                    if (statusBLL.AtualizarStatusEquipamento(id_equipamento, idStatus, Program.UserEmail))
                     {
                         MessageBox.Show("Status atualizado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();

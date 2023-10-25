@@ -19,7 +19,7 @@ namespace DAL
         MySqlCommand cmd;
         public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
 
-        public void InserirEquipamento(Equipamento equipamento)
+        public void InserirEquipamento(Equipamento equipamento, string emailUsuarioLogado)
         {
             string ativo = "0";
             if (equipamento.Ativo_inativo)
@@ -37,6 +37,20 @@ namespace DAL
             cmd.Parameters.AddWithValue("@descricao", equipamento.Descricao);
             cmd.Parameters.AddWithValue("@etiqueta", equipamento.Etiqueta);
             cmd.Parameters.AddWithValue("@id_marca", equipamento.id_marca);
+
+            cmd.ExecuteNonQuery();
+            mConn.FecharConexao();
+
+            // Inserir o registro de log na tabela tb_logs
+            DateTime dataHoraAcao = DateTime.Now;
+            string tipoOperacao = "cadastro de equipamento"; // Defina o tipo de operação conforme necessário
+
+            sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+            cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+
+            cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+            cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+            cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
@@ -83,22 +97,52 @@ namespace DAL
             }
         }
 
-        public void UpdateEquipamentos(Equipamento equipamento)
+        public void UpdateEquipamentos(Equipamento equipamento, string emailUsuarioLogado)
         {
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_equipamentos SET Nome_Equipamento = @Nome, Valor = @Valor, Descricao = @Descricao  WHERE ID_equipamento = @ID_equipamento";
                 dbConnection.Execute(query, equipamento);
+
+
+                //Inserção de log
+                DateTime dataHoraAcao = DateTime.Now;
+                string tipoOperacao = "atualização de equipamento"; // Defina o tipo de operação conforme necessário
+
+                sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+
+                cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+                cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+                cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
+
+                cmd.ExecuteNonQuery();
+                mConn.FecharConexao();
             }
         }
-        public void DeleteEquipamento(int ID_equipamento)
+        public void DeleteEquipamento(int ID_equipamento, string emailUsuarioLogado)
         {
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
                 string query = "DELETE FROM tb_equipamentos WHERE ID_equipamento = @ID_equipamento";
                 dbConnection.Execute(query, new { ID_equipamento });
+
+
+                //Inserção de log
+                DateTime dataHoraAcao = DateTime.Now;
+                string tipoOperacao = "delete de equipamento"; // Defina o tipo de operação conforme necessário
+
+                sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+
+                cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+                cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+                cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
+
+                cmd.ExecuteNonQuery();
+                mConn.FecharConexao();
             }
         }
         public List<Equipamento> GetEquipamentosRelatorio()

@@ -74,87 +74,78 @@
             // NomeEquip
             // 
             NomeEquip.AutoSize = true;
-            NomeEquip.Location = new Point(242, 116);
-            NomeEquip.Margin = new Padding(4, 0, 4, 0);
+            NomeEquip.Location = new Point(169, 70);
             NomeEquip.Name = "NomeEquip";
-            NomeEquip.Size = new Size(199, 25);
+            NomeEquip.Size = new Size(131, 15);
             NomeEquip.TabIndex = 0;
             NomeEquip.Text = "Nome do Equipamento";
             // 
             // MarcaEquip
             // 
             MarcaEquip.AutoSize = true;
-            MarcaEquip.Location = new Point(248, 320);
-            MarcaEquip.Margin = new Padding(4, 0, 4, 0);
+            MarcaEquip.Location = new Point(174, 196);
             MarcaEquip.Name = "MarcaEquip";
-            MarcaEquip.Size = new Size(60, 25);
+            MarcaEquip.Size = new Size(40, 15);
             MarcaEquip.TabIndex = 1;
             MarcaEquip.Text = "Marca";
             // 
             // DescricaoEquip
             // 
             DescricaoEquip.AutoSize = true;
-            DescricaoEquip.Location = new Point(242, 182);
-            DescricaoEquip.Margin = new Padding(4, 0, 4, 0);
+            DescricaoEquip.Location = new Point(169, 109);
             DescricaoEquip.Name = "DescricaoEquip";
-            DescricaoEquip.Size = new Size(88, 25);
+            DescricaoEquip.Size = new Size(58, 15);
             DescricaoEquip.TabIndex = 2;
             DescricaoEquip.Text = "Descrição";
             // 
             // PrecoEquip
             // 
             PrecoEquip.AutoSize = true;
-            PrecoEquip.Location = new Point(471, 322);
-            PrecoEquip.Margin = new Padding(4, 0, 4, 0);
+            PrecoEquip.Location = new Point(330, 197);
             PrecoEquip.Name = "PrecoEquip";
-            PrecoEquip.Size = new Size(56, 25);
+            PrecoEquip.Size = new Size(37, 15);
             PrecoEquip.TabIndex = 3;
             PrecoEquip.Text = "Preço";
             // 
             // EtiquetaEquip
             // 
             EtiquetaEquip.AutoSize = true;
-            EtiquetaEquip.Location = new Point(242, 256);
-            EtiquetaEquip.Margin = new Padding(4, 0, 4, 0);
+            EtiquetaEquip.Location = new Point(169, 154);
             EtiquetaEquip.Name = "EtiquetaEquip";
-            EtiquetaEquip.Size = new Size(76, 25);
+            EtiquetaEquip.Size = new Size(50, 15);
             EtiquetaEquip.TabIndex = 4;
             EtiquetaEquip.Text = "Etiqueta";
             // 
             // inputEquipNome
             // 
-            inputEquipNome.Location = new Point(227, 146);
-            inputEquipNome.Margin = new Padding(4, 5, 4, 5);
+            inputEquipNome.Location = new Point(159, 88);
             inputEquipNome.MaxLength = 100;
             inputEquipNome.Name = "inputEquipNome";
-            inputEquipNome.Size = new Size(387, 31);
+            inputEquipNome.Size = new Size(272, 23);
             inputEquipNome.TabIndex = 1;
             // 
             // inputDesEquip
             // 
-            inputDesEquip.Location = new Point(227, 212);
-            inputDesEquip.Margin = new Padding(4, 5, 4, 5);
+            inputDesEquip.Location = new Point(159, 127);
             inputDesEquip.MaxLength = 100;
             inputDesEquip.Name = "inputDesEquip";
-            inputDesEquip.Size = new Size(387, 31);
+            inputDesEquip.Size = new Size(272, 23);
             inputDesEquip.TabIndex = 2;
             // 
             // inputEtiquetaEquip
             // 
-            inputEtiquetaEquip.Location = new Point(227, 284);
-            inputEtiquetaEquip.Margin = new Padding(4, 5, 4, 5);
+            inputEtiquetaEquip.Location = new Point(159, 170);
             inputEtiquetaEquip.MaxLength = 10;
             inputEtiquetaEquip.Name = "inputEtiquetaEquip";
-            inputEtiquetaEquip.Size = new Size(387, 31);
+            inputEtiquetaEquip.Size = new Size(272, 23);
             inputEtiquetaEquip.TabIndex = 3;
             // 
             // inputPrecoEquip
             // 
-            inputPrecoEquip.Location = new Point(450, 352);
-            inputPrecoEquip.Margin = new Padding(4, 5, 4, 5);
+            inputPrecoEquip.Location = new Point(315, 215);
             inputPrecoEquip.MaxLength = 10;
             inputPrecoEquip.Name = "inputPrecoEquip";
-            inputPrecoEquip.Size = new Size(164, 31);
+            inputPrecoEquip.Size = new Size(116, 23);
             inputPrecoEquip.TabIndex = 5;
             inputPrecoEquip.KeyPress += inputPrecoEquip_KeyPress;
             // 
@@ -163,10 +154,9 @@
             btn_cancelar.BackColor = Color.DarkGreen;
             btn_cancelar.Dock = DockStyle.Left;
             btn_cancelar.ForeColor = SystemColors.Control;
-            btn_cancelar.Location = new Point(9, 10);
-            btn_cancelar.Margin = new Padding(4, 5, 4, 5);
+            btn_cancelar.Location = new Point(6, 6);
             btn_cancelar.Name = "btn_cancelar";
-            btn_cancelar.Size = new Size(199, 63);
+            btn_cancelar.Size = new Size(139, 38);
             btn_cancelar.TabIndex = 8;
             btn_cancelar.Text = "Cancelar";
             btn_cancelar.UseVisualStyleBackColor = false;
@@ -178,11 +168,10 @@
             btn_cadastrar.Cursor = Cursors.Hand;
             btn_cadastrar.Dock = DockStyle.Right;
             btn_cadastrar.ForeColor = SystemColors.Control;
-            btn_cadastrar.Location = new Point(638, 10);
-            btn_cadastrar.Margin = new Padding(4, 5, 4, 5);
+            btn_cadastrar.Location = new Point(447, 6);
             btn_cadastrar.Name = "btn_cadastrar";
-            btn_cadastrar.Padding = new Padding(6);
-            btn_cadastrar.Size = new Size(207, 63);
+            btn_cadastrar.Padding = new Padding(4, 4, 4, 4);
+            btn_cadastrar.Size = new Size(145, 38);
             btn_cadastrar.TabIndex = 7;
             btn_cadastrar.Text = "Aplicar";
             btn_cadastrar.UseVisualStyleBackColor = false;
@@ -194,10 +183,9 @@
             panel2.Controls.Add(label2);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Padding = new Padding(9, 10, 9, 10);
-            panel2.Size = new Size(854, 83);
+            panel2.Padding = new Padding(6, 6, 6, 6);
+            panel2.Size = new Size(598, 50);
             panel2.TabIndex = 13;
             // 
             // label2
@@ -205,38 +193,36 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(238, 17);
+            label2.Location = new Point(167, 10);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(362, 41);
+            label2.Size = new Size(242, 28);
             label2.TabIndex = 0;
             label2.Text = "Cadastrar equipamentos";
             // 
             // escolherMarca
             // 
             escolherMarca.FormattingEnabled = true;
-            escolherMarca.Location = new Point(227, 350);
-            escolherMarca.Margin = new Padding(4, 5, 4, 5);
+            escolherMarca.Location = new Point(159, 214);
             escolherMarca.Name = "escolherMarca";
-            escolherMarca.Size = new Size(164, 33);
+            escolherMarca.Size = new Size(116, 23);
             escolherMarca.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(227, 388);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(159, 237);
             label1.Name = "label1";
-            label1.Size = new Size(115, 25);
+            label1.Size = new Size(76, 15);
             label1.TabIndex = 20;
             label1.Text = "Ativo/Inativo";
             // 
             // check_ativo
             // 
             check_ativo.AutoSize = true;
-            check_ativo.Location = new Point(227, 418);
-            check_ativo.Margin = new Padding(4, 5, 4, 5);
+            check_ativo.Location = new Point(159, 255);
             check_ativo.Name = "check_ativo";
-            check_ativo.Size = new Size(80, 29);
+            check_ativo.Size = new Size(54, 19);
             check_ativo.TabIndex = 6;
             check_ativo.Text = "Ativo";
             check_ativo.UseVisualStyleBackColor = true;
@@ -245,10 +231,9 @@
             // 
             btn_Limpar.BackColor = Color.DarkGreen;
             btn_Limpar.ForeColor = Color.White;
-            btn_Limpar.Location = new Point(331, 794);
-            btn_Limpar.Margin = new Padding(4, 5, 4, 5);
+            btn_Limpar.Location = new Point(232, 476);
             btn_Limpar.Name = "btn_Limpar";
-            btn_Limpar.Size = new Size(214, 63);
+            btn_Limpar.Size = new Size(150, 38);
             btn_Limpar.TabIndex = 22;
             btn_Limpar.Text = "Limpar";
             btn_Limpar.UseVisualStyleBackColor = false;
@@ -256,9 +241,10 @@
             // 
             // txtID
             // 
-            txtID.Location = new Point(238, 26);
+            txtID.Location = new Point(167, 16);
+            txtID.Margin = new Padding(2, 2, 2, 2);
             txtID.Name = "txtID";
-            txtID.Size = new Size(150, 31);
+            txtID.Size = new Size(106, 23);
             txtID.TabIndex = 23;
             txtID.Visible = false;
             // 
@@ -266,9 +252,10 @@
             // 
             btn_Deletar.BackColor = Color.DarkGreen;
             btn_Deletar.ForeColor = Color.White;
-            btn_Deletar.Location = new Point(19, 794);
+            btn_Deletar.Location = new Point(13, 476);
+            btn_Deletar.Margin = new Padding(2, 2, 2, 2);
             btn_Deletar.Name = "btn_Deletar";
-            btn_Deletar.Size = new Size(214, 63);
+            btn_Deletar.Size = new Size(150, 38);
             btn_Deletar.TabIndex = 24;
             btn_Deletar.Text = "Deletar";
             btn_Deletar.UseVisualStyleBackColor = false;
@@ -280,13 +267,14 @@
             MostrarEquipamentos.AllowUserToDeleteRows = false;
             MostrarEquipamentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipamentos.Columns.AddRange(new DataGridViewColumn[] { ID_equipamento, ValorNumerico, Nome_equipamento, Ativo, value, description, id_status, Etiqueta, colabID, marca_id });
-            MostrarEquipamentos.Location = new Point(19, 510);
+            MostrarEquipamentos.Location = new Point(13, 306);
+            MostrarEquipamentos.Margin = new Padding(2, 2, 2, 2);
             MostrarEquipamentos.Name = "MostrarEquipamentos";
             MostrarEquipamentos.ReadOnly = true;
             MostrarEquipamentos.RowHeadersWidth = 62;
             MostrarEquipamentos.RowTemplate.Height = 33;
             MostrarEquipamentos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MostrarEquipamentos.Size = new Size(814, 278);
+            MostrarEquipamentos.Size = new Size(570, 167);
             MostrarEquipamentos.TabIndex = 25;
             MostrarEquipamentos.CellContentDoubleClick += MostrarEquipamentos_CellContentDoubleClick;
             // 
@@ -391,20 +379,20 @@
             panel1.Controls.Add(btn_cadastrar);
             panel1.Controls.Add(txtID);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 897);
+            panel1.Location = new Point(0, 538);
+            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
-            panel1.Padding = new Padding(9, 10, 9, 10);
-            panel1.Size = new Size(854, 83);
+            panel1.Padding = new Padding(6, 6, 6, 6);
+            panel1.Size = new Size(598, 50);
             panel1.TabIndex = 26;
             // 
             // btnVisualizar
             // 
             btnVisualizar.BackColor = Color.DarkGreen;
             btnVisualizar.ForeColor = Color.White;
-            btnVisualizar.Location = new Point(619, 796);
-            btnVisualizar.Margin = new Padding(4, 5, 4, 5);
+            btnVisualizar.Location = new Point(433, 478);
             btnVisualizar.Name = "btnVisualizar";
-            btnVisualizar.Size = new Size(214, 63);
+            btnVisualizar.Size = new Size(150, 38);
             btnVisualizar.TabIndex = 27;
             btnVisualizar.Text = "Visualizar equipamentos";
             btnVisualizar.UseVisualStyleBackColor = false;
@@ -414,9 +402,10 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Red;
-            label4.Location = new Point(227, 118);
+            label4.Location = new Point(159, 71);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(20, 25);
+            label4.Size = new Size(12, 15);
             label4.TabIndex = 30;
             label4.Text = "*";
             // 
@@ -424,9 +413,10 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.Red;
-            label3.Location = new Point(227, 186);
+            label3.Location = new Point(159, 112);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(20, 25);
+            label3.Size = new Size(12, 15);
             label3.TabIndex = 31;
             label3.Text = "*";
             // 
@@ -434,9 +424,10 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(227, 256);
+            label5.Location = new Point(159, 154);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(20, 25);
+            label5.Size = new Size(12, 15);
             label5.TabIndex = 32;
             label5.Text = "*";
             // 
@@ -444,9 +435,10 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(227, 322);
+            label6.Location = new Point(159, 197);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(20, 25);
+            label6.Size = new Size(12, 15);
             label6.TabIndex = 33;
             label6.Text = "*";
             // 
@@ -454,17 +446,18 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(450, 326);
+            label7.Location = new Point(315, 200);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(20, 25);
+            label7.Size = new Size(12, 15);
             label7.TabIndex = 34;
             label7.Text = "*";
             // 
             // CadEquipamento
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(854, 980);
+            ClientSize = new Size(598, 588);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -489,7 +482,6 @@
             Controls.Add(MarcaEquip);
             Controls.Add(NomeEquip);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             Name = "CadEquipamento";
             StartPosition = FormStartPosition.CenterScreen;

@@ -61,6 +61,7 @@ namespace UI
 
                 // Atribua o valor à variável global.
                 Program.UserChamado = userChamado;
+                Program.UserEmail = email;
 
                 // Abra a TelaPrincipal.
                 MessageBox.Show("Login bem-sucedido!");

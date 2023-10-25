@@ -19,10 +19,12 @@ namespace UI
     {
         private UserBLL userBLL = new UserBLL();
         private List<Usuario> usuarios = new List<Usuario>();
+        private Usuario usuarioLogado;
 
         public TelaCadUser(Usuario usuario)
         {
             InitializeComponent();
+            usuarioLogado = usuario;
             if (usuario != null)
             {
                 txtID.Text = usuario.id_usuario.ToString();
@@ -31,6 +33,7 @@ namespace UI
                 inputUserSenha.Enabled = false;
                 txtConfirEmail.Enabled = false;
                 txtConfirSenha.Enabled = false;
+
             }
         }
         private void TelaCadUser_Load(object sender, EventArgs e)
@@ -80,7 +83,7 @@ namespace UI
             // Verificação de espaços em branco em email
             if (usuario.Email.Contains(" "))
             {
-                MessageBox.Show("Email não podem conter espaços em branco.");
+                MessageBox.Show("Email não pode conter espaços em branco.");
                 return;
             }
 
@@ -107,40 +110,29 @@ namespace UI
             // Verificação se é uma atualização de nome ou e-mail (ignorando senha e confirmações)
             bool atualizacaoNomeOuEmail = !string.IsNullOrEmpty(txtID.Text) && (inputUserNome.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Nome || inputUserEmail.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Email);
 
-            if (atualizacaoNomeOuEmail)
-            {
-                // Verificação se o novo email já existe no banco de dados (exceto o usuário atual)
-                UserBLL verificarEmailBLL = new UserBLL();
-                string verificar = verificarEmailBLL.VerificarEmail(usuario.Email);
-
-                if (verificar == "Email existente" && usuario.Email != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Email)
-                {
-                    MessageBox.Show("O email já existe no banco de dados");
-                    return;
-                }
-            }
-
-            // Realiza o cadastro ou atualização do usuário
             string retorno;
-
             UserBLL cadUserBLL = new UserBLL();
+
             if (!string.IsNullOrEmpty(txtID.Text))
-                retorno = cadUserBLL.UpdateUsuario(usuario);
+            {
+                retorno = cadUserBLL.UpdateUsuario(usuario, Program.UserEmail);
+            }
             else
-                retorno = cadUserBLL.CadUser(usuario);
+            {
+                retorno = cadUserBLL.CadUser(usuario, Program.UserEmail);
+            }
 
             if (retorno == "Sucesso")
             {
+
                 MessageBox.Show("Ação efetuada com sucesso!");
+                LoadUsuarios();
+                btn_limpar.PerformClick();
+                txtConfirEmail.Enabled = true;
+                txtConfirSenha.Enabled = true;
+                inputUserSenha.Enabled = true;
             }
-
-            LoadUsuarios();
-            btn_limpar.PerformClick();
-            txtConfirEmail.Enabled = true;
-            txtConfirSenha.Enabled = true;
-            inputUserSenha.Enabled = true;
         }
-
 
         private void btn_limpar_Click(object sender, EventArgs e)
         {
@@ -153,8 +145,10 @@ namespace UI
             txtConfirSenha.Enabled = true;
             inputUserSenha.Enabled = true;
         }
+
         private void btnDeletar_Click(object sender, EventArgs e)
         {
+            Usuario usuario = new Usuario();
             if (!string.IsNullOrEmpty(txtID.Text))
             {
                 int id_usuario = int.Parse(txtID.Text);
@@ -162,7 +156,7 @@ namespace UI
                 DialogResult result = MessageBox.Show("Tem certeza que deseja excluir este usuário?", "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    userBLL.DeleteUsuario(id_usuario);
+                    userBLL.DeleteUsuario(id_usuario, usuario, Program.UserEmail);
                     LoadUsuarios();
                 }
 

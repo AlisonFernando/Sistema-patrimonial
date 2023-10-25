@@ -13,11 +13,10 @@ namespace BLL
     {
         
         private UserDAL userDAL = new UserDAL();
-        public string CadUser(Usuario usuario)
-        {
-            UserDAL userDAL = new UserDAL();
 
-            userDAL.InserirUsuario(usuario);
+        public string CadUser(Usuario usuario, string emailUsuarioLogado)
+        {
+            userDAL.InserirUsuario(usuario, emailUsuarioLogado); // Insira o novo usuário e passe o email do usuário logado
 
             return "Sucesso";
         }
@@ -65,16 +64,16 @@ namespace BLL
             return userDAL.GetUsuarios();
         }
 
-        public string UpdateUsuario(Usuario usuario)
+        public string UpdateUsuario(Usuario usuario, string emailUsuarioLogado)
         {
-            userDAL.UpdateUsuario(usuario);
+            userDAL.UpdateUsuario(usuario, emailUsuarioLogado);
 
             return "Sucesso";
         }
 
-        public void DeleteUsuario(int id_usuario)
+        public void DeleteUsuario(int id_usuario, Usuario usuario, string emailUsuarioLogado)
         {
-            userDAL.DeleteUsuario(id_usuario);
+            userDAL.DeleteUsuario(id_usuario, usuario, emailUsuarioLogado);
         }
         public void AtualizarSenha(Usuario usuario)
         {
@@ -82,7 +81,7 @@ namespace BLL
             string senhaCriptografada = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
             usuario.Senha = senhaCriptografada;
 
-            userDAL.UpdateUsuario(usuario);
+            userDAL.UpdateUsuario(usuario, senhaCriptografada);
         }
         public int ObterUserChamado(string email)
         {

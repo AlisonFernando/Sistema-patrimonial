@@ -13,11 +13,11 @@ namespace BLL
     public class EquipamentoBLL
     {
         private EquipamentoDAL equipamentoDAL = new EquipamentoDAL();
-        public string CadEquip(Equipamento equipamento)
+        public string CadEquip(Equipamento equipamento, string emailUsuarioLogado)
         {
             EquipamentoDAL equipamentoDAL = new EquipamentoDAL();
 
-            equipamentoDAL.InserirEquipamento(equipamento);
+            equipamentoDAL.InserirEquipamento(equipamento, emailUsuarioLogado);
 
             return "Sucesso";
         }
@@ -48,16 +48,16 @@ namespace BLL
             return equipamentoDAL.GetEquipamentos();
         }
 
-        public string UpdateEquipamentos(Equipamento equipamento)
+        public string UpdateEquipamentos(Equipamento equipamento, string emailUsuarioLogado)
         {
-            equipamentoDAL.UpdateEquipamentos(equipamento);
+            equipamentoDAL.UpdateEquipamentos(equipamento, emailUsuarioLogado);
 
             return "Sucesso";
         }
 
-        public void DeleteEquipamento(int ID_equipamento)
+        public void DeleteEquipamento(int ID_equipamento, string emailUsuarioLogado)
         {
-            equipamentoDAL.DeleteEquipamento(ID_equipamento);
+            equipamentoDAL.DeleteEquipamento(ID_equipamento, emailUsuarioLogado);
         }
 
         public List<Equipamento> ObterEquipamentos()

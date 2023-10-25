@@ -113,7 +113,7 @@ namespace UI
             if (verificar == "nome não existe")
             {
                 // Cadastre o colaborador
-                string retorno = colaboradorBLL.CadColab(colaborador);
+                string retorno = colaboradorBLL.CadColab(colaborador, Program.UserEmail);
 
                 if (retorno == "Sucesso")
                 {

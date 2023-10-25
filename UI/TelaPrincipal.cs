@@ -45,7 +45,6 @@ namespace UI
             }
         }
 
-
         private void sairToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja sair do sistema?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

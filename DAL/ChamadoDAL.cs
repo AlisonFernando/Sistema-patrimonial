@@ -18,7 +18,7 @@ namespace DAL
         string sql;
         MySqlCommand cmd;
 
-        public void CadastrarChamado(Chamado chamado)
+        public void CadastrarChamado(Chamado chamado, string emailUsuarioLogado)
         {
             try
             {
@@ -72,6 +72,19 @@ namespace DAL
                     // Após inserir na tabela tb_manutencao, atualize a disponibilidade da etiqueta
                     AtualizarDisponibilidadeEtiqueta(connection, chamado.id_equipamento, false);
                 }
+                // Inserir o registro de log na tabela tb_logs
+                DateTime dataHoraAcao = DateTime.Now;
+                string tipoOperacao = "abertura de chamado"; // Defina o tipo de operação conforme necessário
+
+                sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+
+                cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+                cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+                cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
+
+                cmd.ExecuteNonQuery();
+                mConn.FecharConexao();
             }
             catch (Exception)
             {

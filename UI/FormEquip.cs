@@ -109,9 +109,9 @@ namespace UI
 
             EquipamentoBLL cadEqupBLL = new EquipamentoBLL();
             if (!string.IsNullOrEmpty(txtID.Text))
-                retorno = cadEqupBLL.UpdateEquipamentos(equipamento);
+                retorno = cadEqupBLL.UpdateEquipamentos(equipamento, Program.UserEmail);
             else
-                retorno = cadEqupBLL.CadEquip(equipamento);
+                retorno = cadEqupBLL.CadEquip(equipamento, Program.UserEmail);
 
             if (retorno == "Sucesso")
             {
@@ -149,7 +149,7 @@ namespace UI
                 DialogResult result = MessageBox.Show("Tem certeza que deseja excluir este equipamento?", "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    equipamentoBLL.DeleteEquipamento(ID_equipamento);
+                    equipamentoBLL.DeleteEquipamento(ID_equipamento, Program.UserEmail);
                     LoadEquipamentos();
                 }
                 MessageBox.Show("Equipamento deletado com sucesso!");
@@ -197,7 +197,7 @@ namespace UI
             // Se o caractere é um número ou ponto decimal, atualize o valor formatado
             if (char.IsDigit(e.KeyChar) || e.KeyChar == '.')
             {
-                string textoAtual = inputPrecoEquip.Text.Replace("R$","").Trim();
+                string textoAtual = inputPrecoEquip.Text.Replace("R$", "").Trim();
                 if (decimal.TryParse(textoAtual, out decimal preco))
                 {
                     string valorFormatado = string.Format(new CultureInfo("pt-BR"), "R${0:N2}", preco);

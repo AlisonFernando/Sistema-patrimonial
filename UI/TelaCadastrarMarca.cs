@@ -49,7 +49,7 @@ namespace UI
             }
             else if (verificar == "Marca não existe")
             {
-                string retorno = marcaBLL.CadMarca(marca);
+                string retorno = marcaBLL.CadMarca(marca, Program.UserEmail);
                 if (retorno == "Sucesso")
                 {
                     MessageBox.Show("Marca cadastrada com sucesso.");
