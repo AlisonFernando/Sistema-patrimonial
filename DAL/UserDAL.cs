@@ -168,7 +168,7 @@ namespace DAL
 
             return result == DBNull.Value ? -1 : Convert.ToInt32(result);
         }
-        public bool InserirTokenRecuperacao(int idUsuario, string token, DateTime dataExpiracao, DateTime dataCriacao)
+        public bool InserirTokenRecuperacao(int idUsuario, string token, DateTime dataExpiracao, DateTime dataCriacao, string emailUsuarioLogado)
         {
             using (MySqlConnection connection = new MySqlConnection(conec))
             {
@@ -182,10 +182,26 @@ namespace DAL
 
                     int rowsAffected = cmd.ExecuteNonQuery();
 
+                    // Inserir o registro de log na tabela tb_logs
+                    DateTime dataHoraAcao = DateTime.Now;
+                    string tipoOperacao = "token de recuperação de senha gereado"; // Defina o tipo de operação conforme necessário
+
+                    string sql = "INSERT INTO tb_logs (EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = sql;
+
+                    cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+                    cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+                    cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
+
+                    cmd.ExecuteNonQuery();
+                    mConn.FecharConexao();
+
                     return rowsAffected > 0;
                 }
             }
         }
+
         public bool VerificarTokenRecuperacaoValido(int idUsuario, string token)
         {
             using (MySqlConnection connection = new MySqlConnection(conec))
@@ -203,7 +219,7 @@ namespace DAL
             }
         }
 
-        public bool AtualizarSenha(int idUsuario, string novaSenha)
+        public bool AtualizarSenha(int idUsuario, string novaSenha, string emailUsuarioLogado)
         {
             using (MySqlConnection connection = new MySqlConnection(conec))
             {
@@ -214,6 +230,21 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
+
+                    // Inserir o registro de log na tabela tb_logs
+                    DateTime dataHoraAcao = DateTime.Now;
+                    string tipoOperacao = "atualização de senha do usuário"; // Defina o tipo de operação conforme necessário
+
+                    string sql = "INSERT INTO tb_logs (EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = sql;
+
+                    cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+                    cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+                    cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
+
+                    cmd.ExecuteNonQuery();
+                    mConn.FecharConexao();
 
                     return rowsAffected > 0;
                 }

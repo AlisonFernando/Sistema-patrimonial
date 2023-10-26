@@ -53,7 +53,7 @@ namespace UI
                 List<Equipamento> equipamentos = equipamentoBLL.GetEquipamentos().OrderBy(equipamento => equipamento.nome).ToList();
 
                 // Crie uma tabela para exibir os dados dos equipamentos
-                PdfPTable table = new PdfPTable(3); // 4 colunas para ID, Nome, Valor e Etiqueta
+                PdfPTable table = new PdfPTable(3); // 3 colunas para  Nome, Valor e Etiqueta
                 table.WidthPercentage = 100; // A largura da tabela é 100% do tamanho da página
 
                 // Cabeçalho da tabela

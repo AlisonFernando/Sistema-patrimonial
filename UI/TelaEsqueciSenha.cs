@@ -70,7 +70,7 @@ namespace UI
                     DateTime dataExpiracao = DateTime.Now.AddHours(24);
                     DateTime dataCriacao = DateTime.Now;
                     // Salve o token no banco de dados associado a este usuário
-                    if (userBLL.GerarEInserirTokenRecuperacao(idUsuario, tokenRecuperacao, dataExpiracao, dataCriacao))
+                    if (userBLL.GerarEInserirTokenRecuperacao(idUsuario, tokenRecuperacao, dataExpiracao, dataCriacao, Program.UserEmail))
                     {
                         // Envie um e-mail para o usuário com um link contendo o token de recuperação
                         EnviarEmailRecuperacao(usuario.Email, tokenRecuperacao);
@@ -167,7 +167,7 @@ namespace UI
 
                 if (tokenValido)
                 {
-                    bool sucesso = userBLL.RedefinirSenha(idUsuario, novaSenha);
+                    bool sucesso = userBLL.RedefinirSenha(idUsuario, novaSenha, Program.UserEmail);
 
                     if (sucesso)
                     {

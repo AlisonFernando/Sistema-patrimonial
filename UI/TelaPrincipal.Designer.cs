@@ -46,6 +46,8 @@
             MenuRelatorioEquip = new ToolStripMenuItem();
             MenuRelatorioPrecoEquip = new ToolStripMenuItem();
             MenuRelatorioColabAtivo = new ToolStripMenuItem();
+            opçõesToolStripMenuItem = new ToolStripMenuItem();
+            MenuRedefinirSenha = new ToolStripMenuItem();
             sairToolStripMenuItem = new ToolStripMenuItem();
             MenuSair = new ToolStripMenuItem();
             HeaderDescricao = new ToolStrip();
@@ -56,8 +58,7 @@
             alison = new ToolStripStatusLabel();
             relogio = new System.Windows.Forms.Timer(components);
             pictureBox1 = new PictureBox();
-            opçõesToolStripMenuItem = new ToolStripMenuItem();
-            MenuRedefinirSenha = new ToolStripMenuItem();
+            MenuEquips_e_Manutencao = new ToolStripMenuItem();
             MenuPrincipal.SuspendLayout();
             HeaderDescricao.SuspendLayout();
             FooterPrincipal.SuspendLayout();
@@ -155,7 +156,7 @@
             // 
             // relatóriosToolStripMenuItem
             // 
-            relatóriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuRelatorioEquip, MenuRelatorioPrecoEquip, MenuRelatorioColabAtivo });
+            relatóriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuRelatorioEquip, MenuRelatorioPrecoEquip, MenuRelatorioColabAtivo, MenuEquips_e_Manutencao });
             relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
             relatóriosToolStripMenuItem.Size = new Size(106, 29);
             relatóriosToolStripMenuItem.Text = "Relatórios";
@@ -163,23 +164,37 @@
             // MenuRelatorioEquip
             // 
             MenuRelatorioEquip.Name = "MenuRelatorioEquip";
-            MenuRelatorioEquip.Size = new Size(283, 34);
+            MenuRelatorioEquip.Size = new Size(469, 34);
             MenuRelatorioEquip.Text = "Qtd equipamentos";
             MenuRelatorioEquip.Click += MenuRelatorioEquip_Click;
             // 
             // MenuRelatorioPrecoEquip
             // 
             MenuRelatorioPrecoEquip.Name = "MenuRelatorioPrecoEquip";
-            MenuRelatorioPrecoEquip.Size = new Size(283, 34);
+            MenuRelatorioPrecoEquip.Size = new Size(469, 34);
             MenuRelatorioPrecoEquip.Text = "Preço equipamentos";
             MenuRelatorioPrecoEquip.Click += MenuRelatorioPrecoEquip_Click;
             // 
             // MenuRelatorioColabAtivo
             // 
             MenuRelatorioColabAtivo.Name = "MenuRelatorioColabAtivo";
-            MenuRelatorioColabAtivo.Size = new Size(283, 34);
+            MenuRelatorioColabAtivo.Size = new Size(469, 34);
             MenuRelatorioColabAtivo.Text = "Colaboradores ativos";
             MenuRelatorioColabAtivo.Click += MenuRelatorioColabAtivo_Click;
+            // 
+            // opçõesToolStripMenuItem
+            // 
+            opçõesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuRedefinirSenha });
+            opçõesToolStripMenuItem.Name = "opçõesToolStripMenuItem";
+            opçõesToolStripMenuItem.Size = new Size(89, 29);
+            opçõesToolStripMenuItem.Text = "Opções";
+            // 
+            // MenuRedefinirSenha
+            // 
+            MenuRedefinirSenha.Name = "MenuRedefinirSenha";
+            MenuRedefinirSenha.Size = new Size(234, 34);
+            MenuRedefinirSenha.Text = "Redefinir senha";
+            MenuRedefinirSenha.Click += MenuRedefinirSenha_Click;
             // 
             // sairToolStripMenuItem
             // 
@@ -268,19 +283,12 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // opçõesToolStripMenuItem
+            // MenuEquips_e_Manutencao
             // 
-            opçõesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuRedefinirSenha });
-            opçõesToolStripMenuItem.Name = "opçõesToolStripMenuItem";
-            opçõesToolStripMenuItem.Size = new Size(89, 29);
-            opçõesToolStripMenuItem.Text = "Opções";
-            // 
-            // MenuRedefinirSenha
-            // 
-            MenuRedefinirSenha.Name = "MenuRedefinirSenha";
-            MenuRedefinirSenha.Size = new Size(270, 34);
-            MenuRedefinirSenha.Text = "Redefinir senha";
-            MenuRedefinirSenha.Click += MenuRedefinirSenha_Click;
+            MenuEquips_e_Manutencao.Name = "MenuEquips_e_Manutencao";
+            MenuEquips_e_Manutencao.Size = new Size(469, 34);
+            MenuEquips_e_Manutencao.Text = "Equipamentos disponíveis e em manutenção";
+            MenuEquips_e_Manutencao.Click += MenuEquips_e_Manutencao_Click;
             // 
             // TelaPrincipal
             // 
@@ -339,5 +347,6 @@
         private ToolStripMenuItem equipamentosEmManutençãoToolStripMenuItem;
         private ToolStripMenuItem opçõesToolStripMenuItem;
         private ToolStripMenuItem MenuRedefinirSenha;
+        private ToolStripMenuItem MenuEquips_e_Manutencao;
     }
 }

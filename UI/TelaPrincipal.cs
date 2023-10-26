@@ -135,5 +135,11 @@ namespace UI
             UI.TelaEsqueciSenha telaEsqueciSenha = new TelaEsqueciSenha();
             telaEsqueciSenha.ShowDialog();
         }
+
+        private void MenuEquips_e_Manutencao_Click(object sender, EventArgs e)
+        {
+            UI.RelatorioMasterDetail relatorioMasterDetail = new UI.RelatorioMasterDetail();
+            relatorioMasterDetail.ShowDialog();
+        }
     }
 }

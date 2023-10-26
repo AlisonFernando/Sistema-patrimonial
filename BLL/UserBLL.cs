@@ -91,11 +91,11 @@ namespace BLL
             return userDAL.ObterUserChamado(email);
         }
 
-        public bool GerarEInserirTokenRecuperacao(int idUsuario, string token, DateTime dataExpiracao, DateTime dataCriacao)
+        public bool GerarEInserirTokenRecuperacao(int idUsuario, string token, DateTime dataExpiracao, DateTime dataCriacao, string emailUsuarioLogado)
         {
 
             UserDAL userDAL = new UserDAL();
-            return userDAL.InserirTokenRecuperacao(idUsuario, token, dataExpiracao, dataCriacao);
+            return userDAL.InserirTokenRecuperacao(idUsuario, token, dataExpiracao, dataCriacao, emailUsuarioLogado);
         }
 
         public bool VerificarTokenRecuperacaoValido(int idUsuario, string token)
@@ -105,11 +105,11 @@ namespace BLL
             return userDAL.VerificarTokenRecuperacaoValido(idUsuario, token);
         }
 
-        public bool RedefinirSenha(int idUsuario, string novaSenha)
+        public bool RedefinirSenha(int idUsuario, string novaSenha, string emailUsuarioLogado)
         {
             UserDAL userDAL = new UserDAL();
 
-            return userDAL.AtualizarSenha(idUsuario, novaSenha);
+            return userDAL.AtualizarSenha(idUsuario, novaSenha, emailUsuarioLogado);
         }
         public int ObterIdUsuarioPorEmail(string email)
         {
