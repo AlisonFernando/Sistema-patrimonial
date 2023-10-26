@@ -75,17 +75,47 @@ namespace BLL
         {
             userDAL.DeleteUsuario(id_usuario, usuario, emailUsuarioLogado);
         }
-        public void AtualizarSenha(Usuario usuario)
+
+
+        /*public void AtualizarSenha(Usuario usuario)
         {
             // Criptografar a senha com BCrypt
             string senhaCriptografada = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
             usuario.Senha = senhaCriptografada;
 
             userDAL.UpdateUsuario(usuario, senhaCriptografada);
-        }
+        }*/
+
         public int ObterUserChamado(string email)
         {
             return userDAL.ObterUserChamado(email);
         }
+
+        public bool GerarEInserirTokenRecuperacao(int idUsuario, string token, DateTime dataExpiracao, DateTime dataCriacao)
+        {
+
+            UserDAL userDAL = new UserDAL();
+            return userDAL.InserirTokenRecuperacao(idUsuario, token, dataExpiracao, dataCriacao);
+        }
+
+        public bool VerificarTokenRecuperacaoValido(int idUsuario, string token)
+        {
+            UserDAL userDAL = new UserDAL();
+
+            return userDAL.VerificarTokenRecuperacaoValido(idUsuario, token);
+        }
+
+        public bool RedefinirSenha(int idUsuario, string novaSenha)
+        {
+            UserDAL userDAL = new UserDAL();
+
+            return userDAL.AtualizarSenha(idUsuario, novaSenha);
+        }
+        public int ObterIdUsuarioPorEmail(string email)
+        {
+            UserDAL userDAL = new UserDAL();
+            return userDAL.ObterIdUsuarioPorEmail(email);
+        }
+
     }
 }

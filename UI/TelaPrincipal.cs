@@ -26,7 +26,7 @@ namespace UI
                 MenuRelatorioPrecoEquip.Enabled = true;
                 MenuSair.Enabled = true;
             }
-            else if(UserChamado == 2)
+            else if (UserChamado == 2)
             {
                 // Código para Técnicos de Informatica (TI)
                 MenuCadColaborador.Enabled = false;
@@ -128,6 +128,12 @@ namespace UI
         {
             UI.TelaVerColaboradores telaVerColaboradores = new UI.TelaVerColaboradores();
             telaVerColaboradores.ShowDialog();
+        }
+
+        private void MenuRedefinirSenha_Click(object sender, EventArgs e)
+        {
+            UI.TelaEsqueciSenha telaEsqueciSenha = new TelaEsqueciSenha();
+            telaEsqueciSenha.ShowDialog();
         }
     }
 }

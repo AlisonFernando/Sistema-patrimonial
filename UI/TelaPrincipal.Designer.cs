@@ -56,6 +56,8 @@
             alison = new ToolStripStatusLabel();
             relogio = new System.Windows.Forms.Timer(components);
             pictureBox1 = new PictureBox();
+            opçõesToolStripMenuItem = new ToolStripMenuItem();
+            MenuRedefinirSenha = new ToolStripMenuItem();
             MenuPrincipal.SuspendLayout();
             HeaderDescricao.SuspendLayout();
             FooterPrincipal.SuspendLayout();
@@ -65,7 +67,7 @@
             // MenuPrincipal
             // 
             MenuPrincipal.ImageScalingSize = new Size(24, 24);
-            MenuPrincipal.Items.AddRange(new ToolStripItem[] { cadastrarToolStripMenuItem, visualizarToolStripMenuItem, relatóriosToolStripMenuItem, sairToolStripMenuItem });
+            MenuPrincipal.Items.AddRange(new ToolStripItem[] { cadastrarToolStripMenuItem, visualizarToolStripMenuItem, relatóriosToolStripMenuItem, opçõesToolStripMenuItem, sairToolStripMenuItem });
             MenuPrincipal.Location = new Point(0, 0);
             MenuPrincipal.Name = "MenuPrincipal";
             MenuPrincipal.Padding = new Padding(9, 3, 0, 3);
@@ -266,6 +268,20 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
+            // opçõesToolStripMenuItem
+            // 
+            opçõesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuRedefinirSenha });
+            opçõesToolStripMenuItem.Name = "opçõesToolStripMenuItem";
+            opçõesToolStripMenuItem.Size = new Size(89, 29);
+            opçõesToolStripMenuItem.Text = "Opções";
+            // 
+            // MenuRedefinirSenha
+            // 
+            MenuRedefinirSenha.Name = "MenuRedefinirSenha";
+            MenuRedefinirSenha.Size = new Size(270, 34);
+            MenuRedefinirSenha.Text = "Redefinir senha";
+            MenuRedefinirSenha.Click += MenuRedefinirSenha_Click;
+            // 
             // TelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -321,5 +337,7 @@
         private ToolStripMenuItem CadUserMenu;
         private PictureBox pictureBox1;
         private ToolStripMenuItem equipamentosEmManutençãoToolStripMenuItem;
+        private ToolStripMenuItem opçõesToolStripMenuItem;
+        private ToolStripMenuItem MenuRedefinirSenha;
     }
 }

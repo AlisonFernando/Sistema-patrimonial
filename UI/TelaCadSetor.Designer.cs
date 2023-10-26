@@ -51,12 +51,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(309, 15);
+            label1.Location = new Point(283, 19);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(188, 32);
+            label1.Size = new Size(232, 41);
             label1.TabIndex = 0;
             label1.Text = "Cadastrar setor";
             // 
@@ -67,7 +67,7 @@
             btn_voltar.FlatStyle = FlatStyle.Flat;
             btn_voltar.ForeColor = Color.DimGray;
             btn_voltar.Image = Properties.Resources.seta_esquerda;
-            btn_voltar.Location = new Point(16, 11);
+            btn_voltar.Location = new Point(14, 22);
             btn_voltar.Name = "btn_voltar";
             btn_voltar.Size = new Size(46, 44);
             btn_voltar.TabIndex = 1;
@@ -83,7 +83,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 65);
+            panel1.Size = new Size(800, 83);
             panel1.TabIndex = 18;
             // 
             // panel2
@@ -147,7 +147,7 @@
             MostrarSetores.AllowUserToDeleteRows = false;
             MostrarSetores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarSetores.Columns.AddRange(new DataGridViewColumn[] { ID_setor, Nome_setor });
-            MostrarSetores.Location = new Point(171, 207);
+            MostrarSetores.Location = new Point(211, 202);
             MostrarSetores.Name = "MostrarSetores";
             MostrarSetores.ReadOnly = true;
             MostrarSetores.RowHeadersWidth = 62;
@@ -179,7 +179,7 @@
             // 
             btnPesquisar.BackColor = Color.DarkGreen;
             btnPesquisar.ForeColor = Color.White;
-            btnPesquisar.Location = new Point(419, 169);
+            btnPesquisar.Location = new Point(459, 164);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(112, 32);
             btnPesquisar.TabIndex = 21;
@@ -189,7 +189,7 @@
             // 
             // txtPesquisar
             // 
-            txtPesquisar.Location = new Point(171, 169);
+            txtPesquisar.Location = new Point(211, 164);
             txtPesquisar.MaxLength = 100;
             txtPesquisar.Name = "txtPesquisar";
             txtPesquisar.Size = new Size(242, 31);
@@ -199,7 +199,7 @@
             // 
             btnLimpar.BackColor = Color.DarkGreen;
             btnLimpar.ForeColor = Color.White;
-            btnLimpar.Location = new Point(265, 438);
+            btnLimpar.Location = new Point(305, 433);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(88, 32);
             btnLimpar.TabIndex = 23;
@@ -211,7 +211,7 @@
             // 
             btnDeletar.BackColor = Color.DarkGreen;
             btnDeletar.ForeColor = Color.White;
-            btnDeletar.Location = new Point(171, 438);
+            btnDeletar.Location = new Point(211, 433);
             btnDeletar.Name = "btnDeletar";
             btnDeletar.Size = new Size(88, 32);
             btnDeletar.TabIndex = 24;

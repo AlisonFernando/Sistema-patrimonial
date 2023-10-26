@@ -168,5 +168,78 @@ namespace DAL
 
             return result == DBNull.Value ? -1 : Convert.ToInt32(result);
         }
+        public bool InserirTokenRecuperacao(int idUsuario, string token, DateTime dataExpiracao, DateTime dataCriacao)
+        {
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO tb_token (id_usuario, token, data_expiracao, data_criacao) VALUES (@id_usuario, @token, @dataExpiracao, @dataCriacao)", connection))
+                {
+                    cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+                    cmd.Parameters.AddWithValue("@token", token);
+                    cmd.Parameters.AddWithValue("@dataExpiracao", dataExpiracao);
+                    cmd.Parameters.AddWithValue("@dataCriacao", dataCriacao);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+            }
+        }
+        public bool VerificarTokenRecuperacaoValido(int idUsuario, string token)
+        {
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM tb_token WHERE id_usuario = @idUsuario AND token = @token AND data_expiracao > NOW()", connection))
+                {
+                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    cmd.Parameters.AddWithValue("@token", token);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    return count > 0;
+                }
+            }
+        }
+
+        public bool AtualizarSenha(int idUsuario, string novaSenha)
+        {
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand("UPDATE tb_usuario SET senha = @novaSenha WHERE id_usuario = @idUsuario", connection))
+                {
+                    cmd.Parameters.AddWithValue("@novaSenha", novaSenha);
+                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+            }
+        }
+
+        public int ObterIdUsuarioPorEmail(string email)
+        {
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+                string query = "SELECT id_usuario FROM tb_usuario WHERE email = @email";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    object result = cmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
