@@ -26,6 +26,8 @@ namespace UI
         private void TelaEsqueciSenha_Load(object sender, EventArgs e)
         {
             LoadUsuarios();
+            txtToken.Enabled = false;
+            txtSenhaNova.Enabled = false;
         }
         public void LoadUsuarios()
         {
@@ -76,6 +78,8 @@ namespace UI
                         EnviarEmailRecuperacao(usuario.Email, tokenRecuperacao);
 
                         MessageBox.Show("Um e-mail de recuperação foi enviado para o seu endereço.");
+                        txtToken.Enabled = true;
+                        txtSenhaNova .Enabled = true;
                     }
                     else
                     {
@@ -101,7 +105,9 @@ namespace UI
 
                 MailMessage mensagem = new MailMessage("recuperarsenhascot@gmail.com", destinatarioEmail);
                 mensagem.Subject = "Recuperação de Senha";
-                mensagem.Body = "Token de recuperação de senha:" + tokenRecuperacao; // Substitua pelo link e token real
+                mensagem.Body = "Segue abaixo o token para recuperação de senha, siga o passo a passo abaixo do token.\n" +
+                                "Token de recuperação de senha:" + tokenRecuperacao +"\n" +
+                                "Insira o token acima no campo abaixo do e-mail digitado, em seguida coloque a nova senha e clique no botão para redefinir a senha";
                 mensagem.IsBodyHtml = false;
 
                 smtpClient.Send(mensagem);

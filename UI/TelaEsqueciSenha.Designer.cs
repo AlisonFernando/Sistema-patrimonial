@@ -304,7 +304,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(206, 301);
+            label3.Location = new Point(206, 289);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(194, 25);
@@ -313,7 +313,7 @@
             // 
             // txtSenhaNova
             // 
-            txtSenhaNova.Location = new Point(191, 329);
+            txtSenhaNova.Location = new Point(191, 317);
             txtSenhaNova.MaxLength = 100;
             txtSenhaNova.Name = "txtSenhaNova";
             txtSenhaNova.Size = new Size(379, 31);
@@ -323,7 +323,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(191, 301);
+            label5.Location = new Point(191, 289);
             label5.Name = "label5";
             label5.Size = new Size(20, 25);
             label5.TabIndex = 39;

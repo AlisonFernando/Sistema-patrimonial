@@ -107,10 +107,12 @@ namespace BLL
 
         public bool RedefinirSenha(int idUsuario, string novaSenha, string emailUsuarioLogado)
         {
-            UserDAL userDAL = new UserDAL();
+            string senhaCriptografada = userDAL.HashPassword(novaSenha); // Gere a nova senha criptografada
 
-            return userDAL.AtualizarSenha(idUsuario, novaSenha, emailUsuarioLogado);
+            return userDAL.AtualizarSenha(idUsuario, senhaCriptografada, emailUsuarioLogado);
         }
+
+        
         public int ObterIdUsuarioPorEmail(string email)
         {
             UserDAL userDAL = new UserDAL();

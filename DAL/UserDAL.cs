@@ -55,8 +55,7 @@ namespace DAL
             mConn.FecharConexao();
         }
 
-
-        private string HashPassword(string password)
+        public string HashPassword(string password)
         {
             string salt = BCrypt.Net.BCrypt.GenerateSalt();
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, salt);
@@ -250,6 +249,7 @@ namespace DAL
                 }
             }
         }
+
 
         public int ObterIdUsuarioPorEmail(string email)
         {
