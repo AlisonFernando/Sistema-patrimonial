@@ -38,7 +38,6 @@
             marcaDeEquipamentoToolStripMenuItem = new ToolStripMenuItem();
             CadUserMenu = new ToolStripMenuItem();
             visualizarToolStripMenuItem = new ToolStripMenuItem();
-            MenuInfoColaborador = new ToolStripMenuItem();
             MenuInfoEquip = new ToolStripMenuItem();
             MenuUserCad = new ToolStripMenuItem();
             equipamentosEmManutençãoToolStripMenuItem = new ToolStripMenuItem();
@@ -46,6 +45,7 @@
             MenuRelatorioEquip = new ToolStripMenuItem();
             MenuRelatorioPrecoEquip = new ToolStripMenuItem();
             MenuRelatorioColabAtivo = new ToolStripMenuItem();
+            MenuEquips_e_Manutencao = new ToolStripMenuItem();
             opçõesToolStripMenuItem = new ToolStripMenuItem();
             MenuRedefinirSenha = new ToolStripMenuItem();
             sairToolStripMenuItem = new ToolStripMenuItem();
@@ -58,7 +58,6 @@
             alison = new ToolStripStatusLabel();
             relogio = new System.Windows.Forms.Timer(components);
             pictureBox1 = new PictureBox();
-            MenuEquips_e_Manutencao = new ToolStripMenuItem();
             MenuPrincipal.SuspendLayout();
             HeaderDescricao.SuspendLayout();
             FooterPrincipal.SuspendLayout();
@@ -121,17 +120,10 @@
             // 
             // visualizarToolStripMenuItem
             // 
-            visualizarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuInfoColaborador, MenuInfoEquip, MenuUserCad, equipamentosEmManutençãoToolStripMenuItem });
+            visualizarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuInfoEquip, MenuUserCad, equipamentosEmManutençãoToolStripMenuItem });
             visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
             visualizarToolStripMenuItem.Size = new Size(101, 29);
             visualizarToolStripMenuItem.Text = "Visualizar";
-            // 
-            // MenuInfoColaborador
-            // 
-            MenuInfoColaborador.Name = "MenuInfoColaborador";
-            MenuInfoColaborador.Size = new Size(361, 34);
-            MenuInfoColaborador.Text = "Info Colaboradores";
-            MenuInfoColaborador.Click += MenuInfoColaborador_Click;
             // 
             // MenuInfoEquip
             // 
@@ -181,6 +173,13 @@
             MenuRelatorioColabAtivo.Size = new Size(469, 34);
             MenuRelatorioColabAtivo.Text = "Colaboradores ativos";
             MenuRelatorioColabAtivo.Click += MenuRelatorioColabAtivo_Click;
+            // 
+            // MenuEquips_e_Manutencao
+            // 
+            MenuEquips_e_Manutencao.Name = "MenuEquips_e_Manutencao";
+            MenuEquips_e_Manutencao.Size = new Size(469, 34);
+            MenuEquips_e_Manutencao.Text = "Equipamentos disponíveis e em manutenção";
+            MenuEquips_e_Manutencao.Click += MenuEquips_e_Manutencao_Click;
             // 
             // opçõesToolStripMenuItem
             // 
@@ -283,13 +282,6 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // MenuEquips_e_Manutencao
-            // 
-            MenuEquips_e_Manutencao.Name = "MenuEquips_e_Manutencao";
-            MenuEquips_e_Manutencao.Size = new Size(469, 34);
-            MenuEquips_e_Manutencao.Text = "Equipamentos disponíveis e em manutenção";
-            MenuEquips_e_Manutencao.Click += MenuEquips_e_Manutencao_Click;
-            // 
             // TelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -324,7 +316,6 @@
         private ToolStripMenuItem MenuCadColaborador;
         private ToolStripMenuItem MenuCadEquip;
         private ToolStripMenuItem visualizarToolStripMenuItem;
-        private ToolStripMenuItem MenuInfoColaborador;
         private ToolStripMenuItem MenuInfoEquip;
         private ToolStripMenuItem relatóriosToolStripMenuItem;
         private ToolStripMenuItem sairToolStripMenuItem;

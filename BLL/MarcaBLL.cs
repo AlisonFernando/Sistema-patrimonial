@@ -11,18 +11,22 @@ namespace BLL
 {
     public class MarcaBLL
     {
+        MarcaDAL marcaDAL = new MarcaDAL();
         public string CadMarca(Marca marca, string emailUsuarioLogado)
         {
-            MarcaDAL marcaDAL = new MarcaDAL();
-
             marcaDAL.InserirMarca(marca, emailUsuarioLogado);
+
+            return "Sucesso";
+        }
+        public string UpdateMarca(Marca marca, string emailUsuarioLogado)
+        {
+            marcaDAL.UpdateMarca(marca, emailUsuarioLogado);
 
             return "Sucesso";
         }
 
         public string VerificarMarca(string verifmarca)
         {
-            MarcaDAL marcaDAL = new MarcaDAL();
             bool marcaExists = marcaDAL.VerificarMarca(verifmarca);
 
             if (marcaExists)
@@ -37,16 +41,28 @@ namespace BLL
 
         public DataTable CarregarMarcas()
         {
-            MarcaDAL marcaDAL = new MarcaDAL();
             DataTable resultado = marcaDAL.ConsultarMarca();
             return resultado;
         }
 
-        public List<Marca> GetMarcas()
+        public List<Marca> GetMarcasAtivas()
         {
-            MarcaDAL marcaDAL = new MarcaDAL();
-            return marcaDAL.GetMarcas();
+            return marcaDAL.GetMarcasAtivas();
         }
+        public List<Marca> GetMarcasDesativadas()
+        {
+            return marcaDAL.GetMarcasDesativadas();
+        }
+
+        public void DesativarMarca(int idMarca)
+        {
+            marcaDAL.DesativarMarca(idMarca);
+        }
+        public void AtivarMarca(int idMarca)
+        {
+            marcaDAL.AtivarMarca(idMarca);
+        }
+
 
     }
 }

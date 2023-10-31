@@ -17,7 +17,7 @@ namespace UI
                 MenuCadChamado.Enabled = true;
                 marcaDeEquipamentoToolStripMenuItem.Enabled = true;
                 CadUserMenu.Enabled = true;
-                MenuInfoColaborador.Enabled = true;
+                //MenuInfoColaborador.Enabled = true;
                 MenuInfoEquip.Enabled = true;
                 MenuUserCad.Enabled = true;
                 equipamentosEmManutençãoToolStripMenuItem.Enabled = true;
@@ -34,7 +34,7 @@ namespace UI
                 MenuCadChamado.Enabled = true;
                 marcaDeEquipamentoToolStripMenuItem.Enabled = true;
                 CadUserMenu.Enabled = false;
-                MenuInfoColaborador.Enabled = false;
+                //MenuInfoColaborador.Enabled = false;
                 MenuInfoEquip.Enabled = true;
                 MenuUserCad.Enabled = false;
                 equipamentosEmManutençãoToolStripMenuItem.Enabled = true;

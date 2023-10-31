@@ -19,11 +19,17 @@ namespace DAL
 
         public void InserirMarca(Marca marca, string emailUsuarioLogado)
         {
+            string ativo = "0";
+            if (marca.Ativo_inativo)
+            {
+                ativo = "1";
+            }
 
-            sql = "INSERT INTO tb_marca(Nome) VALUES (@Nome) ";
+            sql = "INSERT INTO tb_marca(Nome, Ativo_inativo) VALUES (@Nome, @Ativo_inativo) ";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@nome", marca.Nome);
+            cmd.Parameters.AddWithValue("@ativo_inativo", ativo);
 
 
             cmd.ExecuteNonQuery();
@@ -43,6 +49,32 @@ namespace DAL
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
         }
+        public void UpdateMarca(Marca marca, string emailUsuarioLogado)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_marca SET Nome, Ativo_inativo = @Nome, @Ativo_inativo WHERE id_marca = @id_marca";
+                dbConnection.Execute(query, marca);
+
+                mConn.FecharConexao();
+
+                // Inserir o registro de log na tabela tb_logs
+                DateTime dataHoraAcao = DateTime.Now;
+                string tipoOperacao = "atualização de marca"; // Defina o tipo de operação conforme necessário
+
+                sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+
+                cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+                cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+                cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
+
+                cmd.ExecuteNonQuery();
+                mConn.FecharConexao();
+            }
+        }
+
 
         public bool VerificarMarca(String nomeMarca)
         {
@@ -68,7 +100,7 @@ namespace DAL
         public DataTable ConsultarMarca()
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT * FROM tb_marca";
+            string sql = "SELECT * FROM tb_marca WHERE Ativo_inativo = 1"; // Filtra marcas ativas (Ativo_inativo = 1)
 
             using (MySqlConnection connection = mConn.AbrirConexao())
             {
@@ -82,15 +114,45 @@ namespace DAL
             }
             return dt;
         }
-        public List<Marca> GetMarcas()
+        public List<Marca> GetMarcasAtivas()
         {
 
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                return dbConnection.Query<Marca>("SELECT id_marca, Nome FROM tb_marca").ToList();
+                return dbConnection.Query<Marca>("SELECT id_marca, Nome FROM tb_marca WHERE Ativo_inativo = 1").ToList();
             }
         }
+        public List<Marca> GetMarcasDesativadas()
+        {
+
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                return dbConnection.Query<Marca>("SELECT id_marca, Nome FROM tb_marca WHERE Ativo_inativo = 0").ToList();
+            }
+        }
+
+
+        public void DesativarMarca(int idMarca)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_marca SET Ativo_inativo = 0 WHERE id_marca = @IdMarca";
+                dbConnection.Execute(query, new { IdMarca = idMarca });
+            }
+        }
+        public void AtivarMarca(int idMarca)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_marca SET Ativo_inativo = 1 WHERE id_marca = @IdMarca";
+                dbConnection.Execute(query, new { IdMarca = idMarca });
+            }
+        }
+
 
     }
 }

@@ -59,12 +59,12 @@
             MostrarEquipamentos.AllowUserToAddRows = false;
             MostrarEquipamentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipamentos.Columns.AddRange(new DataGridViewColumn[] { ID_equipamento, id_status, ValorNumerico, Nome_Equipamento, Ativo_inativo, Valor, Descricao, Etiqueta, id_colaborador, id_marca });
-            MostrarEquipamentos.Location = new Point(77, 154);
+            MostrarEquipamentos.Location = new Point(139, 159);
             MostrarEquipamentos.Name = "MostrarEquipamentos";
             MostrarEquipamentos.RowHeadersWidth = 62;
             MostrarEquipamentos.RowTemplate.Height = 33;
             MostrarEquipamentos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MostrarEquipamentos.Size = new Size(965, 326);
+            MostrarEquipamentos.Size = new Size(815, 326);
             MostrarEquipamentos.TabIndex = 0;
             MostrarEquipamentos.CellContentClick += MostrarEquipamentos_CellContentClick;
             MostrarEquipamentos.CellMouseDoubleClick += MostrarEquipamentos_CellMouseDoubleClick;
@@ -145,7 +145,7 @@
             // 
             // txtNomePesquisar
             // 
-            txtNomePesquisar.Location = new Point(77, 117);
+            txtNomePesquisar.Location = new Point(139, 117);
             txtNomePesquisar.MaxLength = 100;
             txtNomePesquisar.Name = "txtNomePesquisar";
             txtNomePesquisar.Size = new Size(270, 31);
@@ -155,9 +155,9 @@
             // 
             btnPesquisar.BackColor = Color.DarkGreen;
             btnPesquisar.ForeColor = Color.White;
-            btnPesquisar.Location = new Point(353, 115);
+            btnPesquisar.Location = new Point(415, 108);
             btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(187, 34);
+            btnPesquisar.Size = new Size(187, 48);
             btnPesquisar.TabIndex = 30;
             btnPesquisar.Text = "Pesquisar por nome";
             btnPesquisar.UseVisualStyleBackColor = false;
@@ -167,9 +167,9 @@
             // 
             btnLimpar.BackColor = Color.DarkGreen;
             btnLimpar.ForeColor = Color.White;
-            btnLimpar.Location = new Point(77, 485);
+            btnLimpar.Location = new Point(139, 491);
             btnLimpar.Name = "btnLimpar";
-            btnLimpar.Size = new Size(96, 34);
+            btnLimpar.Size = new Size(117, 38);
             btnLimpar.TabIndex = 31;
             btnLimpar.Text = "Limpar";
             btnLimpar.UseVisualStyleBackColor = false;
@@ -217,6 +217,7 @@
             Ativo_inativo.HeaderText = "Ativo_inativo";
             Ativo_inativo.MinimumWidth = 8;
             Ativo_inativo.Name = "Ativo_inativo";
+            Ativo_inativo.Visible = false;
             Ativo_inativo.Width = 150;
             // 
             // Valor

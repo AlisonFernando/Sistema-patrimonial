@@ -20,6 +20,7 @@ namespace UI
         private UserBLL userBLL = new UserBLL();
         private List<Usuario> usuarios = new List<Usuario>();
         private Usuario usuarioLogado;
+        private string emailAtual;
 
         public TelaCadUser(Usuario usuario)
         {
@@ -33,7 +34,7 @@ namespace UI
                 inputUserSenha.Enabled = false;
                 txtConfirEmail.Enabled = false;
                 txtConfirSenha.Enabled = false;
-
+                emailAtual = usuario.email;
             }
         }
         private void TelaCadUser_Load(object sender, EventArgs e)
@@ -73,6 +74,7 @@ namespace UI
             usuario.ConfirmarSenha = txtConfirSenha.Text;
             usuario.UserAcesso = (int)ComboBoxAcesso.SelectedValue;
 
+
             // Verificação de espaços em branco em nome e email
             if (string.IsNullOrWhiteSpace(usuario.Nome) || string.IsNullOrWhiteSpace(usuario.Email))
             {
@@ -100,12 +102,13 @@ namespace UI
                 UserBLL verificarEmailBLL = new UserBLL();
                 string verificar = verificarEmailBLL.VerificarEmail(usuario.Email);
 
-                if (verificar == "Email existente")
+                if (verificar == "Email existente" && usuario.Email != emailAtual)
                 {
                     MessageBox.Show("O email já existe no banco de dados");
                     return;
                 }
             }
+            
 
             // Verificação se é uma atualização de nome ou e-mail (ignorando senha e confirmações)
             bool atualizacaoNomeOuEmail = !string.IsNullOrEmpty(txtID.Text) && (inputUserNome.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Nome || inputUserEmail.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Email);
@@ -115,6 +118,23 @@ namespace UI
 
             if (!string.IsNullOrEmpty(txtID.Text))
             {
+                retorno = cadUserBLL.UpdateUsuario(usuario, Program.UserEmail);
+            }
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                // Verifique se o email foi alterado e se já existe no banco de dados
+                if (usuario.Email != emailAtual)
+                {
+                    UserBLL verificarEmailBLL = new UserBLL();
+                    string verificar = verificarEmailBLL.VerificarEmail(usuario.Email);
+
+                    if (verificar == "Email existente")
+                    {
+                        MessageBox.Show("O email já existe");
+                        return;
+                    }
+                }
+
                 retorno = cadUserBLL.UpdateUsuario(usuario, Program.UserEmail);
             }
             else
