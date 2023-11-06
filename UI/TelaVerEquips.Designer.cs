@@ -30,15 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaVerEquips));
             MostrarEquipamentos = new DataGridView();
-            panel1 = new Panel();
-            btnVoltar = new Button();
-            btnVerEquips = new Button();
-            txtID = new TextBox();
-            HeaderCadColab = new Panel();
-            label1 = new Label();
-            txtNomePesquisar = new TextBox();
-            btnPesquisar = new Button();
-            btnLimpar = new Button();
             ID_equipamento = new DataGridViewTextBoxColumn();
             id_status = new DataGridViewTextBoxColumn();
             ValorNumerico = new DataGridViewTextBoxColumn();
@@ -49,6 +40,15 @@
             Etiqueta = new DataGridViewTextBoxColumn();
             id_colaborador = new DataGridViewTextBoxColumn();
             id_marca = new DataGridViewTextBoxColumn();
+            panel1 = new Panel();
+            btnVoltar = new Button();
+            btnVerEquips = new Button();
+            txtID = new TextBox();
+            HeaderCadColab = new Panel();
+            label1 = new Label();
+            txtNomePesquisar = new TextBox();
+            btnPesquisar = new Button();
+            btnLimpar = new Button();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentos).BeginInit();
             panel1.SuspendLayout();
             HeaderCadColab.SuspendLayout();
@@ -68,6 +68,93 @@
             MostrarEquipamentos.TabIndex = 0;
             MostrarEquipamentos.CellContentClick += MostrarEquipamentos_CellContentClick;
             MostrarEquipamentos.CellMouseDoubleClick += MostrarEquipamentos_CellMouseDoubleClick;
+            // 
+            // ID_equipamento
+            // 
+            ID_equipamento.DataPropertyName = "ID_equipamento";
+            ID_equipamento.HeaderText = "ID";
+            ID_equipamento.MaxInputLength = 0;
+            ID_equipamento.MinimumWidth = 8;
+            ID_equipamento.Name = "ID_equipamento";
+            ID_equipamento.Width = 150;
+            // 
+            // id_status
+            // 
+            id_status.DataPropertyName = "id_status";
+            id_status.HeaderText = "id_status";
+            id_status.MinimumWidth = 8;
+            id_status.Name = "id_status";
+            id_status.Visible = false;
+            id_status.Width = 150;
+            // 
+            // ValorNumerico
+            // 
+            ValorNumerico.DataPropertyName = "ValorNumerico";
+            ValorNumerico.HeaderText = "ValorNumerico";
+            ValorNumerico.MinimumWidth = 8;
+            ValorNumerico.Name = "ValorNumerico";
+            ValorNumerico.Visible = false;
+            ValorNumerico.Width = 150;
+            // 
+            // Nome_Equipamento
+            // 
+            Nome_Equipamento.DataPropertyName = "Nome";
+            Nome_Equipamento.HeaderText = "Nome";
+            Nome_Equipamento.MaxInputLength = 0;
+            Nome_Equipamento.MinimumWidth = 8;
+            Nome_Equipamento.Name = "Nome_Equipamento";
+            Nome_Equipamento.Width = 150;
+            // 
+            // Ativo_inativo
+            // 
+            Ativo_inativo.DataPropertyName = "Ativo_inativo";
+            Ativo_inativo.HeaderText = "Ativo_inativo";
+            Ativo_inativo.MinimumWidth = 8;
+            Ativo_inativo.Name = "Ativo_inativo";
+            Ativo_inativo.Visible = false;
+            Ativo_inativo.Width = 150;
+            // 
+            // Valor
+            // 
+            Valor.DataPropertyName = "Valor";
+            Valor.HeaderText = "Valor";
+            Valor.MinimumWidth = 8;
+            Valor.Name = "Valor";
+            Valor.Width = 150;
+            // 
+            // Descricao
+            // 
+            Descricao.DataPropertyName = "Descricao";
+            Descricao.HeaderText = "Descricao";
+            Descricao.MinimumWidth = 8;
+            Descricao.Name = "Descricao";
+            Descricao.Width = 150;
+            // 
+            // Etiqueta
+            // 
+            Etiqueta.DataPropertyName = "Etiqueta";
+            Etiqueta.HeaderText = "Etiqueta";
+            Etiqueta.MinimumWidth = 8;
+            Etiqueta.Name = "Etiqueta";
+            Etiqueta.Width = 150;
+            // 
+            // id_colaborador
+            // 
+            id_colaborador.DataPropertyName = "id_colaborador";
+            id_colaborador.HeaderText = "id_colaborador";
+            id_colaborador.MinimumWidth = 8;
+            id_colaborador.Name = "id_colaborador";
+            id_colaborador.Visible = false;
+            id_colaborador.Width = 150;
+            // 
+            // id_marca
+            // 
+            id_marca.DataPropertyName = "id_marca";
+            id_marca.HeaderText = "id_marca";
+            id_marca.MinimumWidth = 8;
+            id_marca.Name = "id_marca";
+            id_marca.Visible = false;
+            id_marca.Width = 150;
             // 
             // panel1
             // 
@@ -175,93 +262,6 @@
             btnLimpar.UseVisualStyleBackColor = false;
             btnLimpar.Click += btnLimpar_Click;
             // 
-            // ID_equipamento
-            // 
-            ID_equipamento.DataPropertyName = "ID_equipamento";
-            ID_equipamento.HeaderText = "ID";
-            ID_equipamento.MaxInputLength = 0;
-            ID_equipamento.MinimumWidth = 8;
-            ID_equipamento.Name = "ID_equipamento";
-            ID_equipamento.Width = 150;
-            // 
-            // id_status
-            // 
-            id_status.DataPropertyName = "id_status";
-            id_status.HeaderText = "id_status";
-            id_status.MinimumWidth = 8;
-            id_status.Name = "id_status";
-            id_status.Visible = false;
-            id_status.Width = 150;
-            // 
-            // ValorNumerico
-            // 
-            ValorNumerico.DataPropertyName = "ValorNumerico";
-            ValorNumerico.HeaderText = "ValorNumerico";
-            ValorNumerico.MinimumWidth = 8;
-            ValorNumerico.Name = "ValorNumerico";
-            ValorNumerico.Visible = false;
-            ValorNumerico.Width = 150;
-            // 
-            // Nome_Equipamento
-            // 
-            Nome_Equipamento.DataPropertyName = "Nome";
-            Nome_Equipamento.HeaderText = "Nome";
-            Nome_Equipamento.MaxInputLength = 0;
-            Nome_Equipamento.MinimumWidth = 8;
-            Nome_Equipamento.Name = "Nome_Equipamento";
-            Nome_Equipamento.Width = 150;
-            // 
-            // Ativo_inativo
-            // 
-            Ativo_inativo.DataPropertyName = "Ativo_inativo";
-            Ativo_inativo.HeaderText = "Ativo_inativo";
-            Ativo_inativo.MinimumWidth = 8;
-            Ativo_inativo.Name = "Ativo_inativo";
-            Ativo_inativo.Visible = false;
-            Ativo_inativo.Width = 150;
-            // 
-            // Valor
-            // 
-            Valor.DataPropertyName = "Valor";
-            Valor.HeaderText = "Valor";
-            Valor.MinimumWidth = 8;
-            Valor.Name = "Valor";
-            Valor.Width = 150;
-            // 
-            // Descricao
-            // 
-            Descricao.DataPropertyName = "Descricao";
-            Descricao.HeaderText = "Descricao";
-            Descricao.MinimumWidth = 8;
-            Descricao.Name = "Descricao";
-            Descricao.Width = 150;
-            // 
-            // Etiqueta
-            // 
-            Etiqueta.DataPropertyName = "Etiqueta";
-            Etiqueta.HeaderText = "Etiqueta";
-            Etiqueta.MinimumWidth = 8;
-            Etiqueta.Name = "Etiqueta";
-            Etiqueta.Width = 150;
-            // 
-            // id_colaborador
-            // 
-            id_colaborador.DataPropertyName = "id_colaborador";
-            id_colaborador.HeaderText = "id_colaborador";
-            id_colaborador.MinimumWidth = 8;
-            id_colaborador.Name = "id_colaborador";
-            id_colaborador.Visible = false;
-            id_colaborador.Width = 150;
-            // 
-            // id_marca
-            // 
-            id_marca.DataPropertyName = "id_marca";
-            id_marca.HeaderText = "id_marca";
-            id_marca.MinimumWidth = 8;
-            id_marca.Name = "id_marca";
-            id_marca.Visible = false;
-            id_marca.Width = 150;
-            // 
             // TelaVerEquips
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -275,6 +275,7 @@
             Controls.Add(MostrarEquipamentos);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "TelaVerEquips";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Visualizar equipamentos";
             Load += TelaVerEquips_Load;
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentos).EndInit();

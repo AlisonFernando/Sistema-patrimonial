@@ -1,7 +1,9 @@
-﻿using model;
+﻿using Dapper;
+using model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -174,7 +176,7 @@ namespace DAL
             {
                 connection.Open();
 
-                string query = "SELECT c.Nome, c.Email, c.Telefone, s.Nome_setor " +
+                string query = "SELECT c.ID_colaborador, c.Nome, c.Email, c.Telefone, c.Agenda, s.Nome_setor " +
                               "FROM tb_colaborador c " +
                               "INNER JOIN tb_setor s ON c.id_setor = s.id_setor " +
                               "WHERE c.Ativo_inativo = 1";
@@ -185,16 +187,19 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            Colaborador colaborador = new Colaborador
-                            {
-                                NomeColaborador = reader["Nome"].ToString(),
-                                EmailColaborador = reader["Email"].ToString(),
-                                TelefoneColaborador = reader["Telefone"].ToString(),
-                                SetorNome = reader["Nome_setor"].ToString()
-                            };
+                            Colaborador colaborador = new Colaborador();
+
+                            colaborador.ID_colaborador = (int)reader["ID_colaborador"];
+                            colaborador.NomeColaborador = reader["Nome"].ToString();
+                            colaborador.EmailColaborador = reader["Email"].ToString();
+                            colaborador.TelefoneColaborador = reader["Telefone"].ToString();
+                            colaborador.AgendaColaborador = reader["Agenda"].ToString();
+                            colaborador.SetorNome = reader["Nome_setor"].ToString();
 
                             colaboradores.Add(colaborador);
+
                         }
+                        
                     }
                 }
 
@@ -203,6 +208,78 @@ namespace DAL
 
             return colaboradores;
         }
+        public void DesativarColaborador(int ID_Colab)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                using (var transaction = dbConnection.BeginTransaction())
+                {
+                    try
+                    {
+                        // Passo 1: Desativar o colaborador
+                        string queryDesativarColaborador = "UPDATE tb_colaborador SET Ativo_inativo = 0 WHERE ID_colaborador = @ID_Colab";
+                        dbConnection.Execute(queryDesativarColaborador, new { ID_Colab = ID_Colab }, transaction);
 
+                        // Passo 2: Atualizar os equipamentos associados ao colaborador
+                        string queryAtualizarEquipamentos = "UPDATE tb_equipamentos SET id_colaborador = NULL WHERE id_colaborador = @ID_Colab";
+                        dbConnection.Execute(queryAtualizarEquipamentos, new { ID_Colab = ID_Colab }, transaction);
+
+                        // Commit da transação se tudo for bem
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        // Lidar com erros e fazer um rollback da transação se algo der errado
+                        transaction.Rollback();
+                        throw; // Re-throw da exceção para notificar que algo deu errado
+                    }
+                }
+            }
+        }
+
+        public Colaborador ObterColaboradorPorID(int idColaborador)
+        {
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+                string query = "SELECT * FROM tb_colaborador WHERE ID_colaborador = @idColaborador";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@idColaborador", idColaborador);
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        Colaborador colaborador = new Colaborador
+                        {
+                            ID_colaborador = Convert.ToInt32(reader["ID_colaborador"]),
+                            NomeColaborador = reader["NomeColaborador"].ToString(),
+                            // Adicione outros campos conforme necessário
+                        };
+                        return colaborador;
+                    }
+                    return null; // Se não encontrou o colaborador
+                }
+            }
+        }
+
+        public DataTable ConsultarColaborador()
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT Nome FROM tb_colaborador WHERE Ativo_inativo = 1";
+
+            using (MySqlConnection connection = mConn.AbrirConexao())
+            {
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
+                }
+            }
+            return dt;
+        }
     }
 }

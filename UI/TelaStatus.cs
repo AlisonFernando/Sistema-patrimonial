@@ -38,7 +38,7 @@ namespace UI
             ComboBoxStatus.DataSource = dt;
             ComboBoxStatus.DisplayMember = "andamento_do_chamado";
             ComboBoxStatus.ValueMember = "id_status";
-            
+
         }
 
         private void TelaStatus_Load(object sender, EventArgs e)
@@ -57,13 +57,14 @@ namespace UI
             {
                 int idStatus = (int)ComboBoxStatus.SelectedValue;
                 string nomeEquipamento = txtNomeEquipamento.Text;
+                string novaDescricao = txtDesc.Text;
 
                 // Use int.TryParse para converter a string em um int
                 if (int.TryParse(txtID.Text, out int id_equipamento))
                 {
                     StatusBLL statusBLL = new StatusBLL();
 
-                    if (statusBLL.AtualizarStatusEquipamento(id_equipamento, idStatus, Program.UserEmail))
+                    if (statusBLL.AtualizarStatusEquipamento(id_equipamento, idStatus, Program.UserEmail, novaDescricao))
                     {
                         MessageBox.Show("Status atualizado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();

@@ -155,5 +155,32 @@ namespace DAL
             }
         }
 
+        public List<Equipamento> ObterEquipamentosPorColaborador(int idColaborador)
+        {
+            List<Equipamento> equipamentos = new List<Equipamento>();
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+                string query = "SELECT * FROM tb_equipamentos WHERE id_colaborador = @idColaborador";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@idColaborador", idColaborador);
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Equipamento equipamento = new Equipamento
+                        {
+                            ID_equipamento = Convert.ToInt32(reader["ID_equipamento"]),
+                            Nome = reader["NomeEquipamento"].ToString(),
+                            // Adicione outros campos conforme necessário
+                        };
+                        equipamentos.Add(equipamento);
+                    }
+                }
+            }
+            return equipamentos;
+        }
+
     }
 }

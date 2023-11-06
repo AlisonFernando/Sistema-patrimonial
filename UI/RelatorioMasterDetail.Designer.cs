@@ -34,6 +34,7 @@
             btnGerarPDF = new Button();
             txtDestino = new TextBox();
             lblTitulo = new Label();
+            comboBoxColaborador = new ComboBox();
             SuspendLayout();
             // 
             // btnVoltar
@@ -93,11 +94,20 @@
             lblTitulo.TabIndex = 11;
             lblTitulo.Text = "Salvar PDF em";
             // 
+            // comboBoxColaborador
+            // 
+            comboBoxColaborador.FormattingEnabled = true;
+            comboBoxColaborador.Location = new Point(60, 83);
+            comboBoxColaborador.Name = "comboBoxColaborador";
+            comboBoxColaborador.Size = new Size(215, 33);
+            comboBoxColaborador.TabIndex = 16;
+            // 
             // RelatorioMasterDetail
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(674, 339);
+            Controls.Add(comboBoxColaborador);
             Controls.Add(btnVoltar);
             Controls.Add(btnCaminho);
             Controls.Add(btnGerarPDF);
@@ -108,6 +118,7 @@
             Name = "RelatorioMasterDetail";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Relatório principal";
+            Load += RelatorioMasterDetail_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -119,5 +130,6 @@
         private Button btnGerarPDF;
         private TextBox txtDestino;
         private Label lblTitulo;
+        private ComboBox comboBoxColaborador;
     }
 }

@@ -125,7 +125,6 @@
             // 
             // txtDesc
             // 
-            txtDesc.Enabled = false;
             txtDesc.Location = new Point(88, 222);
             txtDesc.MaxLength = 10000;
             txtDesc.Multiline = true;

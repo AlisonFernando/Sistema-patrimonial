@@ -2,6 +2,7 @@
 using model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -11,6 +12,7 @@ namespace BLL
 {
     public class ColaboradorBLL
     {
+        ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
         public string CadColab(Colaborador colaborador, string emailUsuarioLogado)
         {
             ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
@@ -20,7 +22,7 @@ namespace BLL
 
         public string VerificarNome(string verifnome)
         {
-            ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
+
             bool nomeExists = colaboradorDAL.VerificarNome(verifnome);
 
             if (nomeExists)
@@ -46,20 +48,32 @@ namespace BLL
         }
         public string AssociarEquipamentosAoColaborador(int idColaborador, List<int> equipamentosSelecionados)
         {
-            ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
             colaboradorDAL.AssociarEquipamentosAoColaborador(idColaborador, equipamentosSelecionados);
             return "Sucesso";
         }
 
         public int ObterIdColaboradorPorNome(string nomeColaborador)
         {
-            ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
             return colaboradorDAL.ObterIdColaboradorPorNome(nomeColaborador);
         }
         public List<Colaborador> GetColaboradoresAtivosComSetor()
         {
-            ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
             return colaboradorDAL.GetColaboradoresAtivosComSetor();
+        }
+        public void DesativarColaborador(int ID_Colab)
+        {
+            colaboradorDAL.DesativarColaborador(ID_Colab);
+        }
+        public Colaborador ObterColaboradorPorID(int idColaborador)
+        {
+            ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
+            return colaboradorDAL.ObterColaboradorPorID(idColaborador);
+        }
+
+        public DataTable CarregarColaborador()
+        {
+            DataTable resultado = colaboradorDAL.ConsultarColaborador();
+            return resultado;
         }
 
     }

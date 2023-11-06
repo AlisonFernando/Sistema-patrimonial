@@ -32,64 +32,71 @@ namespace DAL
             }
             return dt;
         }
-        public bool AtualizarStatusEquipamento(int id_equipamento, int idStatus, string emailUsuarioLogado)
+        public bool AtualizarStatusEquipamento(int id_equipamento, int idStatus, string emailUsuarioLogado, string novaDescricao)
         {
             using (MySqlConnection connection = new MySqlConnection(conec))
             {
                 connection.Open();
-
-                string query = "UPDATE tb_manutencao SET id_status = @idStatus WHERE id_equipamento = @id_equipamento";
-
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (MySqlCommand command = new MySqlCommand())
                 {
-                    // Adicione os parâmetros com seus valores
-                    command.Parameters.AddWithValue("@idStatus", idStatus);
-                    command.Parameters.AddWithValue("@id_equipamento", id_equipamento);
-
-
-                    // Inserir o registro de log na tabela tb_logs
-                    DateTime dataHoraAcao = DateTime.Now;
-                    string tipoOperacao = "atualização no status do chamado"; // Defina o tipo de operação conforme necessário
-
-                    sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
-                    cmd = new MySqlCommand(sql, mConn.AbrirConexao());
-
-                    cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
-                    cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
-                    cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
-
-                    cmd.ExecuteNonQuery();
-                    mConn.FecharConexao();
+                    command.Connection = connection;
 
                     try
                     {
+                        // Iniciar uma transação para garantir a consistência das atualizações
+                        command.Transaction = connection.BeginTransaction();
+
+                        // Atualizar a coluna "descricao" na tabela "tb_manutencao"
+                        string descricaoQuery = "UPDATE tb_manutencao SET id_status = @idStatus, descricao = @novaDescricao WHERE id_equipamento = @id_equipamento";
+                        command.CommandText = descricaoQuery;
+
+                        command.Parameters.AddWithValue("@idStatus", idStatus);
+                        command.Parameters.AddWithValue("@novaDescricao", novaDescricao);
+                        command.Parameters.AddWithValue("@id_equipamento", id_equipamento);
+
                         int rowsAffected = command.ExecuteNonQuery();
 
-                        // Verifique se a atualização foi bem-sucedida
+                        // Verificar se a atualização foi bem-sucedida
                         if (rowsAffected > 0)
                         {
+                            // Inserir o registro de log na tabela "tb_logs"
+                            DateTime dataHoraAcao = DateTime.Now;
+                            string tipoOperacao = "atualização no status do chamado"; // Defina o tipo de operação conforme necessário
+
+                            string logQuery = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                            command.CommandText = logQuery;
+
+                            command.Parameters.Clear();
+                            command.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
+                            command.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
+                            command.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
+
+                            command.ExecuteNonQuery();
+
+                            // Confirmar a transação
+                            command.Transaction.Commit();
+
                             return true; // Atualização bem-sucedida
                         }
                         else
                         {
+                            // Rollback da transação se a atualização não afetar nenhuma linha
+                            command.Transaction.Rollback();
                             return false; // Nenhuma linha afetada, atualização não bem-sucedida
                         }
-
-                        
                     }
                     catch (MySqlException ex)
                     {
-                        // Lide com exceções do MySQL, registre erros ou faça qualquer ação necessária
+                        // Lidar com exceções do MySQL, registrar erros ou fazer qualquer ação necessária
                         Console.WriteLine("Erro MySQL: " + ex.Message);
+
+                        // Rollback da transação em caso de erro
+                        command.Transaction.Rollback();
+
                         return false; // Erro no MySQL, atualização não bem-sucedida
                     }
                 }
             }
-
-            return false;
         }
-
-
-
     }
 }

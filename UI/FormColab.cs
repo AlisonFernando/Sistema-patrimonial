@@ -18,11 +18,23 @@ namespace UI
 {
     public partial class CadColaborador : Form
     {
-
-        public CadColaborador()
+        private ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
+        private List<Colaborador> colaboradores = new List<Colaborador>();
+        public CadColaborador(Colaborador colaborador)
         {
             InitializeComponent();
 
+            if (colaborador != null)
+            {
+                txtID.Text = colaborador.ID_colaborador.ToString();
+                InputColabNome.Text = colaborador.NomeColaborador;
+                inputColabEmail.Text = colaborador.EmailColaborador;
+                inputColabSenha.Text = colaborador.SenhaColaborador;
+                inputColabTel.Text = colaborador.TelefoneColaborador.ToString();
+                inputColabAgenda.Text = colaborador.AgendaColaborador.ToString();
+                check_ativo.Enabled = false;
+                inputColabSenha.Enabled = false;
+            }
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -46,7 +58,7 @@ namespace UI
 
         private void btn_selectEquips_Click(object sender, EventArgs e)
         {
-            ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
+
             Colaborador colaborador = new Colaborador();
             Setor setor = new Setor();
 
@@ -167,6 +179,43 @@ namespace UI
 
             inputColabTel.Text = phoneNumber;
             inputColabTel.SelectionStart = inputColabTel.Text.Length;
+        }
+
+        private void btnDesativar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                int ID_Colab = int.Parse(txtID.Text);
+                colaboradorBLL.DesativarColaborador(ID_Colab);
+                MessageBox.Show("Colaborador desativado com sucesso.");
+                InputColabNome.Text = string.Empty;
+                inputColabEmail.Text = string.Empty;
+                inputColabSenha.Enabled = true;
+                inputColabTel.Text = string.Empty;
+                inputColabAgenda.Text = string.Empty;
+                txtID.Text = string.Empty;
+                check_ativo.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Escolha um colaborador e tente novamente");
+            }
+        }
+
+        private void btnRecarregar_Click(object sender, EventArgs e)
+        {
+            InputColabNome.Text = string.Empty;
+            inputColabEmail.Text = string.Empty;
+            inputColabSenha.Enabled = true;
+            inputColabTel.Text = string.Empty;
+            inputColabAgenda.Text = string.Empty;
+            txtID.Text = string.Empty;
+            check_ativo.Enabled = true;
+        }
+
+        private void escolherSetor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

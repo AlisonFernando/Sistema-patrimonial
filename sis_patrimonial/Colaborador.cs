@@ -9,6 +9,7 @@ namespace model
 {
     public class Colaborador
     {
+        public int ID_colaborador;
         string emailColaborador;
         string nomeColaborador;
         string senhaColaborador;

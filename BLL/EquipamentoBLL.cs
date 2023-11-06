@@ -64,6 +64,11 @@ namespace BLL
         {
            return equipamentoDAL.GetEquipamentosRelatorio();
         }
+        public List<Equipamento> ObterEquipamentosPorColaborador(int idColaborador)
+        {
+            EquipamentoDAL equipamentoDAL = new EquipamentoDAL();
+            return equipamentoDAL.ObterEquipamentosPorColaborador(idColaborador);
+        }
 
     }
 }
