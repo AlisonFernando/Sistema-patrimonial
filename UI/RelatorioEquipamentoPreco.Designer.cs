@@ -34,6 +34,10 @@
             btnGerarPDF = new Button();
             btnCaminho = new Button();
             btnVoltar = new Button();
+            HeaderCadColab = new Panel();
+            label1 = new Label();
+            button1 = new Button();
+            HeaderCadColab.SuspendLayout();
             SuspendLayout();
             // 
             // lblTitulo
@@ -72,10 +76,33 @@
             btnVoltar.UseVisualStyleBackColor = true;
             btnVoltar.Click += btnVoltar_Click;
             // 
+            // HeaderCadColab
+            // 
+            HeaderCadColab.BackColor = Color.DarkGreen;
+            HeaderCadColab.Controls.Add(label1);
+            HeaderCadColab.Controls.Add(button1);
+            resources.ApplyResources(HeaderCadColab, "HeaderCadColab");
+            HeaderCadColab.Name = "HeaderCadColab";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = SystemColors.Window;
+            label1.Name = "label1";
+            // 
+            // button1
+            // 
+            button1.BackgroundImage = Properties.Resources.seta_esquerda;
+            resources.ApplyResources(button1, "button1");
+            button1.Name = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // RelatorioEquipamentoPreco
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(HeaderCadColab);
             Controls.Add(btnVoltar);
             Controls.Add(btnCaminho);
             Controls.Add(btnGerarPDF);
@@ -83,6 +110,8 @@
             Controls.Add(lblTitulo);
             MaximizeBox = false;
             Name = "RelatorioEquipamentoPreco";
+            HeaderCadColab.ResumeLayout(false);
+            HeaderCadColab.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -94,5 +123,8 @@
         private Button btnGerarPDF;
         private Button btnCaminho;
         private Button btnVoltar;
+        private Panel HeaderCadColab;
+        private Label label1;
+        private Button button1;
     }
 }

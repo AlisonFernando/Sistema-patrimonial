@@ -172,7 +172,7 @@ namespace DAL
                         Equipamento equipamento = new Equipamento
                         {
                             ID_equipamento = Convert.ToInt32(reader["ID_equipamento"]),
-                            Nome = reader["NomeEquipamento"].ToString(),
+                            Nome = reader["Nome_equipamento"].ToString(),
                             // Adicione outros campos conforme necessário
                         };
                         equipamentos.Add(equipamento);

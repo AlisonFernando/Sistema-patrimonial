@@ -9,7 +9,7 @@ namespace model
 {
     public class Colaborador
     {
-        public int ID_colaborador;
+        public int ID_colaborador { get; set; }
         string emailColaborador;
         string nomeColaborador;
         string senhaColaborador;

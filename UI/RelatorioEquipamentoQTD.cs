@@ -40,11 +40,6 @@ namespace UI
                 // Abre o documento para escrita
                 doc.Open();
 
-                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD);
-                iTextSharp.text.Paragraph title = new iTextSharp.text.Paragraph("Relatório da quantidade de Equipamentos", titleFont);
-                title.Alignment = Element.ALIGN_CENTER;
-                doc.Add(title);
-
                 // Adicione uma linha separadora
                 doc.Add(new Chunk("\n"));
 
@@ -57,39 +52,77 @@ namespace UI
                 table.WidthPercentage = 100; // A largura da tabela é 100% do tamanho da página
 
                 // Cabeçalho da tabela
-                iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD);
-                table.AddCell(new PdfPCell(new Phrase("Nome", headerFont)));
-                table.AddCell(new PdfPCell(new Phrase("Valor", headerFont)));
-                table.AddCell(new PdfPCell(new Phrase("Etiqueta", headerFont)));
+                iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD, BaseColor.WHITE);
+                BaseColor headerBackgroundColor = new BaseColor(63, 96, 35); // Cor #Verde Scot
+
+                PdfPCell headerCellNome = new PdfPCell(new Phrase("Nome", headerFont));
+                headerCellNome.BackgroundColor = headerBackgroundColor;
+                headerCellNome.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(headerCellNome);
+
+                PdfPCell headerCellValor = new PdfPCell(new Phrase("Valor", headerFont));
+                headerCellValor.BackgroundColor = headerBackgroundColor;
+                headerCellValor.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(headerCellValor);
+
+                PdfPCell headerCellEtiqueta = new PdfPCell(new Phrase("Etiqueta", headerFont));
+                headerCellEtiqueta.BackgroundColor = headerBackgroundColor;
+                headerCellEtiqueta.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(headerCellEtiqueta);
 
                 // Dados dos equipamentos
-                iTextSharp.text.Font dataFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10);
+                iTextSharp.text.Font dataFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);
 
                 int totalEquipamentos = 0; // Variável para contar o número de equipamentos
 
+                BaseColor rowColor1 = new BaseColor(238, 238, 238); // Cor #EEEEEE
+                BaseColor rowColor2 = BaseColor.WHITE; // Cor #FFF
+                bool alternateRowColor = false;
+
                 foreach (Equipamento equipamento in equipamentos)
                 {
-                    table.AddCell(new PdfPCell(new Phrase(equipamento.Nome, dataFont)));
-                    table.AddCell(new PdfPCell(new Phrase(equipamento.Valor.ToString(), dataFont)));
-                    table.AddCell(new PdfPCell(new Phrase(equipamento.Etiqueta, dataFont)));
+                    PdfPCell cellNome = new PdfPCell(new Phrase(equipamento.Nome, dataFont));
+                    cellNome.BackgroundColor = alternateRowColor ? rowColor1 : rowColor2;
+                    cellNome.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellNome);
+
+                    PdfPCell cellValor = new PdfPCell(new Phrase(equipamento.Valor.ToString(), dataFont));
+                    cellValor.BackgroundColor = alternateRowColor ? rowColor1 : rowColor2;
+                    cellValor.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellValor);
+
+                    PdfPCell cellEtiqueta = new PdfPCell(new Phrase(equipamento.Etiqueta, dataFont));
+                    cellEtiqueta.BackgroundColor = alternateRowColor ? rowColor1 : rowColor2;
+                    cellEtiqueta.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table.AddCell(cellEtiqueta);
 
                     totalEquipamentos++; // Incrementa a contagem a cada equipamento listado
+                    alternateRowColor = !alternateRowColor;
                 }
+                // Adicione o valor total dos equipamentos
+                iTextSharp.text.Paragraph totalParagraph = new iTextSharp.text.Paragraph($"Quantidade de equipamentos cadastrados: {totalEquipamentos}");
+                totalParagraph.Alignment = Element.ALIGN_RIGHT;
+                doc.Add(totalParagraph);
 
                 // Adicione a tabela ao documento
                 doc.Add(table);
 
-                // Adicione uma linha separadora
+                // Adicione espaço em branco entre a tabela e a imagem
+                doc.Add(new Chunk("\n"));
+                doc.Add(new Chunk("\n"));
+                doc.Add(new Chunk("\n"));
+                doc.Add(new Chunk("\n"));
                 doc.Add(new Chunk("\n"));
 
-                // Adicione o total de equipamentos listados
-                iTextSharp.text.Paragraph totalParagraph = new iTextSharp.text.Paragraph($"Total de Equipamentos Listados: {totalEquipamentos}");
-                totalParagraph.Alignment = Element.ALIGN_RIGHT;
-                doc.Add(totalParagraph);
+                // Adicione a imagem centralizada
+                string imageUrl = "https://www.scotconsultoria.com.br/img/relatorio_sys.png";
+                iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(new Uri(imageUrl));
+                image.Alignment = Element.ALIGN_CENTER;
+                doc.Add(image);
 
-                // Fecha o documento
+                // Feche o documento
                 doc.Close();
-                MessageBox.Show("Relatório em PDF gerado com sucesso e salvo em: " + caminhoDestino, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Relatório gerado com sucesso, salvo em: " + caminhoDestino, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -97,6 +130,7 @@ namespace UI
                 MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnCaminho_Click(object sender, EventArgs e)
         {

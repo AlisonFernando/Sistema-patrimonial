@@ -72,8 +72,8 @@ namespace BLL
 
         public DataTable CarregarColaborador()
         {
-            DataTable resultado = colaboradorDAL.ConsultarColaborador();
-            return resultado;
+            DataTable dt = colaboradorDAL.ConsultarColaborador();
+            return dt;
         }
 
     }

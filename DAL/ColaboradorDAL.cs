@@ -251,10 +251,10 @@ namespace DAL
                 {
                     if (reader.Read())
                     {
-                        Colaborador colaborador = new Colaborador
+                        Colaborador colaborador = new Colaborador()
                         {
                             ID_colaborador = Convert.ToInt32(reader["ID_colaborador"]),
-                            NomeColaborador = reader["NomeColaborador"].ToString(),
+                            NomeColaborador = reader["Nome"].ToString(),
                             // Adicione outros campos conforme necessário
                         };
                         return colaborador;
@@ -267,7 +267,7 @@ namespace DAL
         public DataTable ConsultarColaborador()
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT Nome FROM tb_colaborador WHERE Ativo_inativo = 1";
+            string sql = "SELECT ID_colaborador, Nome FROM tb_colaborador WHERE Ativo_inativo = 1";
 
             using (MySqlConnection connection = mConn.AbrirConexao())
             {
