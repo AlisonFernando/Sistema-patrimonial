@@ -108,7 +108,7 @@ namespace UI
                     return;
                 }
             }
-            
+
 
             // Verificação se é uma atualização de nome ou e-mail (ignorando senha e confirmações)
             bool atualizacaoNomeOuEmail = !string.IsNullOrEmpty(txtID.Text) && (inputUserNome.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Nome || inputUserEmail.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Email);

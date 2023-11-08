@@ -69,7 +69,7 @@
             // txtUserNome
             // 
             txtUserNome.AutoSize = true;
-            txtUserNome.Location = new Point(127, 108);
+            txtUserNome.Location = new Point(127, 126);
             txtUserNome.Margin = new Padding(4, 0, 4, 0);
             txtUserNome.Name = "txtUserNome";
             txtUserNome.Size = new Size(61, 25);
@@ -79,7 +79,7 @@
             // txtEmailUser
             // 
             txtEmailUser.AutoSize = true;
-            txtEmailUser.Location = new Point(127, 175);
+            txtEmailUser.Location = new Point(127, 192);
             txtEmailUser.Margin = new Padding(4, 0, 4, 0);
             txtEmailUser.Name = "txtEmailUser";
             txtEmailUser.Size = new Size(61, 25);
@@ -89,7 +89,7 @@
             // txtUserSenha
             // 
             txtUserSenha.AutoSize = true;
-            txtUserSenha.Location = new Point(127, 307);
+            txtUserSenha.Location = new Point(127, 324);
             txtUserSenha.Margin = new Padding(4, 0, 4, 0);
             txtUserSenha.Name = "txtUserSenha";
             txtUserSenha.Size = new Size(60, 25);
@@ -147,7 +147,7 @@
             // 
             // inputUserNome
             // 
-            inputUserNome.Location = new Point(108, 138);
+            inputUserNome.Location = new Point(108, 156);
             inputUserNome.Margin = new Padding(4, 5, 4, 5);
             inputUserNome.MaxLength = 100;
             inputUserNome.Name = "inputUserNome";
@@ -156,7 +156,7 @@
             // 
             // inputUserEmail
             // 
-            inputUserEmail.Location = new Point(108, 205);
+            inputUserEmail.Location = new Point(108, 222);
             inputUserEmail.Margin = new Padding(4, 5, 4, 5);
             inputUserEmail.MaxLength = 100;
             inputUserEmail.Name = "inputUserEmail";
@@ -165,7 +165,7 @@
             // 
             // inputUserSenha
             // 
-            inputUserSenha.Location = new Point(108, 337);
+            inputUserSenha.Location = new Point(108, 354);
             inputUserSenha.Margin = new Padding(4, 5, 4, 5);
             inputUserSenha.MaxLength = 100;
             inputUserSenha.Name = "inputUserSenha";
@@ -198,7 +198,7 @@
             // 
             // txtConfirEmail
             // 
-            txtConfirEmail.Location = new Point(108, 271);
+            txtConfirEmail.Location = new Point(108, 288);
             txtConfirEmail.Margin = new Padding(4, 5, 4, 5);
             txtConfirEmail.MaxLength = 100;
             txtConfirEmail.Name = "txtConfirEmail";
@@ -208,7 +208,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(127, 241);
+            label2.Location = new Point(124, 258);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(145, 25);
@@ -217,7 +217,7 @@
             // 
             // txtConfirSenha
             // 
-            txtConfirSenha.Location = new Point(108, 411);
+            txtConfirSenha.Location = new Point(108, 420);
             txtConfirSenha.Margin = new Padding(4, 5, 4, 5);
             txtConfirSenha.MaxLength = 100;
             txtConfirSenha.Name = "txtConfirSenha";
@@ -228,7 +228,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(130, 373);
+            label3.Location = new Point(127, 390);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(142, 25);
@@ -339,7 +339,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Red;
-            label4.Location = new Point(114, 108);
+            label4.Location = new Point(114, 126);
             label4.Name = "label4";
             label4.Size = new Size(20, 25);
             label4.TabIndex = 25;
@@ -349,7 +349,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(114, 175);
+            label5.Location = new Point(114, 192);
             label5.Name = "label5";
             label5.Size = new Size(20, 25);
             label5.TabIndex = 26;
@@ -359,7 +359,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(113, 241);
+            label6.Location = new Point(110, 258);
             label6.Name = "label6";
             label6.Size = new Size(20, 25);
             label6.TabIndex = 27;
@@ -369,7 +369,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(114, 307);
+            label7.Location = new Point(108, 324);
             label7.Name = "label7";
             label7.Size = new Size(20, 25);
             label7.TabIndex = 28;
@@ -379,7 +379,7 @@
             // 
             label8.AutoSize = true;
             label8.ForeColor = Color.Red;
-            label8.Location = new Point(113, 373);
+            label8.Location = new Point(110, 390);
             label8.Name = "label8";
             label8.Size = new Size(20, 25);
             label8.TabIndex = 29;
@@ -400,7 +400,7 @@
             // ComboBoxAcesso
             // 
             ComboBoxAcesso.FormattingEnabled = true;
-            ComboBoxAcesso.Location = new Point(108, 450);
+            ComboBoxAcesso.Location = new Point(108, 459);
             ComboBoxAcesso.Name = "ComboBoxAcesso";
             ComboBoxAcesso.Size = new Size(182, 33);
             ComboBoxAcesso.TabIndex = 6;
