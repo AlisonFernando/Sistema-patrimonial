@@ -66,10 +66,9 @@ namespace BLL
         }
         public Colaborador ObterColaboradorPorID(int idColaborador)
         {
-            ColaboradorDAL colaboradorDAL = new ColaboradorDAL();
+
             return colaboradorDAL.ObterColaboradorPorID(idColaborador);
         }
-
         public DataTable CarregarColaborador()
         {
             DataTable dt = colaboradorDAL.ConsultarColaborador();

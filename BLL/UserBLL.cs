@@ -63,6 +63,10 @@ namespace BLL
 
             return userDAL.GetUsuarios();
         }
+        public List<Usuario> GetUsuariosAtivos()
+        {
+            return userDAL.GetUsuariosAtivos();
+        }
 
         public string UpdateUsuario(Usuario usuario, string emailUsuarioLogado)
         {
@@ -71,9 +75,9 @@ namespace BLL
             return "Sucesso";
         }
 
-        public void DeleteUsuario(int id_usuario, Usuario usuario, string emailUsuarioLogado)
+        public void DesativarUsuario(int id_usuario)
         {
-            userDAL.DeleteUsuario(id_usuario, usuario, emailUsuarioLogado);
+            userDAL.DesativarUsuario(id_usuario);
         }
 
 

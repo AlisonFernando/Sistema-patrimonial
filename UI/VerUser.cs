@@ -16,6 +16,7 @@ namespace UI
     {
         private UserBLL userBLL = new UserBLL();
         private List<Usuario> usuarios = new List<Usuario>();
+        private List<Usuario> usuariosEmail = new List<Usuario>();
         public VerUser()
         {
             InitializeComponent();
@@ -42,23 +43,28 @@ namespace UI
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             string nomePesquisado = txtPesquisar.Text.Trim();
+
             List<Usuario> usuariosFiltrados = usuarios
-                .Where(usuario => usuario.Nome.Contains(nomePesquisado, StringComparison.OrdinalIgnoreCase))
+                .Where(usuario =>
+                    usuario.Nome.Contains(nomePesquisado, StringComparison.OrdinalIgnoreCase) ||
+                    usuario.Email.Contains(nomePesquisado, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
             if (usuariosFiltrados.Count == 0)
             {
-                MessageBox.Show("Usuario não encontrado.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Usuário não encontrado.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (nomePesquisado == string.Empty)
             {
-                MessageBox.Show("Digite o nome do usuario e tente novamente");
+                MessageBox.Show("Digite o nome do usuário ou e-mail e tente novamente");
                 txtPesquisar.Focus();
             }
             else
             {
                 MostrarUsuarios.DataSource = usuariosFiltrados;
             }
+
+
         }
 
         private void MostrarUsuarios_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

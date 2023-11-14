@@ -54,7 +54,8 @@ namespace DAL
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                string query = "UPDATE tb_marca SET Nome, Ativo_inativo = @Nome, @Ativo_inativo WHERE id_marca = @id_marca";
+                string query = "UPDATE tb_marca SET Nome = @Nome, Ativo_inativo = @Ativo_inativo WHERE id_marca = @id_marca";
+                
                 dbConnection.Execute(query, marca);
 
                 mConn.FecharConexao();
@@ -140,19 +141,40 @@ namespace DAL
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_marca SET Ativo_inativo = 0 WHERE id_marca = @IdMarca";
-                dbConnection.Execute(query, new { IdMarca = idMarca });
+                int rowsAffected = dbConnection.Execute(query, new { IdMarca = idMarca });
+
+                if (rowsAffected > 0)
+                {
+                    // Atualização bem-sucedida
+                    // Aqui você pode adicionar lógica adicional se necessário
+                }
+                else
+                {
+                    // A atualização não teve efeito (nenhuma marca encontrada com o ID especificado, por exemplo)
+                    // Adicione lógica apropriada, se necessário
+                }
             }
         }
+
         public void AtivarMarca(int idMarca)
         {
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_marca SET Ativo_inativo = 1 WHERE id_marca = @IdMarca";
-                dbConnection.Execute(query, new { IdMarca = idMarca });
+                int rowsAffected = dbConnection.Execute(query, new { IdMarca = idMarca });
+
+                if (rowsAffected > 0)
+                {
+                    // Atualização bem-sucedida
+                    // Aqui você pode adicionar lógica adicional se necessário
+                }
+                else
+                {
+                    // A atualização não teve efeito (nenhuma marca encontrada com o ID especificado, por exemplo)
+                    // Adicione lógica apropriada, se necessário
+                }
             }
         }
-
-
     }
 }

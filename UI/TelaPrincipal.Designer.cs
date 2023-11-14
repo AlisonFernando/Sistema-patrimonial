@@ -58,6 +58,7 @@
             alison = new ToolStripStatusLabel();
             relogio = new System.Windows.Forms.Timer(components);
             pictureBox1 = new PictureBox();
+            setorToolStripMenuItem = new ToolStripMenuItem();
             MenuPrincipal.SuspendLayout();
             HeaderDescricao.SuspendLayout();
             FooterPrincipal.SuspendLayout();
@@ -77,7 +78,7 @@
             // 
             // cadastrarToolStripMenuItem
             // 
-            cadastrarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuCadColaborador, MenuCadEquip, MenuCadChamado, marcaDeEquipamentoToolStripMenuItem, CadUserMenu });
+            cadastrarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { MenuCadColaborador, MenuCadEquip, MenuCadChamado, marcaDeEquipamentoToolStripMenuItem, CadUserMenu, setorToolStripMenuItem });
             cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
             cadastrarToolStripMenuItem.Size = new Size(103, 29);
             cadastrarToolStripMenuItem.Text = "Cadastrar";
@@ -156,29 +157,29 @@
             // MenuRelatorioEquip
             // 
             MenuRelatorioEquip.Name = "MenuRelatorioEquip";
-            MenuRelatorioEquip.Size = new Size(469, 34);
+            MenuRelatorioEquip.Size = new Size(447, 34);
             MenuRelatorioEquip.Text = "Qtd equipamentos";
             MenuRelatorioEquip.Click += MenuRelatorioEquip_Click;
             // 
             // MenuRelatorioPrecoEquip
             // 
             MenuRelatorioPrecoEquip.Name = "MenuRelatorioPrecoEquip";
-            MenuRelatorioPrecoEquip.Size = new Size(469, 34);
+            MenuRelatorioPrecoEquip.Size = new Size(447, 34);
             MenuRelatorioPrecoEquip.Text = "Preço equipamentos";
             MenuRelatorioPrecoEquip.Click += MenuRelatorioPrecoEquip_Click;
             // 
             // MenuRelatorioColabAtivo
             // 
             MenuRelatorioColabAtivo.Name = "MenuRelatorioColabAtivo";
-            MenuRelatorioColabAtivo.Size = new Size(469, 34);
+            MenuRelatorioColabAtivo.Size = new Size(447, 34);
             MenuRelatorioColabAtivo.Text = "Colaboradores ativos";
             MenuRelatorioColabAtivo.Click += MenuRelatorioColabAtivo_Click;
             // 
             // MenuEquips_e_Manutencao
             // 
             MenuEquips_e_Manutencao.Name = "MenuEquips_e_Manutencao";
-            MenuEquips_e_Manutencao.Size = new Size(469, 34);
-            MenuEquips_e_Manutencao.Text = "Equipamentos disponíveis e em manutenção";
+            MenuEquips_e_Manutencao.Size = new Size(447, 34);
+            MenuEquips_e_Manutencao.Text = "Equipamentos associados ao colaborador";
             MenuEquips_e_Manutencao.Click += MenuEquips_e_Manutencao_Click;
             // 
             // opçõesToolStripMenuItem
@@ -282,6 +283,13 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
+            // setorToolStripMenuItem
+            // 
+            setorToolStripMenuItem.Name = "setorToolStripMenuItem";
+            setorToolStripMenuItem.Size = new Size(298, 34);
+            setorToolStripMenuItem.Text = "Setor";
+            setorToolStripMenuItem.Click += setorToolStripMenuItem_Click;
+            // 
             // TelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -339,5 +347,6 @@
         private ToolStripMenuItem opçõesToolStripMenuItem;
         private ToolStripMenuItem MenuRedefinirSenha;
         private ToolStripMenuItem MenuEquips_e_Manutencao;
+        private ToolStripMenuItem setorToolStripMenuItem;
     }
 }

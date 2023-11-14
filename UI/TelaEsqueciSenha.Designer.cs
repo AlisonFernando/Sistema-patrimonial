@@ -49,14 +49,14 @@
             btnRecuperar = new Button();
             btnLimpar = new Button();
             txtUserNome = new Label();
-            label4 = new Label();
-            label3 = new Label();
+            lblRed1 = new Label();
+            txtSenhaLabel = new Label();
             txtSenhaNova = new TextBox();
-            label5 = new Label();
+            lblRed3 = new Label();
             txtEmail = new TextBox();
             txtToken = new TextBox();
-            label2 = new Label();
-            label6 = new Label();
+            txtTokenEmail = new Label();
+            lblRed2 = new Label();
             btnRedefinirSenha = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
@@ -291,25 +291,25 @@
             txtUserNome.TabIndex = 33;
             txtUserNome.Text = "Digite um email";
             // 
-            // label4
+            // lblRed1
             // 
-            label4.AutoSize = true;
-            label4.ForeColor = Color.Red;
-            label4.Location = new Point(191, 151);
-            label4.Name = "label4";
-            label4.Size = new Size(20, 25);
-            label4.TabIndex = 34;
-            label4.Text = "*";
+            lblRed1.AutoSize = true;
+            lblRed1.ForeColor = Color.Red;
+            lblRed1.Location = new Point(191, 151);
+            lblRed1.Name = "lblRed1";
+            lblRed1.Size = new Size(20, 25);
+            lblRed1.TabIndex = 34;
+            lblRed1.Text = "*";
             // 
-            // label3
+            // txtSenhaLabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(206, 289);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(194, 25);
-            label3.TabIndex = 38;
-            label3.Text = "Digite uma nova senha";
+            txtSenhaLabel.AutoSize = true;
+            txtSenhaLabel.Location = new Point(206, 289);
+            txtSenhaLabel.Margin = new Padding(4, 0, 4, 0);
+            txtSenhaLabel.Name = "txtSenhaLabel";
+            txtSenhaLabel.Size = new Size(194, 25);
+            txtSenhaLabel.TabIndex = 38;
+            txtSenhaLabel.Text = "Digite uma nova senha";
             // 
             // txtSenhaNova
             // 
@@ -319,15 +319,15 @@
             txtSenhaNova.Size = new Size(379, 31);
             txtSenhaNova.TabIndex = 3;
             // 
-            // label5
+            // lblRed3
             // 
-            label5.AutoSize = true;
-            label5.ForeColor = Color.Red;
-            label5.Location = new Point(191, 289);
-            label5.Name = "label5";
-            label5.Size = new Size(20, 25);
-            label5.TabIndex = 39;
-            label5.Text = "*";
+            lblRed3.AutoSize = true;
+            lblRed3.ForeColor = Color.Red;
+            lblRed3.Location = new Point(191, 289);
+            lblRed3.Name = "lblRed3";
+            lblRed3.Size = new Size(20, 25);
+            lblRed3.TabIndex = 39;
+            lblRed3.Text = "*";
             // 
             // txtEmail
             // 
@@ -345,25 +345,25 @@
             txtToken.Size = new Size(379, 31);
             txtToken.TabIndex = 2;
             // 
-            // label2
+            // txtTokenEmail
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(206, 220);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(305, 25);
-            label2.TabIndex = 43;
-            label2.Text = "Digite o token enviado no seu e-mail";
+            txtTokenEmail.AutoSize = true;
+            txtTokenEmail.Location = new Point(206, 220);
+            txtTokenEmail.Margin = new Padding(4, 0, 4, 0);
+            txtTokenEmail.Name = "txtTokenEmail";
+            txtTokenEmail.Size = new Size(305, 25);
+            txtTokenEmail.TabIndex = 43;
+            txtTokenEmail.Text = "Digite o token enviado no seu e-mail";
             // 
-            // label6
+            // lblRed2
             // 
-            label6.AutoSize = true;
-            label6.ForeColor = Color.Red;
-            label6.Location = new Point(191, 220);
-            label6.Name = "label6";
-            label6.Size = new Size(20, 25);
-            label6.TabIndex = 44;
-            label6.Text = "*";
+            lblRed2.AutoSize = true;
+            lblRed2.ForeColor = Color.Red;
+            lblRed2.Location = new Point(191, 220);
+            lblRed2.Name = "lblRed2";
+            lblRed2.Size = new Size(20, 25);
+            lblRed2.TabIndex = 44;
+            lblRed2.Text = "*";
             // 
             // btnRedefinirSenha
             // 
@@ -372,7 +372,7 @@
             btnRedefinirSenha.Location = new Point(191, 366);
             btnRedefinirSenha.Name = "btnRedefinirSenha";
             btnRedefinirSenha.Size = new Size(140, 43);
-            btnRedefinirSenha.TabIndex = 45;
+            btnRedefinirSenha.TabIndex = 4;
             btnRedefinirSenha.Text = "Redefinir senha";
             btnRedefinirSenha.UseVisualStyleBackColor = false;
             btnRedefinirSenha.Click += btnRedefinirSenha_Click;
@@ -383,15 +383,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(757, 887);
             Controls.Add(btnRedefinirSenha);
-            Controls.Add(label2);
-            Controls.Add(label6);
+            Controls.Add(txtTokenEmail);
+            Controls.Add(lblRed2);
             Controls.Add(txtToken);
             Controls.Add(txtEmail);
-            Controls.Add(label5);
-            Controls.Add(label3);
+            Controls.Add(lblRed3);
+            Controls.Add(txtSenhaLabel);
             Controls.Add(txtSenhaNova);
             Controls.Add(txtUserNome);
-            Controls.Add(label4);
+            Controls.Add(lblRed1);
             Controls.Add(btnLimpar);
             Controls.Add(panel2);
             Controls.Add(txtPesquisar);
@@ -445,5 +445,10 @@
         private Label label2;
         private Label label6;
         private Button btnRedefinirSenha;
+        private Label lblRed1;
+        private Label txtSenhaLabel;
+        private Label lblRed3;
+        private Label txtTokenEmail;
+        private Label lblRed2;
     }
 }

@@ -268,6 +268,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.DarkGreen;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
             label3.Location = new Point(46, 307);
             label3.Name = "label3";
             label3.Size = new Size(215, 32);
@@ -323,6 +324,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.DarkGreen;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
             label4.Location = new Point(437, 307);
             label4.Name = "label4";
             label4.Size = new Size(219, 32);

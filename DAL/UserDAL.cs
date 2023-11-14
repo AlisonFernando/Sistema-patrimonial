@@ -24,18 +24,25 @@ namespace DAL
         public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
         public void InserirUsuario(Usuario usuario, string emailUsuarioLogado)
         {
+            
             string senhaNaoCriptografada = usuario.Senha;
             string senhaCriptografada = HashPassword(senhaNaoCriptografada);
             usuario.SenhaHash = senhaCriptografada;
 
-            // Inserir o usuário na tabela tb_usuario
-            sql = "INSERT INTO tb_usuario(Nome, Email, Senha, UserAcesso) VALUES (@Nome, @Email, @Senha, @UserAcesso)";
+            string ativo = "0";
+            if (usuario.Ativo_inativo)
+            {
+                ativo = "1";
+            }
+
+            sql = "INSERT INTO tb_usuario(Nome, Email, Senha, UserAcesso, Ativo_inativo) VALUES (@Nome, @Email, @Senha, @UserAcesso, @Ativo_inativo)";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@Nome", usuario.Nome);
             cmd.Parameters.AddWithValue("@Email", usuario.Email);
             cmd.Parameters.AddWithValue("@Senha", usuario.SenhaHash);
             cmd.Parameters.AddWithValue("@UserAcesso", usuario.UserAcesso);
+            cmd.Parameters.AddWithValue("@Ativo_inativo", ativo);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
@@ -130,30 +137,35 @@ namespace DAL
                 mConn.FecharConexao();
             }
         }
-
-        public void DeleteUsuario(int id_usuario, Usuario usuario, string emailUsuarioLogado)
+        public List<Usuario> GetUsuariosAtivos()
         {
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                string query = "DELETE FROM tb_usuario WHERE id_usuario = @id_usuario";
-                dbConnection.Execute(query, new { id_usuario });
+                string query = "SELECT id_usuario, Nome, Email, Senha, UserAcesso FROM tb_usuario WHERE Ativo_inativo = @AtivoInativo";
+                return dbConnection.Query<Usuario>(query, new { AtivoInativo = 1 }).ToList();
+            }
+        }
 
-                mConn.FecharConexao();
 
-                // Inserir o registro de log na tabela tb_logs
-                DateTime dataHoraAcao = DateTime.Now;
-                string tipoOperacao = "cadastro de usuário"; // Defina o tipo de operação conforme necessário
+        public void DesativarUsuario(int id_usuario)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_usuario SET Ativo_inativo = 0 WHERE id_usuario = @id_usuario";
+                int rowsAffected = dbConnection.Execute(query, new { ID_usuario = id_usuario });
 
-                sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
-                cmd = new MySqlCommand(sql, mConn.AbrirConexao());
-
-                cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
-                cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
-                cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
-
-                cmd.ExecuteNonQuery();
-                mConn.FecharConexao();
+                if (rowsAffected > 0)
+                {
+                    // Atualização bem-sucedida
+                    // Aqui você pode adicionar lógica adicional se necessário
+                }
+                else
+                {
+                    // A atualização não teve efeito (nenhuma marca encontrada com o ID especificado, por exemplo)
+                    // Adicione lógica apropriada, se necessário
+                }
             }
         }
         public int ObterUserChamado(string email)

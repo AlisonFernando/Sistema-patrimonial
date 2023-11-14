@@ -40,7 +40,11 @@ namespace UI
                 // Abre o documento para escrita
                 doc.Open();
 
-                // Adicione uma linha separadora
+                // Adicione o título
+                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+                Paragraph title = new Paragraph("Quantidade de equipamentos cadastrados", titleFont);
+                title.Alignment = Element.ALIGN_CENTER;
+                doc.Add(title);
                 doc.Add(new Chunk("\n"));
 
                 // Obtém os dados dos equipamentos
@@ -99,6 +103,7 @@ namespace UI
                     totalEquipamentos++; // Incrementa a contagem a cada equipamento listado
                     alternateRowColor = !alternateRowColor;
                 }
+
                 // Adicione o valor total dos equipamentos
                 iTextSharp.text.Paragraph totalParagraph = new iTextSharp.text.Paragraph($"Quantidade de equipamentos cadastrados: {totalEquipamentos}");
                 totalParagraph.Alignment = Element.ALIGN_RIGHT;
@@ -113,6 +118,13 @@ namespace UI
                 doc.Add(new Chunk("\n"));
                 doc.Add(new Chunk("\n"));
                 doc.Add(new Chunk("\n"));
+
+                // Adicione a data e hora de geração do relatório
+                DateTime dataHoraAtual = DateTime.Now;
+                string dataHoraFormatada = "Data e Hora de Geração: " + dataHoraAtual.ToString("dd/MM/yyyy HH:mm:ss");
+                Paragraph dataHora = new Paragraph(dataHoraFormatada);
+                dataHora.Alignment = Element.ALIGN_RIGHT;
+                doc.Add(dataHora);
 
                 // Adicione a imagem centralizada
                 string imageUrl = "https://www.scotconsultoria.com.br/img/relatorio_sys.png";
@@ -132,6 +144,7 @@ namespace UI
         }
 
 
+
         private void btnCaminho_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -149,6 +162,11 @@ namespace UI
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }

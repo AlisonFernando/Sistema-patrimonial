@@ -42,6 +42,7 @@ namespace UI
                 MenuRelatorioEquip.Enabled = true;
                 MenuRelatorioPrecoEquip.Enabled = true;
                 MenuSair.Enabled = true;
+                MenuRedefinirSenha.Enabled = false;
             }
         }
 
@@ -140,6 +141,12 @@ namespace UI
         {
             UI.RelatorioMasterDetail relatorioMasterDetail = new UI.RelatorioMasterDetail();
             relatorioMasterDetail.ShowDialog();
+        }
+
+        private void setorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.TelaCadSetor telaCadSetor = new UI.TelaCadSetor();
+            telaCadSetor.ShowDialog();
         }
     }
 }

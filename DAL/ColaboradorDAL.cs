@@ -142,7 +142,7 @@ namespace DAL
 
                     foreach (string id in idsSelecionados)
                     {
-                        
+
                         using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                         {
                             cmd.Parameters.AddWithValue("@ID_equipamento", id);
@@ -199,7 +199,7 @@ namespace DAL
                             colaboradores.Add(colaborador);
 
                         }
-                        
+
                     }
                 }
 
@@ -208,6 +208,9 @@ namespace DAL
 
             return colaboradores;
         }
+        
+
+
         public void DesativarColaborador(int ID_Colab)
         {
             using (IDbConnection dbConnection = new MySqlConnection(conec))
@@ -255,6 +258,7 @@ namespace DAL
                         {
                             ID_colaborador = Convert.ToInt32(reader["ID_colaborador"]),
                             NomeColaborador = reader["Nome"].ToString(),
+                            EmailColaborador = reader["Email"].ToString()
                             // Adicione outros campos conforme necessário
                         };
                         return colaborador;
@@ -263,7 +267,6 @@ namespace DAL
                 }
             }
         }
-
         public DataTable ConsultarColaborador()
         {
             DataTable dt = new DataTable();

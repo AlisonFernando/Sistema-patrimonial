@@ -84,17 +84,32 @@ namespace UI
                     PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(caminhoRelatorio, FileMode.Create));
 
                     document.Open();
-                    document.Add(new Paragraph("Nome do Colaborador: " + colaborador.NomeColaborador));
+
+                    // Adicione o título
+                    iTextSharp.text.Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK);
+                    Paragraph title = new Paragraph("Equipamentos associados ao colaborador", titleFont);
+                    title.Alignment = Element.ALIGN_CENTER;
                     document.Add(new Chunk("\n"));
+                    document.Add(title);
+                    
+
+                    // Adicione o nome do colaborador
+                    document.Add(new Chunk("\n"));
+                    iTextSharp.text.Font nameFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.DARK_GRAY);
+                    Paragraph name = new Paragraph("Nome do Colaborador: " + colaborador.NomeColaborador, nameFont);
+                    name.Alignment = Element.ALIGN_LEFT;
+                    document.Add(name);
 
                     // Adicione uma tabela para os equipamentos
-                    PdfPTable table = new PdfPTable(2);
+                    PdfPTable table = new PdfPTable(4);
                     table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; // Remova as bordas padrão
                     table.WidthPercentage = 100; // Preencha a largura da página
 
                     // Adicione cabeçalhos à tabela
                     table.AddCell(getHeaderCell("ID"));
                     table.AddCell(getHeaderCell("Equipamento"));
+                    table.AddCell(getHeaderCell("Descricao"));
+                    table.AddCell(getHeaderCell("Etiqueta"));
 
                     // Adicione linhas à tabela
                     BaseColor rowColor1 = new BaseColor(238, 238, 238); // Cor #EEEEEE
@@ -105,6 +120,8 @@ namespace UI
                     {
                         table.AddCell(getCell(equipamento.ID_equipamento.ToString(), rowColor1, rowColor2, alternateRowColor));
                         table.AddCell(getCell(equipamento.Nome, rowColor1, rowColor2, alternateRowColor));
+                        table.AddCell(getCell(equipamento.Descricao, rowColor1, rowColor2, alternateRowColor));
+                        table.AddCell(getCell(equipamento.Etiqueta, rowColor1, rowColor2, alternateRowColor));
 
                         alternateRowColor = !alternateRowColor;
                     }
@@ -118,8 +135,12 @@ namespace UI
                     document.Add(new Chunk("\n"));
                     document.Add(new Chunk("\n"));
 
-                    // Adicione uma linha de separação simulada
-                    //addSeparatorLine(document);
+
+                    DateTime dataHoraAtual = DateTime.Now;
+                    string dataHoraFormatada = "Data e Hora de Geração: " + dataHoraAtual.ToString("dd/MM/yyyy HH:mm:ss");
+                    Paragraph dataHora = new Paragraph(dataHoraFormatada);
+                    dataHora.Alignment = Element.ALIGN_RIGHT;
+                    document.Add(dataHora);
 
                     // Adicione a imagem centralizada
                     string imageUrl = "https://www.scotconsultoria.com.br/img/relatorio_sys.png";
@@ -129,7 +150,7 @@ namespace UI
 
                     // Feche o documento
                     document.Close();
-                    MessageBox.Show("Relatório gerado com sucesso, salvo em: " + caminhoDestino, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Relatório gerado com sucesso, salvo em: " + caminhoRelatorio, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -137,6 +158,7 @@ namespace UI
                 MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private PdfPCell getHeaderCell(string text)
         {
             PdfPCell cell = new PdfPCell(new Phrase(text));
@@ -168,6 +190,11 @@ namespace UI
             cell.BorderColor = rowColor4;
 
             return cell;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

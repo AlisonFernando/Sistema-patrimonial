@@ -14,6 +14,8 @@ namespace model
         public string senha;
         public string confirmEmail;
         public string confirmSenha;
+        
+        public bool ativo;
         public string SenhaHash { get; set; }
         public int id_usuario { get; set; }
         public int UserAcesso { get; set; }
@@ -43,6 +45,12 @@ namespace model
         {
             get { return confirmSenha; }
             set { confirmSenha = value; }
+        }
+
+        public bool Ativo_inativo
+        {
+            get { return ativo; }
+            set { ativo = value; }
         }
     }
 }

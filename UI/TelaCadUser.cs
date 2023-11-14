@@ -45,7 +45,7 @@ namespace UI
 
         public void LoadUsuarios()
         {
-            usuarios = userBLL.GetUsuarios();
+            usuarios = userBLL.GetUsuariosAtivos();
             MostrarUsuarios.DataSource = usuarios;
         }
 
@@ -67,18 +67,18 @@ namespace UI
             if (!string.IsNullOrEmpty(txtID.Text))
                 usuario.id_usuario = int.Parse(txtID.Text);
 
-            usuario.Nome = inputUserNome.Text;
-            usuario.Email = inputUserEmail.Text;
+            usuario.Nome = inputUserNome.Text.Trim();
+            usuario.Email = inputUserEmail.Text.Trim();
             usuario.Senha = inputUserSenha.Text;
-            usuario.ConfirmarEmail = txtConfirEmail.Text;
+            usuario.ConfirmarEmail = txtConfirEmail.Text.Trim();
             usuario.ConfirmarSenha = txtConfirSenha.Text;
             usuario.UserAcesso = (int)ComboBoxAcesso.SelectedValue;
+            usuario.Ativo_inativo = checkAtivo.Checked;
 
-
-            // Verificação de espaços em branco em nome e email
-            if (string.IsNullOrWhiteSpace(usuario.Nome) || string.IsNullOrWhiteSpace(usuario.Email))
+            // Verificação de espaços em branco em nome
+            if (string.IsNullOrWhiteSpace(usuario.Nome))
             {
-                MessageBox.Show("Nome e email devem ser preenchidos.");
+                MessageBox.Show("Nome deve ser preenchido.");
                 return;
             }
 
@@ -96,55 +96,35 @@ namespace UI
                 return;
             }
 
-            // Verificação se o email já existe no banco de dados (apenas durante inserção)
-            if (string.IsNullOrEmpty(txtID.Text))
-            {
-                UserBLL verificarEmailBLL = new UserBLL();
-                string verificar = verificarEmailBLL.VerificarEmail(usuario.Email);
-
-                if (verificar == "Email existente" && usuario.Email != emailAtual)
-                {
-                    MessageBox.Show("O email já existe no banco de dados");
-                    return;
-                }
-            }
-
-
-            // Verificação se é uma atualização de nome ou e-mail (ignorando senha e confirmações)
-            bool atualizacaoNomeOuEmail = !string.IsNullOrEmpty(txtID.Text) && (inputUserNome.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Nome || inputUserEmail.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Email);
-
             string retorno;
             UserBLL cadUserBLL = new UserBLL();
 
+            // Verifique se é uma atualização de nome ou e-mail (ignorando senha e confirmações)
+            bool atualizacaoNomeOuEmail = !string.IsNullOrEmpty(txtID.Text) &&
+                (inputUserNome.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Nome ||
+                 inputUserEmail.Text != usuarios.Find(u => u.id_usuario == usuario.id_usuario)?.Email);
+
             if (!string.IsNullOrEmpty(txtID.Text))
             {
-                retorno = cadUserBLL.UpdateUsuario(usuario, Program.UserEmail);
-            }
-            if (!string.IsNullOrEmpty(txtID.Text))
-            {
-                // Verifique se o email foi alterado e se já existe no banco de dados
-                if (usuario.Email != emailAtual)
-                {
-                    UserBLL verificarEmailBLL = new UserBLL();
-                    string verificar = verificarEmailBLL.VerificarEmail(usuario.Email);
-
-                    if (verificar == "Email existente")
-                    {
-                        MessageBox.Show("O email já existe");
-                        return;
-                    }
-                }
-
                 retorno = cadUserBLL.UpdateUsuario(usuario, Program.UserEmail);
             }
             else
             {
+                // Verificação se o email já existe no banco de dados (apenas durante inserção)
+                UserBLL verificarEmailBLL = new UserBLL();
+                string verificar = verificarEmailBLL.VerificarEmail(usuario.Email);
+
+                if (verificar == "Email existente")
+                {
+                    MessageBox.Show("O email já existe no banco de dados");
+                    return;
+                }
+
                 retorno = cadUserBLL.CadUser(usuario, Program.UserEmail);
             }
 
             if (retorno == "Sucesso")
             {
-
                 MessageBox.Show("Ação efetuada com sucesso!");
                 LoadUsuarios();
                 btn_limpar.PerformClick();
@@ -166,25 +146,6 @@ namespace UI
             inputUserSenha.Enabled = true;
         }
 
-        private void btnDeletar_Click(object sender, EventArgs e)
-        {
-            Usuario usuario = new Usuario();
-            if (!string.IsNullOrEmpty(txtID.Text))
-            {
-                int id_usuario = int.Parse(txtID.Text);
-
-                DialogResult result = MessageBox.Show("Tem certeza que deseja excluir este usuário?", "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    userBLL.DeleteUsuario(id_usuario, usuario, Program.UserEmail);
-                    LoadUsuarios();
-                }
-
-
-                MessageBox.Show("Usuário deletado com sucesso!");
-                btn_limpar.PerformClick();
-            }
-        }
         private void btnCancelarCadUser_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -212,5 +173,21 @@ namespace UI
                 inputUserSenha.Enabled = false;
             }
         }
+
+        private void btnDesativar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                int idUsuario = int.Parse(txtID.Text);
+                userBLL.DesativarUsuario(idUsuario);
+                MessageBox.Show("Usuario desativado com sucesso.");
+                LoadUsuarios();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um usuario para desativar.");
+            }
+        }
     }
 }
+

@@ -23,13 +23,18 @@ namespace UI
         public TelaCadastrarMarca()
         {
             InitializeComponent();
-            LoadMarcas();
+            LoadMarcasAtivas();
+            LoadMarcasDesativadas();
         }
-        public void LoadMarcas()
+
+        public void LoadMarcasAtivas()
         {
             marcasAtivas = marcaBLL.GetMarcasAtivas();
-            marcasDesativadas = marcaBLL.GetMarcasDesativadas();
             MostrarMarcasCadastradas.DataSource = marcasAtivas;
+        }
+        public void LoadMarcasDesativadas()
+        {
+            marcasDesativadas = marcaBLL.GetMarcasDesativadas();
             MostrarMarcasDesativadas.DataSource = marcasDesativadas;
         }
 
@@ -39,53 +44,62 @@ namespace UI
 
             if (!string.IsNullOrEmpty(txtID.Text))
                 marca.ID_Marca = int.Parse(txtID.Text);
+
             marca.Nome = txtMarca.Text;
             marca.Ativo_inativo = checkAtivo.Checked;
 
-
-            //Valida se a o txtBox está vazio e se a marca existe
-            if (string.IsNullOrWhiteSpace(marca.Nome) || marca.Nome.Trim() == "" || Regex.IsMatch(marca.Nome, @"\s"))
+            // Valida se o txtBox está vazio
+            if (string.IsNullOrWhiteSpace(marca.Nome) || Regex.IsMatch(marca.Nome, @"\s"))
             {
                 MessageBox.Show("O nome da marca não pode ficar em branco ou conter espaços em branco.");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtID.Text))
-            {
-                MarcaBLL verificarMarca = new MarcaBLL();
-                string verificar = verificarMarca.VerificarMarca(marca.Nome);
 
-                if (verificar == "Marca existente" && marca.Nome == nomeMarca)
+            MarcaBLL verificarMarca = new MarcaBLL();
+            string verificar = verificarMarca.VerificarMarca(marca.Nome);
+
+            if (verificar == "Marca existente")
+            {
+                if (string.IsNullOrEmpty(txtID.Text) || (string.Equals(marca.Nome, nomeMarca, StringComparison.OrdinalIgnoreCase)))
                 {
-                    MessageBox.Show("Essa marca já existe cadastrada");
+                    MessageBox.Show("Essa marca já existe cadastrada.");
                     return;
                 }
             }
 
-            //Executa o cadastrou o atualização da marca
-
+            // Executa o cadastro ou atualização da marca
             string retorno;
             MarcaBLL cadMarcaBLL = new MarcaBLL();
 
             if (!string.IsNullOrEmpty(txtID.Text))
             {
                 retorno = cadMarcaBLL.UpdateMarca(marca, Program.UserEmail);
-                LoadMarcas();
             }
             else
             {
                 retorno = cadMarcaBLL.CadMarca(marca, Program.UserEmail);
-                LoadMarcas();
             }
 
             if (retorno == "Sucesso")
             {
-
                 MessageBox.Show("Ação efetuada com sucesso!");
-                LoadMarcas();
-                btnLimpar.PerformClick();
 
+                // Verifica se a marca editada é ativa ou desativada
+                if (marca.Ativo_inativo)
+                {
+                    // Se ativa, recarrega apenas a lista de marcas ativas
+                    LoadMarcasAtivas();
+                }
+                else
+                {
+                    // Se desativada, recarrega apenas a lista de marcas desativadas
+                    LoadMarcasDesativadas();
+                }
+
+                btnLimpar.PerformClick();
             }
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -118,7 +132,8 @@ namespace UI
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             txtMarca.Text = string.Empty;
-            LoadMarcas();
+            LoadMarcasAtivas();
+            LoadMarcasDesativadas();
         }
 
         private void MostrarMarcasCadastradas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -148,7 +163,8 @@ namespace UI
                 int idMarca = int.Parse(txtID.Text);
                 marcaBLL.DesativarMarca(idMarca);
                 MessageBox.Show("Marca desativada com sucesso.");
-                LoadMarcas();
+                LoadMarcasAtivas();
+                LoadMarcasDesativadas();
             }
             else
             {
@@ -177,7 +193,8 @@ namespace UI
                 int idMarca = int.Parse(txtID.Text);
                 marcaBLL.AtivarMarca(idMarca);
                 MessageBox.Show("Marca ativada com sucesso.");
-                LoadMarcas();
+                LoadMarcasAtivas();
+                LoadMarcasDesativadas();
             }
             else
             {

@@ -28,6 +28,12 @@ namespace UI
             LoadUsuarios();
             txtToken.Enabled = false;
             txtSenhaNova.Enabled = false;
+            txtUserNome.Visible = false;
+            lblRed1.Visible = false;
+            txtTokenEmail.Visible = false;
+            lblRed2.Visible = false;
+            txtSenhaLabel.Visible = false;
+            lblRed3.Visible = false;
         }
         public void LoadUsuarios()
         {
@@ -79,7 +85,13 @@ namespace UI
 
                         MessageBox.Show("Um e-mail de recuperação foi enviado para o seu endereço.");
                         txtToken.Enabled = true;
-                        txtSenhaNova .Enabled = true;
+                        txtSenhaNova.Enabled = true;
+                        txtUserNome.Visible = true;
+                        lblRed1.Visible = true;
+                        txtTokenEmail.Visible = true;
+                        lblRed2.Visible = true;
+                        txtSenhaLabel.Visible = true;
+                        lblRed3.Visible = true;
                     }
                     else
                     {
@@ -106,7 +118,7 @@ namespace UI
                 MailMessage mensagem = new MailMessage("recuperarsenhascot@gmail.com", destinatarioEmail);
                 mensagem.Subject = "Recuperação de Senha";
                 mensagem.Body = "Segue abaixo o token para recuperação de senha, siga o passo a passo abaixo do token.\n" +
-                                "Token de recuperação de senha:" + tokenRecuperacao +"\n" +
+                                "Token de recuperação de senha:" + tokenRecuperacao + "\n" +
                                 "Insira o token acima no campo abaixo do e-mail digitado, em seguida coloque a nova senha e clique no botão para redefinir a senha";
                 mensagem.IsBodyHtml = false;
 

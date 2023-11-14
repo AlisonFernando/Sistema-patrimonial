@@ -173,6 +173,8 @@ namespace DAL
                         {
                             ID_equipamento = Convert.ToInt32(reader["ID_equipamento"]),
                             Nome = reader["Nome_equipamento"].ToString(),
+                            Descricao = reader["Descricao"].ToString(),
+                            Etiqueta = reader["Etiqueta_identificacao"].ToString(),                            
                             // Adicione outros campos conforme necessário
                         };
                         equipamentos.Add(equipamento);

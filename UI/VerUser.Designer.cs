@@ -45,6 +45,7 @@
             UserAcesso = new DataGridViewTextBoxColumn();
             ConfirmarEmail = new DataGridViewTextBoxColumn();
             ConfirmarSenha = new DataGridViewTextBoxColumn();
+            Ativo_inativo = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
             panel1.SuspendLayout();
@@ -58,7 +59,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1143, 83);
+            panel2.Size = new Size(899, 83);
             panel2.TabIndex = 11;
             // 
             // header
@@ -66,7 +67,7 @@
             header.AutoSize = true;
             header.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             header.ForeColor = SystemColors.Control;
-            header.Location = new Point(397, 20);
+            header.Location = new Point(296, 15);
             header.Margin = new Padding(4, 0, 4, 0);
             header.Name = "header";
             header.Size = new Size(315, 41);
@@ -79,14 +80,14 @@
             MostrarUsuarios.AllowUserToAddRows = false;
             MostrarUsuarios.AllowUserToDeleteRows = false;
             MostrarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, Email, SenhaH, UserAcesso, ConfirmarEmail, ConfirmarSenha });
-            MostrarUsuarios.Location = new Point(257, 230);
+            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, Email, SenhaH, UserAcesso, ConfirmarEmail, ConfirmarSenha, Ativo_inativo });
+            MostrarUsuarios.Location = new Point(140, 190);
             MostrarUsuarios.Name = "MostrarUsuarios";
             MostrarUsuarios.ReadOnly = true;
             MostrarUsuarios.RowHeadersWidth = 62;
             MostrarUsuarios.RowTemplate.Height = 33;
             MostrarUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MostrarUsuarios.Size = new Size(611, 309);
+            MostrarUsuarios.Size = new Size(611, 308);
             MostrarUsuarios.TabIndex = 13;
             MostrarUsuarios.CellContentClick += MostrarUsuarios_CellContentClick;
             MostrarUsuarios.CellMouseDoubleClick += MostrarUsuarios_CellMouseDoubleClick;
@@ -97,10 +98,10 @@
             panel1.Controls.Add(btnCadUser);
             panel1.Controls.Add(txtID);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 667);
+            panel1.Location = new Point(0, 592);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(9, 10, 9, 10);
-            panel1.Size = new Size(1143, 83);
+            panel1.Size = new Size(899, 83);
             panel1.TabIndex = 28;
             // 
             // btnVoltar
@@ -123,10 +124,10 @@
             btnCadUser.Cursor = Cursors.Hand;
             btnCadUser.Dock = DockStyle.Right;
             btnCadUser.ForeColor = SystemColors.Control;
-            btnCadUser.Location = new Point(885, 10);
+            btnCadUser.Location = new Point(641, 10);
             btnCadUser.Margin = new Padding(4, 5, 4, 5);
             btnCadUser.Name = "btnCadUser";
-            btnCadUser.Padding = new Padding(6);
+            btnCadUser.Padding = new Padding(6, 7, 6, 7);
             btnCadUser.Size = new Size(249, 63);
             btnCadUser.TabIndex = 7;
             btnCadUser.Text = "Cadastrar usuario";
@@ -135,7 +136,7 @@
             // 
             // txtID
             // 
-            txtID.Location = new Point(238, 26);
+            txtID.Location = new Point(239, 27);
             txtID.Name = "txtID";
             txtID.Size = new Size(150, 31);
             txtID.TabIndex = 23;
@@ -143,20 +144,20 @@
             // 
             // txtPesquisar
             // 
-            txtPesquisar.Location = new Point(257, 193);
+            txtPesquisar.Location = new Point(140, 148);
             txtPesquisar.Name = "txtPesquisar";
-            txtPesquisar.Size = new Size(150, 31);
+            txtPesquisar.Size = new Size(258, 31);
             txtPesquisar.TabIndex = 29;
             // 
             // btnPesquisar
             // 
             btnPesquisar.BackColor = Color.DarkGreen;
             btnPesquisar.ForeColor = Color.White;
-            btnPesquisar.Location = new Point(413, 191);
+            btnPesquisar.Location = new Point(417, 142);
             btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(178, 34);
+            btnPesquisar.Size = new Size(258, 42);
             btnPesquisar.TabIndex = 30;
-            btnPesquisar.Text = "Pesquisar por nome";
+            btnPesquisar.Text = "Pesquisar por nome ou e-mail";
             btnPesquisar.UseVisualStyleBackColor = false;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
@@ -227,11 +228,21 @@
             ConfirmarSenha.Visible = false;
             ConfirmarSenha.Width = 150;
             // 
+            // Ativo_inativo
+            // 
+            Ativo_inativo.DataPropertyName = "Ativo_inativo";
+            Ativo_inativo.HeaderText = "Ativo_inativo";
+            Ativo_inativo.MinimumWidth = 8;
+            Ativo_inativo.Name = "Ativo_inativo";
+            Ativo_inativo.ReadOnly = true;
+            Ativo_inativo.Visible = false;
+            Ativo_inativo.Width = 150;
+            // 
             // VerUser
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 750);
+            ClientSize = new Size(899, 675);
             Controls.Add(btnPesquisar);
             Controls.Add(txtPesquisar);
             Controls.Add(panel1);
@@ -271,5 +282,6 @@
         private DataGridViewTextBoxColumn UserAcesso;
         private DataGridViewTextBoxColumn ConfirmarEmail;
         private DataGridViewTextBoxColumn ConfirmarSenha;
+        private DataGridViewTextBoxColumn Ativo_inativo;
     }
 }
