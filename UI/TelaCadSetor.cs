@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +18,8 @@ namespace UI
     {
         SetorBLL setorBLL = new SetorBLL();
         private List<Setor> setores = new List<Setor>();
+        private List<Setor> setoresDesativado = new List<Setor>();
+        private string nomeSetor;
         public TelaCadSetor()
         {
             InitializeComponent();
@@ -35,17 +38,24 @@ namespace UI
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             txtPesquisar.Text = string.Empty;
-            LoadSetor();
+            LoadSetorAtivo();
+            LoadSetorDesativado();
         }
-        public void LoadSetor()
+        public void LoadSetorAtivo()
         {
-            setores = setorBLL.GetSetor();
+            setores = setorBLL.GetSetorAtivo();
             MostrarSetores.DataSource = setores;
+        }
+        public void LoadSetorDesativado()
+        {
+            setoresDesativado = setorBLL.GetSetorDesativado();
+            MostrarSetoresDesativados.DataSource = setoresDesativado;
         }
 
         private void TelaCadSetor_Load(object sender, EventArgs e)
         {
-            LoadSetor();
+            LoadSetorAtivo();
+            LoadSetorDesativado();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -56,14 +66,22 @@ namespace UI
                 setor.ID_Setor = int.Parse(txtID.Text);
 
             setor.nome = txtPesquisar.Text;
+            setor.Ativo_inativo = checkAtivo.Checked;
 
-            // Validações do campo nome
-            if (string.IsNullOrWhiteSpace(setor.nome) || setor.nome.Contains(" "))
+            // Verifica se o txtBox está vazio
+            if (string.IsNullOrWhiteSpace(setor.Nome) || Regex.IsMatch(setor.Nome, @"\s"))
             {
-                MessageBox.Show("Verifique o nome do setor e tente novamente");
-                txtPesquisar.Focus();
-                return; // Impede o cadastro se o campo estiver em branco ou conter espaços em branco
+                MessageBox.Show("O nome da marca não pode ficar em branco ou conter espaços em branco.");
+                return;
             }
+
+            // Verifica se o checkAtivo está marcado
+            if (!checkAtivo.Checked)
+            {
+                MessageBox.Show("É necessário selecionar a opção Ativo para cadastrar/editar o setor.");
+                return;
+            }
+
 
             // Validação se o setor já está cadastrado no banco de dados
             SetorBLL verificarNome = new SetorBLL();
@@ -89,7 +107,8 @@ namespace UI
                     {
                         MessageBox.Show("Aplicação com sucesso");
                         btnLimpar.PerformClick();
-                        LoadSetor();
+                        LoadSetorAtivo();
+                        LoadSetorDesativado();
                         return; // Impede que o código continue
                     }
                     else
@@ -98,24 +117,9 @@ namespace UI
                     }
                 }
                 MessageBox.Show("Nome do setor alterado com sucesso");
-                LoadSetor();
+                LoadSetorAtivo();
+                LoadSetorDesativado();
             }
-        }
-        private void btnDeletar_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtID.Text))
-            {
-                int ID_setor = int.Parse(txtID.Text);
-
-                DialogResult result = MessageBox.Show("Tem certeza que deseja excluir este setor?", "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    setorBLL.DeleteSetor(ID_setor);
-                    LoadSetor();
-                }
-                MessageBox.Show("Setor deletado com sucesso!");
-            }
-            LoadSetor();
         }
         private void MostrarSetores_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -152,6 +156,60 @@ namespace UI
             {
                 MostrarSetores.DataSource = setoresFiltrados;
             }
+        }
+
+        private void btnDesativar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                int idSetor = int.Parse(txtID.Text);
+                setorBLL.DesativarSetor(idSetor);
+                MessageBox.Show("Setor desativado com sucesso.");
+                LoadSetorAtivo();
+                LoadSetorDesativado();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um Setor para desativar.");
+            }
+        }
+
+        private void btnAtivarSetor_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                int idSetor = int.Parse(txtID.Text);
+                setorBLL.AtivarSetor(idSetor);
+                MessageBox.Show("Setor ativado com sucesso.");
+                LoadSetorAtivo();
+                LoadSetorDesativado();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um setor para ativar.");
+            }
+        }
+
+        private void MostrarSetoresDesativados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = MostrarSetoresDesativados.Rows[e.RowIndex];
+
+                int ID_setor = (int)selectedRow.Cells["ID_SetorDesativado"].Value;
+                txtID.Text = ID_setor.ToString();
+                Setor setor = setoresDesativado.Find(f => f.id_setor == ID_setor);
+
+                txtPesquisar.Text = setor.nome;
+                nomeSetor = setor.Nome;
+            }
+        }
+
+        private void btnLimparDesativado_Click(object sender, EventArgs e)
+        {
+            txtPesquisar.Text = string.Empty;
+            LoadSetorAtivo();
+            LoadSetorDesativado();
         }
     }
 }

@@ -69,5 +69,23 @@ namespace BLL
             return equipamentoDAL.ObterEquipamentosPorColaborador(idColaborador);
         }
 
+        public List<Equipamento> GetEquipamentosAtivos()
+        {
+            return equipamentoDAL.GetEquipamentosAtivos();
+        }
+        public List<Equipamento> GetEquipamentosDesativados()
+        {
+            return equipamentoDAL.GetEquipamentosDesativados();
+        }
+
+        public void DesativarEquipamento(int id_equipamento)
+        {
+            equipamentoDAL.DesativarEquipamento(id_equipamento);
+        }
+        public void AtivarEquipamentos(int id_equipamento)
+        {
+            equipamentoDAL.AtivarEquipamento(id_equipamento);
+        }
+
     }
 }

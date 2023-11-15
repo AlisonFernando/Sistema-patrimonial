@@ -52,8 +52,10 @@
             UserAcesso = new DataGridViewTextBoxColumn();
             SenhaH = new DataGridViewTextBoxColumn();
             ConfirmarEmail = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
             ConfirmarSenha = new DataGridViewTextBoxColumn();
             Ativo_inativo = new DataGridViewTextBoxColumn();
+            Senha = new DataGridViewTextBoxColumn();
             btnDesativar = new Button();
             label4 = new Label();
             label5 = new Label();
@@ -241,7 +243,7 @@
             // 
             btn_limpar.BackColor = Color.DarkGreen;
             btn_limpar.ForeColor = Color.White;
-            btn_limpar.Location = new Point(32, 823);
+            btn_limpar.Location = new Point(47, 808);
             btn_limpar.Name = "btn_limpar";
             btn_limpar.Size = new Size(144, 63);
             btn_limpar.TabIndex = 28;
@@ -254,8 +256,8 @@
             MostrarUsuarios.AllowUserToAddRows = false;
             MostrarUsuarios.AllowUserToDeleteRows = false;
             MostrarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, UserAcesso, SenhaH, ConfirmarEmail, ConfirmarSenha, Ativo_inativo });
-            MostrarUsuarios.Location = new Point(20, 564);
+            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, UserAcesso, SenhaH, ConfirmarEmail, Email, ConfirmarSenha, Ativo_inativo, Senha });
+            MostrarUsuarios.Location = new Point(19, 564);
             MostrarUsuarios.Name = "MostrarUsuarios";
             MostrarUsuarios.ReadOnly = true;
             MostrarUsuarios.RowHeadersVisible = false;
@@ -282,7 +284,7 @@
             Nome.MinimumWidth = 8;
             Nome.Name = "Nome";
             Nome.ReadOnly = true;
-            Nome.Width = 150;
+            Nome.Width = 200;
             // 
             // UserAcesso
             // 
@@ -314,6 +316,15 @@
             ConfirmarEmail.Visible = false;
             ConfirmarEmail.Width = 150;
             // 
+            // Email
+            // 
+            Email.DataPropertyName = "Email";
+            Email.HeaderText = "E-mail";
+            Email.MinimumWidth = 8;
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            Email.Width = 275;
+            // 
             // ConfirmarSenha
             // 
             ConfirmarSenha.DataPropertyName = "ConfirmarSenha";
@@ -334,11 +345,21 @@
             Ativo_inativo.Visible = false;
             Ativo_inativo.Width = 150;
             // 
+            // Senha
+            // 
+            Senha.DataPropertyName = "Senha";
+            Senha.HeaderText = "Senha";
+            Senha.MinimumWidth = 8;
+            Senha.Name = "Senha";
+            Senha.ReadOnly = true;
+            Senha.Visible = false;
+            Senha.Width = 150;
+            // 
             // btnDesativar
             // 
             btnDesativar.BackColor = Color.DarkGreen;
             btnDesativar.ForeColor = SystemColors.Control;
-            btnDesativar.Location = new Point(229, 823);
+            btnDesativar.Location = new Point(218, 808);
             btnDesativar.Margin = new Padding(4, 5, 4, 5);
             btnDesativar.Name = "btnDesativar";
             btnDesativar.Size = new Size(134, 62);
@@ -401,7 +422,7 @@
             // 
             btnVerUser.BackColor = Color.DarkGreen;
             btnVerUser.ForeColor = Color.White;
-            btnVerUser.Location = new Point(416, 822);
+            btnVerUser.Location = new Point(383, 807);
             btnVerUser.Name = "btnVerUser";
             btnVerUser.Size = new Size(134, 63);
             btnVerUser.TabIndex = 30;
@@ -508,5 +529,7 @@
         private DataGridViewTextBoxColumn ConfirmarSenha;
         private DataGridViewTextBoxColumn Ativo_inativo;
         private CheckBox checkAtivo;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Senha;
     }
 }

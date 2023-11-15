@@ -31,10 +31,14 @@ namespace UI
                 txtID.Text = usuario.id_usuario.ToString();
                 inputUserNome.Text = usuario.nome;
                 inputUserEmail.Text = usuario.email.ToString();
+                checkAtivo.Checked = usuario.Ativo_inativo;
+
+
                 inputUserSenha.Enabled = false;
                 txtConfirEmail.Enabled = false;
                 txtConfirSenha.Enabled = false;
                 emailAtual = usuario.email;
+                 
             }
         }
         private void TelaCadUser_Load(object sender, EventArgs e)
@@ -96,6 +100,12 @@ namespace UI
                 return;
             }
 
+            if (!checkAtivo.Checked)
+            {
+                MessageBox.Show("É necessário selecionar a opção Ativo para cadastrar/editar o usuario.");
+                return;
+            }
+
             string retorno;
             UserBLL cadUserBLL = new UserBLL();
 
@@ -131,6 +141,7 @@ namespace UI
                 txtConfirEmail.Enabled = true;
                 txtConfirSenha.Enabled = true;
                 inputUserSenha.Enabled = true;
+                checkAtivo.Checked = false;
             }
         }
 
@@ -144,6 +155,7 @@ namespace UI
             txtConfirEmail.Enabled = true;
             txtConfirSenha.Enabled = true;
             inputUserSenha.Enabled = true;
+            checkAtivo.Checked = false;
         }
 
         private void btnCancelarCadUser_Click(object sender, EventArgs e)

@@ -367,6 +367,7 @@
             Name = "TelaCadastrarMarca";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CadastrarMarca";
+            Load += TelaCadastrarMarca_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);

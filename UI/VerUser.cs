@@ -92,5 +92,11 @@ namespace UI
         {
 
         }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LoadUsuarios();
+            txtPesquisar.Text = string.Empty;
+        }
     }
 }

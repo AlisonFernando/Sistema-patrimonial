@@ -42,10 +42,12 @@
             Nome = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             SenhaH = new DataGridViewTextBoxColumn();
+            Senha = new DataGridViewTextBoxColumn();
             UserAcesso = new DataGridViewTextBoxColumn();
             ConfirmarEmail = new DataGridViewTextBoxColumn();
             ConfirmarSenha = new DataGridViewTextBoxColumn();
             Ativo_inativo = new DataGridViewTextBoxColumn();
+            btnLimpar = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
             panel1.SuspendLayout();
@@ -80,14 +82,14 @@
             MostrarUsuarios.AllowUserToAddRows = false;
             MostrarUsuarios.AllowUserToDeleteRows = false;
             MostrarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, Email, SenhaH, UserAcesso, ConfirmarEmail, ConfirmarSenha, Ativo_inativo });
-            MostrarUsuarios.Location = new Point(140, 190);
+            MostrarUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, Email, SenhaH, Senha, UserAcesso, ConfirmarEmail, ConfirmarSenha, Ativo_inativo });
+            MostrarUsuarios.Location = new Point(119, 190);
             MostrarUsuarios.Name = "MostrarUsuarios";
             MostrarUsuarios.ReadOnly = true;
             MostrarUsuarios.RowHeadersWidth = 62;
             MostrarUsuarios.RowTemplate.Height = 33;
             MostrarUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MostrarUsuarios.Size = new Size(611, 308);
+            MostrarUsuarios.Size = new Size(644, 308);
             MostrarUsuarios.TabIndex = 13;
             MostrarUsuarios.CellContentClick += MostrarUsuarios_CellContentClick;
             MostrarUsuarios.CellMouseDoubleClick += MostrarUsuarios_CellMouseDoubleClick;
@@ -144,7 +146,7 @@
             // 
             // txtPesquisar
             // 
-            txtPesquisar.Location = new Point(140, 148);
+            txtPesquisar.Location = new Point(119, 153);
             txtPesquisar.Name = "txtPesquisar";
             txtPesquisar.Size = new Size(258, 31);
             txtPesquisar.TabIndex = 29;
@@ -153,7 +155,7 @@
             // 
             btnPesquisar.BackColor = Color.DarkGreen;
             btnPesquisar.ForeColor = Color.White;
-            btnPesquisar.Location = new Point(417, 142);
+            btnPesquisar.Location = new Point(396, 147);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(258, 42);
             btnPesquisar.TabIndex = 30;
@@ -164,11 +166,11 @@
             // ID
             // 
             ID.DataPropertyName = "id_usuario";
-            ID.HeaderText = "id_usuario";
+            ID.HeaderText = "ID";
             ID.MinimumWidth = 8;
             ID.Name = "ID";
             ID.ReadOnly = true;
-            ID.Width = 150;
+            ID.Width = 80;
             // 
             // Nome
             // 
@@ -177,7 +179,7 @@
             Nome.MinimumWidth = 8;
             Nome.Name = "Nome";
             Nome.ReadOnly = true;
-            Nome.Width = 150;
+            Nome.Width = 200;
             // 
             // Email
             // 
@@ -186,7 +188,7 @@
             Email.MinimumWidth = 8;
             Email.Name = "Email";
             Email.ReadOnly = true;
-            Email.Width = 150;
+            Email.Width = 300;
             // 
             // SenhaH
             // 
@@ -197,6 +199,16 @@
             SenhaH.ReadOnly = true;
             SenhaH.Visible = false;
             SenhaH.Width = 150;
+            // 
+            // Senha
+            // 
+            Senha.DataPropertyName = "Senha";
+            Senha.HeaderText = "Senha";
+            Senha.MinimumWidth = 8;
+            Senha.Name = "Senha";
+            Senha.ReadOnly = true;
+            Senha.Visible = false;
+            Senha.Width = 150;
             // 
             // UserAcesso
             // 
@@ -238,11 +250,24 @@
             Ativo_inativo.Visible = false;
             Ativo_inativo.Width = 150;
             // 
+            // btnLimpar
+            // 
+            btnLimpar.BackColor = Color.DarkGreen;
+            btnLimpar.ForeColor = Color.White;
+            btnLimpar.Location = new Point(119, 504);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Size = new Size(89, 42);
+            btnLimpar.TabIndex = 31;
+            btnLimpar.Text = "Limpar";
+            btnLimpar.UseVisualStyleBackColor = false;
+            btnLimpar.Click += btnLimpar_Click;
+            // 
             // VerUser
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(899, 675);
+            Controls.Add(btnLimpar);
             Controls.Add(btnPesquisar);
             Controls.Add(txtPesquisar);
             Controls.Add(panel1);
@@ -279,9 +304,11 @@
         private DataGridViewTextBoxColumn Nome;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn SenhaH;
+        private DataGridViewTextBoxColumn Senha;
         private DataGridViewTextBoxColumn UserAcesso;
         private DataGridViewTextBoxColumn ConfirmarEmail;
         private DataGridViewTextBoxColumn ConfirmarSenha;
         private DataGridViewTextBoxColumn Ativo_inativo;
+        private Button btnLimpar;
     }
 }

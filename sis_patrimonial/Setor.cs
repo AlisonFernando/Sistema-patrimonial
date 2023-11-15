@@ -10,6 +10,7 @@ namespace model
     {
         public string nome;
         public int id_setor;
+        public bool ativo;
 
         public string Nome
         {
@@ -20,6 +21,11 @@ namespace model
         {
             get { return id_setor; }
             set { id_setor = value; }
+        }
+        public bool Ativo_inativo
+        {
+            get { return ativo; }
+            set { ativo = value;}
         }
     }
 }

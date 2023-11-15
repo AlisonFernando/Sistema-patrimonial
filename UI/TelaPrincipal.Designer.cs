@@ -37,6 +37,7 @@
             MenuCadChamado = new ToolStripMenuItem();
             marcaDeEquipamentoToolStripMenuItem = new ToolStripMenuItem();
             CadUserMenu = new ToolStripMenuItem();
+            setorToolStripMenuItem = new ToolStripMenuItem();
             visualizarToolStripMenuItem = new ToolStripMenuItem();
             MenuInfoEquip = new ToolStripMenuItem();
             MenuUserCad = new ToolStripMenuItem();
@@ -56,9 +57,9 @@
             Data = new ToolStripStatusLabel();
             Horario = new ToolStripStatusLabel();
             alison = new ToolStripStatusLabel();
+            lblBoasVindas = new ToolStripStatusLabel();
             relogio = new System.Windows.Forms.Timer(components);
             pictureBox1 = new PictureBox();
-            setorToolStripMenuItem = new ToolStripMenuItem();
             MenuPrincipal.SuspendLayout();
             HeaderDescricao.SuspendLayout();
             FooterPrincipal.SuspendLayout();
@@ -118,6 +119,13 @@
             CadUserMenu.Size = new Size(298, 34);
             CadUserMenu.Text = "Usuário";
             CadUserMenu.Click += CadUserMenu_Click;
+            // 
+            // setorToolStripMenuItem
+            // 
+            setorToolStripMenuItem.Name = "setorToolStripMenuItem";
+            setorToolStripMenuItem.Size = new Size(298, 34);
+            setorToolStripMenuItem.Text = "Setor";
+            setorToolStripMenuItem.Click += setorToolStripMenuItem_Click;
             // 
             // visualizarToolStripMenuItem
             // 
@@ -221,7 +229,7 @@
             HeaderDescricao.Name = "HeaderDescricao";
             HeaderDescricao.Padding = new Padding(0, 0, 3, 0);
             HeaderDescricao.RightToLeft = RightToLeft.No;
-            HeaderDescricao.Size = new Size(1143, 27);
+            HeaderDescricao.Size = new Size(1143, 28);
             HeaderDescricao.TabIndex = 1;
             HeaderDescricao.Text = "toolStrip1";
             // 
@@ -231,13 +239,13 @@
             label.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label.ForeColor = SystemColors.ButtonHighlight;
             label.Name = "label";
-            label.Size = new Size(658, 22);
+            label.Size = new Size(658, 23);
             label.Text = "Sistema de controle patrimonial e de colaboradores da Scot Consultoria";
             // 
             // FooterPrincipal
             // 
             FooterPrincipal.ImageScalingSize = new Size(24, 24);
-            FooterPrincipal.Items.AddRange(new ToolStripItem[] { Data, Horario, alison });
+            FooterPrincipal.Items.AddRange(new ToolStripItem[] { Data, Horario, alison, lblBoasVindas });
             FooterPrincipal.Location = new Point(0, 721);
             FooterPrincipal.Name = "FooterPrincipal";
             FooterPrincipal.Padding = new Padding(1, 0, 20, 0);
@@ -261,10 +269,19 @@
             // 
             // alison
             // 
+            alison.DisplayStyle = ToolStripItemDisplayStyle.Text;
             alison.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             alison.Name = "alison";
             alison.Size = new Size(324, 22);
             alison.Text = "Desenvolvido por: Alison Fernando";
+            // 
+            // lblBoasVindas
+            // 
+            lblBoasVindas.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            lblBoasVindas.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblBoasVindas.Name = "lblBoasVindas";
+            lblBoasVindas.Size = new Size(106, 22);
+            lblBoasVindas.Text = "Bem vindo";
             // 
             // relogio
             // 
@@ -283,13 +300,6 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // setorToolStripMenuItem
-            // 
-            setorToolStripMenuItem.Name = "setorToolStripMenuItem";
-            setorToolStripMenuItem.Size = new Size(298, 34);
-            setorToolStripMenuItem.Text = "Setor";
-            setorToolStripMenuItem.Click += setorToolStripMenuItem_Click;
-            // 
             // TelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -306,6 +316,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Principal";
             WindowState = FormWindowState.Maximized;
+            Load += TelaPrincipal_Load;
             MenuPrincipal.ResumeLayout(false);
             MenuPrincipal.PerformLayout();
             HeaderDescricao.ResumeLayout(false);
@@ -348,5 +359,6 @@
         private ToolStripMenuItem MenuRedefinirSenha;
         private ToolStripMenuItem MenuEquips_e_Manutencao;
         private ToolStripMenuItem setorToolStripMenuItem;
+        private ToolStripStatusLabel lblBoasVindas;
     }
 }

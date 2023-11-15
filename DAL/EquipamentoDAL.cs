@@ -41,16 +41,21 @@ namespace DAL
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
 
+            //Obtem o ID do equipamento cadastrado por último
+            int novoEquipamentoID = Convert.ToInt32(cmd.LastInsertedId);
             // Inserir o registro de log na tabela tb_logs
             DateTime dataHoraAcao = DateTime.Now;
-            string tipoOperacao = "cadastro de equipamento"; // Defina o tipo de operação conforme necessário
+            string tipoOperacao = "Cadastro do usuário";
+            string mensagem = $"{tipoOperacao}: {equipamento.Nome}";
 
-            sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+            sql = "INSERT INTO tb_logs(IDUsuario, EmailUsuario, DataHoraAcao, TipoOperacao, Mensagem) VALUES (@IDUsuario, @EmailUsuario, @DataHoraAcao, @TipoOperacao, @Mensagem)";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
+            cmd.Parameters.AddWithValue("@IDUsuario", novoEquipamentoID);
             cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
             cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
             cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
+            cmd.Parameters.AddWithValue("@Mensagem", mensagem);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
@@ -182,6 +187,67 @@ namespace DAL
                 }
             }
             return equipamentos;
+        }
+        public List<Equipamento> GetEquipamentosAtivos()
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "SELECT ID_equipamento, Nome_equipamento AS Nome, Valor as Valor, Descricao AS Descricao, Etiqueta_identificacao AS Etiqueta FROM tb_equipamentos WHERE Ativo_inativo = 1";
+                return dbConnection.Query<Equipamento>(query).ToList();
+            }
+        }
+
+        public List<Equipamento> GetEquipamentosDesativados()
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "SELECT ID_equipamento, Nome_equipamento AS Nome, Valor as Valor, Descricao AS Descricao, Etiqueta_identificacao AS Etiqueta FROM tb_equipamentos WHERE Ativo_inativo = 0";
+                return dbConnection.Query<Equipamento>(query).ToList();
+            }
+        }
+
+
+        public void DesativarEquipamento(int id_equipamento)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_equipamentos SET Ativo_inativo = 0 WHERE ID_equipamento = @id_equipamento";
+                int rowsAffected = dbConnection.Execute(query, new { ID_equipamento = id_equipamento });
+
+                if (rowsAffected > 0)
+                {
+                    // Atualização bem-sucedida
+                    // Aqui você pode adicionar lógica adicional se necessário
+                }
+                else
+                {
+                    // A atualização não teve efeito (nenhuma marca encontrada com o ID especificado, por exemplo)
+                    // Adicione lógica apropriada, se necessário
+                }
+            }
+        }
+        public void AtivarEquipamento(int id_equipamento)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_equipamentos SET Ativo_inativo = 1 WHERE ID_equipamento = @id_setor";
+                int rowsAffected = dbConnection.Execute(query, new { ID_equipamento = id_equipamento });
+
+                if (rowsAffected > 0)
+                {
+                    // Atualização bem-sucedida
+                    // Aqui você pode adicionar lógica adicional se necessário
+                }
+                else
+                {
+                    // A atualização não teve efeito (nenhuma marca encontrada com o ID especificado, por exemplo)
+                    // Adicione lógica apropriada, se necessário
+                }
+            }
         }
 
     }

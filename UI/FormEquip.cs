@@ -18,6 +18,7 @@ namespace UI
     {
         private EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
         private List<Equipamento> equipamentos = new List<Equipamento>();
+        private List<Equipamento> equipamentosDesativados = new List<Equipamento>();
         public CadEquipamento(Equipamento equipamento)
         {
             InitializeComponent();
@@ -34,15 +35,22 @@ namespace UI
         private void CadEquipamento_Load(object sender, EventArgs e)
         {
             CarregarMarcasComboBox();
-            LoadEquipamentos();
+            LoadEquipamentosAtivos();
+            LoadEquipamentosDesativados();
             inputEtiquetaEquip.Enabled = true;
             Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
 
         }
-        public void LoadEquipamentos()
+        public void LoadEquipamentosAtivos()
         {
-            equipamentos = equipamentoBLL.GetEquipamentos();
-            MostrarEquipamentos.DataSource = equipamentos;
+            equipamentos = equipamentoBLL.GetEquipamentosAtivos();
+            MostrarEquipamentosAtivos.DataSource = equipamentos;
+            inputEtiquetaEquip.Enabled = true;
+        }
+        public void LoadEquipamentosDesativados()
+        {
+            equipamentosDesativados = equipamentoBLL.GetEquipamentosDesativados();
+            MostrarEquipamentosDesativados.DataSource = equipamentosDesativados;
             inputEtiquetaEquip.Enabled = true;
         }
 
@@ -90,6 +98,11 @@ namespace UI
                 MessageBox.Show("Nome, descrição, etiqueta e valor não podem conter espaços em branco.");
                 return;
             }
+            if (!check_ativo.Checked)
+            {
+                MessageBox.Show("É necessário selecionar a opção Ativo para cadastrar/editar o equipamento.");
+                return;
+            }
 
             // Verificação da etiqueta no banco de dados (apenas durante inserção)
             if (string.IsNullOrEmpty(txtID.Text))
@@ -119,7 +132,8 @@ namespace UI
             }
 
             btn_Limpar.PerformClick();
-            LoadEquipamentos();
+            LoadEquipamentosAtivos();
+            LoadEquipamentosDesativados();
         }
         private void CarregarMarcasComboBox()
         {
@@ -140,45 +154,11 @@ namespace UI
             inputEtiquetaEquip.Enabled = true;
         }
 
-        private void btn_Deletar_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtID.Text))
-            {
-                int ID_equipamento = int.Parse(txtID.Text);
-
-                DialogResult result = MessageBox.Show("Tem certeza que deseja excluir este equipamento?", "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    equipamentoBLL.DeleteEquipamento(ID_equipamento, Program.UserEmail);
-                    LoadEquipamentos();
-                }
-                MessageBox.Show("Equipamento deletado com sucesso!");
-                inputEtiquetaEquip.Enabled = true;
-            }
-        }
-
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        public void MostrarEquipamentos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = MostrarEquipamentos.Rows[e.RowIndex];
-
-                int ID_equipamento = (int)selectedRow.Cells["ID_equipamento"].Value;
-                Equipamento equipamento = equipamentos.Find(f => f.ID_equipamento == ID_equipamento);
-
-                txtID.Text = equipamento.ID_equipamento.ToString();
-                inputEquipNome.Text = equipamento.Nome;
-                inputPrecoEquip.Text = equipamento.Valor;
-                inputDesEquip.Text = equipamento.Descricao;
-                inputEtiquetaEquip.Text = equipamento.Etiqueta;
-                inputEtiquetaEquip.Enabled = false;
-            }
-        }
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
@@ -203,6 +183,58 @@ namespace UI
                     string valorFormatado = string.Format(new CultureInfo("pt-BR"), "R${0:N2}", preco);
                     inputPrecoEquip.Text = valorFormatado;
                 }
+            }
+        }
+
+        private void btn_Desativar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                int idEquipamento = int.Parse(txtID.Text);
+                equipamentoBLL.DesativarEquipamento(idEquipamento);
+                MessageBox.Show("Equipamento desativado com sucesso.");
+                LoadEquipamentosAtivos();
+                LoadEquipamentosDesativados();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um Setor para desativar.");
+            }
+        }
+
+        private void MostrarEquipamentosAtivos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = MostrarEquipamentosAtivos.Rows[e.RowIndex];
+
+                int ID_equipamento = (int)selectedRow.Cells["ID_equipamento"].Value;
+                Equipamento equipamento = equipamentos.Find(f => f.ID_equipamento == ID_equipamento);
+
+                txtID.Text = equipamento.ID_equipamento.ToString();
+                inputEquipNome.Text = equipamento.Nome;
+                inputPrecoEquip.Text = equipamento.Valor;
+                inputDesEquip.Text = equipamento.Descricao;
+                inputEtiquetaEquip.Text = equipamento.Etiqueta;
+                inputEtiquetaEquip.Enabled = false;
+            }
+        }
+
+        private void MostrarEquipamentosDesativados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = MostrarEquipamentosDesativados.Rows[e.RowIndex];
+
+                int ID_equipamento = (int)selectedRow.Cells["ID_equipamentoDesativado"].Value;
+                Equipamento equipamento = equipamentos.Find(f => f.ID_equipamento == ID_equipamento);
+
+                txtID.Text = ID_equipamento.ToString();
+                inputEquipNome.Text = equipamento.Nome;
+                inputPrecoEquip.Text = equipamento.Valor;
+                inputDesEquip.Text = equipamento.Descricao;
+                inputEtiquetaEquip.Text = equipamento.Etiqueta;
+                inputEtiquetaEquip.Enabled = false;
             }
         }
     }

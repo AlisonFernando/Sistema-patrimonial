@@ -60,12 +60,10 @@ namespace UI
 
             if (verificar == "Marca existente")
             {
-                if (string.IsNullOrEmpty(txtID.Text) || (string.Equals(marca.Nome, nomeMarca, StringComparison.OrdinalIgnoreCase)))
-                {
-                    MessageBox.Show("Essa marca já existe cadastrada.");
-                    return;
-                }
+                MessageBox.Show("Essa marca já existe cadastrada.");
+                return;
             }
+
 
             // Executa o cadastro ou atualização da marca
             string retorno;
@@ -200,6 +198,11 @@ namespace UI
             {
                 MessageBox.Show("Selecione uma marca para ativar.");
             }
+        }
+
+        private void TelaCadastrarMarca_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

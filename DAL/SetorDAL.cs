@@ -37,12 +37,18 @@ namespace DAL
 
         public void InserirSetor(Setor setor)
         {
+            string ativo = "0";
+            if (setor.Ativo_inativo)
+            {
+                ativo = "1";
+            }
 
             sql = "INSERT INTO tb_setor(Nome_setor) VALUES " +
                     "(@Nome_setor)";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@Nome_setor", setor.nome);
+            cmd.Parameters.AddWithValue("@ativo_inativo", ativo);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
@@ -85,14 +91,64 @@ namespace DAL
                 dbConnection.Execute(query, setor);
             }
         }
-        public void DeleteSetor(int ID_Setor)
+        public void DesativarSetor(int id_setor)
         {
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                string query = "DELETE FROM tb_setor WHERE ID_setor = @ID_Setor";
-                dbConnection.Execute(query, new { ID_Setor });
+                string query = "UPDATE tb_setor SET Ativo_inativo = 0 WHERE ID_setor = @id_setor";
+                int rowsAffected = dbConnection.Execute(query, new { ID_Setor = id_setor });
+
+                if (rowsAffected > 0)
+                {
+                    // Atualização bem-sucedida
+                    // Aqui você pode adicionar lógica adicional se necessário
+                }
+                else
+                {
+                    // A atualização não teve efeito (nenhuma marca encontrada com o ID especificado, por exemplo)
+                    // Adicione lógica apropriada, se necessário
+                }
             }
         }
+        public void AtivarSetor(int id_setor)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_setor SET Ativo_inativo = 1 WHERE ID_setor = @id_setor";
+                int rowsAffected = dbConnection.Execute(query, new { ID_Setor = id_setor });
+
+                if (rowsAffected > 0)
+                {
+                    // Atualização bem-sucedida
+                    // Aqui você pode adicionar lógica adicional se necessário
+                }
+                else
+                {
+                    // A atualização não teve efeito (nenhuma marca encontrada com o ID especificado, por exemplo)
+                    // Adicione lógica apropriada, se necessário
+                }
+            }
+        }
+        public List<Setor> GetSetorAtivo()
+        {
+
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                return dbConnection.Query<Setor>("SELECT ID_setor, Nome_setor AS Nome FROM tb_setor WHERE Ativo_inativo = 1").ToList();
+            }
+        }
+        public List<Setor> GetSetorDesativado()
+        {
+
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                return dbConnection.Query<Setor>("SELECT ID_setor, Nome_setor AS Nome FROM tb_setor WHERE Ativo_inativo = 0").ToList();
+            }
+        }
+
     }
 }

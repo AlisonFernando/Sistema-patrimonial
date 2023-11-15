@@ -24,17 +24,13 @@ namespace DAL
         public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
         public void InserirUsuario(Usuario usuario, string emailUsuarioLogado)
         {
-            
             string senhaNaoCriptografada = usuario.Senha;
             string senhaCriptografada = HashPassword(senhaNaoCriptografada);
             usuario.SenhaHash = senhaCriptografada;
 
-            string ativo = "0";
-            if (usuario.Ativo_inativo)
-            {
-                ativo = "1";
-            }
+            string ativo = usuario.Ativo_inativo ? "1" : "0";
 
+            // Inserir o novo usuário na tabela tb_usuario
             sql = "INSERT INTO tb_usuario(Nome, Email, Senha, UserAcesso, Ativo_inativo) VALUES (@Nome, @Email, @Senha, @UserAcesso, @Ativo_inativo)";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
@@ -45,22 +41,28 @@ namespace DAL
             cmd.Parameters.AddWithValue("@Ativo_inativo", ativo);
 
             cmd.ExecuteNonQuery();
-            mConn.FecharConexao();
+
+            // Obter o ID do usuário recém-inserido
+            int novoUsuarioID = Convert.ToInt32(cmd.LastInsertedId);
 
             // Inserir o registro de log na tabela tb_logs
             DateTime dataHoraAcao = DateTime.Now;
-            string tipoOperacao = "cadastro de usuário"; // Defina o tipo de operação conforme necessário
+            string tipoOperacao = "Cadastro do usuário";
+            string mensagem = $"{tipoOperacao}: {usuario.Nome}";
 
-            sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+            sql = "INSERT INTO tb_logs(IDUsuario, EmailUsuario, DataHoraAcao, TipoOperacao, Mensagem) VALUES (@IDUsuario, @EmailUsuario, @DataHoraAcao, @TipoOperacao, @Mensagem)";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
+            cmd.Parameters.AddWithValue("@IDUsuario", novoUsuarioID);
             cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
             cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
             cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
+            cmd.Parameters.AddWithValue("@Mensagem", mensagem);
 
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
         }
+
 
         public string HashPassword(string password)
         {
@@ -117,7 +119,7 @@ namespace DAL
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                string query = "UPDATE tb_usuario SET Nome = @Nome, Email = @Email WHERE id_usuario = @id_usuario";
+                string query = "UPDATE tb_usuario SET Nome = @Nome, Email = @Email, Ativo_inativo = @Ativo_inativo WHERE id_usuario = @id_usuario";
                 dbConnection.Execute(query, usuario);
 
                 mConn.FecharConexao();
@@ -146,7 +148,6 @@ namespace DAL
                 return dbConnection.Query<Usuario>(query, new { AtivoInativo = 1 }).ToList();
             }
         }
-
 
         public void DesativarUsuario(int id_usuario)
         {

@@ -46,9 +46,21 @@ namespace BLL
 
             return "Sucesso";
         }
-        public void DeleteSetor(int ID_setor)
+        public void DesativarSetor(int id_setor)
         {
-            setorDAL.DeleteSetor(ID_setor);
+            setorDAL.DesativarSetor(id_setor);
+        }
+        public void AtivarSetor(int id_setor)
+        {
+            setorDAL.AtivarSetor(id_setor);
+        }
+        public List<Setor> GetSetorAtivo()
+        {
+            return setorDAL.GetSetorAtivo();
+        }
+        public List<Setor> GetSetorDesativado()
+        {
+            return setorDAL.GetSetorDesativado();
         }
     }
 }

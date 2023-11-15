@@ -3,7 +3,8 @@ namespace UI
     public partial class TelaPrincipal : Form
     {
         private int UserChamado;
-        public TelaPrincipal(int userChamado)
+        private string UserEmail;
+        public TelaPrincipal(int userChamado, string userEmail)
         {
             InitializeComponent();
 
@@ -44,6 +45,7 @@ namespace UI
                 MenuSair.Enabled = true;
                 MenuRedefinirSenha.Enabled = false;
             }
+            UserEmail = userEmail;
         }
 
         private void sairToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -147,6 +149,11 @@ namespace UI
         {
             UI.TelaCadSetor telaCadSetor = new UI.TelaCadSetor();
             telaCadSetor.ShowDialog();
+        }
+
+        private void TelaPrincipal_Load(object sender, EventArgs e)
+        {
+            lblBoasVindas.Text = "Bem vindo, " + UserEmail;
         }
     }
 }

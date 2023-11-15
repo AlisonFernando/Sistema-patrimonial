@@ -67,7 +67,7 @@ namespace UI
                 MessageBox.Show("Login bem-sucedido!");
                 this.Hide();
 
-                TelaPrincipal telaPrincipal = new TelaPrincipal(userChamado);
+                TelaPrincipal telaPrincipal = new TelaPrincipal(userChamado, email);
                 telaPrincipal.Closed += (s, args) => this.Close(); // Fecha o aplicativo quando a tela principal for fechada
                 telaPrincipal.Show();
             }
