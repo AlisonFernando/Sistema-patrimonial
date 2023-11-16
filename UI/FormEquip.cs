@@ -152,6 +152,8 @@ namespace UI
             inputEtiquetaEquip.Text = string.Empty;
             inputPrecoEquip.Text = string.Empty;
             inputEtiquetaEquip.Enabled = true;
+            LoadEquipamentosAtivos();
+            LoadEquipamentosDesativados();
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
@@ -227,7 +229,7 @@ namespace UI
                 DataGridViewRow selectedRow = MostrarEquipamentosDesativados.Rows[e.RowIndex];
 
                 int ID_equipamento = (int)selectedRow.Cells["ID_equipamentoDesativado"].Value;
-                Equipamento equipamento = equipamentos.Find(f => f.ID_equipamento == ID_equipamento);
+                Equipamento equipamento = equipamentosDesativados.Find(f => f.ID_equipamento == ID_equipamento);
 
                 txtID.Text = ID_equipamento.ToString();
                 inputEquipNome.Text = equipamento.Nome;
@@ -236,6 +238,63 @@ namespace UI
                 inputEtiquetaEquip.Text = equipamento.Etiqueta;
                 inputEtiquetaEquip.Enabled = false;
             }
+        }
+
+        private void btnAtivar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                int idEquip = int.Parse(txtID.Text);
+                equipamentoBLL.AtivarEquipamentos(idEquip);
+                MessageBox.Show("Equipamento ativado com sucesso.");
+                LoadEquipamentosAtivos();
+                LoadEquipamentosDesativados();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um equipamento para ativar.");
+            }
+        }
+
+        private void btnPesquisarAtivo_Click(object sender, EventArgs e)
+        {
+            string nomePesquisado = inputEquipNome.Text.Trim();
+
+            // Verificar se a marca pesquisada está nas marcas ativas
+            Equipamento EquipAtivo = equipamentos
+                .FirstOrDefault(equipamento => equipamento.Nome.Equals(nomePesquisado, StringComparison.OrdinalIgnoreCase));
+
+            // Verificar se a marca pesquisada está nas marcas desativadas
+            Equipamento EquipDesativado = equipamentosDesativados
+                .FirstOrDefault(equipamento => equipamento.Nome.Equals(nomePesquisado, StringComparison.OrdinalIgnoreCase));
+
+            if (EquipAtivo != null)
+            {
+                MessageBox.Show($"O equipamento '{EquipAtivo.Nome}' está ativo.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarEquipamentosAtivos.DataSource = new List<Equipamento> { EquipAtivo };
+            }
+            else if (EquipDesativado != null)
+            {
+                MessageBox.Show($"O equipamento '{EquipDesativado.Nome}' está desativada.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarEquipamentosDesativados.DataSource = new List<Equipamento> { EquipDesativado };
+            }
+            else
+            {
+                MessageBox.Show("Equipamento não encontrado.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            inputEquipNome.Text = string.Empty;
+            inputDesEquip.Text = string.Empty;
+            inputEtiquetaEquip.Text = string.Empty;
+            inputPrecoEquip.Text = string.Empty;
+            inputEtiquetaEquip.Enabled = true;
+            LoadEquipamentosAtivos();
+            LoadEquipamentosDesativados();
+            LoadEquipamentosAtivos();
+            LoadEquipamentosDesativados();
         }
     }
 }

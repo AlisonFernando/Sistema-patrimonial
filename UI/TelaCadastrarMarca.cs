@@ -23,8 +23,7 @@ namespace UI
         public TelaCadastrarMarca()
         {
             InitializeComponent();
-            LoadMarcasAtivas();
-            LoadMarcasDesativadas();
+            
         }
 
         public void LoadMarcasAtivas()
@@ -98,7 +97,6 @@ namespace UI
             }
         }
 
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -108,22 +106,27 @@ namespace UI
         {
             string nomePesquisado = txtMarca.Text.Trim();
 
-            List<Marca> marcasFiltradas = marcasAtivas
-                .Where(marca => marca.Nome.Contains(nomePesquisado, StringComparison.OrdinalIgnoreCase))
-                .ToList();
+            // Verificar se a marca pesquisada está nas marcas ativas
+            Marca marcaAtiva = marcasAtivas
+                .FirstOrDefault(marca => marca.Nome.Equals(nomePesquisado, StringComparison.OrdinalIgnoreCase));
 
-            if (marcasFiltradas.Count == 0)
+            // Verificar se a marca pesquisada está nas marcas desativadas
+            Marca marcaDesativada = marcasDesativadas
+                .FirstOrDefault(marca => marca.Nome.Equals(nomePesquisado, StringComparison.OrdinalIgnoreCase));
+
+            if (marcaAtiva != null)
             {
-                MessageBox.Show("Marca não encontrada.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"A marca '{marcaAtiva.Nome}' está ativa.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarMarcasCadastradas.DataSource = new List<Marca> { marcaAtiva };
             }
-            else if (nomePesquisado == string.Empty)
+            else if (marcaDesativada != null)
             {
-                MessageBox.Show("Digite uma marca e tente novamente");
-                txtMarca.Focus();
+                MessageBox.Show($"A marca '{marcaDesativada.Nome}' está desativada.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarMarcasDesativadas.DataSource = new List<Marca> { marcaDesativada };
             }
             else
             {
-                MostrarMarcasCadastradas.DataSource = marcasFiltradas;
+                MessageBox.Show("Marca não encontrada.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -148,7 +151,6 @@ namespace UI
                 nomeMarca = marca.nome; // Guarde o nome da marca para referência posterior
             }
         }
-
         private void MostrarMarcasCadastradas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -169,7 +171,6 @@ namespace UI
                 MessageBox.Show("Selecione uma marca para desativar.");
             }
         }
-
         private void MostrarMarcasDesativadas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -199,10 +200,10 @@ namespace UI
                 MessageBox.Show("Selecione uma marca para ativar.");
             }
         }
-
         private void TelaCadastrarMarca_Load(object sender, EventArgs e)
         {
-
+            LoadMarcasAtivas();
+            LoadMarcasDesativadas();
         }
     }
 }

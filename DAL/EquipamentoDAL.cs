@@ -193,8 +193,9 @@ namespace DAL
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                string query = "SELECT ID_equipamento, Nome_equipamento AS Nome, Valor as Valor, Descricao AS Descricao, Etiqueta_identificacao AS Etiqueta FROM tb_equipamentos WHERE Ativo_inativo = 1";
-                return dbConnection.Query<Equipamento>(query).ToList();
+                return dbConnection.Query<Equipamento>("SELECT ID_equipamento," +
+                    " Nome_equipamento AS Nome, Valor as Valor, Descricao AS Descricao," +
+                    " Etiqueta_identificacao AS Etiqueta FROM tb_equipamentos WHERE Ativo_inativo = 1").ToList();
             }
         }
 
@@ -207,7 +208,6 @@ namespace DAL
                 return dbConnection.Query<Equipamento>(query).ToList();
             }
         }
-
 
         public void DesativarEquipamento(int id_equipamento)
         {
@@ -234,7 +234,7 @@ namespace DAL
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                string query = "UPDATE tb_equipamentos SET Ativo_inativo = 1 WHERE ID_equipamento = @id_setor";
+                string query = "UPDATE tb_equipamentos SET Ativo_inativo = 1 WHERE ID_equipamento = @id_equipamento";
                 int rowsAffected = dbConnection.Execute(query, new { ID_equipamento = id_equipamento });
 
                 if (rowsAffected > 0)

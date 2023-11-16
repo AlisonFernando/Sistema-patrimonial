@@ -11,7 +11,7 @@ namespace model
     {
         public int ID_colaborador { get; set; }
         string emailColaborador;
-        string nomeColaborador;
+        string nomeColaborador { get; set; }
         string senhaColaborador;
         string agendaColaborador;
         string telefoneColaborador;

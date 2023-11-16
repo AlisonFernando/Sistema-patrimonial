@@ -10,10 +10,11 @@ namespace model
     {
         public int id_chamado { get; set; }
         public DateTime DataHora { get; set; }
-
         public string Descricao { get; set; }
         public int id_usuario { get; set; }
         public int id_status { get; set; }
         public string id_equipamento { get; set; }
+
+        public string id_nomeColab { get; set;}
     }
 }

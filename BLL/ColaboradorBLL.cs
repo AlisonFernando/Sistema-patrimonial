@@ -46,6 +46,16 @@ namespace BLL
                 return false;
             }
         }
+        public List<Colaborador> GetColaboradoresAtivos()
+        {
+            return colaboradorDAL.GetColaboradoresAtivos();
+        }
+        public List<Colaborador> GetColaboradoresDesativados()
+        {
+            return colaboradorDAL.GetColaboradoresDesativados();
+        }
+
+
         public string AssociarEquipamentosAoColaborador(int idColaborador, List<int> equipamentosSelecionados)
         {
             colaboradorDAL.AssociarEquipamentosAoColaborador(idColaborador, equipamentosSelecionados);
@@ -63,6 +73,10 @@ namespace BLL
         public void DesativarColaborador(int ID_Colab)
         {
             colaboradorDAL.DesativarColaborador(ID_Colab);
+        }
+        public void AtivarColaborador(int ID_Colab)
+        {
+            colaboradorDAL.AtivarColaborador(ID_Colab);
         }
         public Colaborador ObterColaboradorPorID(int idColaborador)
         {

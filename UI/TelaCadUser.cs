@@ -19,6 +19,7 @@ namespace UI
     {
         private UserBLL userBLL = new UserBLL();
         private List<Usuario> usuarios = new List<Usuario>();
+        private List<Usuario> usuariosDesativados = new List<Usuario>();
         private Usuario usuarioLogado;
         private string emailAtual;
 
@@ -34,12 +35,20 @@ namespace UI
                 checkAtivo.Checked = usuario.Ativo_inativo;
 
 
+
                 inputUserSenha.Enabled = false;
                 txtConfirEmail.Enabled = false;
                 txtConfirSenha.Enabled = false;
                 emailAtual = usuario.email;
-                 
+
             }
+        }
+        public void LoadUsuarios()
+        {
+            usuarios = userBLL.GetUsuariosAtivos();
+            MostrarUsuarios.DataSource = usuarios;
+            usuariosDesativados = userBLL.GetUsuariosDesativados();
+            MostrarUsuariosDesativados.DataSource = usuariosDesativados;
         }
         private void TelaCadUser_Load(object sender, EventArgs e)
         {
@@ -47,11 +56,6 @@ namespace UI
             CarregarPerfisDeAcesso();
         }
 
-        public void LoadUsuarios()
-        {
-            usuarios = userBLL.GetUsuariosAtivos();
-            MostrarUsuarios.DataSource = usuarios;
-        }
 
         Dictionary<string, int> niveisAcesso = new Dictionary<string, int>
         {
@@ -175,14 +179,17 @@ namespace UI
                 DataGridViewRow selectedRow = MostrarUsuarios.Rows[e.RowIndex];
 
                 int id_usuario = (int)selectedRow.Cells["Id"].Value;
+                txtID.Text = id_usuario.ToString();
                 Usuario usuario = usuarios.Find(u => u.id_usuario == id_usuario);
 
-                txtID.Text = usuario.id_usuario.ToString();
                 inputUserNome.Text = usuario.Nome;
                 inputUserEmail.Text = usuario.email;
                 txtConfirEmail.Enabled = false;
                 txtConfirSenha.Enabled = false;
                 inputUserSenha.Enabled = false;
+
+                // Carregue o nível de acesso correspondente
+                CarregarNivelAcesso(id_usuario);
             }
         }
 
@@ -198,6 +205,52 @@ namespace UI
             else
             {
                 MessageBox.Show("Selecione um usuario para desativar.");
+            }
+        }
+        private void btnAtivar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                int idUsuario = int.Parse(txtID.Text);
+                userBLL.AtivarUsuario(idUsuario);
+                MessageBox.Show("Usuario ativado com sucesso.");
+                LoadUsuarios();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um usuario para ativar novamente.");
+            }
+        }
+
+
+        private void CarregarNivelAcesso(int idUsuario)
+        {
+            Usuario usuario = usuariosDesativados.Find(u => u.id_usuario == idUsuario);
+
+            if (usuario != null)
+            {
+                ComboBoxAcesso.SelectedValue = usuario.UserAcesso;
+            }
+        }
+
+        private void MostrarUsuariosDesativados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = MostrarUsuariosDesativados.Rows[e.RowIndex];
+
+                int id_usuario = (int)selectedRow.Cells["Id_Desativado"].Value;
+                txtID.Text = id_usuario.ToString();
+                Usuario usuario = usuariosDesativados.Find(u => u.id_usuario == id_usuario);
+
+                inputUserNome.Text = usuario.Nome;
+                inputUserEmail.Text = usuario.email;
+                txtConfirEmail.Enabled = false;
+                txtConfirSenha.Enabled = false;
+                inputUserSenha.Enabled = false;
+
+                // Carregue o nível de acesso correspondente
+                CarregarNivelAcesso(id_usuario);
             }
         }
     }

@@ -16,7 +16,6 @@ namespace UI
     public partial class TelaAbrirChamado : Form
     {
         private ChamadoBLL chamadoBLL;
-        private ChamadoDAL chamadoDAL;
         public TelaAbrirChamado()
         {
             InitializeComponent();
@@ -32,7 +31,6 @@ namespace UI
 
         private void CarregarEtiquetasComboBox()
         {
-            ChamadoBLL chamadoBLL = new ChamadoBLL();
             DataTable dt = chamadoBLL.ChamarEtiquetasDisponiveis();
 
             selectEtiqueta.DisplayMember = "Etiqueta_identificacao";
@@ -42,7 +40,6 @@ namespace UI
 
         private void CarregarNomeUsuarioComboBox()
         {
-            ChamadoBLL chamadoBLL = new ChamadoBLL();
             DataTable dt = chamadoBLL.EscolherNomeUsuario();
 
             selectUser.DisplayMember = "Nome"; // Define a coluna a ser exibida
@@ -51,7 +48,6 @@ namespace UI
         }
         private void CarregarChamadoStatusComboBox()
         {
-            ChamadoBLL chamadoBLL = new ChamadoBLL();
             DataTable dt = chamadoBLL.BuscarStatusChamado();
 
             selectChamado.DisplayMember = "andamento_do_chamado";
@@ -67,11 +63,11 @@ namespace UI
                 int idEquipamento = Convert.ToInt32(selectEtiqueta.SelectedValue);
 
                 // Chamar o método BuscarNomeEquipamento do ChamadoBLL
-                ChamadoBLL chamadoBLL = new ChamadoBLL();
-                string nomeEquipamento = chamadoBLL.BuscarNomeEquipamento(idEquipamento);
+                var nomes = chamadoBLL.BuscarNomeEquipamento(idEquipamento);
 
-                // Exibir o nome do equipamento no TextBox
-                txtEquip.Text = nomeEquipamento;
+                // Exibir os nomes no TextBox
+                txtEquip.Text = nomes.NomeEquipamento;
+                txtColab.Text = nomes.NomeColaborador;
             }
             else
             {
@@ -121,7 +117,6 @@ namespace UI
                 id_equipamento = selectEtiqueta.SelectedValue.ToString()
             };
 
-            ChamadoBLL chamadoBLL = new ChamadoBLL();
             chamadoBLL.CadChamado(chamado, Program.UserEmail);
 
 
@@ -133,6 +128,7 @@ namespace UI
         private void LimparCampos()
         {
             txtEquip.Text = string.Empty;
+            txtColab.Text = string.Empty;
             txtDesc.Clear();
             selectUser.SelectedIndex = -1;
             selectChamado.SelectedIndex = -1;

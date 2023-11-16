@@ -27,31 +27,15 @@ namespace UI
             string email = input_email.Text;
             string senha = input_senha.Text;
 
-            if (string.IsNullOrWhiteSpace(email))
+            if (string.IsNullOrWhiteSpace(email) || email.Contains(" ") || email.Any(char.IsUpper))
             {
                 MessageBox.Show("Digite um email válido e tente novamente.");
                 return;
             }
-            else if (email.Contains(" "))
-            {
-                MessageBox.Show("O email não pode conter espaços em branco.");
-                return;
-            }
 
-            if (string.IsNullOrWhiteSpace(senha))
+            if (string.IsNullOrWhiteSpace(senha) || senha.Contains(" "))
             {
                 MessageBox.Show("Digite uma senha válida e tente novamente.");
-                return;
-            }
-            else if (senha.Contains(" "))
-            {
-                MessageBox.Show("A senha não pode conter espaços em branco.");
-                return;
-            }
-
-            if (email.Any(char.IsUpper))
-            {
-                MessageBox.Show("O email não pode conter letras maiúsculas.");
                 return;
             }
 
@@ -73,9 +57,8 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Usuário ou senha incorretos.");
+                MessageBox.Show("Este e-mail pertence a um usuário desativado ou as credenciais são incorretas. Use um e-mail válido.");
             }
         }
-
     }
 }

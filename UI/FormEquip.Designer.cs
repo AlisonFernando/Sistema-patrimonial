@@ -67,10 +67,6 @@
             label6 = new Label();
             label7 = new Label();
             MostrarEquipamentosDesativados = new DataGridView();
-            label8 = new Label();
-            label9 = new Label();
-            button1 = new Button();
-            button2 = new Button();
             ID_equipamentoDesativado = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
@@ -81,6 +77,11 @@
             dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
+            label8 = new Label();
+            label9 = new Label();
+            btnAtivar = new Button();
+            button2 = new Button();
+            btnPesquisarAtivo = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarEquipamentosAtivos).BeginInit();
             panel1.SuspendLayout();
@@ -90,7 +91,7 @@
             // NomeEquip
             // 
             NomeEquip.AutoSize = true;
-            NomeEquip.Location = new Point(719, 109);
+            NomeEquip.Location = new Point(672, 109);
             NomeEquip.Margin = new Padding(4, 0, 4, 0);
             NomeEquip.Name = "NomeEquip";
             NomeEquip.Size = new Size(199, 25);
@@ -100,7 +101,7 @@
             // MarcaEquip
             // 
             MarcaEquip.AutoSize = true;
-            MarcaEquip.Location = new Point(727, 319);
+            MarcaEquip.Location = new Point(680, 319);
             MarcaEquip.Margin = new Padding(4, 0, 4, 0);
             MarcaEquip.Name = "MarcaEquip";
             MarcaEquip.Size = new Size(60, 25);
@@ -110,7 +111,7 @@
             // DescricaoEquip
             // 
             DescricaoEquip.AutoSize = true;
-            DescricaoEquip.Location = new Point(719, 174);
+            DescricaoEquip.Location = new Point(672, 174);
             DescricaoEquip.Margin = new Padding(4, 0, 4, 0);
             DescricaoEquip.Name = "DescricaoEquip";
             DescricaoEquip.Size = new Size(88, 25);
@@ -120,7 +121,7 @@
             // PrecoEquip
             // 
             PrecoEquip.AutoSize = true;
-            PrecoEquip.Location = new Point(949, 320);
+            PrecoEquip.Location = new Point(902, 320);
             PrecoEquip.Margin = new Padding(4, 0, 4, 0);
             PrecoEquip.Name = "PrecoEquip";
             PrecoEquip.Size = new Size(56, 25);
@@ -130,7 +131,7 @@
             // EtiquetaEquip
             // 
             EtiquetaEquip.AutoSize = true;
-            EtiquetaEquip.Location = new Point(719, 249);
+            EtiquetaEquip.Location = new Point(672, 249);
             EtiquetaEquip.Margin = new Padding(4, 0, 4, 0);
             EtiquetaEquip.Name = "EtiquetaEquip";
             EtiquetaEquip.Size = new Size(76, 25);
@@ -139,7 +140,7 @@
             // 
             // inputEquipNome
             // 
-            inputEquipNome.Location = new Point(705, 139);
+            inputEquipNome.Location = new Point(658, 139);
             inputEquipNome.Margin = new Padding(4, 5, 4, 5);
             inputEquipNome.MaxLength = 100;
             inputEquipNome.Name = "inputEquipNome";
@@ -148,7 +149,7 @@
             // 
             // inputDesEquip
             // 
-            inputDesEquip.Location = new Point(705, 204);
+            inputDesEquip.Location = new Point(658, 204);
             inputDesEquip.Margin = new Padding(4, 5, 4, 5);
             inputDesEquip.MaxLength = 100;
             inputDesEquip.Name = "inputDesEquip";
@@ -157,7 +158,7 @@
             // 
             // inputEtiquetaEquip
             // 
-            inputEtiquetaEquip.Location = new Point(705, 275);
+            inputEtiquetaEquip.Location = new Point(658, 275);
             inputEtiquetaEquip.Margin = new Padding(4, 5, 4, 5);
             inputEtiquetaEquip.MaxLength = 10;
             inputEtiquetaEquip.Name = "inputEtiquetaEquip";
@@ -166,7 +167,7 @@
             // 
             // inputPrecoEquip
             // 
-            inputPrecoEquip.Location = new Point(928, 350);
+            inputPrecoEquip.Location = new Point(881, 350);
             inputPrecoEquip.Margin = new Padding(4, 5, 4, 5);
             inputPrecoEquip.MaxLength = 10;
             inputPrecoEquip.Name = "inputPrecoEquip";
@@ -221,7 +222,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(777, 22);
+            label2.Location = new Point(680, 20);
             label2.Name = "label2";
             label2.Size = new Size(362, 41);
             label2.TabIndex = 0;
@@ -230,7 +231,7 @@
             // escolherMarca
             // 
             escolherMarca.FormattingEnabled = true;
-            escolherMarca.Location = new Point(705, 349);
+            escolherMarca.Location = new Point(658, 349);
             escolherMarca.Margin = new Padding(4, 5, 4, 5);
             escolherMarca.Name = "escolherMarca";
             escolherMarca.Size = new Size(164, 33);
@@ -239,7 +240,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(705, 387);
+            label1.Location = new Point(658, 387);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(115, 25);
@@ -249,7 +250,7 @@
             // check_ativo
             // 
             check_ativo.AutoSize = true;
-            check_ativo.Location = new Point(705, 417);
+            check_ativo.Location = new Point(658, 426);
             check_ativo.Margin = new Padding(4, 5, 4, 5);
             check_ativo.Name = "check_ativo";
             check_ativo.Size = new Size(80, 29);
@@ -261,7 +262,7 @@
             // 
             btn_Limpar.BackColor = Color.DarkGreen;
             btn_Limpar.ForeColor = Color.White;
-            btn_Limpar.Location = new Point(19, 797);
+            btn_Limpar.Location = new Point(54, 854);
             btn_Limpar.Margin = new Padding(4, 5, 4, 5);
             btn_Limpar.Name = "btn_Limpar";
             btn_Limpar.Size = new Size(214, 63);
@@ -282,7 +283,7 @@
             // 
             btn_Desativar.BackColor = Color.DarkGreen;
             btn_Desativar.ForeColor = Color.White;
-            btn_Desativar.Location = new Point(239, 797);
+            btn_Desativar.Location = new Point(274, 854);
             btn_Desativar.Name = "btn_Desativar";
             btn_Desativar.Size = new Size(214, 63);
             btn_Desativar.TabIndex = 24;
@@ -296,7 +297,7 @@
             MostrarEquipamentosAtivos.AllowUserToDeleteRows = false;
             MostrarEquipamentosAtivos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipamentosAtivos.Columns.AddRange(new DataGridViewColumn[] { ID_equipamento, ValorNumerico, Nome_equipamento, Ativo, value, description, id_status, Etiqueta, colabID, marca_id });
-            MostrarEquipamentosAtivos.Location = new Point(19, 510);
+            MostrarEquipamentosAtivos.Location = new Point(54, 567);
             MostrarEquipamentosAtivos.Name = "MostrarEquipamentosAtivos";
             MostrarEquipamentosAtivos.ReadOnly = true;
             MostrarEquipamentosAtivos.RowHeadersWidth = 62;
@@ -408,7 +409,7 @@
             panel1.Controls.Add(txtID);
             panel1.Controls.Add(btnVisualizar);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 897);
+            panel1.Location = new Point(0, 944);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(9, 10, 9, 10);
             panel1.Size = new Size(1703, 83);
@@ -431,7 +432,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Red;
-            label4.Location = new Point(705, 110);
+            label4.Location = new Point(658, 110);
             label4.Name = "label4";
             label4.Size = new Size(20, 25);
             label4.TabIndex = 30;
@@ -441,7 +442,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.Red;
-            label3.Location = new Point(705, 179);
+            label3.Location = new Point(658, 179);
             label3.Name = "label3";
             label3.Size = new Size(20, 25);
             label3.TabIndex = 31;
@@ -451,7 +452,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(705, 249);
+            label5.Location = new Point(658, 249);
             label5.Name = "label5";
             label5.Size = new Size(20, 25);
             label5.TabIndex = 32;
@@ -461,7 +462,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(705, 320);
+            label6.Location = new Point(658, 320);
             label6.Name = "label6";
             label6.Size = new Size(20, 25);
             label6.TabIndex = 33;
@@ -471,7 +472,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(928, 325);
+            label7.Location = new Point(881, 325);
             label7.Name = "label7";
             label7.Size = new Size(20, 25);
             label7.TabIndex = 34;
@@ -483,7 +484,7 @@
             MostrarEquipamentosDesativados.AllowUserToDeleteRows = false;
             MostrarEquipamentosDesativados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarEquipamentosDesativados.Columns.AddRange(new DataGridViewColumn[] { ID_equipamentoDesativado, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10 });
-            MostrarEquipamentosDesativados.Location = new Point(866, 510);
+            MostrarEquipamentosDesativados.Location = new Point(901, 567);
             MostrarEquipamentosDesativados.Name = "MostrarEquipamentosDesativados";
             MostrarEquipamentosDesativados.ReadOnly = true;
             MostrarEquipamentosDesativados.RowHeadersWidth = 62;
@@ -492,53 +493,6 @@
             MostrarEquipamentosDesativados.Size = new Size(745, 278);
             MostrarEquipamentosDesativados.TabIndex = 35;
             MostrarEquipamentosDesativados.CellMouseDoubleClick += MostrarEquipamentosDesativados_CellMouseDoubleClick;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.DarkGreen;
-            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(19, 475);
-            label8.Name = "label8";
-            label8.Size = new Size(235, 32);
-            label8.TabIndex = 36;
-            label8.Text = "Equipamentos ativos";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.DarkGreen;
-            label9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(866, 475);
-            label9.Name = "label9";
-            label9.Size = new Size(298, 32);
-            label9.TabIndex = 37;
-            label9.Text = "Equipamentos desativados";
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.DarkGreen;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(1087, 797);
-            button1.Name = "button1";
-            button1.Size = new Size(214, 63);
-            button1.TabIndex = 38;
-            button1.Text = "Desativar equipamento";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.DarkGreen;
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(866, 797);
-            button2.Margin = new Padding(4, 5, 4, 5);
-            button2.Name = "button2";
-            button2.Size = new Size(214, 63);
-            button2.TabIndex = 39;
-            button2.Text = "Limpar";
-            button2.UseVisualStyleBackColor = false;
             // 
             // ID_equipamentoDesativado
             // 
@@ -635,13 +589,75 @@
             dataGridViewTextBoxColumn10.Visible = false;
             dataGridViewTextBoxColumn10.Width = 150;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.DarkGreen;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(54, 527);
+            label8.Name = "label8";
+            label8.Size = new Size(235, 32);
+            label8.TabIndex = 36;
+            label8.Text = "Equipamentos ativos";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.DarkGreen;
+            label9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.ForeColor = Color.White;
+            label9.Location = new Point(901, 526);
+            label9.Name = "label9";
+            label9.Size = new Size(298, 32);
+            label9.TabIndex = 37;
+            label9.Text = "Equipamentos desativados";
+            // 
+            // btnAtivar
+            // 
+            btnAtivar.BackColor = Color.DarkGreen;
+            btnAtivar.ForeColor = Color.White;
+            btnAtivar.Location = new Point(1122, 854);
+            btnAtivar.Name = "btnAtivar";
+            btnAtivar.Size = new Size(214, 63);
+            btnAtivar.TabIndex = 38;
+            btnAtivar.Text = "Ativar equipamento";
+            btnAtivar.UseVisualStyleBackColor = false;
+            btnAtivar.Click += btnAtivar_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.DarkGreen;
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(901, 854);
+            button2.Margin = new Padding(4, 5, 4, 5);
+            button2.Name = "button2";
+            button2.Size = new Size(214, 63);
+            button2.TabIndex = 39;
+            button2.Text = "Limpar";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // btnPesquisarAtivo
+            // 
+            btnPesquisarAtivo.BackColor = Color.DarkGreen;
+            btnPesquisarAtivo.ForeColor = Color.White;
+            btnPesquisarAtivo.Location = new Point(1052, 136);
+            btnPesquisarAtivo.Name = "btnPesquisarAtivo";
+            btnPesquisarAtivo.Size = new Size(235, 37);
+            btnPesquisarAtivo.TabIndex = 41;
+            btnPesquisarAtivo.Text = "Pesquisar equipamento ativo";
+            btnPesquisarAtivo.UseVisualStyleBackColor = false;
+            btnPesquisarAtivo.Click += btnPesquisarAtivo_Click;
+            // 
             // CadEquipamento
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1703, 980);
+            ClientSize = new Size(1703, 1027);
+            Controls.Add(btnPesquisarAtivo);
             Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnAtivar);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(MostrarEquipamentosDesativados);
@@ -734,7 +750,7 @@
         private DataGridViewTextBoxColumn Etiqueta;
         private DataGridViewTextBoxColumn colabID;
         private DataGridViewTextBoxColumn marca_id;
-        private Button button1;
+        private Button btnAtivar;
         private Button button2;
         private DataGridViewTextBoxColumn ID_equipamentoDesativado;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -746,5 +762,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private Button btnPesquisarAtivo;
     }
 }

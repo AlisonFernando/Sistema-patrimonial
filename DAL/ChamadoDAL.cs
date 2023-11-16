@@ -34,6 +34,8 @@ namespace DAL
                         cmdChamado.Parameters.AddWithValue("@id_usuario", chamado.id_usuario);
                         cmdChamado.Parameters.AddWithValue("@id_status", chamado.id_status);
                         cmdChamado.Parameters.AddWithValue("@id_equipamento", chamado.id_equipamento);
+                        //cmdChamado.Parameters.AddWithValue("@id_nomeColab", chamado.id_nomeColab);
+                            
 
                         cmdChamado.ExecuteNonQuery();
                     }
@@ -147,11 +149,18 @@ namespace DAL
             return dt;
         }
 
-        public string BuscarNomeEquipamento(int idEquipamento)
+        public (string NomeEquipamento, string NomeColaborador) BuscarNomeEquipamento(int idEquipamento)
         {
             try
             {
-                string sql = "SELECT Nome_equipamento FROM tb_equipamentos WHERE ID_equipamento = @ID_equipamento";
+                string sql = @"
+            SELECT 
+                e.Nome_equipamento AS NomeEquipamento,
+                c.Nome AS NomeColaborador
+            FROM tb_equipamentos e
+            LEFT JOIN tb_colaborador c ON e.id_colaborador = c.id_colaborador
+            WHERE e.ID_equipamento = @ID_equipamento";
+
                 using (MySqlConnection connection = mConn.AbrirConexao())
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
@@ -162,26 +171,34 @@ namespace DAL
                         {
                             if (reader.Read())
                             {
-                                return reader["Nome_equipamento"].ToString();
+                                // Obtém o nome do equipamento e do colaborador
+                                string nomeEquipamento = reader["NomeEquipamento"].ToString();
+                                string nomeColaborador = reader["NomeColaborador"].ToString();
+
+                                // Retorna uma tupla com os nomes
+                                return (nomeEquipamento, nomeColaborador);
                             }
                         }
                     }
                 }
-                return string.Empty; // Retornar uma string vazia caso não seja encontrado.
+
+                // Retorna uma tupla com strings vazias caso não seja encontrado.
+                return (string.Empty, string.Empty);
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
         public DataTable BuscarStatusChamado()
         {
             DataTable dt = new DataTable();
 
             try
             {
-                // Modifique a consulta SQL para selecionar todos os usuários.
-                string sql = "SELECT * FROM tb_status";
+                // Modifique a consulta SQL para selecionar apenas os status com IDs 2 e 3.
+                string sql = "SELECT * FROM tb_status WHERE id_status IN (2, 3)";
 
                 using (MySqlConnection connection = mConn.AbrirConexao())
                 {
@@ -193,7 +210,6 @@ namespace DAL
                         }
                     }
                 }
-
                 return dt;
             }
             catch (Exception)
@@ -201,6 +217,5 @@ namespace DAL
                 throw;
             }
         }
-
     }
 }

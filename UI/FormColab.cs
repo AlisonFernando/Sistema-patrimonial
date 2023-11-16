@@ -19,7 +19,9 @@ namespace UI
     public partial class CadColaborador : Form
     {
         private ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
-        private List<Colaborador> colaboradores = new List<Colaborador>();
+        private List<Colaborador> colaboradoresAtivos = new List<Colaborador>();
+        private List<Colaborador> colaboradoresDesativados = new List<Colaborador>();
+        Colaborador colaborador = new Colaborador();
         public CadColaborador(Colaborador colaborador)
         {
             InitializeComponent();
@@ -37,13 +39,17 @@ namespace UI
             }
         }
 
-        private void btnCadastrar_Click(object sender, EventArgs e)
-        {
-        }
-
         private void CadColaborador_Load(object sender, EventArgs e)
         {
             CarregarSetorComboBox();
+            LoadColaboradores();
+        }
+        public void LoadColaboradores()
+        {
+            colaboradoresAtivos = colaboradorBLL.GetColaboradoresAtivos();
+            MostrarColaboradores.DataSource = colaboradoresAtivos;
+            colaboradoresDesativados = colaboradorBLL.GetColaboradoresDesativados();
+            MostrarColaboradoresDesativados.DataSource = colaboradoresDesativados;
         }
 
         private void CarregarSetorComboBox()
@@ -59,7 +65,7 @@ namespace UI
         private void btn_selectEquips_Click(object sender, EventArgs e)
         {
 
-            Colaborador colaborador = new Colaborador();
+            
             Setor setor = new Setor();
 
             //Passa o texto dos campos digitados
@@ -195,6 +201,7 @@ namespace UI
                 inputColabAgenda.Text = string.Empty;
                 txtID.Text = string.Empty;
                 check_ativo.Enabled = true;
+                LoadColaboradores();
             }
             else
             {
@@ -211,11 +218,97 @@ namespace UI
             inputColabAgenda.Text = string.Empty;
             txtID.Text = string.Empty;
             check_ativo.Enabled = true;
+            LoadColaboradores();
         }
 
         private void escolherSetor_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAtivar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                int ID_Colab = int.Parse(txtID.Text);
+                colaboradorBLL.AtivarColaborador(ID_Colab);
+                MessageBox.Show("Colaborador ativado com sucesso.");
+                InputColabNome.Text = string.Empty;
+                inputColabEmail.Text = string.Empty;
+                inputColabSenha.Enabled = true;
+                inputColabTel.Text = string.Empty;
+                inputColabAgenda.Text = string.Empty;
+                txtID.Text = string.Empty;
+                check_ativo.Enabled = true;
+                LoadColaboradores();
+            }
+            else
+            {
+                MessageBox.Show("Escolha um colaborador e tente novamente");
+            }
+        }
+
+        private void MostrarColaboradores_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = MostrarColaboradores.Rows[e.RowIndex];
+
+                int ID_colaborador = (int)selectedRow.Cells["id_colaborador"].Value;
+                Colaborador colaborador = colaboradoresAtivos.Find(f => f.ID_colaborador == ID_colaborador);
+
+                txtID.Text = colaborador.ID_colaborador.ToString();
+                InputColabNome.Text = colaborador.NomeColaborador;
+                inputColabEmail.Text = colaborador.EmailColaborador;
+                inputColabTel.Text = colaborador.TelefoneColaborador;
+                inputColabAgenda.Text = colaborador.AgendaColaborador;
+                inputColabSenha.Enabled = false;
+            }
+        }
+
+        private void MostrarColaboradoresDesativados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = MostrarColaboradoresDesativados.Rows[e.RowIndex];
+
+                int ID_colaborador = (int)selectedRow.Cells["ID_ColabDesativado"].Value;
+                Colaborador colaborador = colaboradoresDesativados.Find(f => f.ID_colaborador == ID_colaborador);
+
+                txtID.Text = colaborador.ID_colaborador.ToString();
+                InputColabNome.Text = colaborador.NomeColaborador;
+                inputColabEmail.Text = colaborador.EmailColaborador;
+                inputColabTel.Text = colaborador.TelefoneColaborador;
+                inputColabAgenda.Text = colaborador.AgendaColaborador;
+                inputColabSenha.Enabled = false;
+            }
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            string nomePesquisado = InputColabNome.Text.Trim();
+
+            List<Colaborador> colaboradoresFiltrados = colaboradoresAtivos
+                .Concat(colaboradoresDesativados)
+                .Where(colaborador =>
+                    colaborador.NomeColaborador.Contains(nomePesquisado, StringComparison.OrdinalIgnoreCase) ||
+                    colaborador.EmailColaborador.Contains(nomePesquisado, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            if (colaboradoresFiltrados.Count == 0)
+            {
+                MessageBox.Show("Colaborador não encontrado.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (nomePesquisado == string.Empty)
+            {
+                MessageBox.Show("Digite o nome do colaborador ou e-mail e tente novamente");
+                InputColabNome.Focus();
+            }
+            else
+            {
+                MostrarColaboradores.DataSource = colaboradoresFiltrados;
+                MostrarColaboradoresDesativados.DataSource = colaboradoresFiltrados;
+            }
         }
     }
 }

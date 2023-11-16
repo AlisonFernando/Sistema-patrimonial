@@ -91,20 +91,27 @@ namespace DAL
             }
             return emailExists;
         }
-        
-        public string ObterSenhaCriptografada(string usuario)
+
+        public Usuario ObterUsuario(string email)
         {
-            string sql = "SELECT Senha FROM tb_usuario WHERE Email = @usuario";
-            using (MySqlConnection connection = mConn.AbrirConexao())
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
-                using (MySqlCommand command = new MySqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@usuario", usuario);
-                    return command.ExecuteScalar() as string;
-                }
+                dbConnection.Open();
+                string query = "SELECT * FROM tb_usuario WHERE Email = @Email AND Ativo_inativo = 1";
+                return dbConnection.QueryFirstOrDefault<Usuario>(query, new { Email = email });
             }
         }
-        
+
+        public string ObterSenhaCriptografada(string email)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "SELECT Senha FROM tb_usuario WHERE Email = @Email";
+                return dbConnection.ExecuteScalar<string>(query, new { Email = email });
+            }
+        }
+
         public List<Usuario> GetUsuarios()
         {
             
@@ -148,6 +155,15 @@ namespace DAL
                 return dbConnection.Query<Usuario>(query, new { AtivoInativo = 1 }).ToList();
             }
         }
+        public List<Usuario> GetUsuariosDesativados()
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "SELECT id_usuario, Nome, Email, Senha, UserAcesso FROM tb_usuario WHERE Ativo_inativo = @AtivoInativo";
+                return dbConnection.Query<Usuario>(query, new { AtivoInativo = 0 }).ToList();
+            }
+        }
 
         public void DesativarUsuario(int id_usuario)
         {
@@ -155,6 +171,26 @@ namespace DAL
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_usuario SET Ativo_inativo = 0 WHERE id_usuario = @id_usuario";
+                int rowsAffected = dbConnection.Execute(query, new { ID_usuario = id_usuario });
+
+                if (rowsAffected > 0)
+                {
+                    // Atualização bem-sucedida
+                    // Aqui você pode adicionar lógica adicional se necessário
+                }
+                else
+                {
+                    // A atualização não teve efeito (nenhuma marca encontrada com o ID especificado, por exemplo)
+                    // Adicione lógica apropriada, se necessário
+                }
+            }
+        }
+        public void AtivarUsuario(int id_usuario)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_usuario SET Ativo_inativo = 1 WHERE id_usuario = @id_usuario";
                 int rowsAffected = dbConnection.Execute(query, new { ID_usuario = id_usuario });
 
                 if (rowsAffected > 0)

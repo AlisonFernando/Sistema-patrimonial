@@ -65,15 +65,30 @@
             btnVerUser = new Button();
             ComboBoxAcesso = new ComboBox();
             checkAtivo = new CheckBox();
+            MostrarUsuariosDesativados = new DataGridView();
+            Id_Desativado = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
+            label9 = new Label();
+            label10 = new Label();
+            btnAtivar = new Button();
+            button3 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MostrarUsuariosDesativados).BeginInit();
             SuspendLayout();
             // 
             // txtUserNome
             // 
             txtUserNome.AutoSize = true;
-            txtUserNome.Location = new Point(127, 127);
+            txtUserNome.Location = new Point(510, 111);
             txtUserNome.Margin = new Padding(4, 0, 4, 0);
             txtUserNome.Name = "txtUserNome";
             txtUserNome.Size = new Size(61, 25);
@@ -83,7 +98,7 @@
             // txtEmailUser
             // 
             txtEmailUser.AutoSize = true;
-            txtEmailUser.Location = new Point(127, 198);
+            txtEmailUser.Location = new Point(510, 182);
             txtEmailUser.Margin = new Padding(4, 0, 4, 0);
             txtEmailUser.Name = "txtEmailUser";
             txtEmailUser.Size = new Size(61, 25);
@@ -93,7 +108,7 @@
             // txtUserSenha
             // 
             txtUserSenha.AutoSize = true;
-            txtUserSenha.Location = new Point(134, 345);
+            txtUserSenha.Location = new Point(517, 329);
             txtUserSenha.Margin = new Padding(4, 0, 4, 0);
             txtUserSenha.Name = "txtUserSenha";
             txtUserSenha.Size = new Size(60, 25);
@@ -110,7 +125,7 @@
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(9, 10, 9, 10);
-            panel1.Size = new Size(567, 83);
+            panel1.Size = new Size(1309, 83);
             panel1.TabIndex = 19;
             // 
             // btnCadUserSucesso
@@ -118,7 +133,7 @@
             btnCadUserSucesso.BackColor = Color.DarkGreen;
             btnCadUserSucesso.Dock = DockStyle.Right;
             btnCadUserSucesso.ForeColor = Color.White;
-            btnCadUserSucesso.Location = new Point(344, 10);
+            btnCadUserSucesso.Location = new Point(1086, 10);
             btnCadUserSucesso.Name = "btnCadUserSucesso";
             btnCadUserSucesso.Padding = new Padding(4, 5, 4, 5);
             btnCadUserSucesso.Size = new Size(214, 63);
@@ -151,7 +166,7 @@
             // 
             // inputUserNome
             // 
-            inputUserNome.Location = new Point(109, 157);
+            inputUserNome.Location = new Point(492, 141);
             inputUserNome.Margin = new Padding(4, 5, 4, 5);
             inputUserNome.MaxLength = 100;
             inputUserNome.Name = "inputUserNome";
@@ -160,7 +175,7 @@
             // 
             // inputUserEmail
             // 
-            inputUserEmail.Location = new Point(109, 228);
+            inputUserEmail.Location = new Point(492, 212);
             inputUserEmail.Margin = new Padding(4, 5, 4, 5);
             inputUserEmail.MaxLength = 100;
             inputUserEmail.Name = "inputUserEmail";
@@ -169,7 +184,7 @@
             // 
             // inputUserSenha
             // 
-            inputUserSenha.Location = new Point(109, 375);
+            inputUserSenha.Location = new Point(492, 359);
             inputUserSenha.Margin = new Padding(4, 5, 4, 5);
             inputUserSenha.MaxLength = 100;
             inputUserSenha.Name = "inputUserSenha";
@@ -185,7 +200,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(567, 83);
+            panel2.Size = new Size(1309, 83);
             panel2.TabIndex = 10;
             // 
             // label1
@@ -193,7 +208,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.Control;
-            label1.Location = new Point(151, 18);
+            label1.Location = new Point(513, 22);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(265, 41);
@@ -202,7 +217,7 @@
             // 
             // txtConfirEmail
             // 
-            txtConfirEmail.Location = new Point(109, 302);
+            txtConfirEmail.Location = new Point(492, 286);
             txtConfirEmail.Margin = new Padding(4, 5, 4, 5);
             txtConfirEmail.MaxLength = 100;
             txtConfirEmail.Name = "txtConfirEmail";
@@ -212,7 +227,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(130, 272);
+            label2.Location = new Point(513, 256);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(145, 25);
@@ -221,7 +236,7 @@
             // 
             // txtConfirSenha
             // 
-            txtConfirSenha.Location = new Point(109, 445);
+            txtConfirSenha.Location = new Point(492, 429);
             txtConfirSenha.Margin = new Padding(4, 5, 4, 5);
             txtConfirSenha.MaxLength = 100;
             txtConfirSenha.Name = "txtConfirSenha";
@@ -232,7 +247,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(134, 415);
+            label3.Location = new Point(517, 399);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(142, 25);
@@ -243,9 +258,9 @@
             // 
             btn_limpar.BackColor = Color.DarkGreen;
             btn_limpar.ForeColor = Color.White;
-            btn_limpar.Location = new Point(47, 808);
+            btn_limpar.Location = new Point(19, 807);
             btn_limpar.Name = "btn_limpar";
-            btn_limpar.Size = new Size(144, 63);
+            btn_limpar.Size = new Size(116, 42);
             btn_limpar.TabIndex = 28;
             btn_limpar.Text = "Limpar";
             btn_limpar.UseVisualStyleBackColor = false;
@@ -359,12 +374,12 @@
             // 
             btnDesativar.BackColor = Color.DarkGreen;
             btnDesativar.ForeColor = SystemColors.Control;
-            btnDesativar.Location = new Point(218, 808);
+            btnDesativar.Location = new Point(142, 807);
             btnDesativar.Margin = new Padding(4, 5, 4, 5);
             btnDesativar.Name = "btnDesativar";
-            btnDesativar.Size = new Size(134, 62);
+            btnDesativar.Size = new Size(160, 42);
             btnDesativar.TabIndex = 24;
-            btnDesativar.Text = "Desativar";
+            btnDesativar.Text = "Desativar usuário";
             btnDesativar.UseVisualStyleBackColor = false;
             btnDesativar.Click += btnDesativar_Click;
             // 
@@ -372,7 +387,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Red;
-            label4.Location = new Point(114, 127);
+            label4.Location = new Point(497, 111);
             label4.Name = "label4";
             label4.Size = new Size(20, 25);
             label4.TabIndex = 25;
@@ -382,7 +397,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(114, 198);
+            label5.Location = new Point(497, 182);
             label5.Name = "label5";
             label5.Size = new Size(20, 25);
             label5.TabIndex = 26;
@@ -392,7 +407,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(116, 273);
+            label6.Location = new Point(499, 257);
             label6.Name = "label6";
             label6.Size = new Size(20, 25);
             label6.TabIndex = 27;
@@ -402,7 +417,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(116, 345);
+            label7.Location = new Point(499, 329);
             label7.Name = "label7";
             label7.Size = new Size(20, 25);
             label7.TabIndex = 28;
@@ -412,7 +427,7 @@
             // 
             label8.AutoSize = true;
             label8.ForeColor = Color.Red;
-            label8.Location = new Point(116, 415);
+            label8.Location = new Point(499, 399);
             label8.Name = "label8";
             label8.Size = new Size(20, 25);
             label8.TabIndex = 29;
@@ -422,9 +437,9 @@
             // 
             btnVerUser.BackColor = Color.DarkGreen;
             btnVerUser.ForeColor = Color.White;
-            btnVerUser.Location = new Point(383, 807);
+            btnVerUser.Location = new Point(598, 759);
             btnVerUser.Name = "btnVerUser";
-            btnVerUser.Size = new Size(134, 63);
+            btnVerUser.Size = new Size(116, 42);
             btnVerUser.TabIndex = 30;
             btnVerUser.Text = "Ver usuarios";
             btnVerUser.UseVisualStyleBackColor = false;
@@ -433,7 +448,7 @@
             // ComboBoxAcesso
             // 
             ComboBoxAcesso.FormattingEnabled = true;
-            ComboBoxAcesso.Location = new Point(109, 492);
+            ComboBoxAcesso.Location = new Point(492, 476);
             ComboBoxAcesso.Name = "ComboBoxAcesso";
             ComboBoxAcesso.Size = new Size(183, 33);
             ComboBoxAcesso.TabIndex = 6;
@@ -441,21 +456,178 @@
             // checkAtivo
             // 
             checkAtivo.AutoSize = true;
-            checkAtivo.Location = new Point(314, 492);
+            checkAtivo.Location = new Point(697, 476);
             checkAtivo.Name = "checkAtivo";
             checkAtivo.Size = new Size(140, 29);
             checkAtivo.TabIndex = 31;
             checkAtivo.Text = "Ativo/inativo";
             checkAtivo.UseVisualStyleBackColor = true;
             // 
+            // MostrarUsuariosDesativados
+            // 
+            MostrarUsuariosDesativados.AllowUserToAddRows = false;
+            MostrarUsuariosDesativados.AllowUserToDeleteRows = false;
+            MostrarUsuariosDesativados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            MostrarUsuariosDesativados.Columns.AddRange(new DataGridViewColumn[] { Id_Desativado, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9 });
+            MostrarUsuariosDesativados.Location = new Point(759, 564);
+            MostrarUsuariosDesativados.Name = "MostrarUsuariosDesativados";
+            MostrarUsuariosDesativados.ReadOnly = true;
+            MostrarUsuariosDesativados.RowHeadersVisible = false;
+            MostrarUsuariosDesativados.RowHeadersWidth = 62;
+            MostrarUsuariosDesativados.RowTemplate.Height = 33;
+            MostrarUsuariosDesativados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            MostrarUsuariosDesativados.Size = new Size(530, 237);
+            MostrarUsuariosDesativados.TabIndex = 32;
+            MostrarUsuariosDesativados.CellMouseDoubleClick += MostrarUsuariosDesativados_CellMouseDoubleClick;
+            // 
+            // Id_Desativado
+            // 
+            Id_Desativado.DataPropertyName = "id_usuario";
+            Id_Desativado.HeaderText = "Id";
+            Id_Desativado.MinimumWidth = 50;
+            Id_Desativado.Name = "Id_Desativado";
+            Id_Desativado.ReadOnly = true;
+            Id_Desativado.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "Nome";
+            dataGridViewTextBoxColumn2.HeaderText = "Nome";
+            dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            dataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "UserAcesso";
+            dataGridViewTextBoxColumn3.HeaderText = "Nivel de acesso";
+            dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            dataGridViewTextBoxColumn3.Visible = false;
+            dataGridViewTextBoxColumn3.Width = 190;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "SenhaHash";
+            dataGridViewTextBoxColumn4.HeaderText = "SenhaH";
+            dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            dataGridViewTextBoxColumn4.Visible = false;
+            dataGridViewTextBoxColumn4.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "ConfirmarEmail";
+            dataGridViewTextBoxColumn5.HeaderText = "ConfirmarEmail";
+            dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            dataGridViewTextBoxColumn5.Visible = false;
+            dataGridViewTextBoxColumn5.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.DataPropertyName = "Email";
+            dataGridViewTextBoxColumn6.HeaderText = "E-mail";
+            dataGridViewTextBoxColumn6.MinimumWidth = 8;
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
+            dataGridViewTextBoxColumn6.Width = 275;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            dataGridViewTextBoxColumn7.DataPropertyName = "ConfirmarSenha";
+            dataGridViewTextBoxColumn7.HeaderText = "ConfirmarSenha";
+            dataGridViewTextBoxColumn7.MinimumWidth = 8;
+            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.ReadOnly = true;
+            dataGridViewTextBoxColumn7.Visible = false;
+            dataGridViewTextBoxColumn7.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewTextBoxColumn8.DataPropertyName = "Ativo_inativo";
+            dataGridViewTextBoxColumn8.HeaderText = "Ativo_inativo";
+            dataGridViewTextBoxColumn8.MinimumWidth = 8;
+            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
+            dataGridViewTextBoxColumn8.Visible = false;
+            dataGridViewTextBoxColumn8.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            dataGridViewTextBoxColumn9.DataPropertyName = "Senha";
+            dataGridViewTextBoxColumn9.HeaderText = "Senha";
+            dataGridViewTextBoxColumn9.MinimumWidth = 8;
+            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            dataGridViewTextBoxColumn9.ReadOnly = true;
+            dataGridViewTextBoxColumn9.Visible = false;
+            dataGridViewTextBoxColumn9.Width = 150;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.DarkGreen;
+            label9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.ForeColor = Color.White;
+            label9.Location = new Point(19, 529);
+            label9.Name = "label9";
+            label9.Size = new Size(173, 32);
+            label9.TabIndex = 37;
+            label9.Text = "Usuários ativos";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.DarkGreen;
+            label10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.ForeColor = Color.White;
+            label10.Location = new Point(759, 529);
+            label10.Name = "label10";
+            label10.Size = new Size(236, 32);
+            label10.TabIndex = 38;
+            label10.Text = "Usuários desativados";
+            // 
+            // btnAtivar
+            // 
+            btnAtivar.BackColor = Color.DarkGreen;
+            btnAtivar.ForeColor = SystemColors.Control;
+            btnAtivar.Location = new Point(879, 807);
+            btnAtivar.Margin = new Padding(4, 5, 4, 5);
+            btnAtivar.Name = "btnAtivar";
+            btnAtivar.Size = new Size(140, 42);
+            btnAtivar.TabIndex = 39;
+            btnAtivar.Text = "Ativar usuário";
+            btnAtivar.UseVisualStyleBackColor = false;
+            btnAtivar.Click += btnAtivar_Click;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.DarkGreen;
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(759, 807);
+            button3.Name = "button3";
+            button3.Size = new Size(116, 42);
+            button3.TabIndex = 40;
+            button3.Text = "Limpar";
+            button3.UseVisualStyleBackColor = false;
+            // 
             // TelaCadUser
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(567, 984);
+            ClientSize = new Size(1309, 984);
+            Controls.Add(button3);
+            Controls.Add(btnAtivar);
+            Controls.Add(label10);
+            Controls.Add(btnVerUser);
+            Controls.Add(label9);
+            Controls.Add(MostrarUsuariosDesativados);
             Controls.Add(checkAtivo);
             Controls.Add(ComboBoxAcesso);
-            Controls.Add(btnVerUser);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -488,6 +660,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MostrarUsuariosDesativados).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -531,5 +704,19 @@
         private CheckBox checkAtivo;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Senha;
+        private DataGridView MostrarUsuariosDesativados;
+        private Label label9;
+        private Label label10;
+        private DataGridViewTextBoxColumn Id_Desativado;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private Button btnAtivar;
+        private Button button3;
     }
 }

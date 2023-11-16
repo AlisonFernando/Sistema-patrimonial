@@ -90,11 +90,89 @@ namespace DAL
 
             return idColaborador;
         }
+        public List<Colaborador> GetColaboradoresAtivos()
+        {
+            List<Colaborador> colaboradoresAtivos = new List<Colaborador>();
 
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+
+                string query = "SELECT c.ID_colaborador, c.Nome, c.Email, c.Telefone, c.Agenda, s.Nome_setor " +
+                              "FROM tb_colaborador c " +
+                              "INNER JOIN tb_setor s ON c.id_setor = s.id_setor " +
+                              "WHERE c.Ativo_inativo = 1";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Colaborador colaborador = new Colaborador();
+
+                            colaborador.ID_colaborador = (int)reader["ID_colaborador"];
+                            colaborador.NomeColaborador = reader["Nome"].ToString();
+                            colaborador.EmailColaborador = reader["Email"].ToString();
+                            colaborador.TelefoneColaborador = reader["Telefone"].ToString();
+                            colaborador.AgendaColaborador = reader["Agenda"].ToString();
+                            colaborador.SetorNome = reader["Nome_setor"].ToString();
+
+                            colaboradoresAtivos.Add(colaborador);
+
+                        }
+
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return colaboradoresAtivos;
+        }
+        public List<Colaborador> GetColaboradoresDesativados()
+        {
+            List<Colaborador> colaboradoresDesativados = new List<Colaborador>();
+
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+
+                string query = "SELECT c.ID_colaborador, c.Nome, c.Email, c.Telefone, c.Agenda, s.Nome_setor " +
+                              "FROM tb_colaborador c " +
+                              "INNER JOIN tb_setor s ON c.id_setor = s.id_setor " +
+                              "WHERE c.Ativo_inativo = 0";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Colaborador colaborador = new Colaborador();
+
+                            colaborador.ID_colaborador = (int)reader["ID_colaborador"];
+                            colaborador.NomeColaborador = reader["Nome"].ToString();
+                            colaborador.EmailColaborador = reader["Email"].ToString();
+                            colaborador.TelefoneColaborador = reader["Telefone"].ToString();
+                            colaborador.AgendaColaborador = reader["Agenda"].ToString();
+                            colaborador.SetorNome = reader["Nome_setor"].ToString();
+
+                            colaboradoresDesativados.Add(colaborador);
+
+                        }
+
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return colaboradoresDesativados;
+        }
 
         public void AssociarEquipamentosAoColaborador(int id_colaborador, List<int> idsEquipamentosSelecionados)
         {
-            // Conexão com o banco de dados MySQL (substitua com suas configurações)
             using (MySqlConnection connection = new MySqlConnection(conec))
             {
                 connection.Open();
@@ -111,6 +189,7 @@ namespace DAL
                 connection.Close();
             }
         }
+            
 
         public bool VerificarNome(String nomeColab)
         {
@@ -208,7 +287,7 @@ namespace DAL
 
             return colaboradores;
         }
-        
+
 
 
         public void DesativarColaborador(int ID_Colab)
@@ -216,30 +295,45 @@ namespace DAL
             using (IDbConnection dbConnection = new MySqlConnection(conec))
             {
                 dbConnection.Open();
-                using (var transaction = dbConnection.BeginTransaction())
+                try
                 {
-                    try
-                    {
-                        // Passo 1: Desativar o colaborador
-                        string queryDesativarColaborador = "UPDATE tb_colaborador SET Ativo_inativo = 0 WHERE ID_colaborador = @ID_Colab";
-                        dbConnection.Execute(queryDesativarColaborador, new { ID_Colab = ID_Colab }, transaction);
+                    // Passo 1: Desativar o colaborador
+                    string queryDesativarColaborador = "UPDATE tb_colaborador SET Ativo_inativo = 0 WHERE ID_colaborador = @ID_Colab";
+                    dbConnection.Execute(queryDesativarColaborador, new { ID_colaborador = ID_Colab });
 
-                        // Passo 2: Atualizar os equipamentos associados ao colaborador
-                        string queryAtualizarEquipamentos = "UPDATE tb_equipamentos SET id_colaborador = NULL WHERE id_colaborador = @ID_Colab";
-                        dbConnection.Execute(queryAtualizarEquipamentos, new { ID_Colab = ID_Colab }, transaction);
-
-                        // Commit da transação se tudo for bem
-                        transaction.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        // Lidar com erros e fazer um rollback da transação se algo der errado
-                        transaction.Rollback();
-                        throw; // Re-throw da exceção para notificar que algo deu errado
-                    }
+                    // Passo 2: Atualizar os equipamentos associados ao colaborador
+                    string queryAtualizarEquipamentos = "UPDATE tb_equipamentos SET id_colaborador = NULL WHERE id_colaborador = @ID_Colab";
+                    dbConnection.Execute(queryAtualizarEquipamentos, new { ID_colaborador = ID_Colab });
+                }
+                catch (Exception)
+                {
+                    // Lidar com erros
+                    throw; // Re-throw da exceção para notificar que algo deu errado
                 }
             }
         }
+
+        public void AtivarColaborador(int ID_Colab)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_colaborador SET Ativo_inativo = 1 WHERE ID_colaborador = @ID_colaborador";
+                int rowsAffected = dbConnection.Execute(query, new { ID_colaborador = ID_Colab });
+
+                if (rowsAffected > 0)
+                {
+                    // Atualização bem-sucedida
+                    // Aqui você pode adicionar lógica adicional se necessário
+                }
+                else
+                {
+                    // A atualização não teve efeito (nenhuma marca encontrada com o ID especificado, por exemplo)
+                    // Adicione lógica apropriada, se necessário
+                }
+            }
+        }
+
 
         public Colaborador ObterColaboradorPorID(int idColaborador)
         {

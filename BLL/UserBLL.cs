@@ -47,17 +47,37 @@ namespace BLL
                 return false;
             }
         }
-        public bool VerificarCredenciais(string usuario, string senha)
+        public bool VerificarCredenciais(string email, string senha)
         {
-            string senhaCriptografadaDoBanco = userDAL.ObterSenhaCriptografada(usuario);
+            Usuario usuario = userDAL.ObterUsuario(email);
 
-            if (senhaCriptografadaDoBanco != null)
+            if (usuario != null)
             {
-                return BCrypt.Net.BCrypt.Verify(senha, senhaCriptografadaDoBanco);
+                // Verificar se o usuário está ativo
+                if (usuario.Ativo_inativo)
+                {
+                    string senhaCriptografadaDoBanco = userDAL.ObterSenhaCriptografada(email);
+
+                    if (senhaCriptografadaDoBanco != null)
+                    {
+                        // Verificar a senha
+                        if (BCrypt.Net.BCrypt.Verify(senha, senhaCriptografadaDoBanco))
+                        {
+                            return true; // Credenciais válidas
+                        }
+                    }
+                }
+                else
+                {
+                    // Usuário desativado
+                    return false;
+                }
             }
 
+            // Usuário não encontrado ou credenciais inválidas
             return false;
         }
+
         public List<Usuario> GetUsuarios()
         {
 
@@ -66,6 +86,10 @@ namespace BLL
         public List<Usuario> GetUsuariosAtivos()
         {
             return userDAL.GetUsuariosAtivos();
+        }
+        public List<Usuario> GetUsuariosDesativados()
+        {
+            return userDAL.GetUsuariosDesativados();
         }
 
         public string UpdateUsuario(Usuario usuario, string emailUsuarioLogado)
@@ -78,6 +102,10 @@ namespace BLL
         public void DesativarUsuario(int id_usuario)
         {
             userDAL.DesativarUsuario(id_usuario);
+        }
+        public void AtivarUsuario(int id_usuario)
+        {
+            userDAL.AtivarUsuario(id_usuario);
         }
 
 
