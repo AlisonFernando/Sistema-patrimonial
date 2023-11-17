@@ -65,7 +65,7 @@ namespace UI
         private void btn_selectEquips_Click(object sender, EventArgs e)
         {
 
-            
+
             Setor setor = new Setor();
 
             //Passa o texto dos campos digitados
@@ -309,6 +309,11 @@ namespace UI
                 MostrarColaboradores.DataSource = colaboradoresFiltrados;
                 MostrarColaboradoresDesativados.DataSource = colaboradoresFiltrados;
             }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

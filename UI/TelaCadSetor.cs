@@ -37,6 +37,7 @@ namespace UI
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
+            txtID.Text = string.Empty;
             txtPesquisar.Text = string.Empty;
             LoadSetorAtivo();
             LoadSetorDesativado();
@@ -119,6 +120,8 @@ namespace UI
                 MessageBox.Show("Nome do setor alterado com sucesso");
                 LoadSetorAtivo();
                 LoadSetorDesativado();
+                btnLimpar.PerformClick();
+                txtID.Text = string.Empty;
             }
         }
         private void MostrarSetores_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -207,6 +210,7 @@ namespace UI
 
         private void btnLimparDesativado_Click(object sender, EventArgs e)
         {
+            txtID.Text = string.Empty;
             txtPesquisar.Text = string.Empty;
             LoadSetorAtivo();
             LoadSetorDesativado();
