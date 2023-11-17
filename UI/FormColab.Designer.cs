@@ -110,7 +110,7 @@
             // Email
             // 
             Email.AutoSize = true;
-            Email.Location = new Point(394, 166);
+            Email.Location = new Point(394, 159);
             Email.Margin = new Padding(4, 0, 4, 0);
             Email.Name = "Email";
             Email.Size = new Size(61, 25);
@@ -120,7 +120,7 @@
             // Senha
             // 
             Senha.AutoSize = true;
-            Senha.Location = new Point(393, 241);
+            Senha.Location = new Point(393, 224);
             Senha.Margin = new Padding(4, 0, 4, 0);
             Senha.Name = "Senha";
             Senha.Size = new Size(60, 25);
@@ -130,7 +130,7 @@
             // Agenda
             // 
             Agenda.AutoSize = true;
-            Agenda.Location = new Point(289, 400);
+            Agenda.Location = new Point(289, 353);
             Agenda.Margin = new Padding(4, 0, 4, 0);
             Agenda.Name = "Agenda";
             Agenda.Size = new Size(136, 25);
@@ -140,7 +140,7 @@
             // Telefone
             // 
             Telefone.AutoSize = true;
-            Telefone.Location = new Point(397, 314);
+            Telefone.Location = new Point(394, 288);
             Telefone.Margin = new Padding(4, 0, 4, 0);
             Telefone.Name = "Telefone";
             Telefone.Size = new Size(77, 25);
@@ -158,7 +158,7 @@
             // 
             // inputColabAgenda
             // 
-            inputColabAgenda.Location = new Point(272, 430);
+            inputColabAgenda.Location = new Point(272, 379);
             inputColabAgenda.Margin = new Padding(4, 5, 4, 5);
             inputColabAgenda.MaxLength = 90;
             inputColabAgenda.Name = "inputColabAgenda";
@@ -167,7 +167,7 @@
             // 
             // inputColabEmail
             // 
-            inputColabEmail.Location = new Point(377, 196);
+            inputColabEmail.Location = new Point(376, 188);
             inputColabEmail.Margin = new Padding(4, 5, 4, 5);
             inputColabEmail.MaxLength = 100;
             inputColabEmail.Name = "inputColabEmail";
@@ -176,7 +176,7 @@
             // 
             // inputColabSenha
             // 
-            inputColabSenha.Location = new Point(377, 271);
+            inputColabSenha.Location = new Point(376, 253);
             inputColabSenha.Margin = new Padding(4, 5, 4, 5);
             inputColabSenha.MaxLength = 100;
             inputColabSenha.Name = "inputColabSenha";
@@ -186,7 +186,7 @@
             // 
             // inputColabTel
             // 
-            inputColabTel.Location = new Point(377, 348);
+            inputColabTel.Location = new Point(376, 317);
             inputColabTel.Margin = new Padding(4, 5, 4, 5);
             inputColabTel.MaxLength = 11;
             inputColabTel.Name = "inputColabTel";
@@ -197,7 +197,7 @@
             // Setor
             // 
             Setor.AutoSize = true;
-            Setor.Location = new Point(587, 318);
+            Setor.Location = new Point(587, 287);
             Setor.Margin = new Padding(4, 0, 4, 0);
             Setor.Name = "Setor";
             Setor.Size = new Size(54, 25);
@@ -208,7 +208,7 @@
             // 
             escolherSetor.FormattingEnabled = true;
             escolherSetor.Items.AddRange(new object[] { "Engenharia", "Criação", "Administração", "Marketing", "Ligação", "TI" });
-            escolherSetor.Location = new Point(570, 348);
+            escolherSetor.Location = new Point(569, 317);
             escolherSetor.Margin = new Padding(4, 5, 4, 5);
             escolherSetor.MaxDropDownItems = 5;
             escolherSetor.Name = "escolherSetor";
@@ -243,7 +243,7 @@
             // check_ativo
             // 
             check_ativo.AutoSize = true;
-            check_ativo.Location = new Point(272, 471);
+            check_ativo.Location = new Point(272, 420);
             check_ativo.Margin = new Padding(4, 5, 4, 5);
             check_ativo.Name = "check_ativo";
             check_ativo.Size = new Size(80, 29);
@@ -314,7 +314,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.Red;
-            label3.Location = new Point(380, 169);
+            label3.Location = new Point(380, 158);
             label3.Name = "label3";
             label3.Size = new Size(20, 25);
             label3.TabIndex = 18;
@@ -324,7 +324,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Red;
-            label4.Location = new Point(573, 319);
+            label4.Location = new Point(573, 288);
             label4.Name = "label4";
             label4.Size = new Size(20, 25);
             label4.TabIndex = 19;
@@ -334,7 +334,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(380, 243);
+            label5.Location = new Point(380, 223);
             label5.Name = "label5";
             label5.Size = new Size(20, 25);
             label5.TabIndex = 20;
@@ -344,7 +344,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(381, 318);
+            label6.Location = new Point(378, 288);
             label6.Name = "label6";
             label6.Size = new Size(20, 25);
             label6.TabIndex = 21;
@@ -354,7 +354,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(272, 400);
+            label7.Location = new Point(272, 348);
             label7.Name = "label7";
             label7.Size = new Size(20, 25);
             label7.TabIndex = 22;
@@ -694,7 +694,7 @@
             label8.BackColor = Color.DarkGreen;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(11, 472);
+            label8.Location = new Point(161, 472);
             label8.Name = "label8";
             label8.Size = new Size(237, 32);
             label8.TabIndex = 104;
@@ -706,7 +706,7 @@
             label9.BackColor = Color.DarkGreen;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(602, 472);
+            label9.Location = new Point(722, 472);
             label9.Name = "label9";
             label9.Size = new Size(300, 32);
             label9.TabIndex = 105;
