@@ -26,19 +26,19 @@ namespace DAL
                 connection.Open();
 
                 string query = "SELECT " +
-    "m.id_chamado, " +
-    "m.id_equipamento, " +
-    "m.Data_hora_do_chamado AS DataChamado, " +
-    "m.descricao, " +
-    "u.Nome AS NomeUsuario, " +
-    "m.id_status, " +
-    "e.nome_equipamento AS NomeEquipamento, " +
-    "c.Nome AS NomeColaborador, " +
-    "m.id_colaborador " +  // Adicionei esta linha
-    "FROM tb_manutencao AS m " +
-    "JOIN tb_equipamentos AS e ON m.id_equipamento = e.id_equipamento " +
-    "JOIN tb_usuario AS u ON m.id_usuario = u.id_usuario " +
-    "LEFT JOIN tb_colaborador AS c ON m.id_colaborador = c.id_colaborador";
+                                "m.id_chamado, " +
+                                "m.id_equipamento, " +
+                                "m.Data_hora_do_chamado AS DataChamado, " +
+                                "m.descricao, " +
+                                "u.Nome AS NomeUsuario, " +
+                                "m.id_status, " +
+                                "e.nome_equipamento AS NomeEquipamento, " +
+                                "c.Nome AS NomeColaborador, " +
+                                "m.id_colaborador " +  // Adicionei esta linha
+                                "FROM tb_manutencao AS m " +
+                                "JOIN tb_equipamentos AS e ON m.id_equipamento = e.id_equipamento " +
+                                "JOIN tb_usuario AS u ON m.id_usuario = u.id_usuario " +
+                                "LEFT JOIN tb_colaborador AS c ON m.id_colaborador = c.id_colaborador";
 
 
 
@@ -66,6 +66,30 @@ namespace DAL
             }
 
             return manutencaoList;
+        }
+        public int ObterIdStatusEquipamento(int idEquipamento)
+        {
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
+
+                string query = "SELECT id_status FROM tb_manutencao WHERE id_equipamento = @idEquipamento";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@idEquipamento", idEquipamento);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return Convert.ToInt32(reader["id_status"]);
+                        }
+                    }
+                }
+            }
+
+            return 0; // Se não encontrar, retorne um valor padrão (pode ajustar conforme necessário)
         }
     }
 }

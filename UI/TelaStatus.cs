@@ -11,9 +11,10 @@ namespace UI
         StatusBLL statusBLL = new StatusBLL();
         Manutencao manutencao = new Manutencao();
         // TelaStatus
-        public TelaStatus(Manutencao manutencao)
+        public TelaStatus(Manutencao manutencao, int idStatusEquipamento)
         {
             InitializeComponent();
+            CarregarStatusComboBox(idStatusEquipamento);
             if (manutencao != null)
             {
                 txtNomeEquipamento.Text = manutencao.NomeEquipamento;
@@ -41,7 +42,7 @@ namespace UI
             }
         }
 
-        private void CarregarStatusComboBox(int statusAtual)
+        private void CarregarStatusComboBox(int idStatusEquipamento)
         {
             StatusBLL statusBLL = new StatusBLL();
             DataTable dt = statusBLL.CarregarStatus();
@@ -51,7 +52,7 @@ namespace UI
             ComboBoxStatus.ValueMember = "id_status";
 
             // Define o status atual do equipamento no ComboBox
-            ComboBoxStatus.SelectedValue = statusAtual;
+            ComboBoxStatus.SelectedValue = idStatusEquipamento;
         }
 
         private string ObterNomeStatus(int idStatus)

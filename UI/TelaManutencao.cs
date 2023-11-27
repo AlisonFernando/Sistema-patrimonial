@@ -134,7 +134,9 @@ namespace UI
 
                 if (manutencao != null)
                 {
-                    TelaStatus telaStatus = new TelaStatus(manutencao);
+                    int idStatusEquipamento = manutencaoBLL.ObterIdStatusEquipamento(id_equipamento); // Implemente essa função para obter o id_status associado ao equipamento selecionado
+
+                    TelaStatus telaStatus = new TelaStatus(manutencao, idStatusEquipamento);
                     telaStatus.ShowDialog();
                 }
             }
@@ -152,7 +154,9 @@ namespace UI
 
                 if (manutencao != null)
                 {
-                    TelaStatus telaStatus = new TelaStatus(manutencao);
+                    int idStatusEquipamento = manutencaoBLL.ObterIdStatusEquipamento(id_equipamento); // Implemente essa função para obter o id_status associado ao equipamento selecionado
+
+                    TelaStatus telaStatus = new TelaStatus(manutencao, idStatusEquipamento);
                     telaStatus.ShowDialog();
                 }
             }
@@ -170,7 +174,9 @@ namespace UI
 
                 if (manutencao != null)
                 {
-                    TelaStatus telaStatus = new TelaStatus(manutencao);
+                    int idStatusEquipamento = manutencaoBLL.ObterIdStatusEquipamento(id_equipamento); // Implemente essa função para obter o id_status associado ao equipamento selecionado
+
+                    TelaStatus telaStatus = new TelaStatus(manutencao, idStatusEquipamento);
                     telaStatus.ShowDialog();
                 }
             }

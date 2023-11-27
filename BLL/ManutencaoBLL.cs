@@ -16,6 +16,10 @@ namespace BLL
         {
             return manutencaoDAL.GetManutencoes();
         }
+        public int ObterIdStatusEquipamento(int idEquipamento)
+        {
+            return manutencaoDAL.ObterIdStatusEquipamento(idEquipamento);
+        }
 
     }
 }
