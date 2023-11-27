@@ -45,7 +45,7 @@ namespace DAL
             int novoEquipamentoID = Convert.ToInt32(cmd.LastInsertedId);
             // Inserir o registro de log na tabela tb_logs
             DateTime dataHoraAcao = DateTime.Now;
-            string tipoOperacao = "Cadastro do usuário";
+            string tipoOperacao = "Cadastro do equipamento";
             string mensagem = $"{tipoOperacao}: {equipamento.Nome}";
 
             sql = "INSERT INTO tb_logs(IDUsuario, EmailUsuario, DataHoraAcao, TipoOperacao, Mensagem) VALUES (@IDUsuario, @EmailUsuario, @DataHoraAcao, @TipoOperacao, @Mensagem)";
@@ -249,6 +249,19 @@ namespace DAL
                 }
             }
         }
+        public void DesvincularEquipamento(int idEquipamento)
+        {
+            using (MySqlConnection connection = new MySqlConnection(conec))
+            {
+                connection.Open();
 
+                string query = "UPDATE tb_equipamentos SET id_colaborador = NULL WHERE ID_equipamento = @idEquipamento";
+
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@idEquipamento", idEquipamento);
+
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

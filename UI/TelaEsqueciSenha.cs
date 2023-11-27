@@ -28,12 +28,11 @@ namespace UI
             LoadUsuarios();
             txtToken.Enabled = false;
             txtSenhaNova.Enabled = false;
-            txtUserNome.Visible = false;
-            lblRed1.Visible = false;
             txtTokenEmail.Visible = false;
             lblRed2.Visible = false;
             txtSenhaLabel.Visible = false;
             lblRed3.Visible = false;
+            btnRedefinirSenha.Visible = false;
         }
         public void LoadUsuarios()
         {
@@ -92,6 +91,7 @@ namespace UI
                         lblRed2.Visible = true;
                         txtSenhaLabel.Visible = true;
                         lblRed3.Visible = true;
+                        btnRedefinirSenha.Visible = true;
                     }
                     else
                     {
@@ -110,10 +110,10 @@ namespace UI
         {
             try
             {
-                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"); // Substitua pelo servidor SMTP do seu provedor
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
                 smtpClient.Port = 587; // Substitua pela porta do seu provedor SMTP
-                smtpClient.Credentials = new NetworkCredential("recuperarsenhascot@gmail.com", "yuzq olkd dofn pcoy"); // Substitua com suas credenciais
-                smtpClient.EnableSsl = true; // Use SSL se disponível no seu provedor SMTP
+                smtpClient.Credentials = new NetworkCredential("recuperarsenhascot@gmail.com", "yuzq olkd dofn pcoy");
+                smtpClient.EnableSsl = true;
 
                 MailMessage mensagem = new MailMessage("recuperarsenhascot@gmail.com", destinatarioEmail);
                 mensagem.Subject = "Recuperação de Senha";

@@ -1,36 +1,47 @@
 ﻿using BLL;
 using model;
+using System;
 using System.Data;
+using System.Windows.Forms;
 
 namespace UI
 {
     public partial class TelaStatus : Form
     {
+        StatusBLL statusBLL = new StatusBLL();
+        Manutencao manutencao = new Manutencao();
+        // TelaStatus
         public TelaStatus(Manutencao manutencao)
         {
             InitializeComponent();
             if (manutencao != null)
             {
                 txtNomeEquipamento.Text = manutencao.NomeEquipamento;
+                txtColaboradorResponsavel.Text = manutencao.NomeColaborador;
 
-                // Verifique se manutencao.id_equipamento é um número inteiro válido
                 if (int.TryParse(manutencao.id_equipamento, out int equipamentoId))
                 {
                     txtID.Text = equipamentoId.ToString();
                 }
                 else
                 {
-                    // Lida com o cenário em que id_equipamento não é um número válido
-                    txtID.Text = string.Empty; // Ou outra ação apropriada
+                    txtID.Text = string.Empty;
                 }
 
                 txtData.Text = manutencao.DataChamado.ToString();
                 txtUsuario.Text = manutencao.NomeUsuario;
                 txtDesc.Text = manutencao.Descricao;
+                txtColaboradorResponsavel.Text = manutencao.NomeColaborador.ToString();
+
+                // Obtém o nome do status correspondente ao id_status da tb_manutencao
+                string nomeStatusAtual = ObterNomeStatus(manutencao.id_status);
+
+                // Carrega o ComboBoxStatus com os status disponíveis
+                CarregarStatusComboBox(manutencao.id_status);
             }
         }
 
-        private void CarregarStatusComboBox()
+        private void CarregarStatusComboBox(int statusAtual)
         {
             StatusBLL statusBLL = new StatusBLL();
             DataTable dt = statusBLL.CarregarStatus();
@@ -39,12 +50,22 @@ namespace UI
             ComboBoxStatus.DisplayMember = "andamento_do_chamado";
             ComboBoxStatus.ValueMember = "id_status";
 
+            // Define o status atual do equipamento no ComboBox
+            ComboBoxStatus.SelectedValue = statusAtual;
+        }
+
+        private string ObterNomeStatus(int idStatus)
+        {
+            StatusBLL statusBLL = new StatusBLL();
+            return statusBLL.ObterNomeStatusPorId(idStatus);
         }
 
         private void TelaStatus_Load(object sender, EventArgs e)
         {
-            CarregarStatusComboBox();
+            CarregarStatusComboBox(0); // Carrega o ComboBox com os status disponíveis
         }
+
+
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
@@ -83,7 +104,6 @@ namespace UI
             {
                 MessageBox.Show("Selecione um status válido antes de aplicar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
     }
 }

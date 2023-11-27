@@ -78,6 +78,7 @@ namespace UI
         {
             txtEquip.Text = string.Empty;
             txtDesc.Text = string.Empty;
+            txtColab.Text = string.Empty;
         }
 
         private void btnCadUserSucesso_Click(object sender, EventArgs e)
@@ -114,7 +115,8 @@ namespace UI
                 Descricao = txtDesc.Text,
                 id_usuario = Convert.ToInt32(selectUser.SelectedValue),
                 id_status = Convert.ToInt32(selectChamado.SelectedValue),
-                id_equipamento = selectEtiqueta.SelectedValue.ToString()
+                id_equipamento = selectEtiqueta.SelectedValue.ToString(),
+                id_colaborador = Convert.ToInt32(selectUser.SelectedValue),
             };
 
             chamadoBLL.CadChamado(chamado, Program.UserEmail);

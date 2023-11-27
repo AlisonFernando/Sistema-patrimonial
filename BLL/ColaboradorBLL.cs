@@ -19,6 +19,25 @@ namespace BLL
             colaboradorDAL.InserirColaborador(colaborador, emailUsuarioLogado);
             return "Sucesso";
         }
+        public string VerificarEmail(string verifemail)
+        {
+            bool emailExists = colaboradorDAL.VerificarEmailCOlaborador(verifemail);
+
+            if (emailExists)
+            {
+                return "Email existente";
+            }
+            else
+            {
+                return "Email não existe";
+            }
+        }
+        public string UpdateColaborador(Colaborador colaborador)
+        {
+            colaboradorDAL.UpdateColaborador(colaborador);
+
+            return "Sucesso";
+        }
 
         public string VerificarNome(string verifnome)
         {

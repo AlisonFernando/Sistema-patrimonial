@@ -32,6 +32,30 @@ namespace DAL
             }
             return dt;
         }
+
+        public string ObterNomeStatusPorId(int idStatus)
+        {
+            string nomeStatus = string.Empty;
+            string sql = "SELECT andamento_do_chamado FROM tb_status WHERE id_status = @idStatus";
+
+            using (MySqlConnection connection = mConn.AbrirConexao())
+            {
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@idStatus", idStatus);
+
+                    object result = command.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        nomeStatus = result.ToString();
+                    }
+                }
+            }
+            return nomeStatus;
+        }
+
+
         public bool AtualizarStatusEquipamento(int id_equipamento, int idStatus, string emailUsuarioLogado, string novaDescricao)
         {
             using (MySqlConnection connection = new MySqlConnection(conec))

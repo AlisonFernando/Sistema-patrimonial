@@ -16,5 +16,7 @@ namespace model
         public string id_equipamento { get; set; }
 
         public string id_nomeColab { get; set;}
+
+        public int id_colaborador { get; set; }
     }
 }

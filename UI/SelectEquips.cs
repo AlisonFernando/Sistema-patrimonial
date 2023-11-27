@@ -16,14 +16,18 @@ namespace UI
 {
     public partial class SelectEquips : Form
     {
+        private int ID_Colaborador;
+        private bool AssociacaoEquipamentos;
         Equipamento equipamento = new Equipamento();
         Colaborador colaborador = new Colaborador();
         private EquipamentoBLL equipamentoBLL = new EquipamentoBLL();
         private List<Equipamento> equipamentos = new List<Equipamento>();
         private List<string> equipamentosSelecionados = new List<string>();
-        public SelectEquips()
+        public SelectEquips(int idColaborador, bool associacaoEquipamentos)
         {
             InitializeComponent();
+            ID_Colaborador = idColaborador;
+            AssociacaoEquipamentos = associacaoEquipamentos;
             LoadEquipamentos();
             btnPesquisar.Click += new EventHandler(btnPesquisar_Click);
             MostrarEquipsDisponiveis.CellMouseDoubleClick += MostrarEquipsDisponiveis_CellMouseDoubleClick;
@@ -93,54 +97,63 @@ namespace UI
         }
 
 
+        private bool associacaoEquipamentos = false; // Defina isso como true quando estiver associando equipamentos
+
         private void btnCadColab_Click(object sender, EventArgs e)
         {
-
-            Colaborador colaborador = new Colaborador();
-
-            // Obtenha os dados do colaborador a partir de DadosGlobais
-            colaborador.NomeColaborador = DadosGlobais.NomeColaborador;
-            colaborador.SenhaColaborador = DadosGlobais.SenhaColaborador;
-            colaborador.AgendaColaborador = DadosGlobais.AgendaColaborador;
-            colaborador.TelefoneColaborador = DadosGlobais.TelefoneColaborador;
-            colaborador.Ativo_inativo = DadosGlobais.Ativo_inativo;
-            colaborador.EmailColaborador = DadosGlobais.EmailColaborador;
-            colaborador.id_setor = DadosGlobais.id_setor;
-
             ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
-            string verificar = colaboradorBLL.VerificarNome(colaborador.NomeColaborador);
 
-            if (verificar == "nome não existe")
+            // Verifique se é uma edição ou cadastro normal
+            if (ID_Colaborador == 0)
             {
-                // Cadastre o colaborador
-                string retorno = colaboradorBLL.CadColab(colaborador, Program.UserEmail);
-
-                if (retorno == "Sucesso")
+                // Cadastro normal
+                Colaborador colaborador = new Colaborador
                 {
-                    MessageBox.Show("Colaborador cadastro com sucesso");
+                    NomeColaborador = DadosGlobais.NomeColaborador,
+                    SenhaColaborador = DadosGlobais.SenhaColaborador,
+                    AgendaColaborador = DadosGlobais.AgendaColaborador,
+                    TelefoneColaborador = DadosGlobais.TelefoneColaborador,
+                    Ativo_inativo = DadosGlobais.Ativo_inativo,
+                    EmailColaborador = DadosGlobais.EmailColaborador,
+                    id_setor = DadosGlobais.id_setor
+                };
 
-                    // Obtenha o ID do colaborador recém-cadastrado
-                    int idColaborador = colaboradorBLL.ObterIdColaboradorPorNome(colaborador.NomeColaborador);
+                string verificar = colaboradorBLL.VerificarNome(colaborador.NomeColaborador);
 
-                    // Associe os equipamentos ao colaborador
-                    List<int> equipamentosSelecionados = ObterIdsEquipamentosSelecionados();
-                    string associacaoEquipamentos = colaboradorBLL.AssociarEquipamentosAoColaborador(idColaborador, equipamentosSelecionados);
+                if (verificar == "nome não existe")
+                {
+                    string retorno = colaboradorBLL.CadColab(colaborador, Program.UserEmail);
 
-                    if (associacaoEquipamentos == "Sucesso")
+                    if (retorno == "Sucesso")
                     {
-                        // Limpe a lista de equipamentos selecionados e a grade de exibição
-                        EquipsSelecionados.Rows.Clear();
-                        equipamentosSelecionados.Clear();
-
-                        MessageBox.Show("Equipamentos associados com sucesso");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erro ao associar equipamentos ao colaborador");
+                        MessageBox.Show("Colaborador cadastrado com sucesso");
+                        ID_Colaborador = colaboradorBLL.ObterIdColaboradorPorNome(colaborador.NomeColaborador);
                     }
                 }
             }
+
+            // Associe os equipamentos ao colaborador
+            List<int> equipamentosSelecionados = ObterIdsEquipamentosSelecionados();
+            string associacaoEquipamentos = colaboradorBLL.AssociarEquipamentosAoColaborador(ID_Colaborador, equipamentosSelecionados);
+
+            if (associacaoEquipamentos == "Sucesso")
+            {
+                // Limpe a lista de equipamentos selecionados e a grade de exibição
+                EquipsSelecionados.Rows.Clear();
+                equipamentosSelecionados.Clear();
+
+                MessageBox.Show("Equipamentos associados com sucesso");
+
+                // Feche a tela SelectEquips
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao associar equipamentos ao colaborador");
+            }
         }
+
+
 
         private void btn_voltar_Click(object sender, EventArgs e)
         {

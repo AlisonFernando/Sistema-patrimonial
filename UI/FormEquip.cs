@@ -25,11 +25,14 @@ namespace UI
 
             if (equipamento != null)
             {
+                inputEtiquetaEquip.Enabled = false;
                 txtID.Text = equipamento.ID_equipamento.ToString();
                 inputEquipNome.Text = equipamento.nome;
                 inputDesEquip.Text = equipamento.descricao;
                 inputPrecoEquip.Text = equipamento.valor;
                 inputEtiquetaEquip.Text = equipamento.etiqueta.ToString();
+                inputEtiquetaEquip.Enabled = false;
+                
             }
         }
         private void CadEquipamento_Load(object sender, EventArgs e)
@@ -37,7 +40,6 @@ namespace UI
             CarregarMarcasComboBox();
             LoadEquipamentosAtivos();
             LoadEquipamentosDesativados();
-            inputEtiquetaEquip.Enabled = true;
             Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
 
         }
@@ -56,7 +58,6 @@ namespace UI
 
         private void btn_cadastrar_Click(object sender, EventArgs e)
         {
-            Marca marca = new Marca();
             Equipamento equipamento = new Equipamento();
 
             if (!string.IsNullOrEmpty(txtID.Text))
@@ -67,7 +68,6 @@ namespace UI
             equipamento.Valor = inputPrecoEquip.Text;
             equipamento.Etiqueta = inputEtiquetaEquip.Text;
             equipamento.Ativo_inativo = check_ativo.Checked;
-            equipamento.id_marca = escolherMarca.SelectedValue.ToString();
 
             // Habilita apenas o campo "etiqueta" durante a atualização
             inputEtiquetaEquip.Enabled = string.IsNullOrEmpty(txtID.Text);
@@ -88,16 +88,12 @@ namespace UI
                 MessageBox.Show("Verifique a etiqueta e tente novamente");
                 return;
             }
-            else if (string.IsNullOrWhiteSpace(equipamento.Valor))
+            else if (equipamento.Etiqueta.Contains(" "))
             {
-                MessageBox.Show("Verifique o valor digitado e tente novamente");
+                MessageBox.Show("Etiqueta não pode conter espaços em branco.");
                 return;
             }
-            else if (equipamento.Etiqueta.Contains(" ") || equipamento.Valor.Contains(" "))
-            {
-                MessageBox.Show("Nome, descrição, etiqueta e valor não podem conter espaços em branco.");
-                return;
-            }
+
             if (!check_ativo.Checked)
             {
                 MessageBox.Show("É necessário selecionar a opção Ativo para cadastrar/editar o equipamento.");
@@ -112,15 +108,15 @@ namespace UI
 
                 if (verificar == "Etiqueta existente")
                 {
-                    MessageBox.Show("Essa etiqueta existe no banco de dados");
+                    MessageBox.Show("Essa etiqueta já existe no banco de dados");
                     return;
                 }
             }
 
             // Realiza o cadastro ou atualização do equipamento
             string retorno;
-
             EquipamentoBLL cadEqupBLL = new EquipamentoBLL();
+
             if (!string.IsNullOrEmpty(txtID.Text))
                 retorno = cadEqupBLL.UpdateEquipamentos(equipamento, Program.UserEmail);
             else
@@ -128,13 +124,17 @@ namespace UI
 
             if (retorno == "Sucesso")
             {
-                MessageBox.Show("Aplicação com sucesso");
+                MessageBox.Show("Operação realizada com sucesso");
+                btn_Limpar.PerformClick();
+                LoadEquipamentosAtivos();
+                LoadEquipamentosDesativados();
             }
 
             btn_Limpar.PerformClick();
             LoadEquipamentosAtivos();
             LoadEquipamentosDesativados();
         }
+
         private void CarregarMarcasComboBox()
         {
             MarcaBLL marcaBLL = new MarcaBLL();
@@ -147,6 +147,7 @@ namespace UI
 
         private void btn_Limpar_Click(object sender, EventArgs e)
         {
+            txtID.Text = string.Empty;
             inputEquipNome.Text = string.Empty;
             inputDesEquip.Text = string.Empty;
             inputEtiquetaEquip.Text = string.Empty;

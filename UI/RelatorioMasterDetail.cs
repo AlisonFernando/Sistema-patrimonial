@@ -71,86 +71,92 @@ namespace UI
                 Colaborador colaborador = colaboradorBLL.ObterColaboradorPorID(idColaboradorSelecionado);
                 List<Equipamento> equipamentos = equipamentoBLL.ObterEquipamentosPorColaborador(idColaboradorSelecionado);
 
-                Document document = new Document();
-                string caminhoRelatorio = string.Empty;
-
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Arquivos PDF (*.pdf)|*.pdf";
-                saveFileDialog.Title = "Salvar Relatório PDF";
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                using (FileStream fs = new FileStream(caminhoDestino, FileMode.Create))
                 {
-                    caminhoRelatorio = saveFileDialog.FileName;
-                    PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(caminhoRelatorio, FileMode.Create));
-
-                    document.Open();
-
-                    // Adicione o título
-                    iTextSharp.text.Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK);
-                    Paragraph title = new Paragraph("Equipamentos associados ao colaborador", titleFont);
-                    title.Alignment = Element.ALIGN_CENTER;
-                    document.Add(new Chunk("\n"));
-                    document.Add(title);
-                    
-
-                    // Adicione o nome do colaborador
-                    document.Add(new Chunk("\n"));
-                    iTextSharp.text.Font nameFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.DARK_GRAY);
-                    Paragraph name = new Paragraph("Nome do Colaborador: " + colaborador.NomeColaborador, nameFont);
-                    name.Alignment = Element.ALIGN_LEFT;
-                    document.Add(name);
-
-                    // Adicione uma tabela para os equipamentos
-                    PdfPTable table = new PdfPTable(4);
-                    table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; // Remova as bordas padrão
-                    table.WidthPercentage = 100; // Preencha a largura da página
-
-                    // Adicione cabeçalhos à tabela
-                    table.AddCell(getHeaderCell("ID"));
-                    table.AddCell(getHeaderCell("Equipamento"));
-                    table.AddCell(getHeaderCell("Descricao"));
-                    table.AddCell(getHeaderCell("Etiqueta"));
-
-                    // Adicione linhas à tabela
-                    BaseColor rowColor1 = new BaseColor(238, 238, 238); // Cor #EEEEEE
-                    BaseColor rowColor2 = BaseColor.WHITE; // Cor #FFF
-                    bool alternateRowColor = false;
-
-                    foreach (Equipamento equipamento in equipamentos)
+                    using (Document document = new Document())
                     {
-                        table.AddCell(getCell(equipamento.ID_equipamento.ToString(), rowColor1, rowColor2, alternateRowColor));
-                        table.AddCell(getCell(equipamento.Nome, rowColor1, rowColor2, alternateRowColor));
-                        table.AddCell(getCell(equipamento.Descricao, rowColor1, rowColor2, alternateRowColor));
-                        table.AddCell(getCell(equipamento.Etiqueta, rowColor1, rowColor2, alternateRowColor));
+                        PdfWriter writer = PdfWriter.GetInstance(document, fs);
 
-                        alternateRowColor = !alternateRowColor;
+                        document.Open();
+
+                        // Adicione o título
+                        iTextSharp.text.Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK);
+                        Paragraph title = new Paragraph("Informações do colaborador e equipamentos associados.", titleFont);
+                        title.Alignment = Element.ALIGN_CENTER;
+                        document.Add(new Chunk("\n"));
+                        document.Add(title);
+
+                        // Adicione o nome do colaborador
+                        document.Add(new Chunk("\n"));
+                        iTextSharp.text.Font nameFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.DARK_GRAY);
+                        Paragraph name = new Paragraph("Nome do Colaborador: " + colaborador.NomeColaborador, nameFont);
+                        name.Alignment = Element.ALIGN_LEFT;
+                        document.Add(name);
+                        document.Add(new Chunk("\n"));
+
+                        // Adicione tabela para informações adicionais do colaborador
+                        PdfPTable infoTable = new PdfPTable(2);
+                        infoTable.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                        infoTable.WidthPercentage = 100; // Preencha a largura da página
+                        infoTable.SpacingBefore = 10f; // Adicione espaço antes da tabela
+
+                        // Adicione cabeçalhos à tabela de informações adicionais
+                        infoTable.AddCell(getHeaderCell("ID_colaborador"));
+                        infoTable.AddCell(getHeaderCell("E-mail"));
+
+                        // Adicione linhas à tabela de informações adicionais
+                        infoTable.AddCell(getCell(colaborador.ID_colaborador.ToString(), BaseColor.LIGHT_GRAY, BaseColor.WHITE, false));
+                        infoTable.AddCell(getCell(colaborador.EmailColaborador, BaseColor.LIGHT_GRAY, BaseColor.WHITE, false));
+
+                        document.Add(infoTable);
+                        document.Add(new Chunk("\n"));
+
+                        // Adicione uma tabela para os equipamentos
+                        PdfPTable table = new PdfPTable(4);
+                        table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                        table.WidthPercentage = 100; // Preencha a largura da página
+
+                        // Adicione cabeçalhos à tabela
+                        table.AddCell(getHeaderCell("ID"));
+                        table.AddCell(getHeaderCell("Equipamento"));
+                        table.AddCell(getHeaderCell("Descricao"));
+                        table.AddCell(getHeaderCell("Etiqueta"));
+
+                        // Adicione linhas à tabela
+                        BaseColor rowColor1 = new BaseColor(238, 238, 238);
+                        BaseColor rowColor2 = BaseColor.WHITE;
+                        bool alternateRowColor = false;
+
+                        foreach (Equipamento equipamento in equipamentos)
+                        {
+                            table.AddCell(getCell(equipamento.ID_equipamento.ToString(), rowColor1, rowColor2, alternateRowColor));
+                            table.AddCell(getCell(equipamento.Nome, rowColor1, rowColor2, alternateRowColor));
+                            table.AddCell(getCell(equipamento.Descricao, rowColor1, rowColor2, alternateRowColor));
+                            table.AddCell(getCell(equipamento.Etiqueta, rowColor1, rowColor2, alternateRowColor));
+
+                            alternateRowColor = !alternateRowColor;
+                        }
+
+                        // Adicione a tabela de equipamentos ao documento
+                        document.Add(table);
+
+                        DateTime dataHoraAtual = DateTime.Now;
+                        string dataHoraFormatada = "Data e Hora de Geração: " + dataHoraAtual.ToString("dd/MM/yyyy HH:mm:ss");
+                        Paragraph dataHora = new Paragraph(dataHoraFormatada);
+                        dataHora.Alignment = Element.ALIGN_RIGHT;
+                        document.Add(dataHora);
+
+                        // Adicione a imagem centralizada
+                        string imageUrl = "https://www.scotconsultoria.com.br/img/relatorio_sys.png";
+                        iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(new Uri(imageUrl));
+                        image.Alignment = Element.ALIGN_CENTER;
+                        document.Add(image);
+
+                        // Feche o documento
+                        document.Close();
+
+                        MessageBox.Show("Relatório gerado com sucesso, salvo em: " + caminhoDestino, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-
-                    // Adicione a tabela ao documento
-                    document.Add(table);
-
-                    // Adicione espaço em branco entre a tabela e a imagem
-                    document.Add(new Chunk("\n"));
-                    document.Add(new Chunk("\n"));
-                    document.Add(new Chunk("\n"));
-                    document.Add(new Chunk("\n"));
-
-
-                    DateTime dataHoraAtual = DateTime.Now;
-                    string dataHoraFormatada = "Data e Hora de Geração: " + dataHoraAtual.ToString("dd/MM/yyyy HH:mm:ss");
-                    Paragraph dataHora = new Paragraph(dataHoraFormatada);
-                    dataHora.Alignment = Element.ALIGN_RIGHT;
-                    document.Add(dataHora);
-
-                    // Adicione a imagem centralizada
-                    string imageUrl = "https://www.scotconsultoria.com.br/img/relatorio_sys.png";
-                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(new Uri(imageUrl));
-                    image.Alignment = Element.ALIGN_CENTER;
-                    document.Add(image);
-
-                    // Feche o documento
-                    document.Close();
-                    MessageBox.Show("Relatório gerado com sucesso, salvo em: " + caminhoRelatorio, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -158,6 +164,8 @@ namespace UI
                 MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         private PdfPCell getHeaderCell(string text)
         {

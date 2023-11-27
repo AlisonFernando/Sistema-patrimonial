@@ -25,11 +25,20 @@ namespace DAL
             {
                 connection.Open();
 
-                string query = "SELECT m.id_chamado, m.id_equipamento, m.Data_hora_do_chamado AS DataChamado, m.descricao, u.Nome AS NomeUsuario, m.id_status, e.nome_equipamento AS NomeEquipamento " +
-               "FROM tb_manutencao AS m " +
-               "JOIN tb_equipamentos AS e ON m.id_equipamento = e.id_equipamento " +
-               "JOIN tb_usuario AS u ON m.id_usuario = u.id_usuario";
-
+                string query = "SELECT " +
+    "m.id_chamado, " +
+    "m.id_equipamento, " +
+    "m.Data_hora_do_chamado AS DataChamado, " +
+    "m.descricao, " +
+    "u.Nome AS NomeUsuario, " +
+    "m.id_status, " +
+    "e.nome_equipamento AS NomeEquipamento, " +
+    "c.Nome AS NomeColaborador, " +
+    "m.id_colaborador " +  // Adicionei esta linha
+    "FROM tb_manutencao AS m " +
+    "JOIN tb_equipamentos AS e ON m.id_equipamento = e.id_equipamento " +
+    "JOIN tb_usuario AS u ON m.id_usuario = u.id_usuario " +
+    "LEFT JOIN tb_colaborador AS c ON m.id_colaborador = c.id_colaborador";
 
 
 
@@ -47,6 +56,8 @@ namespace DAL
                             manutencao.id_status = (int)reader["id_status"]; // Andamento do chamado
                             manutencao.NomeEquipamento = reader["NomeEquipamento"].ToString();
                             manutencao.id_equipamento = reader["id_equipamento"].ToString();
+                            manutencao.NomeColaborador = reader["NomeColaborador"].ToString();
+                            manutencao.id_colaborador = reader["id_colaborador"] == DBNull.Value ? 0 : Convert.ToInt32(reader["id_colaborador"]);
 
                             manutencaoList.Add(manutencao);
                         }

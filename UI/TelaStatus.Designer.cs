@@ -46,6 +46,8 @@
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
             txtData = new DateTimePicker();
+            txtColaboradorResponsavel = new TextBox();
+            label6 = new Label();
             panel2.SuspendLayout();
             tabControl1.SuspendLayout();
             SuspendLayout();
@@ -73,7 +75,7 @@
             ComboBoxStatus.FormattingEnabled = true;
             ComboBoxStatus.Location = new Point(395, 127);
             ComboBoxStatus.Name = "ComboBoxStatus";
-            ComboBoxStatus.Size = new Size(189, 33);
+            ComboBoxStatus.Size = new Size(209, 33);
             ComboBoxStatus.TabIndex = 2;
             // 
             // panel2
@@ -82,7 +84,7 @@
             panel2.Controls.Add(btnVoltar);
             panel2.Controls.Add(btnAtualizar);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 545);
+            panel2.Location = new Point(0, 611);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(9, 10, 9, 10);
             panel2.Size = new Size(677, 83);
@@ -125,11 +127,11 @@
             // 
             // txtDesc
             // 
-            txtDesc.Location = new Point(88, 222);
+            txtDesc.Location = new Point(74, 308);
             txtDesc.MaxLength = 10000;
             txtDesc.Multiline = true;
             txtDesc.Name = "txtDesc";
-            txtDesc.Size = new Size(496, 266);
+            txtDesc.Size = new Size(515, 266);
             txtDesc.TabIndex = 5;
             // 
             // label2
@@ -153,7 +155,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(222, 194);
+            label4.Location = new Point(223, 280);
             label4.Name = "label4";
             label4.Size = new Size(216, 25);
             label4.TabIndex = 8;
@@ -217,11 +219,30 @@
             txtData.Size = new Size(209, 31);
             txtData.TabIndex = 12;
             // 
+            // txtColaboradorResponsavel
+            // 
+            txtColaboradorResponsavel.Enabled = false;
+            txtColaboradorResponsavel.Location = new Point(88, 201);
+            txtColaboradorResponsavel.Name = "txtColaboradorResponsavel";
+            txtColaboradorResponsavel.Size = new Size(288, 31);
+            txtColaboradorResponsavel.TabIndex = 13;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(88, 173);
+            label6.Name = "label6";
+            label6.Size = new Size(211, 25);
+            label6.TabIndex = 14;
+            label6.Text = "Colaborador responsável";
+            // 
             // TelaStatus
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(677, 628);
+            ClientSize = new Size(677, 694);
+            Controls.Add(label6);
+            Controls.Add(txtColaboradorResponsavel);
             Controls.Add(txtData);
             Controls.Add(tabControl1);
             Controls.Add(label5);
@@ -266,5 +287,7 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         private DateTimePicker txtData;
+        private TextBox txtColaboradorResponsavel;
+        private Label label6;
     }
 }

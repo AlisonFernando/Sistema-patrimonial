@@ -86,6 +86,9 @@ namespace BLL
         {
             equipamentoDAL.AtivarEquipamento(id_equipamento);
         }
-
+        public void DesvincularEquipamento(int idEquipamento)
+        {
+            equipamentoDAL.DesvincularEquipamento(idEquipamento);
+        }
     }
 }

@@ -47,6 +47,7 @@
             btn_selectEquips = new Button();
             btnCancelarCad = new Button();
             FotterCadColab = new Panel();
+            btn_Atualizar = new Button();
             txtID = new TextBox();
             label2 = new Label();
             label3 = new Label();
@@ -91,6 +92,7 @@
             btnAtivar = new Button();
             btnLimpar2 = new Button();
             btnPesquisar = new Button();
+            btnEditarEquips = new Button();
             HeaderCadColab.SuspendLayout();
             FotterCadColab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MostrarColaboradores).BeginInit();
@@ -100,107 +102,96 @@
             // Nome
             // 
             Nome.AutoSize = true;
-            Nome.Location = new Point(394, 93);
-            Nome.Margin = new Padding(4, 0, 4, 0);
+            Nome.Location = new Point(276, 56);
             Nome.Name = "Nome";
-            Nome.Size = new Size(61, 25);
+            Nome.Size = new Size(40, 15);
             Nome.TabIndex = 99;
             Nome.Text = "Nome";
             // 
             // Email
             // 
             Email.AutoSize = true;
-            Email.Location = new Point(394, 159);
-            Email.Margin = new Padding(4, 0, 4, 0);
+            Email.Location = new Point(276, 95);
             Email.Name = "Email";
-            Email.Size = new Size(61, 25);
+            Email.Size = new Size(41, 15);
             Email.TabIndex = 98;
             Email.Text = "E-mail";
             // 
             // Senha
             // 
             Senha.AutoSize = true;
-            Senha.Location = new Point(393, 224);
-            Senha.Margin = new Padding(4, 0, 4, 0);
+            Senha.Location = new Point(275, 134);
             Senha.Name = "Senha";
-            Senha.Size = new Size(60, 25);
+            Senha.Size = new Size(39, 15);
             Senha.TabIndex = 97;
             Senha.Text = "Senha";
             // 
             // Agenda
             // 
             Agenda.AutoSize = true;
-            Agenda.Location = new Point(289, 353);
-            Agenda.Margin = new Padding(4, 0, 4, 0);
+            Agenda.Location = new Point(202, 212);
             Agenda.Name = "Agenda";
-            Agenda.Size = new Size(136, 25);
+            Agenda.Size = new Size(88, 15);
             Agenda.TabIndex = 94;
             Agenda.Text = "Agenda google";
             // 
             // Telefone
             // 
             Telefone.AutoSize = true;
-            Telefone.Location = new Point(394, 288);
-            Telefone.Margin = new Padding(4, 0, 4, 0);
+            Telefone.Location = new Point(276, 173);
             Telefone.Name = "Telefone";
-            Telefone.Size = new Size(77, 25);
+            Telefone.Size = new Size(51, 15);
             Telefone.TabIndex = 96;
             Telefone.Text = "Telefone";
             // 
             // InputColabNome
             // 
-            InputColabNome.Location = new Point(377, 123);
-            InputColabNome.Margin = new Padding(4, 5, 4, 5);
+            InputColabNome.Location = new Point(262, 74);
             InputColabNome.MaxLength = 30;
             InputColabNome.Name = "InputColabNome";
-            InputColabNome.Size = new Size(360, 31);
+            InputColabNome.Size = new Size(254, 23);
             InputColabNome.TabIndex = 1;
             // 
             // inputColabAgenda
             // 
-            inputColabAgenda.Location = new Point(272, 379);
-            inputColabAgenda.Margin = new Padding(4, 5, 4, 5);
+            inputColabAgenda.Location = new Point(208, 227);
             inputColabAgenda.MaxLength = 90;
             inputColabAgenda.Name = "inputColabAgenda";
-            inputColabAgenda.Size = new Size(574, 31);
+            inputColabAgenda.Size = new Size(403, 23);
             inputColabAgenda.TabIndex = 7;
             // 
             // inputColabEmail
             // 
-            inputColabEmail.Location = new Point(376, 188);
-            inputColabEmail.Margin = new Padding(4, 5, 4, 5);
+            inputColabEmail.Location = new Point(262, 113);
             inputColabEmail.MaxLength = 100;
             inputColabEmail.Name = "inputColabEmail";
-            inputColabEmail.Size = new Size(361, 31);
+            inputColabEmail.Size = new Size(254, 23);
             inputColabEmail.TabIndex = 2;
             // 
             // inputColabSenha
             // 
-            inputColabSenha.Location = new Point(376, 253);
-            inputColabSenha.Margin = new Padding(4, 5, 4, 5);
+            inputColabSenha.Location = new Point(263, 152);
             inputColabSenha.MaxLength = 100;
             inputColabSenha.Name = "inputColabSenha";
-            inputColabSenha.Size = new Size(357, 31);
+            inputColabSenha.Size = new Size(254, 23);
             inputColabSenha.TabIndex = 3;
             inputColabSenha.UseSystemPasswordChar = true;
             // 
             // inputColabTel
             // 
-            inputColabTel.Location = new Point(376, 317);
-            inputColabTel.Margin = new Padding(4, 5, 4, 5);
+            inputColabTel.Location = new Point(263, 190);
             inputColabTel.MaxLength = 11;
             inputColabTel.Name = "inputColabTel";
-            inputColabTel.Size = new Size(183, 31);
+            inputColabTel.Size = new Size(129, 23);
             inputColabTel.TabIndex = 4;
             inputColabTel.TextChanged += inputColabTel_TextChanged;
             // 
             // Setor
             // 
             Setor.AutoSize = true;
-            Setor.Location = new Point(587, 287);
-            Setor.Margin = new Padding(4, 0, 4, 0);
+            Setor.Location = new Point(411, 172);
             Setor.Name = "Setor";
-            Setor.Size = new Size(54, 25);
+            Setor.Size = new Size(34, 15);
             Setor.TabIndex = 95;
             Setor.Text = "Setor";
             // 
@@ -208,11 +199,10 @@
             // 
             escolherSetor.FormattingEnabled = true;
             escolherSetor.Items.AddRange(new object[] { "Engenharia", "Criação", "Administração", "Marketing", "Ligação", "TI" });
-            escolherSetor.Location = new Point(569, 317);
-            escolherSetor.Margin = new Padding(4, 5, 4, 5);
+            escolherSetor.Location = new Point(398, 190);
             escolherSetor.MaxDropDownItems = 5;
             escolherSetor.Name = "escolherSetor";
-            escolherSetor.Size = new Size(164, 33);
+            escolherSetor.Size = new Size(116, 23);
             escolherSetor.TabIndex = 5;
             escolherSetor.SelectedIndexChanged += escolherSetor_SelectedIndexChanged;
             // 
@@ -222,9 +212,8 @@
             HeaderCadColab.Controls.Add(label1);
             HeaderCadColab.Dock = DockStyle.Top;
             HeaderCadColab.Location = new Point(0, 0);
-            HeaderCadColab.Margin = new Padding(4, 5, 4, 5);
             HeaderCadColab.Name = "HeaderCadColab";
-            HeaderCadColab.Size = new Size(1162, 83);
+            HeaderCadColab.Size = new Size(813, 50);
             HeaderCadColab.TabIndex = 16;
             // 
             // label1
@@ -233,20 +222,18 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(457, 27);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(287, 13);
             label1.Name = "label1";
-            label1.Size = new Size(337, 41);
+            label1.Size = new Size(219, 28);
             label1.TabIndex = 91;
-            label1.Text = "Cadastrar Colaborador";
+            label1.Text = "Tela de colaboradores";
             // 
             // check_ativo
             // 
             check_ativo.AutoSize = true;
-            check_ativo.Location = new Point(272, 420);
-            check_ativo.Margin = new Padding(4, 5, 4, 5);
+            check_ativo.Location = new Point(208, 257);
             check_ativo.Name = "check_ativo";
-            check_ativo.Size = new Size(80, 29);
+            check_ativo.Size = new Size(54, 19);
             check_ativo.TabIndex = 6;
             check_ativo.Text = "Ativo";
             check_ativo.UseVisualStyleBackColor = true;
@@ -256,10 +243,9 @@
             btn_selectEquips.BackColor = Color.DarkGreen;
             btn_selectEquips.Dock = DockStyle.Right;
             btn_selectEquips.ForeColor = Color.White;
-            btn_selectEquips.Location = new Point(933, 10);
-            btn_selectEquips.Margin = new Padding(4, 5, 4, 5);
+            btn_selectEquips.Location = new Point(653, 6);
             btn_selectEquips.Name = "btn_selectEquips";
-            btn_selectEquips.Size = new Size(220, 73);
+            btn_selectEquips.Size = new Size(154, 44);
             btn_selectEquips.TabIndex = 7;
             btn_selectEquips.Text = "Selecionar equipamentos";
             btn_selectEquips.UseVisualStyleBackColor = false;
@@ -270,10 +256,9 @@
             btnCancelarCad.BackColor = Color.DarkGreen;
             btnCancelarCad.Dock = DockStyle.Left;
             btnCancelarCad.ForeColor = SystemColors.Control;
-            btnCancelarCad.Location = new Point(9, 10);
-            btnCancelarCad.Margin = new Padding(4, 5, 4, 5);
+            btnCancelarCad.Location = new Point(6, 6);
             btnCancelarCad.Name = "btnCancelarCad";
-            btnCancelarCad.Size = new Size(214, 73);
+            btnCancelarCad.Size = new Size(150, 44);
             btnCancelarCad.TabIndex = 8;
             btnCancelarCad.Text = "Cancelar";
             btnCancelarCad.UseVisualStyleBackColor = false;
@@ -281,22 +266,35 @@
             // 
             // FotterCadColab
             // 
+            FotterCadColab.Controls.Add(btn_Atualizar);
             FotterCadColab.Controls.Add(txtID);
             FotterCadColab.Controls.Add(btn_selectEquips);
             FotterCadColab.Controls.Add(btnCancelarCad);
             FotterCadColab.Dock = DockStyle.Bottom;
-            FotterCadColab.Location = new Point(0, 886);
-            FotterCadColab.Margin = new Padding(4, 5, 4, 5);
+            FotterCadColab.Location = new Point(0, 531);
             FotterCadColab.Name = "FotterCadColab";
-            FotterCadColab.Padding = new Padding(9, 10, 9, 10);
-            FotterCadColab.Size = new Size(1162, 93);
+            FotterCadColab.Padding = new Padding(6, 6, 6, 6);
+            FotterCadColab.Size = new Size(813, 56);
             FotterCadColab.TabIndex = 15;
+            // 
+            // btn_Atualizar
+            // 
+            btn_Atualizar.BackColor = Color.DarkGreen;
+            btn_Atualizar.ForeColor = Color.White;
+            btn_Atualizar.Location = new Point(332, 7);
+            btn_Atualizar.Name = "btn_Atualizar";
+            btn_Atualizar.Size = new Size(163, 44);
+            btn_Atualizar.TabIndex = 25;
+            btn_Atualizar.Text = "Atualizar info colaborador";
+            btn_Atualizar.UseVisualStyleBackColor = false;
+            btn_Atualizar.Click += btn_Atualizar_Click;
             // 
             // txtID
             // 
-            txtID.Location = new Point(230, 32);
+            txtID.Location = new Point(161, 19);
+            txtID.Margin = new Padding(2, 2, 2, 2);
             txtID.Name = "txtID";
-            txtID.Size = new Size(135, 31);
+            txtID.Size = new Size(96, 23);
             txtID.TabIndex = 24;
             txtID.Visible = false;
             // 
@@ -304,9 +302,10 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.Red;
-            label2.Location = new Point(380, 94);
+            label2.Location = new Point(266, 56);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(20, 25);
+            label2.Size = new Size(12, 15);
             label2.TabIndex = 17;
             label2.Text = "*";
             // 
@@ -314,9 +313,10 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.Red;
-            label3.Location = new Point(380, 158);
+            label3.Location = new Point(266, 95);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(20, 25);
+            label3.Size = new Size(12, 15);
             label3.TabIndex = 18;
             label3.Text = "*";
             // 
@@ -324,9 +324,10 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Red;
-            label4.Location = new Point(573, 288);
+            label4.Location = new Point(401, 173);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(20, 25);
+            label4.Size = new Size(12, 15);
             label4.TabIndex = 19;
             label4.Text = "*";
             // 
@@ -334,9 +335,10 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(380, 223);
+            label5.Location = new Point(266, 134);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(20, 25);
+            label5.Size = new Size(12, 15);
             label5.TabIndex = 20;
             label5.Text = "*";
             // 
@@ -344,9 +346,10 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(378, 288);
+            label6.Location = new Point(265, 173);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(20, 25);
+            label6.Size = new Size(12, 15);
             label6.TabIndex = 21;
             label6.Text = "*";
             // 
@@ -354,9 +357,10 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(272, 348);
+            label7.Location = new Point(190, 209);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(20, 25);
+            label7.Size = new Size(12, 15);
             label7.TabIndex = 22;
             label7.Text = "*";
             // 
@@ -364,9 +368,10 @@
             // 
             btnDesativar.BackColor = Color.DarkGreen;
             btnDesativar.ForeColor = Color.White;
-            btnDesativar.Location = new Point(5, 837);
+            btnDesativar.Location = new Point(4, 502);
+            btnDesativar.Margin = new Padding(2, 2, 2, 2);
             btnDesativar.Name = "btnDesativar";
-            btnDesativar.Size = new Size(201, 32);
+            btnDesativar.Size = new Size(141, 25);
             btnDesativar.TabIndex = 100;
             btnDesativar.Text = "Desativar colaborador";
             btnDesativar.UseVisualStyleBackColor = false;
@@ -376,9 +381,10 @@
             // 
             btnRecarregar.BackColor = Color.DarkGreen;
             btnRecarregar.ForeColor = Color.White;
-            btnRecarregar.Location = new Point(212, 837);
+            btnRecarregar.Location = new Point(148, 502);
+            btnRecarregar.Margin = new Padding(2, 2, 2, 2);
             btnRecarregar.Name = "btnRecarregar";
-            btnRecarregar.Size = new Size(95, 32);
+            btnRecarregar.Size = new Size(66, 25);
             btnRecarregar.TabIndex = 101;
             btnRecarregar.Text = "Limpar";
             btnRecarregar.UseVisualStyleBackColor = false;
@@ -390,13 +396,14 @@
             MostrarColaboradores.AllowUserToDeleteRows = false;
             MostrarColaboradores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarColaboradores.Columns.AddRange(new DataGridViewColumn[] { id_colaborador, NomeColab, NomeColaborador, dataGridViewTextBoxColumn1, EmailColaborador, dataGridViewTextBoxColumn2, TelefoneColaborador, AgendaColaborador, dataGridViewTextBoxColumn4, id_setor, SenhaHash, Ativo_inativo, SenhaColaborador, SetorColaborador });
-            MostrarColaboradores.Location = new Point(9, 507);
+            MostrarColaboradores.Location = new Point(4, 304);
+            MostrarColaboradores.Margin = new Padding(2, 2, 2, 2);
             MostrarColaboradores.Name = "MostrarColaboradores";
             MostrarColaboradores.ReadOnly = true;
             MostrarColaboradores.RowHeadersWidth = 62;
             MostrarColaboradores.RowTemplate.Height = 33;
             MostrarColaboradores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MostrarColaboradores.Size = new Size(548, 326);
+            MostrarColaboradores.Size = new Size(384, 196);
             MostrarColaboradores.TabIndex = 102;
             MostrarColaboradores.CellMouseDoubleClick += MostrarColaboradores_CellMouseDoubleClick;
             // 
@@ -542,13 +549,14 @@
             MostrarColaboradoresDesativados.AllowUserToDeleteRows = false;
             MostrarColaboradoresDesativados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MostrarColaboradoresDesativados.Columns.AddRange(new DataGridViewColumn[] { ID_ColabDesativado, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn12, dataGridViewTextBoxColumn13, dataGridViewTextBoxColumn14, dataGridViewTextBoxColumn16, dataGridViewTextBoxColumn17, dataGridViewTextBoxColumn18, dataGridViewTextBoxColumn15 });
-            MostrarColaboradoresDesativados.Location = new Point(602, 507);
+            MostrarColaboradoresDesativados.Location = new Point(421, 304);
+            MostrarColaboradoresDesativados.Margin = new Padding(2, 2, 2, 2);
             MostrarColaboradoresDesativados.Name = "MostrarColaboradoresDesativados";
             MostrarColaboradoresDesativados.ReadOnly = true;
             MostrarColaboradoresDesativados.RowHeadersWidth = 62;
             MostrarColaboradoresDesativados.RowTemplate.Height = 33;
             MostrarColaboradoresDesativados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MostrarColaboradoresDesativados.Size = new Size(548, 326);
+            MostrarColaboradoresDesativados.Size = new Size(384, 196);
             MostrarColaboradoresDesativados.TabIndex = 103;
             MostrarColaboradoresDesativados.CellMouseDoubleClick += MostrarColaboradoresDesativados_CellMouseDoubleClick;
             // 
@@ -694,9 +702,10 @@
             label8.BackColor = Color.DarkGreen;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(161, 472);
+            label8.Location = new Point(113, 283);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(237, 32);
+            label8.Size = new Size(157, 21);
             label8.TabIndex = 104;
             label8.Text = "Colaboradores ativos";
             // 
@@ -706,9 +715,10 @@
             label9.BackColor = Color.DarkGreen;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(722, 472);
+            label9.Location = new Point(508, 283);
+            label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(300, 32);
+            label9.Size = new Size(198, 21);
             label9.TabIndex = 105;
             label9.Text = "Colaboradores desativados";
             label9.Click += label9_Click;
@@ -717,9 +727,10 @@
             // 
             btnAtivar.BackColor = Color.DarkGreen;
             btnAtivar.ForeColor = Color.White;
-            btnAtivar.Location = new Point(602, 839);
+            btnAtivar.Location = new Point(421, 503);
+            btnAtivar.Margin = new Padding(2, 2, 2, 2);
             btnAtivar.Name = "btnAtivar";
-            btnAtivar.Size = new Size(201, 32);
+            btnAtivar.Size = new Size(141, 23);
             btnAtivar.TabIndex = 106;
             btnAtivar.Text = "Ativar colaborador";
             btnAtivar.UseVisualStyleBackColor = false;
@@ -729,32 +740,50 @@
             // 
             btnLimpar2.BackColor = Color.DarkGreen;
             btnLimpar2.ForeColor = Color.White;
-            btnLimpar2.Location = new Point(809, 839);
+            btnLimpar2.Location = new Point(566, 503);
+            btnLimpar2.Margin = new Padding(2, 2, 2, 2);
             btnLimpar2.Name = "btnLimpar2";
-            btnLimpar2.Size = new Size(95, 32);
+            btnLimpar2.Size = new Size(66, 23);
             btnLimpar2.TabIndex = 107;
             btnLimpar2.Text = "Limpar";
             btnLimpar2.UseVisualStyleBackColor = false;
+            btnLimpar2.Click += btnLimpar2_Click;
             // 
             // btnPesquisar
             // 
             btnPesquisar.BackColor = Color.DarkGreen;
             btnPesquisar.ForeColor = Color.White;
-            btnPesquisar.Location = new Point(744, 117);
+            btnPesquisar.Location = new Point(521, 70);
+            btnPesquisar.Margin = new Padding(2, 2, 2, 2);
             btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(258, 42);
+            btnPesquisar.Size = new Size(181, 25);
             btnPesquisar.TabIndex = 108;
             btnPesquisar.Text = "Pesquisar por nome ou e-mail";
             btnPesquisar.UseVisualStyleBackColor = false;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
+            // btnEditarEquips
+            // 
+            btnEditarEquips.BackColor = Color.DarkGreen;
+            btnEditarEquips.ForeColor = Color.White;
+            btnEditarEquips.Location = new Point(288, 252);
+            btnEditarEquips.Margin = new Padding(2, 2, 2, 2);
+            btnEditarEquips.Name = "btnEditarEquips";
+            btnEditarEquips.Size = new Size(241, 25);
+            btnEditarEquips.TabIndex = 109;
+            btnEditarEquips.Text = "Editar equipamentos do colaborador";
+            btnEditarEquips.UseVisualStyleBackColor = false;
+            btnEditarEquips.Visible = false;
+            btnEditarEquips.Click += btnEditarEquips_Click;
+            // 
             // CadColaborador
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
-            ClientSize = new Size(1162, 979);
+            ClientSize = new Size(813, 587);
+            Controls.Add(btnEditarEquips);
             Controls.Add(btnPesquisar);
             Controls.Add(btnLimpar2);
             Controls.Add(btnAtivar);
@@ -786,7 +815,6 @@
             Controls.Add(Email);
             Controls.Add(Nome);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             Name = "CadColaborador";
             StartPosition = FormStartPosition.CenterScreen;
@@ -866,5 +894,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private Button btnPesquisar;
+        private Button btnEditarEquips;
+        private Button btn_Atualizar;
     }
 }

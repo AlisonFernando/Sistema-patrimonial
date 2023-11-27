@@ -24,6 +24,10 @@ namespace model
 
         public string NomeUsuario { get; set; }
 
+        public int id_colaborador { get; set; }
+
+        public string NomeColaborador { get; set; }
+
         //public string AndamentoChamado { get; set; }
     }
 }

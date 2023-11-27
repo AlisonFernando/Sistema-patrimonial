@@ -58,9 +58,46 @@ namespace DAL
             cmd.ExecuteNonQuery();
             mConn.FecharConexao();
         }
+        public bool VerificarEmailCOlaborador(String email)
+        {
+            bool emailExists = false;
+            string sql = "SELECT COUNT(*) FROM tb_colaborador WHERE Email = @email";
+
+            using (MySqlConnection connection = mConn.AbrirConexao())
+            {
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@email", email);
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        emailExists = true;
+                    }
+                }
+            }
+            return emailExists;
+        }
+        public void UpdateColaborador(Colaborador colaborador)
+        {
+            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            {
+                dbConnection.Open();
+                string query = "UPDATE tb_colaborador SET Nome = @NomeColaborador, Email = @EmailColaborador, Agenda = @AgendaColaborador, Telefone = @TelefoneColaborador WHERE id_colaborador = @id_colaborador";
+                dbConnection.Execute(query, colaborador);
+
+                mConn.FecharConexao();
+            }
+        }
 
         private string HashPassword(string password)
         {
+            if (password == null)
+            {
+                // Lide com a situação em que o password é nulo (lançar exceção, retornar um valor padrão, etc.)
+                throw new ArgumentNullException(nameof(password), "A senha não pode ser nula.");
+            }
+
             string salt = BCrypt.Net.BCrypt.GenerateSalt();
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, salt);
             return hashedPassword;

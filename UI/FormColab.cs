@@ -18,10 +18,12 @@ namespace UI
 {
     public partial class CadColaborador : Form
     {
+        public int IDColaborador;
         private ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
         private List<Colaborador> colaboradoresAtivos = new List<Colaborador>();
         private List<Colaborador> colaboradoresDesativados = new List<Colaborador>();
         Colaborador colaborador = new Colaborador();
+        private List<Colaborador> colaboradores = new List<Colaborador>();
         public CadColaborador(Colaborador colaborador)
         {
             InitializeComponent();
@@ -36,6 +38,7 @@ namespace UI
                 inputColabAgenda.Text = colaborador.AgendaColaborador.ToString();
                 check_ativo.Enabled = false;
                 inputColabSenha.Enabled = false;
+                btnEditarEquips.Visible = true;
             }
         }
 
@@ -43,6 +46,7 @@ namespace UI
         {
             CarregarSetorComboBox();
             LoadColaboradores();
+            btnEditarEquips.Visible = false;
         }
         public void LoadColaboradores()
         {
@@ -151,7 +155,7 @@ namespace UI
                 MessageBox.Show("Já possui no banco de dados");
                 return;
             }
-            UI.SelectEquips selectEquips = new UI.SelectEquips();
+            UI.SelectEquips selectEquips = new UI.SelectEquips(IDColaborador, true);
             selectEquips.ShowDialog();
         }
 
@@ -263,6 +267,7 @@ namespace UI
                 inputColabTel.Text = colaborador.TelefoneColaborador;
                 inputColabAgenda.Text = colaborador.AgendaColaborador;
                 inputColabSenha.Enabled = false;
+                btnEditarEquips.Visible = true;
             }
         }
 
@@ -281,6 +286,7 @@ namespace UI
                 inputColabTel.Text = colaborador.TelefoneColaborador;
                 inputColabAgenda.Text = colaborador.AgendaColaborador;
                 inputColabSenha.Enabled = false;
+                btnEditarEquips.Visible = true;
             }
         }
 
@@ -314,6 +320,84 @@ namespace UI
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEditarEquips_Click(object sender, EventArgs e)
+        {
+            int idColaborador = Convert.ToInt32(txtID.Text);
+            EditarEquipsColab editarEquipsColab = new EditarEquipsColab(idColaborador);
+            editarEquipsColab.ShowDialog();
+        }
+
+        private void btn_Atualizar_Click(object sender, EventArgs e)
+        {
+            Colaborador colaborador = new Colaborador();
+
+            if (!string.IsNullOrEmpty(txtID.Text))
+                colaborador.ID_colaborador = int.Parse(txtID.Text);
+
+            colaborador.NomeColaborador = InputColabNome.Text.Trim();
+            colaborador.EmailColaborador = inputColabEmail.Text;
+            colaborador.TelefoneColaborador = inputColabTel.Text.Trim();
+            colaborador.AgendaColaborador = inputColabAgenda.Text;
+            colaborador.Ativo_inativo = check_ativo.Checked;
+
+            // Verificação de espaços em branco em nome
+            if (string.IsNullOrWhiteSpace(colaborador.NomeColaborador))
+            {
+                MessageBox.Show("Nome deve ser preenchido.");
+                return;
+            }
+
+            // Verificação de espaços em branco em email
+            if (colaborador.EmailColaborador.Contains(" "))
+            {
+                MessageBox.Show("Email não pode conter espaços em branco.");
+                return;
+            }
+
+            // Verificação do email
+            if (!UserBLL.IsValidEmail(colaborador.EmailColaborador))
+            {
+                MessageBox.Show("E-mail inválido.");
+                return;
+            }
+
+            string retorno;
+            ColaboradorBLL editColabBLL = new ColaboradorBLL();
+
+            // Verifique se é uma atualização de nome ou e-mail (ignorando senha e confirmações)
+            bool atualizacaoNomeOuEmail = !string.IsNullOrEmpty(txtID.Text) &&
+                (InputColabNome.Text != colaboradores.Find(u => u.ID_colaborador == colaborador.ID_colaborador)?.NomeColaborador ||
+                 inputColabEmail.Text != colaboradores.Find(u => u.ID_colaborador == colaborador.ID_colaborador)?.EmailColaborador);
+
+            if (!string.IsNullOrEmpty(txtID.Text))
+            {
+                ColaboradorBLL verificarEmailBLL = new ColaboradorBLL();
+                string verificar = verificarEmailBLL.VerificarEmail(colaborador.EmailColaborador);
+
+                if (verificar == "Email existente")
+                {
+                    MessageBox.Show("O email já existe no banco de dados");
+                    return;
+                }
+                retorno = editColabBLL.UpdateColaborador(colaborador);
+                LoadColaboradores();
+                btnLimpar2.PerformClick();
+
+            }
+        }
+
+        private void btnLimpar2_Click(object sender, EventArgs e)
+        {
+            InputColabNome.Text = string.Empty;
+            inputColabEmail.Text = string.Empty;
+            inputColabSenha.Enabled = true;
+            inputColabTel.Text = string.Empty;
+            inputColabAgenda.Text = string.Empty;
+            txtID.Text = string.Empty;
+            check_ativo.Enabled = true;
+            LoadColaboradores();
         }
     }
 }

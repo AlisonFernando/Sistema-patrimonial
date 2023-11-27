@@ -16,7 +16,6 @@ namespace UI
     public partial class TelaManutencao : Form
     {
         private ManutencaoBLL manutencaoBLL = new ManutencaoBLL();
-        private List<Manutencao> manutencaoData = new List<Manutencao>();
 
         public TelaManutencao()
         {

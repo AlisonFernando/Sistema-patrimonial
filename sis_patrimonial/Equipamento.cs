@@ -44,17 +44,5 @@ namespace model
             get { return etiqueta; }
             set { etiqueta = value; }
         }
-
-        public decimal ValorNumerico
-        {
-            get
-            {
-                if (decimal.TryParse(Valor, out decimal valor))
-                {
-                    return valor;
-                }
-                return 0;
-            }
-        }
     }
 }

@@ -26,6 +26,7 @@ namespace UI
                 MenuRelatorioEquip.Enabled = true;
                 MenuRelatorioPrecoEquip.Enabled = true;
                 MenuSair.Enabled = true;
+                infoColaboradoresToolStripMenuItem.Enabled = true;
             }
             else if (UserChamado == 2)
             {
@@ -44,6 +45,7 @@ namespace UI
                 MenuRelatorioPrecoEquip.Enabled = true;
                 MenuSair.Enabled = true;
                 MenuRedefinirSenha.Enabled = false;
+                infoColaboradoresToolStripMenuItem.Enabled = false;
             }
             UserEmail = userEmail;
         }
@@ -127,12 +129,6 @@ namespace UI
             relatorioEquipamentoPreco.ShowDialog();
         }
 
-        private void MenuInfoColaborador_Click(object sender, EventArgs e)
-        {
-            UI.TelaVerColaboradores telaVerColaboradores = new UI.TelaVerColaboradores();
-            telaVerColaboradores.ShowDialog();
-        }
-
         private void MenuRedefinirSenha_Click(object sender, EventArgs e)
         {
             UI.TelaEsqueciSenha telaEsqueciSenha = new TelaEsqueciSenha();
@@ -154,6 +150,12 @@ namespace UI
         private void TelaPrincipal_Load(object sender, EventArgs e)
         {
             lblBoasVindas.Text = "Bem vindo, " + UserEmail;
+        }
+
+        private void infoColaboradoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UI.TelaVerColaboradores telaVerColaboradores = new UI.TelaVerColaboradores();
+            telaVerColaboradores.ShowDialog();
         }
     }
 }
