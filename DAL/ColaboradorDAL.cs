@@ -15,7 +15,6 @@ namespace DAL
         ConexaoDB mConn = new ConexaoDB();
         string sql;
         MySqlCommand cmd;
-        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
 
         public void InserirColaborador(Colaborador colaborador, string emailUsuarioLogado)
         {
@@ -80,13 +79,10 @@ namespace DAL
         }
         public void UpdateColaborador(Colaborador colaborador)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 string query = "UPDATE tb_colaborador SET Nome = @NomeColaborador, Email = @EmailColaborador, Agenda = @AgendaColaborador, Telefone = @TelefoneColaborador WHERE id_colaborador = @id_colaborador";
                 dbConnection.Execute(query, colaborador);
-
-                mConn.FecharConexao();
             }
         }
 
@@ -108,10 +104,8 @@ namespace DAL
         {
             int idColaborador = -1; // Valor padrão caso o colaborador não seja encontrado
 
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
-
                 string query = "SELECT id_colaborador FROM tb_colaborador WHERE Nome = @nomeColaborador";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@nomeColaborador", nomeColaborador);
@@ -121,20 +115,16 @@ namespace DAL
                 {
                     idColaborador = Convert.ToInt32(result);
                 }
-
-                connection.Close();
             }
-
             return idColaborador;
         }
+
         public List<Colaborador> GetColaboradoresAtivos()
         {
             List<Colaborador> colaboradoresAtivos = new List<Colaborador>();
 
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
-
                 string query = "SELECT c.ID_colaborador, c.Nome, c.Email, c.Telefone, c.Agenda, s.Nome_setor " +
                               "FROM tb_colaborador c " +
                               "INNER JOIN tb_setor s ON c.id_setor = s.id_setor " +
@@ -156,25 +146,19 @@ namespace DAL
                             colaborador.SetorNome = reader["Nome_setor"].ToString();
 
                             colaboradoresAtivos.Add(colaborador);
-
                         }
-
                     }
                 }
-
-                connection.Close();
             }
-
             return colaboradoresAtivos;
         }
+
         public List<Colaborador> GetColaboradoresDesativados()
         {
             List<Colaborador> colaboradoresDesativados = new List<Colaborador>();
 
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
-
                 string query = "SELECT c.ID_colaborador, c.Nome, c.Email, c.Telefone, c.Agenda, s.Nome_setor " +
                               "FROM tb_colaborador c " +
                               "INNER JOIN tb_setor s ON c.id_setor = s.id_setor " +
@@ -196,24 +180,16 @@ namespace DAL
                             colaborador.SetorNome = reader["Nome_setor"].ToString();
 
                             colaboradoresDesativados.Add(colaborador);
-
                         }
-
                     }
                 }
-
-                connection.Close();
             }
-
             return colaboradoresDesativados;
         }
-
         public void AssociarEquipamentosAoColaborador(int id_colaborador, List<int> idsEquipamentosSelecionados)
         {
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
-
                 foreach (int ID_equipamento in idsEquipamentosSelecionados)
                 {
                     // Atualize a tabela tb_equipamentos com o ID do colaborador
@@ -223,11 +199,8 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@ID_equipamento", ID_equipamento);
                     cmd.ExecuteNonQuery();
                 }
-                connection.Close();
             }
         }
-            
-
         public bool VerificarNome(String nomeColab)
         {
             bool nomeExists = false;
@@ -288,10 +261,8 @@ namespace DAL
         {
             List<Colaborador> colaboradores = new List<Colaborador>();
 
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
-
                 string query = "SELECT c.ID_colaborador, c.Nome, c.Email, c.Telefone, c.Agenda, s.Nome_setor " +
                               "FROM tb_colaborador c " +
                               "INNER JOIN tb_setor s ON c.id_setor = s.id_setor " +
@@ -315,23 +286,16 @@ namespace DAL
                             colaboradores.Add(colaborador);
 
                         }
-
                     }
                 }
-
-                connection.Close();
             }
-
             return colaboradores;
         }
 
-
-
         public void DesativarColaborador(int ID_Colab)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 try
                 {
                     // Passo 1: Desativar o colaborador
@@ -347,36 +311,34 @@ namespace DAL
                     // Lidar com erros
                     throw; // Re-throw da exceção para notificar que algo deu errado
                 }
+                finally
+                {
+                    // Garanta que a conexão seja fechada mesmo em caso de exceção
+                    mConn.FecharConexao();
+                }
             }
         }
-
         public void AtivarColaborador(int ID_Colab)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 string query = "UPDATE tb_colaborador SET Ativo_inativo = 1 WHERE ID_colaborador = @ID_colaborador";
                 int rowsAffected = dbConnection.Execute(query, new { ID_colaborador = ID_Colab });
 
                 if (rowsAffected > 0)
                 {
                     // Atualização bem-sucedida
-                    // Aqui você pode adicionar lógica adicional se necessário
                 }
                 else
                 {
                     // A atualização não teve efeito (nenhuma marca encontrada com o ID especificado, por exemplo)
-                    // Adicione lógica apropriada, se necessário
                 }
             }
         }
-
-
         public Colaborador ObterColaboradorPorID(int idColaborador)
         {
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
                 string query = "SELECT * FROM tb_colaborador WHERE ID_colaborador = @idColaborador";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@idColaborador", idColaborador);
@@ -390,7 +352,6 @@ namespace DAL
                             ID_colaborador = Convert.ToInt32(reader["ID_colaborador"]),
                             NomeColaborador = reader["Nome"].ToString(),
                             EmailColaborador = reader["Email"].ToString()
-                            // Adicione outros campos conforme necessário
                         };
                         return colaborador;
                     }
@@ -398,6 +359,7 @@ namespace DAL
                 }
             }
         }
+
         public DataTable ConsultarColaborador()
         {
             DataTable dt = new DataTable();

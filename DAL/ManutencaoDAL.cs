@@ -11,8 +11,6 @@ namespace DAL
 {
     public class ManutencaoDAL
     {
-        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
-
         ConexaoDB mConn = new ConexaoDB();
         string sql;
         MySqlCommand cmd;
@@ -21,7 +19,7 @@ namespace DAL
         {
             List<Manutencao> manutencaoList = new List<Manutencao>();
 
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
                 connection.Open();
 
@@ -39,8 +37,6 @@ namespace DAL
                                 "JOIN tb_equipamentos AS e ON m.id_equipamento = e.id_equipamento " +
                                 "JOIN tb_usuario AS u ON m.id_usuario = u.id_usuario " +
                                 "LEFT JOIN tb_colaborador AS c ON m.id_colaborador = c.id_colaborador";
-
-
 
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
@@ -64,12 +60,12 @@ namespace DAL
                     }
                 }
             }
-
             return manutencaoList;
         }
+
         public int ObterIdStatusEquipamento(int idEquipamento)
         {
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
                 connection.Open();
 
@@ -88,7 +84,6 @@ namespace DAL
                     }
                 }
             }
-
             return 0; // Se não encontrar, retorne um valor padrão (pode ajustar conforme necessário)
         }
     }

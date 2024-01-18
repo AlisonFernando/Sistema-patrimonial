@@ -12,8 +12,6 @@ namespace DAL
 {
     public class ChamadoDAL
     {
-        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
-
         ConexaoDB mConn = new ConexaoDB();
         string sql;
         MySqlCommand cmd;

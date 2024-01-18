@@ -12,7 +12,6 @@ namespace DAL
 {
     public class SetorDAL
     {
-        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
         string sql;
         MySqlCommand cmd;
         ConexaoDB mConn = new ConexaoDB();
@@ -55,13 +54,13 @@ namespace DAL
         }
         public List<Setor> GetSetor()
         {
-
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 return dbConnection.Query<Setor>("SELECT ID_setor, Nome_setor AS Nome FROM tb_setor").ToList();
             }
         }
+
         public bool VerificarSetor(String nomeSetor)
         {
             bool setorExists = false;
@@ -84,20 +83,21 @@ namespace DAL
         }
         public void UpdateSetor(Setor setor)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
-                string query = "UPDATE tb_setor SET Nome_setor = @nome WHERE ID_Setor = @id_Setor";
+                string query = "UPDATE tb_setor SET Nome_setor = @Nome WHERE ID_setor = @ID_setor";
                 dbConnection.Execute(query, setor);
             }
         }
+
         public void DesativarSetor(int id_setor)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
-                string query = "UPDATE tb_setor SET Ativo_inativo = 0 WHERE ID_setor = @id_setor";
-                int rowsAffected = dbConnection.Execute(query, new { ID_Setor = id_setor });
+                string query = "UPDATE tb_setor SET Ativo_inativo = 0 WHERE ID_setor = @ID_setor";
+                int rowsAffected = dbConnection.Execute(query, new { ID_setor });
 
                 if (rowsAffected > 0)
                 {
@@ -113,11 +113,11 @@ namespace DAL
         }
         public void AtivarSetor(int id_setor)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
-                string query = "UPDATE tb_setor SET Ativo_inativo = 1 WHERE ID_setor = @id_setor";
-                int rowsAffected = dbConnection.Execute(query, new { ID_Setor = id_setor });
+                string query = "UPDATE tb_setor SET Ativo_inativo = 1 WHERE ID_setor = @ID_setor";
+                int rowsAffected = dbConnection.Execute(query, new { ID_setor });
 
                 if (rowsAffected > 0)
                 {
@@ -131,24 +131,23 @@ namespace DAL
                 }
             }
         }
+
         public List<Setor> GetSetorAtivo()
         {
-
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 return dbConnection.Query<Setor>("SELECT ID_setor, Nome_setor AS Nome FROM tb_setor WHERE Ativo_inativo = 1").ToList();
             }
         }
+
         public List<Setor> GetSetorDesativado()
         {
-
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 return dbConnection.Query<Setor>("SELECT ID_setor, Nome_setor AS Nome FROM tb_setor WHERE Ativo_inativo = 0").ToList();
             }
         }
-
     }
 }

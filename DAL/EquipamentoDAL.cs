@@ -17,7 +17,6 @@ namespace DAL
         ConexaoDB mConn = new ConexaoDB();
         string sql;
         MySqlCommand cmd;
-        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
 
         public void InserirEquipamento(Equipamento equipamento, string emailUsuarioLogado)
         {
@@ -81,42 +80,37 @@ namespace DAL
             return etiquetaExists;
         }
 
-
         //Escolher os equipamentos disponíveis para passar para o colaborador
         public List<Equipamento> GetEquipamentosDisponiveis()
         {
-
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento Nome, Ativo_inativo Ativo_inativo, Valor Valor, Descricao, Etiqueta_identificacao Etiqueta, id_colaborador id_colaborador, id_marca id_marca FROM tb_equipamentos WHERE id_colaborador IS NULL").ToList();
             }
         }
+
         public List<Equipamento> GetEquipamentos()
         {
-
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento Nome, Ativo_inativo Ativo_inativo, Valor, Descricao, Etiqueta_identificacao Etiqueta, id_colaborador id_colaborador, id_marca id_marca FROM tb_equipamentos").ToList();
             }
         }
 
         public void UpdateEquipamentos(Equipamento equipamento, string emailUsuarioLogado)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_equipamentos SET Nome_Equipamento = @Nome, Valor = @Valor, Descricao = @Descricao  WHERE ID_equipamento = @ID_equipamento";
                 dbConnection.Execute(query, equipamento);
 
-
-                //Inserção de log
+                // Inserção de log
                 DateTime dataHoraAcao = DateTime.Now;
                 string tipoOperacao = "atualização de equipamento"; // Defina o tipo de operação conforme necessário
 
-                sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
-                cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+                string sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                MySqlCommand cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
                 cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
                 cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
@@ -126,21 +120,21 @@ namespace DAL
                 mConn.FecharConexao();
             }
         }
+
         public void DeleteEquipamento(int ID_equipamento, string emailUsuarioLogado)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "DELETE FROM tb_equipamentos WHERE ID_equipamento = @ID_equipamento";
                 dbConnection.Execute(query, new { ID_equipamento });
 
-
-                //Inserção de log
+                // Inserção de log
                 DateTime dataHoraAcao = DateTime.Now;
                 string tipoOperacao = "delete de equipamento"; // Defina o tipo de operação conforme necessário
 
-                sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
-                cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+                string sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                MySqlCommand cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
                 cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
                 cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
@@ -150,10 +144,10 @@ namespace DAL
                 mConn.FecharConexao();
             }
         }
+
         public List<Equipamento> GetEquipamentosRelatorio()
         {
-
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 return dbConnection.Query<Equipamento>("SELECT Nome_equipamento FROM tb_equipamentos").ToList();
@@ -163,7 +157,8 @@ namespace DAL
         public List<Equipamento> ObterEquipamentosPorColaborador(int idColaborador)
         {
             List<Equipamento> equipamentos = new List<Equipamento>();
-            using (MySqlConnection connection = new MySqlConnection(conec))
+
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
                 connection.Open();
                 string query = "SELECT * FROM tb_equipamentos WHERE id_colaborador = @idColaborador";
@@ -179,29 +174,29 @@ namespace DAL
                             ID_equipamento = Convert.ToInt32(reader["ID_equipamento"]),
                             Nome = reader["Nome_equipamento"].ToString(),
                             Descricao = reader["Descricao"].ToString(),
-                            Etiqueta = reader["Etiqueta_identificacao"].ToString(),                            
+                            Etiqueta = reader["Etiqueta_identificacao"].ToString(),
                             // Adicione outros campos conforme necessário
                         };
                         equipamentos.Add(equipamento);
                     }
                 }
             }
+
             return equipamentos;
         }
+
         public List<Equipamento> GetEquipamentosAtivos()
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
-                return dbConnection.Query<Equipamento>("SELECT ID_equipamento," +
-                    " Nome_equipamento AS Nome, Valor as Valor, Descricao AS Descricao," +
-                    " Etiqueta_identificacao AS Etiqueta FROM tb_equipamentos WHERE Ativo_inativo = 1").ToList();
+                return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento AS Nome, Valor as Valor, Descricao AS Descricao, Etiqueta_identificacao AS Etiqueta FROM tb_equipamentos WHERE Ativo_inativo = 1").ToList();
             }
         }
 
         public List<Equipamento> GetEquipamentosDesativados()
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "SELECT ID_equipamento, Nome_equipamento AS Nome, Valor as Valor, Descricao AS Descricao, Etiqueta_identificacao AS Etiqueta FROM tb_equipamentos WHERE Ativo_inativo = 0";
@@ -211,7 +206,7 @@ namespace DAL
 
         public void DesativarEquipamento(int id_equipamento)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_equipamentos SET Ativo_inativo = 0 WHERE ID_equipamento = @id_equipamento";
@@ -229,9 +224,10 @@ namespace DAL
                 }
             }
         }
+
         public void AtivarEquipamento(int id_equipamento)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_equipamentos SET Ativo_inativo = 1 WHERE ID_equipamento = @id_equipamento";
@@ -251,16 +247,13 @@ namespace DAL
         }
         public void DesvincularEquipamento(int idEquipamento)
         {
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                connection.Open();
+                dbConnection.Open();
 
                 string query = "UPDATE tb_equipamentos SET id_colaborador = NULL WHERE ID_equipamento = @idEquipamento";
 
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@idEquipamento", idEquipamento);
-
-                command.ExecuteNonQuery();
+                dbConnection.Execute(query, new { idEquipamento });
             }
         }
     }

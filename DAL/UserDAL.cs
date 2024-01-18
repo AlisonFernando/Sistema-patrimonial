@@ -21,7 +21,6 @@ namespace DAL
         ConexaoDB mConn = new ConexaoDB();
         string sql;
         MySqlCommand cmd;
-        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
         public void InserirUsuario(Usuario usuario, string emailUsuarioLogado)
         {
             string senhaNaoCriptografada = usuario.Senha;
@@ -94,7 +93,7 @@ namespace DAL
 
         public Usuario ObterUsuario(string email)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "SELECT * FROM tb_usuario WHERE Email = @Email AND Ativo_inativo = 1";
@@ -104,26 +103,27 @@ namespace DAL
 
         public string ObterSenhaCriptografada(string email)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "SELECT Senha FROM tb_usuario WHERE Email = @Email";
                 return dbConnection.ExecuteScalar<string>(query, new { Email = email });
             }
+
         }
 
         public List<Usuario> GetUsuarios()
         {
-            
-            using(IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 return dbConnection.Query<Usuario>("SELECT id_usuario, Nome, Email, Senha, UserAcesso FROM tb_usuario").ToList();
             }
         }
+
         public void UpdateUsuario(Usuario usuario, string emailUsuarioLogado)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_usuario SET Nome = @Nome, Email = @Email, Ativo_inativo = @Ativo_inativo WHERE id_usuario = @id_usuario";
@@ -135,8 +135,8 @@ namespace DAL
                 DateTime dataHoraAcao = DateTime.Now;
                 string tipoOperacao = "atualização de usuário"; // Defina o tipo de operação conforme necessário
 
-                sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
-                cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+                string sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                MySqlCommand cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
                 cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
                 cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
@@ -146,18 +146,20 @@ namespace DAL
                 mConn.FecharConexao();
             }
         }
+
         public List<Usuario> GetUsuariosAtivos()
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "SELECT id_usuario, Nome, Email, Senha, UserAcesso FROM tb_usuario WHERE Ativo_inativo = @AtivoInativo";
                 return dbConnection.Query<Usuario>(query, new { AtivoInativo = 1 }).ToList();
             }
         }
+
         public List<Usuario> GetUsuariosDesativados()
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "SELECT id_usuario, Nome, Email, Senha, UserAcesso FROM tb_usuario WHERE Ativo_inativo = @AtivoInativo";
@@ -167,7 +169,7 @@ namespace DAL
 
         public void DesativarUsuario(int id_usuario)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_usuario SET Ativo_inativo = 0 WHERE id_usuario = @id_usuario";
@@ -185,9 +187,10 @@ namespace DAL
                 }
             }
         }
+
         public void AtivarUsuario(int id_usuario)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_usuario SET Ativo_inativo = 1 WHERE id_usuario = @id_usuario";
@@ -205,6 +208,7 @@ namespace DAL
                 }
             }
         }
+
         public int ObterUserChamado(string email)
         {
             sql = "SELECT UserAcesso FROM tb_usuario WHERE Email = @Email";
@@ -218,7 +222,7 @@ namespace DAL
         }
         public bool InserirTokenRecuperacao(int idUsuario, string token, DateTime dataExpiracao, DateTime dataCriacao, string emailUsuarioLogado)
         {
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
                 connection.Open();
                 using (MySqlCommand cmd = new MySqlCommand("INSERT INTO tb_token (id_usuario, token, data_expiracao, data_criacao) VALUES (@id_usuario, @token, @dataExpiracao, @dataCriacao)", connection))
@@ -232,7 +236,7 @@ namespace DAL
 
                     // Inserir o registro de log na tabela tb_logs
                     DateTime dataHoraAcao = DateTime.Now;
-                    string tipoOperacao = "token de recuperação de senha gereado"; // Defina o tipo de operação conforme necessário
+                    string tipoOperacao = "token de recuperação de senha gerado"; // Corrigi a ortografia
 
                     string sql = "INSERT INTO tb_logs (EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
                     cmd.Parameters.Clear();
@@ -252,7 +256,7 @@ namespace DAL
 
         public bool VerificarTokenRecuperacaoValido(int idUsuario, string token)
         {
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
                 connection.Open();
                 using (MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM tb_token WHERE id_usuario = @idUsuario AND token = @token AND data_expiracao > NOW()", connection))
@@ -269,7 +273,7 @@ namespace DAL
 
         public bool AtualizarSenha(int idUsuario, string novaSenha, string emailUsuarioLogado)
         {
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
                 connection.Open();
                 using (MySqlCommand cmd = new MySqlCommand("UPDATE tb_usuario SET senha = @novaSenha WHERE id_usuario = @idUsuario", connection))
@@ -299,10 +303,9 @@ namespace DAL
             }
         }
 
-
         public int ObterIdUsuarioPorEmail(string email)
         {
-            using (MySqlConnection connection = new MySqlConnection(conec))
+            using (MySqlConnection connection = mConn.AbrirConexao())
             {
                 connection.Open();
                 string query = "SELECT id_usuario FROM tb_usuario WHERE email = @email";

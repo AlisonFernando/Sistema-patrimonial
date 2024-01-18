@@ -15,7 +15,6 @@ namespace DAL
         ConexaoDB mConn = new ConexaoDB();
         string sql;
         MySqlCommand cmd;
-        public string conec = "Persist Security Info = False; server=syspatrimonial.mysql.dbaas.com.br;database=syspatrimonial;uid=syspatrimonial;pwd=Alison17@;";
 
         public void InserirMarca(Marca marca, string emailUsuarioLogado)
         {
@@ -51,31 +50,27 @@ namespace DAL
         }
         public void UpdateMarca(Marca marca, string emailUsuarioLogado)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_marca SET Nome = @Nome, Ativo_inativo = @Ativo_inativo WHERE id_marca = @id_marca";
-                
-                dbConnection.Execute(query, marca);
 
-                mConn.FecharConexao();
+                dbConnection.Execute(query, marca);
 
                 // Inserir o registro de log na tabela tb_logs
                 DateTime dataHoraAcao = DateTime.Now;
                 string tipoOperacao = "atualização de marca"; // Defina o tipo de operação conforme necessário
 
-                sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
-                cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+                string sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
+                MySqlCommand cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
                 cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
                 cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
                 cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
 
                 cmd.ExecuteNonQuery();
-                mConn.FecharConexao();
             }
         }
-
 
         public bool VerificarMarca(String nomeMarca)
         {
@@ -117,27 +112,25 @@ namespace DAL
         }
         public List<Marca> GetMarcasAtivas()
         {
-
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 return dbConnection.Query<Marca>("SELECT id_marca, Nome FROM tb_marca WHERE Ativo_inativo = 1").ToList();
             }
         }
+
         public List<Marca> GetMarcasDesativadas()
         {
-
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 return dbConnection.Query<Marca>("SELECT id_marca, Nome FROM tb_marca WHERE Ativo_inativo = 0").ToList();
             }
         }
 
-
         public void DesativarMarca(int idMarca)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_marca SET Ativo_inativo = 0 WHERE id_marca = @IdMarca";
@@ -158,7 +151,7 @@ namespace DAL
 
         public void AtivarMarca(int idMarca)
         {
-            using (IDbConnection dbConnection = new MySqlConnection(conec))
+            using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
                 dbConnection.Open();
                 string query = "UPDATE tb_marca SET Ativo_inativo = 1 WHERE id_marca = @IdMarca";
