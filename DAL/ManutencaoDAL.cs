@@ -21,7 +21,6 @@ namespace DAL
 
             using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
 
                 string query = "SELECT " +
                                 "m.id_chamado, " +

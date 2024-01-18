@@ -95,7 +95,6 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 string query = "SELECT * FROM tb_usuario WHERE Email = @Email AND Ativo_inativo = 1";
                 return dbConnection.QueryFirstOrDefault<Usuario>(query, new { Email = email });
             }
@@ -105,7 +104,6 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 string query = "SELECT Senha FROM tb_usuario WHERE Email = @Email";
                 return dbConnection.ExecuteScalar<string>(query, new { Email = email });
             }
@@ -116,7 +114,6 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 return dbConnection.Query<Usuario>("SELECT id_usuario, Nome, Email, Senha, UserAcesso FROM tb_usuario").ToList();
             }
         }
@@ -125,7 +122,6 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 string query = "UPDATE tb_usuario SET Nome = @Nome, Email = @Email, Ativo_inativo = @Ativo_inativo WHERE id_usuario = @id_usuario";
                 dbConnection.Execute(query, usuario);
 
@@ -151,7 +147,6 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 string query = "SELECT id_usuario, Nome, Email, Senha, UserAcesso FROM tb_usuario WHERE Ativo_inativo = @AtivoInativo";
                 return dbConnection.Query<Usuario>(query, new { AtivoInativo = 1 }).ToList();
             }
@@ -161,7 +156,6 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 string query = "SELECT id_usuario, Nome, Email, Senha, UserAcesso FROM tb_usuario WHERE Ativo_inativo = @AtivoInativo";
                 return dbConnection.Query<Usuario>(query, new { AtivoInativo = 0 }).ToList();
             }
@@ -171,7 +165,6 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 string query = "UPDATE tb_usuario SET Ativo_inativo = 0 WHERE id_usuario = @id_usuario";
                 int rowsAffected = dbConnection.Execute(query, new { ID_usuario = id_usuario });
 
@@ -192,7 +185,6 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
                 string query = "UPDATE tb_usuario SET Ativo_inativo = 1 WHERE id_usuario = @id_usuario";
                 int rowsAffected = dbConnection.Execute(query, new { ID_usuario = id_usuario });
 
@@ -258,7 +250,6 @@ namespace DAL
         {
             using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
                 using (MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM tb_token WHERE id_usuario = @idUsuario AND token = @token AND data_expiracao > NOW()", connection))
                 {
                     cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
@@ -275,7 +266,6 @@ namespace DAL
         {
             using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
                 using (MySqlCommand cmd = new MySqlCommand("UPDATE tb_usuario SET senha = @novaSenha WHERE id_usuario = @idUsuario", connection))
                 {
                     cmd.Parameters.AddWithValue("@novaSenha", novaSenha);
@@ -307,7 +297,6 @@ namespace DAL
         {
             using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
                 string query = "SELECT id_usuario FROM tb_usuario WHERE email = @email";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {

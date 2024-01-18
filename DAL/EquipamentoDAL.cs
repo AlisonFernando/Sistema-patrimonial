@@ -101,7 +101,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "UPDATE tb_equipamentos SET Nome_Equipamento = @Nome, Valor = @Valor, Descricao = @Descricao  WHERE ID_equipamento = @ID_equipamento";
                 dbConnection.Execute(query, equipamento);
 
@@ -125,7 +125,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "DELETE FROM tb_equipamentos WHERE ID_equipamento = @ID_equipamento";
                 dbConnection.Execute(query, new { ID_equipamento });
 
@@ -149,7 +149,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 return dbConnection.Query<Equipamento>("SELECT Nome_equipamento FROM tb_equipamentos").ToList();
             }
         }
@@ -189,7 +189,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 return dbConnection.Query<Equipamento>("SELECT ID_equipamento, Nome_equipamento AS Nome, Valor as Valor, Descricao AS Descricao, Etiqueta_identificacao AS Etiqueta FROM tb_equipamentos WHERE Ativo_inativo = 1").ToList();
             }
         }
@@ -198,7 +198,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "SELECT ID_equipamento, Nome_equipamento AS Nome, Valor as Valor, Descricao AS Descricao, Etiqueta_identificacao AS Etiqueta FROM tb_equipamentos WHERE Ativo_inativo = 0";
                 return dbConnection.Query<Equipamento>(query).ToList();
             }
@@ -208,7 +208,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "UPDATE tb_equipamentos SET Ativo_inativo = 0 WHERE ID_equipamento = @id_equipamento";
                 int rowsAffected = dbConnection.Execute(query, new { ID_equipamento = id_equipamento });
 
@@ -229,7 +229,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "UPDATE tb_equipamentos SET Ativo_inativo = 1 WHERE ID_equipamento = @id_equipamento";
                 int rowsAffected = dbConnection.Execute(query, new { ID_equipamento = id_equipamento });
 
@@ -249,7 +249,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
 
                 string query = "UPDATE tb_equipamentos SET id_colaborador = NULL WHERE ID_equipamento = @idEquipamento";
 

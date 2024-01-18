@@ -52,7 +52,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "UPDATE tb_marca SET Nome = @Nome, Ativo_inativo = @Ativo_inativo WHERE id_marca = @id_marca";
 
                 dbConnection.Execute(query, marca);
@@ -114,7 +114,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 return dbConnection.Query<Marca>("SELECT id_marca, Nome FROM tb_marca WHERE Ativo_inativo = 1").ToList();
             }
         }
@@ -123,7 +123,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 return dbConnection.Query<Marca>("SELECT id_marca, Nome FROM tb_marca WHERE Ativo_inativo = 0").ToList();
             }
         }
@@ -132,7 +132,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "UPDATE tb_marca SET Ativo_inativo = 0 WHERE id_marca = @IdMarca";
                 int rowsAffected = dbConnection.Execute(query, new { IdMarca = idMarca });
 
@@ -153,7 +153,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "UPDATE tb_marca SET Ativo_inativo = 1 WHERE id_marca = @IdMarca";
                 int rowsAffected = dbConnection.Execute(query, new { IdMarca = idMarca });
 

@@ -56,7 +56,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 return dbConnection.Query<Setor>("SELECT ID_setor, Nome_setor AS Nome FROM tb_setor").ToList();
             }
         }
@@ -85,7 +85,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "UPDATE tb_setor SET Nome_setor = @Nome WHERE ID_setor = @ID_setor";
                 dbConnection.Execute(query, setor);
             }
@@ -95,9 +95,9 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "UPDATE tb_setor SET Ativo_inativo = 0 WHERE ID_setor = @ID_setor";
-                int rowsAffected = dbConnection.Execute(query, new { ID_setor });
+                int rowsAffected = dbConnection.Execute(query, new { ID_setor = id_setor });
 
                 if (rowsAffected > 0)
                 {
@@ -115,9 +115,9 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 string query = "UPDATE tb_setor SET Ativo_inativo = 1 WHERE ID_setor = @ID_setor";
-                int rowsAffected = dbConnection.Execute(query, new { ID_setor });
+                int rowsAffected = dbConnection.Execute(query, new { ID_setor = id_setor });
 
                 if (rowsAffected > 0)
                 {
@@ -136,7 +136,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 return dbConnection.Query<Setor>("SELECT ID_setor, Nome_setor AS Nome FROM tb_setor WHERE Ativo_inativo = 1").ToList();
             }
         }
@@ -145,7 +145,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                dbConnection.Open();
+                
                 return dbConnection.Query<Setor>("SELECT ID_setor, Nome_setor AS Nome FROM tb_setor WHERE Ativo_inativo = 0").ToList();
             }
         }
