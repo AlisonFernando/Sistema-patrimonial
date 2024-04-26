@@ -12,7 +12,7 @@ namespace DAL
     {
         public MySqlConnection mConn;
 
-        public string conec = "Persist Security Info = False; server=sys_pat.mysql.dbaas.com.br;database=sys_pat;uid=sys_pat;pwd=At@#7339;";
+        public string conec = "Persist Security Info = False; server=[servidor];database=[banco de dados];uid=[usuario];pwd=[senha];";
 
         public MySqlConnection AbrirConexao()
         {
