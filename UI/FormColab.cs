@@ -182,9 +182,9 @@ namespace UI
             if (phoneNumber.Length == 11)
             {
                 phoneNumber = string.Format("({0}) {1}-{2}",
-                    phoneNumber.Substring(0, 2),
-                    phoneNumber.Substring(2, 5),
-                    phoneNumber.Substring(6, 4));
+                phoneNumber.Substring(0, 2),
+                phoneNumber.Substring(2, Math.Min(5, phoneNumber.Length - 2)),
+                phoneNumber.Substring(7, Math.Min(4, phoneNumber.Length - 7)));
             }
 
             inputColabTel.Text = phoneNumber;
@@ -385,6 +385,26 @@ namespace UI
                 LoadColaboradores();
                 btnLimpar2.PerformClick();
 
+            }
+            if (string.IsNullOrEmpty(txtID.Text))
+            {
+                MessageBox.Show("Selecione algum colaborador para atualizar e tente novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                int id = int.Parse(txtID.Text);
+                if (id == 0)
+                {
+                    MessageBox.Show("Selecione algum colaborador para atualizar e tente novamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    retorno = editColabBLL.UpdateColaborador(colaborador);
+                    LoadColaboradores();
+                    btnLimpar2.PerformClick();
+                }
             }
         }
 

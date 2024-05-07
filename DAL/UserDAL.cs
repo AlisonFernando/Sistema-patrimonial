@@ -216,7 +216,6 @@ namespace DAL
         {
             using (MySqlConnection connection = mConn.AbrirConexao())
             {
-                connection.Open();
                 using (MySqlCommand cmd = new MySqlCommand("INSERT INTO tb_token (id_usuario, token, data_expiracao, data_criacao) VALUES (@id_usuario, @token, @dataExpiracao, @dataCriacao)", connection))
                 {
                     cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
