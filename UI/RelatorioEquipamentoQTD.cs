@@ -127,7 +127,7 @@ namespace UI
                 doc.Add(dataHora);
 
                 // Adicione a imagem centralizada
-                string imageUrl = "https://www.scotconsultoria.com.br/img/relatorio_sys.png";
+                string imageUrl = "[caminho da foto para aparecer no relatorio]";
                 iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(new Uri(imageUrl));
                 image.Alignment = Element.ALIGN_CENTER;
                 doc.Add(image);
