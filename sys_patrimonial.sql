@@ -1,6 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `sys_pat` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci */;
+USE `sys_pat`;
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: syspatrimonial.mysql.dbaas.com.br    Database: syspatrimonial
+-- Host: sys_pat.mysql.dbaas.com.br    Database: sys_pat
 -- ------------------------------------------------------
 -- Server version	5.7.32-35-log
 
@@ -25,12 +27,20 @@ DROP TABLE IF EXISTS `tb_chamado`;
 CREATE TABLE `tb_chamado` (
   `id_chamado` int(11) NOT NULL AUTO_INCREMENT,
   `data_hora_do_chamado` datetime NOT NULL,
-  `descricao` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `descricao` varchar(10000) COLLATE latin1_general_ci NOT NULL,
   `id_usuario` int(11) DEFAULT NULL,
   `id_status` int(11) DEFAULT NULL,
+  `id_equipamento` int(11) DEFAULT NULL,
+  `id_colaborador` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_chamado`),
-  KEY `id_usuario` (`id_usuario`),
-  KEY `id_status` (`id_status`),
+  KEY `fk_equipamento_chamado` (`id_equipamento`),
+  KEY `fk_tb_chamado_tb_status` (`id_status`),
+  KEY `fk_usuario_chamado` (`id_usuario`),
+  KEY `fk_tb_chamado_tb_colaborador` (`id_colaborador`),
+  CONSTRAINT `fk_equipamento_chamado` FOREIGN KEY (`id_equipamento`) REFERENCES `tb_equipamentos` (`ID_equipamento`),
+  CONSTRAINT `fk_tb_chamado_tb_colaborador` FOREIGN KEY (`id_colaborador`) REFERENCES `tb_colaborador` (`ID_colaborador`),
+  CONSTRAINT `fk_tb_chamado_tb_status` FOREIGN KEY (`id_status`) REFERENCES `tb_status` (`id_status`),
+  CONSTRAINT `fk_usuario_chamado` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuario` (`id_usuario`) ON DELETE CASCADE,
   CONSTRAINT `tb_chamado_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuario` (`id_usuario`),
   CONSTRAINT `tb_chamado_ibfk_2` FOREIGN KEY (`id_status`) REFERENCES `tb_status` (`id_status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
@@ -59,6 +69,7 @@ CREATE TABLE `tb_colaborador` (
   `Agenda` varchar(150) COLLATE latin1_general_ci NOT NULL,
   `Telefone` varchar(15) COLLATE latin1_general_ci NOT NULL,
   `Ativo_inativo` tinyint(11) NOT NULL,
+  `Senha` varchar(10000) COLLATE latin1_general_ci NOT NULL,
   `id_setor` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID_colaborador`),
   KEY `id_setor` (`id_setor`),
@@ -96,7 +107,7 @@ CREATE TABLE `tb_equipamentos` (
   KEY `id_marca` (`id_marca`),
   CONSTRAINT `tb_equipamentos_ibfk_1` FOREIGN KEY (`id_colaborador`) REFERENCES `tb_colaborador` (`ID_colaborador`),
   CONSTRAINT `tb_equipamentos_ibfk_2` FOREIGN KEY (`id_marca`) REFERENCES `tb_marca` (`id_marca`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +116,7 @@ CREATE TABLE `tb_equipamentos` (
 
 LOCK TABLES `tb_equipamentos` WRITE;
 /*!40000 ALTER TABLE `tb_equipamentos` DISABLE KEYS */;
-INSERT INTO `tb_equipamentos` VALUES (1,'notebbok',0,'1','1400','nt_001',NULL,1),(2,'notebbok',0,'0','1400','nt_002',NULL,1),(3,'notebbok',0,'1','1400','nt_003',NULL,1);
+INSERT INTO `tb_equipamentos` VALUES (1,'Teste',1,'R$13,00','Teste','Teste',NULL,NULL);
 /*!40000 ALTER TABLE `tb_equipamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,14 +129,13 @@ DROP TABLE IF EXISTS `tb_logs`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_logs` (
   `id_log` int(11) NOT NULL AUTO_INCREMENT,
-  `Data_hora` datetime NOT NULL,
-  `operacao` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `entidade` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_log`),
-  KEY `id_usuario` (`id_usuario`),
-  CONSTRAINT `tb_logs_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuario` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+  `IDUsuario` int(11) NOT NULL,
+  `EmailUsuario` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `DataHoraAcao` datetime NOT NULL,
+  `TipoOperacao` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `Mensagem` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  PRIMARY KEY (`id_log`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,6 +144,7 @@ CREATE TABLE `tb_logs` (
 
 LOCK TABLES `tb_logs` WRITE;
 /*!40000 ALTER TABLE `tb_logs` DISABLE KEYS */;
+INSERT INTO `tb_logs` VALUES (1,73,'alison@adm.com','2024-04-23 15:39:28','Cadastro do usuário','Cadastro do usuário: Dener'),(2,0,'alison@adm.com','2024-04-23 16:18:58','token de recuperação de senha gerado',''),(3,74,'alison@adm.com','2024-04-23 16:26:55','Cadastro do usuário','Cadastro do usuário: Alison Teobaldo'),(4,0,'alison@adm.com','2024-04-23 16:27:06','token de recuperação de senha gerado',''),(5,75,'alison@adm.com','2024-04-23 16:28:54','Cadastro do usuário','Cadastro do usuário: Alison Gmail'),(6,0,'alison@adm.com','2024-04-23 16:30:03','token de recuperação de senha gerado',''),(7,0,'alison@adm.com','2024-04-23 16:31:39','atualização de senha do usuário',''),(8,76,'','2024-04-23 16:46:21','Cadastro do usuário','Cadastro do usuário: Caio Carvalho'),(9,77,'','2024-04-23 16:46:42','Cadastro do usuário','Cadastro do usuário: Felipe Sanchez'),(10,0,'dc@scotconsultoria.com.br','2024-05-07 15:30:05','cadastro de marca',''),(11,1,'dc@scotconsultoria.com.br','2024-05-07 15:32:57','Cadastro do equipamento','Cadastro do equipamento: Teste');
 /*!40000 ALTER TABLE `tb_logs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,8 +156,20 @@ DROP TABLE IF EXISTS `tb_manutencao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_manutencao` (
-  `ID_manutencao` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`ID_manutencao`)
+  `id_manutencao` int(11) NOT NULL AUTO_INCREMENT,
+  `id_chamado` int(11) DEFAULT NULL,
+  `Data_hora_do_chamado` datetime DEFAULT NULL,
+  `descricao` varchar(10000) COLLATE latin1_general_ci DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_status` int(11) DEFAULT NULL,
+  `id_equipamento` int(11) DEFAULT NULL,
+  `id_colaborador` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_manutencao`),
+  KEY `fk_tb_manutencao_tb_chamado` (`id_chamado`),
+  KEY `fk_tb_manutencao_tb_colaborador` (`id_colaborador`),
+  CONSTRAINT `fk_tb_manutencao_tb_chamado` FOREIGN KEY (`id_chamado`) REFERENCES `tb_chamado` (`id_chamado`) ON DELETE CASCADE,
+  CONSTRAINT `fk_tb_manutencao_tb_colaborador` FOREIGN KEY (`id_colaborador`) REFERENCES `tb_colaborador` (`ID_colaborador`),
+  CONSTRAINT `tb_manutencao_ibfk_1` FOREIGN KEY (`id_chamado`) REFERENCES `tb_chamado` (`id_chamado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -170,11 +193,12 @@ CREATE TABLE `tb_manutencaoHistorico` (
   `id_manutencaoHistorico` int(11) NOT NULL AUTO_INCREMENT,
   `id_equipamento` int(11) DEFAULT NULL,
   `id_manutencao` int(11) DEFAULT NULL,
+  `DataHora` datetime NOT NULL,
   PRIMARY KEY (`id_manutencaoHistorico`),
   KEY `id_equipamento` (`id_equipamento`),
   KEY `id_manutencao` (`id_manutencao`),
   CONSTRAINT `tb_manutencaoHistorico_ibfk_1` FOREIGN KEY (`id_equipamento`) REFERENCES `tb_equipamentos` (`ID_equipamento`),
-  CONSTRAINT `tb_manutencaoHistorico_ibfk_2` FOREIGN KEY (`id_manutencao`) REFERENCES `tb_manutencao` (`ID_manutencao`)
+  CONSTRAINT `tb_manutencaoHistorico_ibfk_2` FOREIGN KEY (`id_manutencao`) REFERENCES `tb_manutencao` (`id_manutencao`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -197,8 +221,9 @@ DROP TABLE IF EXISTS `tb_marca`;
 CREATE TABLE `tb_marca` (
   `id_marca` int(11) NOT NULL AUTO_INCREMENT,
   `Nome` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `Ativo_inativo` bit(1) NOT NULL,
   PRIMARY KEY (`id_marca`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,7 +232,7 @@ CREATE TABLE `tb_marca` (
 
 LOCK TABLES `tb_marca` WRITE;
 /*!40000 ALTER TABLE `tb_marca` DISABLE KEYS */;
-INSERT INTO `tb_marca` VALUES (1,'Dell'),(2,'Sansung');
+INSERT INTO `tb_marca` VALUES (1,'Marca_1',_binary '');
 /*!40000 ALTER TABLE `tb_marca` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,8 +246,9 @@ DROP TABLE IF EXISTS `tb_setor`;
 CREATE TABLE `tb_setor` (
   `ID_setor` int(11) NOT NULL AUTO_INCREMENT,
   `Nome_setor` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `Ativo_inativo` tinyint(11) NOT NULL,
   PRIMARY KEY (`ID_setor`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +257,7 @@ CREATE TABLE `tb_setor` (
 
 LOCK TABLES `tb_setor` WRITE;
 /*!40000 ALTER TABLE `tb_setor` DISABLE KEYS */;
-INSERT INTO `tb_setor` VALUES (1,'Engenharia'),(2,'Criacao'),(3,'Marketing'),(4,'TI'),(5,'ADM'),(6,'Ligacoes');
+INSERT INTO `tb_setor` VALUES (1,'TI',1);
 /*!40000 ALTER TABLE `tb_setor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,6 +285,35 @@ LOCK TABLES `tb_status` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tb_token`
+--
+
+DROP TABLE IF EXISTS `tb_token`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_token` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) DEFAULT NULL,
+  `token` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `data_expiracao` datetime NOT NULL,
+  `data_criacao` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tb_token_ibfk_1` (`id_usuario`),
+  CONSTRAINT `tb_token_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuario` (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_token`
+--
+
+LOCK TABLES `tb_token` WRITE;
+/*!40000 ALTER TABLE `tb_token` DISABLE KEYS */;
+INSERT INTO `tb_token` VALUES (1,73,'5edc7916-ef00-494d-98a8-ed155c828539','2024-04-24 16:18:58','2024-04-23 16:18:58'),(2,74,'f96a8512-ffcc-4c7a-85aa-6e7716c9e7a4','2024-04-24 16:27:05','2024-04-23 16:27:05'),(3,75,'d3416679-7690-4763-8449-fbb97028c6fe','2024-04-24 16:30:03','2024-04-23 16:30:03');
+/*!40000 ALTER TABLE `tb_token` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_usuario`
 --
 
@@ -270,8 +325,10 @@ CREATE TABLE `tb_usuario` (
   `Nome` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `Email` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `Senha` varchar(10000) COLLATE latin1_general_ci NOT NULL,
+  `UserAcesso` int(11) NOT NULL,
+  `Ativo_inativo` tinyint(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,15 +337,16 @@ CREATE TABLE `tb_usuario` (
 
 LOCK TABLES `tb_usuario` WRITE;
 /*!40000 ALTER TABLE `tb_usuario` DISABLE KEYS */;
+
 /*!40000 ALTER TABLE `tb_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'syspatrimonial'
+-- Dumping events for database 'sys_pat'
 --
 
 --
--- Dumping routines for database 'syspatrimonial'
+-- Dumping routines for database 'sys_pat'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -300,4 +358,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-22 17:18:38
+-- Dump completed on 2024-05-08  8:10:04
